@@ -18,6 +18,7 @@
 \usepackage[UKenglish]{isodate}
 \usepackage{fontspec,xltxtra,xunicode}
 \usepackage{fontawesome}
+\usepackage{siunitx}
 
 % Color definitions
 \definecolor{date}{HTML}{666666}
