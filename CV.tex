@@ -12,19 +12,19 @@
 % 2. Hacky space on the first bullet point on the second column.
 %-------------------------------------------------------------------------------
 
-\documentclass[]{deedy}%
-\begin{document}%
+\documentclass[]{deedy}
+\begin{document}
 %
 %-------------------------------------------------------------------------------
 % Title Name
 %-------------------------------------------------------------------------------
-\namesection{Hatim}{Kanchwala}{Pre-final Year \textbullet{} Undergraduate \textbullet{} Electrical Engineering \textbullet{} Indian Institute of Technology Patna}{{\faMapMarker} A437, Boys' Hostel, IIT Patna, Amhara Village, Bihta, Bihar, India - 801118}{{\faMobile} (+91) 966 5154 719 \textbullet{} {\faEnvelopeO} \href{mailto:hatim@hatimak.me}{hatim@hatimak.me}, \href{mailto:hatim.ee14@iitp.ac.in}{hatim.ee14@iitp.ac.in} \textbullet{} {\faHome} \href{http://hatimak.me}{hatimak.me} \textbullet{} {\faGithub} \href{https://github.com/hatimak}{hatimak}}%
+\namesection{Hatim}{Kanchwala}{Pre-final Year \textbullet{} Undergraduate \textbullet{} Electrical Engineering \textbullet{} Indian Institute of Technology Patna}{{\faMapMarker} A437, Boys' Hostel, IIT Patna, Amhara Village, Bihta, Bihar, India - 801118}{{\faMobile} (+91) 966 5154 719 \textbullet{} {\faEnvelopeO} \href{mailto:hatim@hatimak.me}{hatim@hatimak.me}, \href{mailto:hatim.ee14@iitp.ac.in}{hatim.ee14@iitp.ac.in} \textbullet{} {\faHome} \href{http://hatimak.me}{hatimak.me} \textbullet{} {\faGithub} \href{https://github.com/hatimak}{hatimak}}
 %
 %-------------------------------------------------------------------------------
 % Column One
 %-------------------------------------------------------------------------------
-\begin{minipage}[t]{0.25\textwidth} 
-\begin{flushleft}%
+%\begin{minipage}[t]{0.25\textwidth} 
+\begin{flushleft}
 %
 %-------------------------------------------------------------------------------
 % Interests
@@ -36,114 +36,125 @@ Computer Organisation \& Architecture \textbullet{} Embedded Systems Design \tex
 %-------------------------------------------------------------------------------
 % Skills
 %-------------------------------------------------------------------------------
-\section{Skills}%
-\subsection{Programming}%
+\section{Skills}
+\subsection{Programming}
 C/C++ \textbullet{} Assembly \textbullet{} Verilog \textbullet{} JavaScript \textbullet{} Python \textbullet{} HTML/CSS \textbullet{} \LaTeX\ \textbullet{} Shell \textbullet{} \\
 Java \textbullet{} OCaml
 %
-\subsection{Software}%
+\subsection{Software}
 GNU/Linux \textbullet{} git/GitHub \textbullet{} MATLAB \textbullet{} Simulink \textbullet{} Xilinx \\
 ISE \textbullet{} Multisim \textbullet{} Synopsys \textbullet{} Pyxis \textbullet{} MPLAB IDE \textbullet{} Proteus \textbullet{} NumPy/SciPy \textbullet{} Eclipse IDE
 %
-\subsection{Hardware}%
+\subsection{Hardware}
 Xilinx Spartan FPGA \textbullet{} PIC Microcontroller \textbullet{} TMS320 DSP Chip \textbullet{} Arduino \textbullet{} 8051 Microcontroller \textbullet{} Raspberry \\
 Pi \textbullet{} Teensy
 %
-\subsection{Languages}%
+\subsection{Languages}
 English \textbullet{} Hindi \textbullet{} Gujarati \textbullet{} Marathi \textbullet{} Urdu \textbullet{} Arabic
 \sectionsep
 %
 %-------------------------------------------------------------------------------
 % Education
 %-------------------------------------------------------------------------------
-\section{Education}%
-\runsubsection{Indian Institute of Technology Patna \\}%
-\descript{B. Tech. in Electrical Engineering}%
-\location{{\faCalendar} 2014 - 2018 (expected)}%
-\location{{\faMapMarker} Bihta (Bihar), India}%
+\section{Education}
+\runsubsection{Indian Institute of Technology Patna \\}
+\descript{B. Tech. in Electrical Engineering}
+\location{{\faCalendar} 2014 - 2018 (expected)}
+\location{{\faMapMarker} Bihta (Bihar), India}
 CPI: 7.59 / 10.0 \small{(upto 5\textsuperscript{th} semester)}
 \sectionsep
 %
 %-------------------------------------------------------------------------------
 % Coursework
 %-------------------------------------------------------------------------------
-\section{Coursework}%
+\section{Coursework}
 Digital Signal Processing \textbullet{} Analog Integrated Circuits \textbullet{} VLSI Design \textbullet{} Embedded Systems \textbullet{} Control Systems \textbullet{} Linear Algebra \textbullet{} Probability \& Random Processes \textbullet{} Machine Learning \textbullet{} Finance - Valuation \& Investing
 \sectionsep
 %
-\end{flushleft}%
-\end{minipage}%
-\hfill
+%\end{flushleft}
+%\end{minipage}
+%\hfill
 %
 %-------------------------------------------------------------------------------
 % Column Two
 %-------------------------------------------------------------------------------
-\begin{minipage}[t]{0.72\textwidth}%
+%\begin{minipage}[t]{0.72\textwidth}
+%
 %
 %-------------------------------------------------------------------------------
 % Projects
 %-------------------------------------------------------------------------------
-\section{Projects}%
-\runsubsection{FPGA implementation of NLMS adaptive filtering algorithm for signal enhancement \\}%
-\location{{\faCalendar} FEB. 2017 - PRESENT \textbullet{} {\faGithub} \href{https://github.com/hatimak/akagami}{hatimak/akagami}}%
-\location{Adviser - Dr Yatendra Kumar Singh}%
-\vspace{\topsep}% Hacky fix for awkward extra vertical space
-\begin{tightemize}%
+\section{Projects}
+\runsubsection{FPGA implementation of NLMS adaptive filtering algorithm for signal enhancement\\}
+\location{{\faCalendar} FEB. 2017 - PRESENT \textbullet{} {\faGithub} \href{https://github.com/hatimak/zephyr}{hatimak/zephyr}}
+\location{Adviser - Dr Yatendra Kumar Singh}
+%\vspace{\topsep}% Hacky fix for awkward extra vertical spac
+\begin{tightemize}
 \item Implementing Normalized Least Mean Squares (NLMS) adaptive filtering algorithm to extract desired audio from corrupted signal with additive autoregressive noise.
 \item Prototyping on Xilinx Spartan-3E FPGA in Verilog HDL, with focus towards optimised placing and routing.
 \item Investigating performance gain by FPGA over typical DSP chip (TMS320).
-\end{tightemize}%
+\end{tightemize}
 \sectionsep
 %
-\runsubsection{8085 Instruction Set Architecture prototype on FPGA with basic pipelining \\}%
-\location{{\faCalendar} JAN. 2017 - PRESENT \textbullet{} {\faGithub} \href{https://github.com/hatimak/marineford}{hatimak/marineford}}%
-\location{Adviser - Dr Kailash Chandra Ray}%
-\begin{tightemize}%
+\runsubsection{8085 Instruction Set Architecture prototype on FPGA with basic pipelining\\}
+\location{{\faCalendar} JAN. 2017 - PRESENT \textbullet{} {\faGithub} \href{https://github.com/hatimak/marineford}{hatimak/marineford}}
+\location{Adviser - Dr Kailash Chandra Ray}
+\begin{tightemize}
 \item Implementing Intel 8085 microprocessor ISA on Xilinx Spartan-3E FPGA in Verilog HDL. Developing ASM testbenches to investigate performance gain due to pipelining.
-\end{tightemize}%
+\end{tightemize}
 \sectionsep
 %
-\runsubsection{Fingerprint based remote attendance system \\}%
-\location{{\faCalendarCheckO} JAN. - OCT. 2015 \textbullet{} {\faGithub} \href{https://github.com/hatimak/den-den-mushi}{hatimak/den-den-mushi}}%
-\begin{tightemize}%
+\runsubsection{flashrom \\}
+\location{{\faCalendarCheckO} FEB. - AUG. 2016}
+\begin{tightemize}
 \item
-\end{tightemize}%
+\end{tightemize}
+\sectionsep
+%
+\runsubsection{Fingerprint based remote attendance system \\}
+\location{{\faCalendarCheckO} JAN. - OCT. 2015 \textbullet{} {\faGithub} \href{https://github.com/hatimak/den-den-mushi}{hatimak/den-den-mushi}}
+\begin{tightemize}
+\item
+\end{tightemize}
 \sectionsep
 %
 %-------------------------------------------------------------------------------
 % Experience
 %-------------------------------------------------------------------------------
-\section{Experience}%
-\runsubsection{Aficionado Ventures}%
-\descript{\textbullet{} Backend Engineer}%
-\location{{\faBuildingO} Startup \textbullet{} {\faCalendarCheckO} FEB. 2016 - OCT. 2016 \textbullet{} {\faMapMarker} Gurugram (Haryana), India}%
-\begin{tightemize}%
+\section{Experience}
+\runsubsection{Aficionado Ventures}
+\descript{\textbullet{} Backend Engineer}
+\location{{\faBuildingO} Startup \textbullet{} {\faCalendarCheckO} FEB. 2016 - OCT. 2016 \textbullet{} {\faMapMarker} Gurugram (Haryana), India}
+\begin{tightemize}
 \item 
-\end{tightemize}%
+\end{tightemize}
 \sectionsep
 %
-\runsubsection{The Weave}%
-\descript{\textbullet{} Co-founder \& Product Developer}%
-\location{{\faBuildingO} Startup \textbullet{} {\faCalendarCheckO} JUNE 2015 - DEC. 2015 \textbullet{} {\faMapMarker} Patna (Bihar), India}%
-\begin{tightemize}%
-\item 
-\end{tightemize}%
+\runsubsection{Weave}
+\descript{\textbullet{} Co-founder \& Product Developer}
+\location{{\faBuildingO} Startup \textbullet{} {\faCalendarCheckO} JUNE 2015 - DEC. 2015 \textbullet{} {\faMapMarker} Patna (Bihar), India}
+\begin{tightemize}
+\item Implemented basic prototype of Model Generator in JavaScript - based on user input data and features, Model Generator builds 3D NURBS model of user's body using weighted combination of precomputed basis models.
+\item Developed model of Cloth Physics Engine that emulates dyanmics for clothes fitted on generated NURBS model - users can try clothes virtually.
+\item Despite garnering client \& investor interest, startup failed because product-market fit was not right.
+\end{tightemize}
 \sectionsep
-%
+
 %-------------------------------------------------------------------------------
 % Extracurricular
 %-------------------------------------------------------------------------------
-\section{Extracurricular}%
-\runsubsection{Coordinator, Startup Relations}%
-\descript{\textbullet{} Entrepreneurship Club, IIT Patna}%
-\location{{\faCalendar} APR 2015 - PRESENT}%
+\section{Extracurricular}
+\runsubsection{Coordinator, Startup Relations}
+\descript{\textbullet{} Entrepreneurship Club, IIT Patna}
+\location{{\faCalendar} APR 2015 - PRESENT}
 \begin{tightemize}
 \item Serving as on-campus mentor to early stage startups, helping entrepreneurs develop business plan, choose investor strategy, and network with domain experts.
 \item Responsible for building connections with startups and investors, and building investor panel for on-campus startups.
 \item Part of Core Committee for E-Club’s flagship annual event, E-Week. Responsible for organizing guest talks, workshops and pitching event in collaboration with Incubation Centre, IIT Patna.
 \end{tightemize}
 \sectionsep
-%
-\end{minipage}%
-\end{document}%
+
+\end{flushleft}
+%\end{minipage}
+\end{document}
 \documentclass[]{article}
