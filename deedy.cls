@@ -28,8 +28,6 @@
 % Set main fonts
 \defaultfontfeatures{Mapping=tex-text}
 \setmainfont[Color=primary, Path = fonts/helvetica/]{HelveticaNeue-Light}
-%\setsansfont[Scale=MatchLowercase,Mapping=tex-text, Path = fonts/helvetica/]{HelveticaNeue-UltraLight}
-%\newcommand{\custombold}[1]{\color{subheadings}\fontspec[Path = fonts/helvetica/]{HelveticaNeue-CondensedBold}\selectfont #1 \normalfont}
 
 % Name command
 \newcommand{\namesection}[5]{
