@@ -18,7 +18,7 @@
 %-------------------------------------------------------------------------------
 % Title Name
 %-------------------------------------------------------------------------------
-\namesection{Hatim}{Kanchwala}{Pre-final Year \textbullet{} Undergraduate \textbullet{} Electrical Engineering \textbullet{} Indian Institute of Technology Patna}{{\faMapMarker} A437, Boys' Hostel, IIT Patna, Amhara Village, Bihta, Bihar, India - 801118}{{\faMobile} (+91) 966 5154 719 \textbullet{} {\faEnvelopeO} \href{mailto:hatim@hatimak.me}{hatim@hatimak.me}, \href{mailto:hatim.ee14@iitp.ac.in}{hatim.ee14@iitp.ac.in} \textbullet{} {\faHome} \href{http://hatimak.me}{hatimak.me} \textbullet{} {\faGithub} \href{https://github.com/hatimak}{hatimak}}
+\namesection{Hatim}{Kanchwala}{Pre-final Year \textbullet{} Undergraduate \textbullet{} Electrical Engineering \textbullet{} Indian Institute of Technology Patna}{{\faMapMarker} A437, Boys' Hostel, IIT Patna, Amhara Village, Bihta, Bihar, India - 801118}{{\faMobile} (+91) 966 5154 719 \textbullet{} {\faEnvelopeO} \href{mailto:hatim@hatimak.me}{hatim@hatimak.me}, \href{mailto:hatim.ee14@iitp.ac.in}{hatim.ee14@iitp.ac.in} \textbullet{} {\faHome} \href{http://hatimak.me}{hatimak.me} \textbullet{} {\faGithub} \href{https://github.com/hatimak}{hatimak} \textbullet{} {\faLinkedinSquare} \href{https://www.linkedin.com/in/hatimak/}{hatimak}}
 %
 %-------------------------------------------------------------------------------
 % Column One
@@ -79,7 +79,7 @@ CPI: 7.59 / 10.0 \small{(upto 5\textsuperscript{th} semester)}
 \section{Projects}
 %
 \runsubsection{FPGA implementation of NLMS adaptive filtering algorithm for signal enhancement \\}
-\location{{\faCalendar} FEB. 2017 - PRESENT \textbullet{} {\faGithub} \href{https://github.com/hatimak/zephyr}{hatimak/zephyr}}
+\location{{\faTag} Research \textbullet{} {\faCalendar} FEB. 2017 - PRESENT \textbullet{} {\faGithub} \href{https://github.com/hatimak/zephyr}{hatimak/zephyr}}
 \location{Adviser - Dr Yatendra Kumar Singh}
 %\vspace{\topsep}% Hacky fix for awkward extra vertical space
 \begin{tightemize}
@@ -99,9 +99,12 @@ CPI: 7.59 / 10.0 \small{(upto 5\textsuperscript{th} semester)}
 %-------------------------------------------------------------------------------
 %
 \runsubsection{Fingerprint based remote attendance system \\}
-\location{{\faCalendarCheckO} JAN. - OCT. 2015 \textbullet{} {\faGithub} \href{https://github.com/hatimak/den-den-mushi}{hatimak/den-den-mushi}}
+\location{{\faCalendarCheckO} JAN. - OCT. 2015}
 \begin{tightemize}
-\item
+\item Designed low-power economic embedded system, suitable for remote deployment, to record biometric attendance and transmit to central server.
+\item Hardware prototype comprised 8051 microcontroller (Atmel AT89S51), fingerprint reader (R305), GSM/GPRS module (SIM900A), 16$\times$2 LCD and keypad.
+\item 8051 interfaces with R305 and SIM900A over serial port via multiplexer. 16$\times$2 LCD and keypad provides control of device. Initial setup requires enrolling fingerprints into R305 internal memory. Post biometric authentication, attendance data is transmitted by SIM900A via SMS or over GPRS to central server depending on connectivity at remote station. Fingerprints stored locally only.
+\item Developed firmware in C and ASM. Microcontroller operations simulated in Proteus.
 \end{tightemize}
 \sectionsep
 %-------------------------------------------------------------------------------
@@ -111,17 +114,26 @@ CPI: 7.59 / 10.0 \small{(upto 5\textsuperscript{th} semester)}
 \section{Mini Projects}
 %
 \runsubsection{8085 Instruction Set Architecture prototype on FPGA with basic pipelining \\}
-\location{{\faCalendar} JAN. 2017 - PRESENT \textbullet{} {\faGithub} \href{https://github.com/hatimak/marineford}{hatimak/marineford}}
-\location{Guide - Dr Kailash Chandra Ray}
+\location{{\faCalendar} FEB. 2017 - PRESENT \textbullet{} {\faGithub} \href{https://github.com/hatimak/marineford}{hatimak/marineford}}
+\location{Adviser - Dr Kailash Chandra Ray}
 \begin{tightemize}
 \item Implementing Intel 8085 microprocessor ISA on Xilinx Spartan-3E FPGA in Verilog HDL. Developing ASM testbenches to investigate performance gain due to pipelining.
 \end{tightemize}
 \sectionsep
 %-------------------------------------------------------------------------------
 %
+\runsubsection{Implementation of Viola-Jones object detection framework \\}
+\location{{\faCalendar} JAN. 2017 - PRESENT \textbullet{} {\faGithub} \href{https://github.com/hatimak/vj-goggles}{hatimak/vj-goggles}}
+\location{Adviser - Dr Mahesh H. Kolekar}
+\begin{tightemize}
+\item Implementing object detection algorithm proposed in \href{https://www.cs.cmu.edu/~efros/courses/LBMV07/Papers/viola-cvpr-01.pdf}{paper by P. Viola and M. Jones} in MATLAB and on TMS320 DSP chip.
+\end{tightemize}
+\sectionsep
+%-------------------------------------------------------------------------------
+%
 \runsubsection{Full-custom design of ring oscillator \\}
 \location{{\faCalendarCheckO} NOV. 2016 \textbullet{} {\faGithub} \href{https://github.com/hatimak/ring-osc}{hatimak/ring-osc}}
-\location{Guide - Dr Kailash Chandra Ray}
+\location{Adviser - Dr Kailash Chandra Ray}
 \begin{tightemize}
 \item Designed core layout of ring oscillator using AMI05 (\SI{0.5}{\micro\metre}) CMOS Technology in Pyxis (Mentor Graphics), and verified output of back annotated simulation.
 \end{tightemize}
@@ -181,9 +193,9 @@ Algorithms \& Data Structures \\
 \subsection{MOOC}
 \href{https://www.coursera.org/account/accomplishments/certificate/7V2KZSKAL7ZJ}{Machine Learning} \\
 \vspace{1pt}
-\href{https://www.coursera.org/account/accomplishments/certificate/98ZD8GFQ8BMS}{Principles of Valuation: Risk \& Return} \\
+\href{https://www.coursera.org/account/accomplishments/certificate/98ZD8GFQ8BMS}{Valuation: Risk \& Return} \\
 \vspace{1pt}
-\href{https://www.coursera.org/account/accomplishments/certificate/P637RR9C8B7T}{Principles of Valuation: Time Value of Money} \\
+\href{https://www.coursera.org/account/accomplishments/certificate/P637RR9C8B7T}{Valuation: Time Value of Money} \\
 %
 \end{flushleft}
 \end{minipage}
@@ -202,17 +214,17 @@ Algorithms \& Data Structures \\
 %
 \runsubsection{Aficionado Ventures}
 \descript{\textbullet{} Backend Engineer}
-\location{{\faBuildingO} Startup \textbullet{} {\faCalendarCheckO} FEB. 2016 - OCT. 2016 \textbullet{} {\faMapMarker} Gurugram (Haryana), India}
+\location{{\faTag} Startup \textbullet{} {\faCalendarCheckO} FEB. 2016 - OCT. 2016 \textbullet{} {\faMapMarker} Gurugram (Haryana), India}
 \begin{tightemize}
 \item Purchasing platform connecting restaurants and vendors - helping restaurants procure better quality raw ingredients and products at competitive prices from extensive \& diverse collection of vendors.
-\item Designed asset-light reactive scalable backend architecture for marketplace platform. Used MeteorJS for server, MongoDB for data storage, GitHub for code collaboration, Heroku for web app hosting, mLab for database hosting, and Cordova for cross-platform mobile apps.
+\item Designed asset-light reactive scalable backend architecture for marketplace platform. Used MeteorJS for server, MongoDB for data storage, Heroku for web app hosting, mLab for database hosting, and Cordova for cross-platform mobile apps.
 \item Implemented MVP-stage marketplace platform with bilingual search to look up products in English/Hinglish. Started work on machine learning engine for vendor inventory prediction and predictive restaurant purchase order generation. Proposed and prototyped conversational UX via messaging bot, in lieu of app interfaces.
 \end{tightemize}
 \sectionsep
 %
 \runsubsection{Weave}
 \descript{\textbullet{} Co-founder \& Product Developer}
-\location{{\faBuildingO} Startup \textbullet{} {\faCalendarCheckO} JUNE 2015 - DEC. 2015 \textbullet{} {\faMapMarker} Patna (Bihar), India}
+\location{{\faTag} Startup \textbullet{} {\faCalendarCheckO} JUNE 2015 - DEC. 2015 \textbullet{} {\faMapMarker} Patna (Bihar), India}
 \begin{tightemize}
 \item Implemented basic prototype of Model Generator in JavaScript - based on user input data and features, Model Generator builds 3D NURBS model of user's body using weighted combination of precomputed basis models.
 \item Developed model of Cloth Physics Engine that emulates dyanmics for clothes fitted on generated NURBS model - users can try clothes virtually.
