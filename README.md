@@ -6,3 +6,14 @@
 - looks too cluttered right now
 	- increase spacing (between lines and sections)
 	- use dividers for sectioning (?)
+
+- put experience on top, then projects, then mini-projects
+> "experience is something you are paid for. when some one is paying for you, you would have done something worthy of that payment"
+> "startups or established companies, experience in lab is different from experience on [site]"
+> "project is [solid work], mini project is good stuff not so solid"
+- put gsoc in experience
+- condense points, remove redundancy (esp. gsoc, biometric, aficionado)
+> "nobody likes to read essays in [CVs]"
+- add "volunteer" position under eclub. keep coordinator as well
+> "[show] your advancement"
+- put education on top (?)
