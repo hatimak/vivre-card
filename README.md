@@ -18,10 +18,10 @@
 > "project is [solid work], mini project is good stuff not so solid"
 
 - put gsoc in experience
-- condense points, remove redundancy (esp. gsoc, biometric, aficionado)
+- condense points, remove redundancy, split longer ones (esp. gsoc, biometric, aficionado)
 > "nobody likes to read essays in [CVs]"
 
-- add "volunteer" position under eclub. keep coordinator as well
+- add "volunteer" position under eclub. keep coordinator as well (?)
 > "[show] your advancement"
 
 - put education on top (?)
