@@ -1,5 +1,9 @@
 # TODO
 
+- add marks for Deogiri and Nath Valley
+- add board of examinations - HSC, CBSE
+- THOROUGH SPELL CHECK
+
 ## aesthetics
 - Font size adjustments (could be lowered?)
 - Page numbers (in x/y format)
