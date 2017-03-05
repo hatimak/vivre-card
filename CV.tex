@@ -23,36 +23,17 @@
 %-------------------------------------------------------------------------------
 % Column One
 %-------------------------------------------------------------------------------
-\begin{minipage}[t]{0.25\textwidth} 
+\begin{minipage}[t]{0.27\textwidth}
 \begin{flushleft}
 %
 %-------------------------------------------------------------------------------
 % Interests
 %-------------------------------------------------------------------------------
 \section{Interests}
-Computer Organisation \& Architecture \textbullet{} Embedded Systems Design \textbullet{} Adaptive Filters \textbullet{} Neural Networks
+Computer Organisation \& Architecture \textbullet{} Embedded Systems Design \textbullet{} Adaptive \\
+Filters \textbullet{} Neural Networks
 \sectionsep
-%
 %-------------------------------------------------------------------------------
-% Skills
-%-------------------------------------------------------------------------------
-\section{Skills}
-\subsection{Programming}
-C/C++ \textbullet{} Assembly \textbullet{} Verilog \textbullet{} JavaScript \textbullet{} Python \textbullet{} Java \textbullet{} \\
-Scala \textbullet{} Shell \textbullet{} HTML/CSS \textbullet{} \LaTeX\ 
-%
-\subsection{Software}
-GNU/Linux \textbullet{} git/GitHub \textbullet{} MATLAB \textbullet{} Simulink \textbullet{} Xilinx \\
-ISE \textbullet{} Multisim \textbullet{} Synopsys \textbullet{} Pyxis \textbullet{} MPLAB IDE \textbullet{} Proteus \textbullet{} NumPy/SciPy \textbullet{} Eclipse IDE
-%
-\subsection{Hardware}
-Xilinx Spartan FPGA \textbullet{} PIC Microcontroller \textbullet{} TMS320 DSP Chip \textbullet{} Arduino \textbullet{} 8051 Microcontroller \textbullet{} Raspberry \\
-Pi \textbullet{} Teensy
-%
-\subsection{Languages}
-English \textbullet{} Hindi \textbullet{} Gujarati \textbullet{} Urdu \textbullet{} Marathi \textbullet{} Arabic
-\sectionsep
-%
 %-------------------------------------------------------------------------------
 % Education
 %-------------------------------------------------------------------------------
@@ -62,7 +43,7 @@ English \textbullet{} Hindi \textbullet{} Gujarati \textbullet{} Urdu \textbulle
 \descript{B. Tech. in Electrical Engineering}
 \location{{\faCalendar} 2014 --- 2018}
 \location{{\faMapMarker} Bihta (BR), India}
-CPI: 7.59 / 10.0 \small{(upto 5\textsuperscript{th} semester) \\}
+CPI: 7.59 / 10.0 (upto 5\textsuperscript{th} semester) \\
 \sectionsep
 %-------------------------------------------------------------------------------
 %
@@ -79,6 +60,26 @@ CPI: 7.59 / 10.0 \small{(upto 5\textsuperscript{th} semester) \\}
 \location{{\faMapMarker} Aurangabad (MH), India}
 \sectionsep
 %-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+% Skills
+%-------------------------------------------------------------------------------
+\section{Skills}
+\subsection{Programming}
+C/C++ \textbullet{} Assembly \textbullet{} Verilog \textbullet{} JavaScript \textbullet{} Python \textbullet{} Java \textbullet{} Scala \textbullet{} Shell \textbullet{} HTML/CSS \textbullet{} \\
+\LaTeX\ 
+%
+\subsection{Software}
+GNU/Linux \textbullet{} git/GitHub \textbullet{} MATLAB \textbullet{} Simulink \textbullet{} Xilinx ISE \textbullet{} Multisim \textbullet{} Synopsys \textbullet{} Pyxis \textbullet{} MPLAB IDE \textbullet{} Proteus \textbullet{} NumPy/SciPy \textbullet{} Eclipse IDE
+%
+\subsection{Hardware}
+Xilinx Spartan FPGA \textbullet{} PIC Microcontroller \textbullet{} TMS320 DSP Chip \textbullet{} Arduino \textbullet{} 8051 Microcontroller \textbullet{} Raspberry \\
+Pi \textbullet{} Teensy
+%
+\subsection{Languages}
+English \textbullet{} Hindi \textbullet{} Gujarati \textbullet{} \\
+Urdu \textbullet{} Marathi \textbullet{} Arabic
+\sectionsep
+%-------------------------------------------------------------------------------
 %
 \end{flushleft}
 \end{minipage}
@@ -87,9 +88,49 @@ CPI: 7.59 / 10.0 \small{(upto 5\textsuperscript{th} semester) \\}
 %-------------------------------------------------------------------------------
 % Column Two
 %-------------------------------------------------------------------------------
-\begin{minipage}[t]{0.72\textwidth}
+\begin{minipage}[t]{0.69\textwidth}
 \begin{flushleft}
 %
+%-------------------------------------------------------------------------------
+% Experience
+%-------------------------------------------------------------------------------
+\section{Experience}
+%
+\runsubsection{Aficionado Ventures}
+\descript{\textbullet{} Backend Engineer}
+\location{{\faTag} Startup \textbullet{} {\faCalendarCheckO} FEB. 2016 --- OCT. 2016 \textbullet{} {\faMapMarker} Gurugram (HR), India}
+%\vspace{\topsep}% Hacky fix for awkward extra vertical space
+\begin{tightemize}
+\item Purchasing platform helping restaurants procure better quality produce from competitive collection of vendors.
+\item Designed reactive backend architecture - MeteorJS server, MongoDB database, Heroku/mLab web app hosting, and Cordova for cross-platform mobile apps.
+\item Implemented MVP-stage marketplace platform with bilingual search to look up products in English/Hinglish. Prototyped conversational UX via messaging bot.
+\item Started work on vendor inventory and restaurant demand prediction models.
+\end{tightemize}
+\sectionsep
+%-------------------------------------------------------------------------------
+%
+\runsubsection{Enhance Flashrom with features to read \& write multiple status registers and lock \& unlock memory space}
+\descript{\textbullet{} \href{https://summerofcode.withgoogle.com/archive/2016/projects/5439533130711040/}{Google Summer of Code 2016 student with Coreboot}}
+\location{{\faTag} Open-source \textbullet{} {\faCalendarCheckO} FEB. 2016 --- AUG. 2016 \textbullet{} {\faGithub} \href{https://github.com/hatimak/flashrom}{hatimak/flashrom}}
+\begin{tightemize}
+\item Designed multiple status registers model to abstract chip diversities across manufacturers into single consistent interface.
+\item Developed rutines to lock/unlock memory space governed by bits in status register(s), handle configuration bits, and automatically generate BP range table for some chips.
+\item Added functionality to access/lock OTP memory areas.
+\item Developed CLI to expose new infrastructure. Tested on physical GigaDevice SPI chips using Raspberry Pi (over SPI bus), and Teensy.
+\end{tightemize}
+\sectionsep
+%-------------------------------------------------------------------------------
+%
+\runsubsection{Weave}
+\descript{\textbullet{} Co-founder \& Product Developer}
+\location{{\faTag} Startup \textbullet{} {\faCalendarCheckO} JUNE 2015 --- DEC. 2015 \textbullet{} {\faMapMarker} Patna (BR), India}
+\begin{tightemize}
+\item Implemented prototype in JavaScript to build NURBS model of user, using input features and weighted combination of precomputed basis models.
+\item Developed algorithm to emulate dyanmics for clothes on NURBS model - users can try clothes virtually.
+\item Despite garnering client \& investor interest, startup failed because product-market fit was not right.
+\end{tightemize}
+\sectionsep
+%-------------------------------------------------------------------------------
 %-------------------------------------------------------------------------------
 % Projects
 %-------------------------------------------------------------------------------
@@ -98,46 +139,10 @@ CPI: 7.59 / 10.0 \small{(upto 5\textsuperscript{th} semester) \\}
 \runsubsection{FPGA implementation of NLMS adaptive filtering algorithm for signal enhancement \\}
 \location{{\faTag} Research \textbullet{} {\faCalendar} FEB. 2017 --- PRESENT \textbullet{} {\faGithub} \href{https://github.com/hatimak/zephyr}{hatimak/zephyr}}
 \location{Adviser: Dr Yatendra Kumar Singh}
-%\vspace{\topsep}% Hacky fix for awkward extra vertical space
 \begin{tightemize}
-\item Implementing Normalized Least Mean Squares (NLMS) adaptive filtering algorithm to extract desired audio from corrupted signal with additive autoregressive noise.
+\item Implementing Normalized Least Mean Squares (NLMS) adaptive filtering algorithm to extract desired audio from signal corrupted with additive autoregressive noise.
 \item Prototyping on Xilinx Spartan-3E FPGA in Verilog HDL, with focus towards optimised placing and routing.
 \item Investigating performance gain by FPGA over typical DSP chip (TMS320).
-\end{tightemize}
-\sectionsep
-%-------------------------------------------------------------------------------
-%
-\runsubsection{Enhance Flashrom with features to read/write multiple status registers and lock/unlock memory space \\}
-\descript{\href{https://summerofcode.withgoogle.com/archive/2016/projects/5439533130711040/}{Google Summer of Code 2016 with Coreboot}}
-\location{{\faTag} Open-source \textbullet{} {\faCalendarCheckO} FEB. --- AUG. 2016 \textbullet{} {\faGithub} \href{https://github.com/hatimak/flashrom}{hatimak/flashrom}}
-\begin{tightemize}
-\item Designed multiple status registers model that abstracts chip diversities across manufacturers into single consistent interface, while retaining identities of special bits in status registers.
-\item Designed Block Protection model allowing flashrom to lock/unlock memory space governed by bits in status register(s). Developed routines to handle additional configuration bits and generate block protect range table for given Flash chip. Multiple chips share block protect range table definitions to make efficient use of memory. Added functionality to access/lock OTP memory areas.
-\item Developed CLI to expose new infrastructure. Tested on physical GigaDevice SPI chips using internal dummy programmer, Raspberry Pi (over SPI bus), and Teensy.
-\item Planned to add support for configuration registers and for access protection in non-SPI chips.
-\end{tightemize}
-\sectionsep
-%-------------------------------------------------------------------------------
-%
-\runsubsection{Biometric attendance system suitable for economic and low-power remote deployment \\}
-\location{{\faCalendarCheckO} JAN. --- OCT. 2015}
-\begin{tightemize}
-\item Hardware prototype comprised 8051 microcontroller (Atmel AT89S51), fingerprint reader (R305), GSM/GPRS module (SIM900A), 16$\times$2 LCD and keypad.
-\item 8051 interfaces with R305 and SIM900A over serial port via multiplexer. 16$\times$2 LCD and keypad provides control of device. Initial setup requires enrolling fingerprints into R305 internal memory. Post biometric authentication, attendance data is transmitted by SIM900A via SMS or over GPRS to central server depending on connectivity at remote station. Fingerprints stored locally only.
-\item Developed firmware in C and ASM. Microcontroller operations simulated in Proteus.
-\end{tightemize}
-\sectionsep
-%-------------------------------------------------------------------------------
-%-------------------------------------------------------------------------------
-% Mini Projects
-%-------------------------------------------------------------------------------
-\section{Mini Projects}
-%
-\runsubsection{8085 Instruction Set Architecture prototype on FPGA with basic pipelining \\}
-\location{{\faCalendar} FEB. 2017 --- PRESENT \textbullet{} {\faGithub} \href{https://github.com/hatimak/marineford}{hatimak/marineford}}
-\location{Adviser: Dr Kailash Chandra Ray}
-\begin{tightemize}
-\item Implementing Intel 8085 microprocessor ISA on Xilinx Spartan-3E FPGA in Verilog HDL. Developing ASM testbenches to investigate performance gain due to pipelining.
 \end{tightemize}
 \sectionsep
 %-------------------------------------------------------------------------------
@@ -153,7 +158,7 @@ CPI: 7.59 / 10.0 \small{(upto 5\textsuperscript{th} semester) \\}
 %-------------------------------------------------------------------------------
 % Column One
 %-------------------------------------------------------------------------------
-\begin{minipage}[t]{0.25\textwidth} 
+\begin{minipage}[t]{0.27\textwidth}
 \begin{flushleft}
 %
 %-------------------------------------------------------------------------------
@@ -162,46 +167,46 @@ CPI: 7.59 / 10.0 \small{(upto 5\textsuperscript{th} semester) \\}
 \section{Coursework}
 %
 \subsection{Undergraduate}
-Digital Electronics \& Microprocessors \\
-\vspace{1pt}
 Embedded Systems \\
-\vspace{1pt}
+\vspace{1.5pt}
 VLSI Design \\
-\vspace{1pt}
+\vspace{1.5pt}
+Digital Electronics \& Microprocessors \\
+\vspace{1.5pt}
 Semiconductor Devices \& Circuits \\
-\vspace{1pt}
+\vspace{1.5pt}
 Analog Integrated Circuits \\
-\vspace{1pt}
+\vspace{1.5pt}
 Digital Signal Processing \\
-\vspace{1pt}
+\vspace{1.5pt}
 Control Systems \\
-\vspace{1pt}
+\vspace{1.5pt}
 Communication Systems \\
-\vspace{1pt}
+\vspace{1.5pt}
 Electromagnetic Theory \\
-\vspace{1pt}
+\vspace{1.5pt}
 Electronic Instrumentation \\
-\vspace{1pt}
+\vspace{1.5pt}
 Electrical Power Systems \\
-\vspace{1pt}
+\vspace{1.5pt}
 Electrical Machines \\
-\vspace{1pt}
+\vspace{1.5pt}
 Linear Algebra \\
-\vspace{1pt}
+\vspace{1.5pt}
 Probability \& Random Processes \\
-\vspace{1pt}
+\vspace{1.5pt}
 Algorithms \& Data Structures
 \sectionsep
 %
 \subsection{MOOC}
-The Hardware/Software Interace
-\vspace{1pt}
+The Hardware/Software Interface \\
+\vspace{1.5pt}
 \href{https://www.coursera.org/account/accomplishments/certificate/7V2KZSKAL7ZJ}{Machine Learning} \\
-\vspace{1pt}
+\vspace{1.5pt}
 Game Theory \\
-\vspace{1pt}
+\vspace{1.5pt}
 \href{https://www.coursera.org/account/accomplishments/certificate/98ZD8GFQ8BMS}{Valuation: Risk \& Return} \\
-\vspace{1pt}
+\vspace{1.5pt}
 \href{https://www.coursera.org/account/accomplishments/certificate/P637RR9C8B7T}{Valuation: Time Value of Money}
 \sectionsep
 %-------------------------------------------------------------------------------
@@ -213,19 +218,42 @@ Game Theory \\
 %-------------------------------------------------------------------------------
 % Column Two
 %-------------------------------------------------------------------------------
-\begin{minipage}[t]{0.72\textwidth}
+\begin{minipage}[t]{0.69\textwidth}
 \begin{flushleft}
 %
 %-------------------------------------------------------------------------------
-% Mini Projects (continuation)
+% Projects (continuation)
+%-------------------------------------------------------------------------------
+\vspace{5pt} %Hacky fix to align top text on page 2
+\runsubsection{Biometric attendance system suitable for economic and low-power limited-connectivity remote deployment \\}
+\location{{\faCalendarCheckO} JAN. 2015 --- OCT. 2015}
+\begin{tightemize}
+\item Developed code to interface 8051 (Atmel AT89S51) with fingerprint reader (R305) and GSM/GPRS module (SIM900A) over serial port via multiplexer.
+\item Developed human interface using 16$\times$2 LCD and keypad.
+\item Post biometric authentication, attendance data is transmitted by SIM900A via SMS to server. Fingerprints stored locally only.
+\item Developed firmware in C and ASM. Microcontroller operations simulated in Proteus.
+\end{tightemize}
+\sectionsep
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+% Mini Projects
+%-------------------------------------------------------------------------------
+\section{Mini Projects}
+%
+\runsubsection{8085 Instruction Set Architecture prototype on FPGA with basic pipelining \\}
+\location{{\faCalendar} FEB. 2017 --- PRESENT \textbullet{} {\faGithub} \href{https://github.com/hatimak/marineford}{hatimak/marineford}}
+\location{Adviser: Dr Kailash Chandra Ray}
+\begin{tightemize}
+\item Implementing Intel 8085 microprocessor ISA on Xilinx Spartan-3E FPGA in Verilog HDL. Developing ASM testbenches to profile performance delta due to pipelining.
+\end{tightemize}
+\sectionsep
 %-------------------------------------------------------------------------------
 %
-\vspace{5pt} %Hacky fix to align top text on page 2
 \runsubsection{Implementation of Viola-Jones object detection framework \\}
 \location{{\faCalendar} JAN. 2017 --- PRESENT \textbullet{} {\faGithub} \href{https://github.com/hatimak/vj-goggles}{hatimak/vj-goggles}}
 \location{Adviser: Dr Mahesh H. Kolekar}
 \begin{tightemize}
-\item Implementing object detection algorithm proposed in \href{https://www.cs.cmu.edu/~efros/courses/LBMV07/Papers/viola-cvpr-01.pdf}{paper by P. Viola and M. Jones} in MATLAB and on TMS320 DSP chip.
+\item Implementing algorithm proposed in \href{https://www.cs.cmu.edu/~efros/courses/LBMV07/Papers/viola-cvpr-01.pdf}{paper by P. Viola and M. Jones} in MATLAB and on TMS320 DSP chip.
 \end{tightemize}
 \sectionsep
 %-------------------------------------------------------------------------------
@@ -240,44 +268,35 @@ Game Theory \\
 %-------------------------------------------------------------------------------
 %
 %-------------------------------------------------------------------------------
-% Experience
+% Positions
 %-------------------------------------------------------------------------------
-\section{Experience}
-%
-\runsubsection{Aficionado Ventures}
-\descript{\textbullet{} Backend Engineer}
-\location{{\faTag} Startup \textbullet{} {\faCalendarCheckO} FEB. 2016 --- OCT. 2016 \textbullet{} {\faMapMarker} Gurugram (HR), India}
-\begin{tightemize}
-\item Purchasing platform connecting restaurants and vendors - helping restaurants procure better quality raw ingredients and products at competitive prices from extensive \& diverse collection of vendors.
-\item Designed reactive scalable backend architecture for marketplace platform. Used MeteorJS for server, MongoDB for data storage, Heroku/mLab for web app hosting, and Cordova for cross-platform mobile apps.
-\item Implemented MVP-stage marketplace platform with bilingual search to look up products in English/Hinglish. Started work on machine learning engine for vendor inventory prediction and predictive restaurant purchase order generation. Proposed and prototyped conversational UX via messaging bot, in lieu of app interfaces.
-\end{tightemize}
-\sectionsep
-%
-\runsubsection{Weave}
-\descript{\textbullet{} Co-founder \& Product Developer}
-\location{{\faTag} Startup \textbullet{} {\faCalendarCheckO} JUNE 2015 --- DEC. 2015 \textbullet{} {\faMapMarker} Patna (BR), India}
-\begin{tightemize}
-\item Implemented basic prototype of Model Generator in JavaScript - based on user input, Model Generator builds 3D NURBS model of user's body using weighted combination of precomputed basis models.
-\item Developed model of Cloth Physics Engine that emulates dyanmics for clothes fitted on generated NURBS model - users can try clothes virtually.
-\item Despite garnering client \& investor interest, startup failed because product-market fit was not right.
-\end{tightemize}
-\sectionsep
-%
-%-------------------------------------------------------------------------------
-% Extracurricular
-%-------------------------------------------------------------------------------
-\section{Extracurricular}
+\section{Positions}
 %
 \runsubsection{Coordinator, Startup Relations}
 \descript{\textbullet{} Entrepreneurship Club, IIT Patna}
-\location{{\faCalendar} APR. 2015 --- PRESENT}
+\location{{\faCalendar} APR. 2016 --- PRESENT}
 \begin{tightemize}
-\item Serving as on-campus mentor to early stage startups, helping entrepreneurs develop business plan, choose investor strategy, and network with domain experts.
-\item Responsible for building connections with startups and investors, and building investor panel for on-campus startups.
-\item Part of Core Committee for E-Club’s flagship annual event, E-Week. Responsible for organizing guest talks, workshops and pitching event in collaboration with Incubation Centre, IIT Patna.
+\item Serving as on-campus mentor to early stage startups, helping them develop business plan, choose investor strategy, and network with advisers.
+\item Building connections with startups and investors with vision to form investor panel for on-campus startups.
+\item Delivered presentations as part of In-house Lecture series conducted by E-Club.
 \end{tightemize}
 \sectionsep
+%-------------------------------------------------------------------------------
+%
+\runsubsection{Task Manager, Startup Relations}
+\descript{\textbullet{} Entrepreneurship Club, IIT Patna}
+\location{{\faCalendarCheckO} APR. 2015 --- APR. 2016}
+\begin{tightemize}
+\item Part of Organising Committee for E-Club’s flagship annual event, E-Week. Organised guest talks, workshops and pitching event.
+\end{tightemize}
+\sectionsep
+%-------------------------------------------------------------------------------
+%
+\runsubsection{Volunteer, Startup Relations}
+\descript{\textbullet{} Entrepreneurship Club, IIT Patna}
+\location{{\faCalendarCheckO} AUG. 2014 --- APR. 2015}
+\sectionsep
+%-------------------------------------------------------------------------------
 %
 \end{flushleft}
 \end{minipage}
