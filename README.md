@@ -3,6 +3,8 @@
 - add marks for Deogiri and Nath Valley
 - add board of examinations - HSC, CBSE
 - THOROUGH SPELL CHECK
+- add relevant hyperlinks (?)
+- highlight hyperlinks (to differentiate from text and indicate presence of link) (?)
 
 ## aesthetics
 - Font size adjustments (could be lowered?)

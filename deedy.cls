@@ -29,6 +29,7 @@
 % Set main fonts
 \defaultfontfeatures{Mapping=tex-text}
 \setmainfont[Color=primary, Path = fonts/helvetica/]{HelveticaNeue-Light}
+\newfontfamily{\FA}{FontAwesome}
 
 % Name command
 \newcommand{\namesection}[5]{
