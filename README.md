@@ -5,11 +5,11 @@
 - THOROUGH SPELL CHECK
 - add relevant hyperlinks (?)
 - highlight hyperlinks (to differentiate from text and indicate presence of link) (?)
+- nothing under extra-curricular heading?
 
 ## aesthetics
 - Font size adjustments (could be lowered?)
 - Page numbers (in x/y format)
-- experiment with fonts - raleway, museo sans (recommended for title), chaparral-pro (recommended for body), avenir
 - Justify text (?)
 - looks too cluttered right now
 	- increase spacing (between lines and sections)
@@ -20,9 +20,9 @@
 ## content
 - put experience on top, then projects, then mini-projects
 - put gsoc in experience
-- condense points, remove redundancy, split longer ones (esp. gsoc, biometric, aficionado)
-- add "volunteer" position under eclub. keep coordinator as well (?)
-- put education on top (?)
+- condense points, remove redundancy, split longer ones
+- add all positions, showcase climb up the ladder
+- put education on top
 
 > "experience is something you are paid for. when some one is paying for you, you would have done something worthy of that payment"
 > "startups or established companies, experience in lab is different from experience on [site]"
