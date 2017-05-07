@@ -27,13 +27,6 @@
 \begin{flushleft}
 %
 %-------------------------------------------------------------------------------
-% Interests
-%-------------------------------------------------------------------------------
-\section{Interests}
-Computer Organisation \& Architecture \textbullet{} Embedded Systems Design \textbullet{} Adaptive Filters \textbullet{} FPGA based Digital Signal Processing
-\sectionsep
-%-------------------------------------------------------------------------------
-%-------------------------------------------------------------------------------
 % Education
 %-------------------------------------------------------------------------------
 \section{Education}
@@ -68,7 +61,7 @@ C/C++ \textbullet{} Assembly \textbullet{} Verilog \textbullet{} JavaScript \tex
 \LaTeX\ 
 %
 \subsection{Software}
-GNU/Linux \textbullet{} git/GitHub \textbullet{} MATLAB \textbullet{} Simulink \textbullet{} Xilinx ISE \textbullet{} Multisim \textbullet{} Synopsys \textbullet{} Pyxis \textbullet{} MPLAB IDE \textbullet{} Proteus \textbullet{} NumPy/SciPy \textbullet{} Eclipse IDE
+GNU/Linux \textbullet{} MATLAB \textbullet{} Simulink \textbullet{} git/GitHub \textbullet{} Xilinx ISE \textbullet{} Multisim \textbullet{} Synopsys \textbullet{} Pyxis \textbullet{} MPLAB IDE \textbullet{} Proteus \textbullet{} NumPy/SciPy \textbullet{} Eclipse IDE
 %
 \subsection{Hardware}
 Xilinx Spartan FPGA \textbullet{} PIC Microcontroller \textbullet{} TMS320 DSP Chip \textbullet{} Arduino \textbullet{} 8051 Microcontroller \textbullet{} Raspberry\\
@@ -91,20 +84,40 @@ Urdu \textbullet{} Marathi \textbullet{} Arabic
 \begin{flushleft}
 %
 %-------------------------------------------------------------------------------
+% Interests
+%-------------------------------------------------------------------------------
+\section{Interests}
+Computer Organisation \& Architecture \textbullet{} Reconfigurable Computing \textbullet{} Embedded Systems Design \textbullet{} Networked Control Systems
+\sectionsep
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
 % Experience
 %-------------------------------------------------------------------------------
 \section{Experience}
+%
+\runsubsection{Google Summer of Code}
+\descript{\textbullet{} Developer with Free and Open Source Silicon Foundation}
+\descript{\href{https://goo.gl/MsQ1kC}{``EDSAC Museum on FPGA"}}
+\vspace{1.1pt}
+\location{{\FA \faTag} Open-source \textbullet{} {\FA \faCalendar} MAY 2017 --- PRESENT}
+%\vspace{\topsep}% Hacky fix for awkward extra vertical space
+\begin{tightemize}
+\item Replicating EDSAC architecture and ISA on \href{https://mystorm.uk/}{myStorm FPGA board} using Verilog HDL and \href{http://www.clifford.at/yosys/}{Yosys}.
+\item Designing and implementing standard communication protocol for external extensible I/O interfaces.
+\item Developing assembler to debug, build and load instructions onto FPGA board.
+\end{tightemize}
+\sectionsep
+%-------------------------------------------------------------------------------
 %
 \runsubsection{Aficionado Ventures}
 \descript{\textbullet{} Backend Engineer}
 \vspace{1.1pt}
 \location{{\FA \faTag} Startup \textbullet{} {\FA \faCalendarCheckO} FEB. 2016 --- OCT. 2016 \textbullet{} {\FA \faMapMarker} Gurugram (HR), India}
-%\vspace{\topsep}% Hacky fix for awkward extra vertical space
 \begin{tightemize}
 \item Purchasing platform helping restaurants procure quality produce from competitive collection of vendors.
 \item Designed reactive backend architecture - MeteorJS server, MongoDB database, Heroku/mLab web app hosting, and Cordova for cross-platform mobile apps.
-\item Implemented MVP-stage marketplace platform with bilingual search to look up products in English/Hinglish. Prototyped conversational UX via messaging bot.
-\item Started work on vendor inventory and restaurant demand prediction models.
+\item Implemented MVP-stage marketplace platform with bilingual search for products in English/Hinglish.
+\item Prototyped conversational UX via messaging bot.
 \end{tightemize}
 \sectionsep
 %-------------------------------------------------------------------------------
@@ -128,26 +141,9 @@ Urdu \textbullet{} Marathi \textbullet{} Arabic
 \descript{\textbullet{} Co-founder \& Product Developer}
 \location{{\FA \faTag} Startup \textbullet{} {\FA \faCalendarCheckO} JUNE 2015 --- DEC. 2015 \textbullet{} {\FA \faMapMarker} Patna (BR), India}
 \begin{tightemize}
-\item Implemented prototype in JavaScript to build NURBS model of user, using input features and weighted combination of precomputed basis models.
+\item Implemented prototype in JavaScript to build NURBS user model, using input features and weighted combination of precomputed basis models.
 \item Developed algorithm to emulate dynamics for clothes on NURBS model - users can try clothes virtually.
 \item Despite garnering client \& investor interest, startup failed because product-market fit was not right.
-\end{tightemize}
-\sectionsep
-%-------------------------------------------------------------------------------
-%-------------------------------------------------------------------------------
-% Projects
-%-------------------------------------------------------------------------------
-\section{Projects}
-%
-\runsubsection{FPGA implementation of NLMS adaptive filtering algorithm for signal enhancement\\}
-\vspace{1.1pt}
-%\location{{\FA \faTag} Research \textbullet{} {\FA \faCalendar} FEB. 2017 --- PRESENT \textbullet{} {\FA \faGithub} \href{https://github.com/hatimak/zephyr}{hatimak/zephyr}}
-\location{{\FA \faTag} Research \textbullet{} {\FA \faCalendar} FEB. 2017 --- PRESENT}
-\location{Adviser: Dr Yatendra Kumar Singh}
-\begin{tightemize}
-\item Implementing Normalized Least Mean Squares (NLMS) adaptive filtering algorithm to extract desired audio from signal corrupted with additive autoregressive noise.
-\item Prototyping on Xilinx Spartan-3E FPGA in Verilog HDL, with focus towards optimised placing and routing.
-\item Investigating performance gain by FPGA over typical DSP chip (TMS320).
 \end{tightemize}
 \sectionsep
 %-------------------------------------------------------------------------------
@@ -226,43 +222,17 @@ Game Theory\\
 \begin{flushleft}
 %
 %-------------------------------------------------------------------------------
-% Projects (continuation)
+% Projects
 %-------------------------------------------------------------------------------
-\vspace{5pt} %Hacky fix to align top text on page 2
-\runsubsection{Biometric attendance system suitable for economic and low-power limited-connectivity remote deployment\\}
-\vspace{1.1pt}
-\location{{\FA \faCalendarCheckO} JAN. 2015 --- OCT. 2015}
-\begin{tightemize}
-\item Developed code to interface 8051 (Atmel AT89S51) with fingerprint reader (R305) and GSM/GPRS module (SIM900A) over serial port via multiplexer.
-\item Developed human interface using 16$\times$2 LCD and keypad.
-\item Post biometric authentication, attendance data is transmitted by SIM900A via SMS to server. Fingerprints stored locally only.
-\item Developed firmware in C and ASM. Microcontroller operations simulated in Proteus.
-\end{tightemize}
-\sectionsep
-%-------------------------------------------------------------------------------
-%-------------------------------------------------------------------------------
-% Mini Projects
-%-------------------------------------------------------------------------------
-\section{Mini Projects}
+\section{Projects}
 %
-\runsubsection{8085 Instruction Set Architecture prototype on FPGA with basic pipelining\\}
+\runsubsection{FPGA implementation of NLMS adaptive filtering algorithm for signal enhancement\\}
 \vspace{1.1pt}
-%\location{{\FA \faCalendar} FEB. 2017 --- PRESENT \textbullet{} {\FA \faGithub} \href{https://github.com/hatimak/marineford}{hatimak/marineford}}
-\location{{\FA \faCalendar} FEB. 2017 --- PRESENT}
-\location{Adviser: Dr Kailash Chandra Ray}
+\location{{\FA \faTag} Course project \textbullet{} {\FA \faCalendarCheckO} FEB. 2017 --- APR. 2017}
+\location{Adviser: Dr Yatendra Kumar Singh}
 \begin{tightemize}
-\item Implementing Intel 8085 microprocessor ISA on Xilinx Spartan-3E FPGA in Verilog HDL. Developing ASM testbenches to profile performance delta due to pipelining.
-\end{tightemize}
-\sectionsep
-%-------------------------------------------------------------------------------
-%
-\runsubsection{Implementation of Viola-Jones object detection framework\\}
-\vspace{1.1pt}
-%\location{{\FA \faTag} Course project \textbullet{} {\FA \faCalendar} JAN. 2017 --- PRESENT \textbullet{} {\FA \faGithub} \href{https://github.com/hatimak/vj-goggles}{hatimak/vj-goggles}}
-\location{{\FA \faTag} Course project \textbullet{} {\FA \faCalendar} JAN. 2017 --- PRESENT}
-\location{Adviser: Dr Mahesh H. Kolekar}
-\begin{tightemize}
-\item Implementing algorithm proposed in \href{https://www.cs.cmu.edu/~efros/courses/LBMV07/Papers/viola-cvpr-01.pdf}{paper by P. Viola and M. Jones} in MATLAB and on TMS320 DSP chip.
+\item Implemented Normalized NLMS adaptive filtering algorithm to extract desired signal from that corrupted with additive autoregressive noise.
+\item Prototyped on Xilinx Spartan-3E FPGA in Verilog HDL.
 \end{tightemize}
 \sectionsep
 %-------------------------------------------------------------------------------
@@ -273,22 +243,39 @@ Game Theory\\
 \location{{\FA \faTag} Course project \textbullet{} {\FA \faCalendarCheckO} NOV. 2016}
 \location{Adviser: Dr Kailash Chandra Ray}
 \begin{tightemize}
-\item Designed core layout of ring oscillator using AMI05 (\SI{0.5}{\micro\metre}) CMOS Technology in Pyxis (Mentor Graphics), and verified output of back annotated simulation.
+\item Designed core layout of ring oscillator using AMI05 (\SI{0.5}{\micro\metre}) CMOS Technology in Pyxis (Mentor Graphics).
 \end{tightemize}
 \sectionsep
 %-------------------------------------------------------------------------------
 %
+\runsubsection{Biometric attendance system suitable for economic and low-power limited-connectivity remote deployment\\}
+\vspace{1.1pt}
+\location{{\FA \faCalendarCheckO} JAN. 2015 --- OCT. 2015}
+\begin{tightemize}
+\item Interfaced 8051 (Atmel AT89S51) with fingerprint reader (R305) and GSM/GPRS module (SIM900A) over serial port, via multiplexer.
+\item Developed user interface using 16$\times$2 LCD and keypad.
+\item Developed firmware in C and ASM. Microcontroller operations simulated in Proteus.
+\end{tightemize}
+\sectionsep
+%-------------------------------------------------------------------------------
 %-------------------------------------------------------------------------------
 % Positions
 %-------------------------------------------------------------------------------
 \section{Positions}
 %
+\runsubsection{Assistant Head Coordinator\\}
+\vspace{1.1pt}
+\descript{Training and Placement Cell, IIT Patna}
+\location{{\FA \faCalendar} APR. 2017 --- PRESENT}
+\sectionsep
+%-------------------------------------------------------------------------------
+%
 \runsubsection{Coordinator, Startup Relations\\}
 \vspace{1.1pt}
 \descript{Entrepreneurship Club, IIT Patna}
-\location{{\FA \faCalendar} APR. 2016 --- APR. 2017}
+\location{{\FA \faCalendarCheckO} APR. 2016 --- APR. 2017}
 \begin{tightemize}
-\item Serving as on-campus mentor to early stage startups, helping them develop business plan, choose investor strategy, and network with advisers.
+\item Served as on-campus mentor to early stage startups, helped develop business plan, choose investor strategy and network with advisers.
 \item Part of Core Committee for E-Club’s annual event, E-Week. Organised guest talks and In-house sessions.
 \item Delivered presentations as part of In-house Lecture series conducted by E-Club.
 \end{tightemize}
