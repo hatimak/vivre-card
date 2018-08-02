@@ -1,31 +1,27 @@
-# TODO
+## How to Use
 
-- add marks for Deogiri and Nath Valley
-- add board of examinations - HSC, CBSE
-- THOROUGH SPELL CHECK
-- add relevant hyperlinks (?)
-- highlight hyperlinks (to differentiate from text and indicate presence of link) (?)
-- nothing under extra-curricular heading?
+#### Requirements
 
-## aesthetics
-- Font size adjustments (could be lowered?)
-- Page numbers (in x/y format)
-- Justify text (?)
-- looks too cluttered right now
-	- increase spacing (between lines and sections)
-	- use dividers for sectioning (?)
+A full TeX distribution is assumed.  [Various distributions for different operating systems (Windows, Mac, \*nix) are available](http://tex.stackexchange.com/q/55437) but TeX Live is recommended.
+You can [install TeX from upstream](http://tex.stackexchange.com/q/1092) (recommended; most up-to-date) or use `sudo apt-get install texlive-full` if you really want that.  (It's generally a few years behind.)
 
-----
+#### Usage
 
-## content
-- put experience on top, then projects, then mini-projects
-- put gsoc in experience
-- condense points, remove redundancy, split longer ones
-- add all positions, showcase climb up the ladder
-- put education on top
+At a command prompt, run
 
-> "experience is something you are paid for. when some one is paying for you, you would have done something worthy of that payment"
-> "startups or established companies, experience in lab is different from experience on [site]"
-> "project is [solid work], mini project is good stuff not so solid"
-> "nobody likes to read essays in [CVs]"
-> "[show] your advancement"
+```bash
+$ xelatex {your-cv}.tex
+```
+
+This should result in the creation of ``{your-cv}.pdf``
+
+
+## Credit
+
+[**github/posquit0**](https://github.com/posquit0/Awesome-CV) is the original author of `Awesome-CV`.
+
+[**LaTeX**](http://www.latex-project.org) is a fantastic typesetting program that a lot of people use these days, especially the math and computer science people in academia.
+
+[**LaTeX FontAwesome**](https://github.com/furl/latex-fontawesome) is bindings for FontAwesome icons to be used in XeLaTeX.
+
+[**Roboto**](https://github.com/google/roboto) is the default font on Android and ChromeOS, and the recommended font for Google’s visual language, Material Design.
