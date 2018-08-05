@@ -89,6 +89,8 @@
   pdfkeywords={}
 }
 
+\RequirePackage{multirow}
+
 
 %-------------------------------------------------------------------------------
 %                Configuration for directory locations
@@ -201,8 +203,9 @@
 
 % For elements of entry
 \newcommand*{\entrytitlestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
-\newcommand*{\entrypositionstyle}[1]{{\fontsize{8pt}{1em}\bodyfont\scshape\color{graytext} #1}}
-\newcommand*{\entrydatestyle}[1]{{\fontsize{8pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
+\newcommand*{\entrypositionstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\scshape\color{awesome} #1}}
+\newcommand*{\entrysubtitlestyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape\color{text} #1}}
+\newcommand*{\entrydatestyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
 \newcommand*{\entrylocationstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
 \newcommand*{\descriptionstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text} #1}}
 
@@ -657,11 +660,15 @@
   \vspace{-4.0mm}
 }
 
+%-------------------------------------------------------------------------------
+% Modifications from Hatim follow
+%-------------------------------------------------------------------------------
+
 % Define an environment for cveducation
 \newenvironment{cveducation}{%
   \vspace{\acvSectionContentTopSkip}
-  \vspace{-2mm}
   \begin{center}
+    \vspace{-2mm}
     \setlength\tabcolsep{0pt}
     \setlength{\extrarowheight}{2.0pt}
     \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} C{2.0cm} L{\textwidth - 7.5cm} C{2.25cm} R{3.25cm}}
@@ -673,6 +680,31 @@
 % Usage: \cvschool{<degree>}{<institution>}{<location>}{<date>}{<score>}
 \newcommand*{\cvschool}[5]{%
   \schooldatestyle{#4} & \schoolinstitutionstyle{#2}, \schooldegreestyle{#1} & \schoolscorestyle{#5} & \schoollocationstyle{#3} \\
+}
+
+% Define an environment for cvexperience
+\newenvironment{cvexperience}{%
+  \vspace{\acvSectionContentTopSkip}
+  \begin{center}
+}{%
+  \vspace{-2.0mm}
+  \end{center}
+}
+% Define an entry of cv experience
+% Usage: \cvposition{<position>}{<title>}{<subtitle>}{<location>}{<date>}{<description>}
+\newcommand*{\cvposition}[6]{%
+  \vspace{-2.0mm}
+  \setlength\tabcolsep{0pt}
+  \setlength{\extrarowheight}{0pt}
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.0cm} p{4.0cm}}
+    \entrypositionstyle{#1} & \ifempty{#3} {\multirow{1}{=}{\raggedleft \entrylocationstyle{#4}} \\
+    \entrytitlestyle{#2} & \multirow{1}{=}{\raggedleft \entrydatestyle{#5}} \\}
+    {\multirow[b]{2}{=}{\raggedleft \entrylocationstyle{#4}} \\
+    \entrytitlestyle{#2} & \\
+    \entrysubtitlestyle{#3} & \multirow{1}{=}{\raggedleft \entrydatestyle{#5}} \\}
+    \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#6}}
+  \end{tabular*}
+  \vspace{2.0mm}%
 }
 
 
