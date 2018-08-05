@@ -211,6 +211,8 @@
 \newcommand*{\experiencepositionstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\scshape\color{awesome} #1}}
 \newcommand*{\entrysubtitlestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\slshape\color{graytext} #1}}
 
+\newcommand*{\positionorgstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\slshape\color{awesome} #1}}
+
 % For elements of subentry
 \newcommand*{\subentrytitlestyle}[1]{{\fontsize{8pt}{1em}\bodyfont\mdseries\color{graytext} #1}}
 \newcommand*{\subentrypositionstyle}[1]{{\fontsize{7pt}{1em}\bodyfont\scshape\color{graytext} #1}}
@@ -730,6 +732,29 @@
     & \entrydatestyle{#4} \\}
     {\entrytitlestyle{#1} & \entrylocationstyle{#3} \\
     \entrysubtitlestyle{#2} & \entrydatestyle{#4} \\}
+    \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}}
+  \end{tabular*}
+  \vspace{2.0mm}%
+}
+
+
+% Define an environment for cvpositions
+\newenvironment{cvpositions}{%
+  \vspace{\acvSectionContentTopSkip}
+  \begin{center}
+}{%
+  \vspace{-2.0mm}
+  \end{center}
+}
+% Define an entry of cv positions
+% Usage: \cvrole{<post>}{<organisation>}{<location>}{<date>}{<description>}
+\newcommand*{\cvrole}[5]{%
+  \vspace{-2.0mm}
+  \setlength\tabcolsep{0pt}
+  \setlength{\extrarowheight}{0pt}
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.0cm} R{4.0cm}}
+    \entrytitlestyle{#1} & \entrylocationstyle{#3} \\
+    \positionorgstyle{#2} & \entrydatestyle{#4} \\
     \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}}
   \end{tabular*}
   \vspace{2.0mm}%
