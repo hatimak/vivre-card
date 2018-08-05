@@ -684,6 +684,7 @@
   \schooldatestyle{#4} & \schoolinstitutionstyle{#2}, \schooldegreestyle{#1} & \schoolscorestyle{#5} & \schoollocationstyle{#3} \\
 }
 
+
 % Define an environment for cvexperience
 \newenvironment{cvexperience}{%
   \vspace{\acvSectionContentTopSkip}
@@ -705,6 +706,31 @@
     \entrytitlestyle{#2} & \\
     \entrysubtitlestyle{#3} & \multirow{1}{=}{\raggedleft \entrydatestyle{#5}} \\}
     \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#6}}
+  \end{tabular*}
+  \vspace{2.0mm}%
+}
+
+
+% Define an environment for cvprojects
+\newenvironment{cvprojects}{%
+  \vspace{\acvSectionContentTopSkip}
+  \begin{center}
+}{%
+  \vspace{-2.0mm}
+  \end{center}
+}
+% Define an entry of cv projects
+% Usage: \cvproject{<title>}{<subtitle>}{<location>}{<date>}{<description>}
+\newcommand*{\cvproject}[5]{%
+  \vspace{-2.0mm}
+  \setlength\tabcolsep{0pt}
+  \setlength{\extrarowheight}{0pt}
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.0cm} R{4.0cm}}
+    \ifempty{#2} {\multirow{2}{=}{\raggedright \entrytitlestyle{#1}} & \entrylocationstyle{#3} \\
+    & \entrydatestyle{#4} \\}
+    {\entrytitlestyle{#1} & \entrylocationstyle{#3} \\
+    \entrysubtitlestyle{#2} & \entrydatestyle{#4} \\}
+    \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}}
   \end{tabular*}
   \vspace{2.0mm}%
 }
