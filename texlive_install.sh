@@ -2,8 +2,6 @@
 
 # Originally from https://github.com/latex3/latex3
 
-export PATH=/tmp/texlive/bin/x86_64-linux:$PATH
-
 # See if there is a cached version of TL available
 if ! command -v xelatex > /dev/null; then
 	# Obtain TeX Live
@@ -50,10 +48,6 @@ if ! command -v xelatex > /dev/null; then
 
 	cd ..
 fi
-
-# Just including xetex so the cache check above works
-# Needed for any use of xetex even if not testing XeTeX
-tlmgr install xetex
 
 # Update the TL install but add nothing new
 tlmgr update --self --all --no-auto-install
