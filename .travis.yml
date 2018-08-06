@@ -4,7 +4,6 @@ dist: xenial
 
 before_install:
   - sudo apt-get -qq update
-  - sudo apt-get install fonts-font-awesome
   - export PATH=/tmp/texlive/bin/x86_64-linux:$PATH
 
 install:
