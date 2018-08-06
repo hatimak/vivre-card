@@ -1,17 +1,14 @@
 sudo: required
 
-dist: trusty
+services: docker
+
+script:
+  - docker pull rekka/tectonic
+  - docker run --mount src=$TRAVIS_BUILD_DIR/src,target=/usr/src/tex,type=bind rekka/tectonic tectonic cv.tex
 
 branches:
   only:
     - new
-
-before_install:
-- sudo apt-get -qq update
-- sudo apt-get install -qq -y --no-install-recommends texlive-full
-
-script:
-- make cv.pdf
 
 notifications:
   email:
