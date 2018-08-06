@@ -51,8 +51,8 @@ if ! command -v xelatex > /dev/null; then
 	cd ..
 fi
 
-# Just including texlua so the cache check above works
-# Needed for any use of texlua even if not testing LuaTeX
+# Just including xetex so the cache check above works
+# Needed for any use of xetex even if not testing XeTeX
 tlmgr install xetex
 
 # Update the TL install but add nothing new

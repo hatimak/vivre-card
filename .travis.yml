@@ -13,6 +13,7 @@ before_script:
 
 script:
   - xelatex test.tex
+  - echo $PATH
   # - make cv.pdf
 
 # cache:
