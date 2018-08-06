@@ -1,10 +1,19 @@
-sudo: required
+sudo: require
 
-services: docker
+dist: trusty
+
+before_install:
+  - sudo apt-get -qq update
+
+install:
+  - sh ./texlive_install.sh
 
 script:
-  - docker pull rekka/tectonic
-  - docker run --mount src=$TRAVIS_BUILD_DIR/src,target=/usr/src/tex,type=bind rekka/tectonic tectonic cv.tex
+  - make cv.pdf
+
+cache:
+  directories:
+    - /tmp/texlive
 
 branches:
   only:
