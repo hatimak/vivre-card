@@ -3,16 +3,15 @@ sudo: require
 dist: xenial
 
 before_install:
-  - sudo apt-get -qq update
   - export PATH=/tmp/texlive/bin/x86_64-linux:$PATH
 
 install:
   - sh ./texlive_install.sh
 
 before_script:
-  - sudo cp ./fonts/FontAwesome.ttf /usr/local/share/fonts/truetype/
-  - sudo chown root /usr/local/share/fonts/truetype/FontAwesome.ttf
-  - fc-cache
+  - sudo cp ./fonts/FontAwesome.ttf /usr/local/share/fonts/
+  - sudo chown root /usr/local/share/fonts/FontAwesome.ttf
+  - fc-cache -fv
 
 script:
   - make cv.pdf
