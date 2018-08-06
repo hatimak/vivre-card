@@ -4,31 +4,29 @@ dist: xenial
 
 before_install:
   - sudo apt-get -qq update
-  - export PATH=/tmp/texlive/bin/x86_64-linux:$PATH
 
 install:
   - sh ./texlive_install.sh
 
 before_script:
-  - sh ./test_texlive.sh
+  - export PATH=/tmp/texlive/bin/x86_64-linux:$PATH
 
 script:
-  - xelatex test.tex
-  - echo $PATH
-  # - make cv.pdf
+  - make cv.pdf
 
-# cache:
-#   directories:
-#     - /tmp/texlive
-#     - $HOME/.texlive
+cache:
+  directories:
+    - /tmp/texlive
+    - $HOME/.texlive
 
 branches:
   only:
     - new
 
-# notifications:
-#   email:
-#     recipients:
-#       - hatim@hatimak.me
-#     on_success: change
-#     on_failure: always
+notifications:
+  email:
+    recipients:
+      - hatim@hatimak.me
+    on_success: change
+    on_failure: always
+
