@@ -90,7 +90,8 @@
 }
 % Needed for multirow entries in tables
 \RequirePackage{multirow}
-
+% Needed for last page in footer, # / ##
+\RequirePackage{lastpage}
 
 %-------------------------------------------------------------------------------
 %                Configuration for directory locations
