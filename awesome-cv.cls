@@ -88,7 +88,7 @@
   pdfsubject={},
   pdfkeywords={}
 }
-
+% Needed for multirow entries in tables
 \RequirePackage{multirow}
 
 
