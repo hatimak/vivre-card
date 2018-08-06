@@ -692,7 +692,7 @@
   \vspace{\acvSectionContentTopSkip}
   \begin{center}
 }{%
-  \vspace{-2.0mm}
+  \vspace{-4.0mm}
   \end{center}
 }
 % Define an entry of cv experience
@@ -718,7 +718,7 @@
   \vspace{\acvSectionContentTopSkip}
   \begin{center}
 }{%
-  \vspace{-2.0mm}
+  \vspace{-4.0mm}
   \end{center}
 }
 % Define an entry of cv projects
