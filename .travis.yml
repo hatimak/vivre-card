@@ -8,21 +8,25 @@ before_install:
 install:
   - sh ./texlive_install.sh
 
-script:
-  - make cv.pdf
+before_script:
+  - sh ./test_texlive.sh
 
-cache:
-  directories:
-    - /tmp/texlive
-    - $HOME/.texlive
+script:
+  - xelatex test.tex
+  # - make cv.pdf
+
+# cache:
+#   directories:
+#     - /tmp/texlive
+#     - $HOME/.texlive
 
 branches:
   only:
     - new
 
-notifications:
-  email:
-    recipients:
-      - hatim@hatimak.me
-    on_success: change
-    on_failure: always
+# notifications:
+#   email:
+#     recipients:
+#       - hatim@hatimak.me
+#     on_success: change
+#     on_failure: always
