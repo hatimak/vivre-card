@@ -5,7 +5,7 @@
 export PATH=/tmp/texlive/bin/x86_64-linux:$PATH
 
 # See if there is a cached version of TL available
-if ! command -v texlua > /dev/null; then
+if ! command -v xelatex > /dev/null; then
 	# Obtain TeX Live
 	wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
 	tar -xzf install-tl-unx.tar.gz
@@ -50,6 +50,10 @@ if ! command -v texlua > /dev/null; then
 
 	cd ..
 fi
+
+# Just including texlua so the cache check above works
+# Needed for any use of texlua even if not testing LuaTeX
+tlmgr install xetex
 
 # Update the TL install but add nothing new
 tlmgr update --self --all --no-auto-install
