@@ -1,0 +1,21 @@
+sudo: required
+
+dist: trusty
+
+branches:
+  only:
+    - new
+
+before_install:
+- sudo apt-get -qq update
+- sudo apt-get install -qq -y --no-install-recommends texlive-full
+
+script:
+- make cv.pdf
+
+notifications:
+  email:
+    recipients:
+      - hatim@hatimak.me
+    on_success: change
+    on_failure: always
