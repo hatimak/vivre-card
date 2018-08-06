@@ -4,12 +4,10 @@ dist: xenial
 
 before_install:
   - sudo apt-get -qq update
+  - export PATH=/tmp/texlive/bin/x86_64-linux:$PATH
 
 install:
   - sh ./texlive_install.sh
-
-before_script:
-  - export PATH=/tmp/texlive/bin/x86_64-linux:$PATH
 
 script:
   - make cv.pdf
