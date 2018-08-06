@@ -14,6 +14,7 @@ script:
 cache:
   directories:
     - /tmp/texlive
+    - $HOME/.texlive
 
 branches:
   only:

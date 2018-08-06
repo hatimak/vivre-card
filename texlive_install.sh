@@ -14,12 +14,12 @@ if ! command -v texlua > /dev/null; then
 	cat > texlive.profile <<-EOF
 		selected_scheme scheme-custom
 		TEXDIR /tmp/texlive
-		TEXMFCONFIG $TEXMFSYSCONFIG
-		TEXMFHOME $TEXMFLOCAL
 		TEXMFLOCAL /tmp/texlive/texmf-local
 		TEXMFSYSCONFIG /tmp/texlive/texmf-config
 		TEXMFSYSVAR /tmp/texlive/texmf-var
-		TEXMFVAR $TEXMFSYSVAR
+		TEXMFCONFIG ~/.texlive/texmf-config
+		TEXMFHOME ~/texmf
+		TEXMFVAR ~/.texlive/texmf-var
 		binary_x86_64-linux 1
 		collection-basic 1
 		collection-bibtexextra 1
