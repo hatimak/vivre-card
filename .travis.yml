@@ -8,6 +8,11 @@ before_install:
 install:
   - sh ./texlive_install.sh
 
+before_script:
+  - sudo cp ./fonts/* /usr/local/share/fonts/
+  - sudo chown -R root /usr/local/share/fonts/*
+  - fc-cache -fv
+
 script:
   - make cv.pdf
 
