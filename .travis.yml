@@ -13,8 +13,8 @@ before_script:
 script:
   - make cv.pdf
 after_success:
-  - sh ./dropbox_uploader.sh upload cv.pdf /Documents/CV/CV-${TRAVIS_JOB_NUMBER}.pdf
-  - sh ./dropbox_uploader.sh upload cv.pdf /Documents/CV/CV-latest.pdf
+  - ./dropbox_uploader.sh upload cv.pdf /Documents/CV/CV-${TRAVIS_JOB_NUMBER}.pdf
+  - ./dropbox_uploader.sh upload cv.pdf /Documents/CV/CV-latest.pdf
 cache:
   directories:
     - "/tmp/texlive"
