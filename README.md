@@ -1,5 +1,4 @@
-[![Build Status](https://travis-ci.com/hatimak/vivre-card.svg?token=S7FuPuoRMUQv9AGJjcpw&branch=new)](https://travis-ci.com/hatimak/vivre-card)
-
+[![Build Status](https://travis-ci.com/hatimak/vivre-card.svg?token=S7FuPuoRMUQv9AGJjcpw&branch=master)](https://travis-ci.com/hatimak/vivre-card)
 ## How to Use
 
 #### Requirements
