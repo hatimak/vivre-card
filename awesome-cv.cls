@@ -674,7 +674,7 @@
     \vspace{-2mm}
     \setlength\tabcolsep{0pt}
     \setlength{\extrarowheight}{2.0pt}
-    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} C{2.0cm} L{\textwidth - 7.5cm} C{2.25cm} R{3.25cm}}
+    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} C{2.65cm} L{\textwidth - 7.75cm} C{2.35cm} R{2.75cm}}
 }{%
     \end{tabular*}
   \end{center}
