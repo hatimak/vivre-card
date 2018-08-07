@@ -1,4 +1,4 @@
 deploy:
   dropbox_path: /CV
   artifacts_path: cv.pdf
-  debug: false
+  debug: true
