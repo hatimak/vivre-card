@@ -1,34 +1,32 @@
 sudo: require
-
 dist: xenial
-
 before_install:
-  - export PATH=/tmp/texlive/bin/x86_64-linux:$PATH
-
+- export PATH=/tmp/texlive/bin/x86_64-linux:$PATH
+- rvm install 2.2.6
+- gem install dropbox-deployment
 install:
-  - sh ./texlive_install.sh
-
+- sh ./texlive_install.sh
 before_script:
-  - sudo cp ./fonts/* /usr/local/share/fonts/
-  - sudo chown -R root /usr/local/share/fonts/*
-  - fc-cache -fv
-
+- sudo cp ./fonts/* /usr/local/share/fonts/
+- sudo chown -R root /usr/local/share/fonts/*
+- fc-cache -fv
 script:
-  - make cv.pdf
-
+- make cv.pdf
+after_success:
+- dropbox-deplyment
 cache:
   directories:
-    - /tmp/texlive
-    - $HOME/.texlive
-
+  - "/tmp/texlive"
+  - "$HOME/.texlive"
 branches:
   only:
-    - new
-
+  - new
 notifications:
   email:
     recipients:
-      - hatim@hatimak.me
+    - hatim@hatimak.me
     on_success: change
     on_failure: always
-
+env:
+  matrix:
+    secure: kkPh75pOHP909trSMm7udgfZ3PqU/yHw7xHetrFmeZphc2ULOi+GtbnOdwx7HAqGBI92dzUWcwwVARCWIUsjgTaqCClmRGe+wPLjPmVNpOmHbVRGJPadq7f+Z9CPiRnBFw/oiH2PvaE45OHtOgZqQqq/2QF8H61jfAlPpXs+uig7fZ+afCGcSwmoU7XVjI3YorirfQvy36Hi4S90A3zB+806zwkaAo1kDiLNM2KthjRcVQc5FiJ+Xwt7q00Le0mEciFTkohodtun5Yq+ZCAIWBXRb/sxagbzMMKX3lUTRGffXPI6f/dbvpCMdrYPWnlmWjs9HUUMwwndndP5oe3z+FbGlmCse63FnyiEFx4v+pS3Ervqe2oDg+Rprj/VieuyGFfW65l8t4NJJSADcdtojxEpxn08e7JbDsJx0ol0ILpNPw0zf656Z572/BOs/2puL++pfkfB3lS9zzHM78Hq0aH4m0wnd3KBhul0hPbHYM2kI8jGhxhUE/Ibh7PxK01Wih4jdfx973gBA1zc8CnzHLs+ZVKjOWxC50QemaWaGY0qitQ/+JLEF45oVmJzwtV+mq96FyQ9v/X4Vrlk5loLX34L4+2PKizMoTSFMeB9CfwhmEqySK1k+smz7W5CUtsWZg0hT/k/mWRVwL6ysgGA+wwSWk92aou44Ag6K7A7V00=
