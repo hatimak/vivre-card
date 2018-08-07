@@ -21,7 +21,7 @@ cache:
     - "$HOME/.texlive"
 branches:
   only:
-    - new
+    - master
 notifications:
   email:
     recipients:
