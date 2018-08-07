@@ -1,9 +1,10 @@
 sudo: require
 dist: xenial
 before_install:
-- export PATH=/tmp/texlive/bin/x86_64-linux:$PATH
-- rvm install 2.2.6
+- sudo apt-get update -qq
+- sudo apt-get install -y -qq ruby
 - gem install dropbox-deployment
+- export PATH=/tmp/texlive/bin/x86_64-linux:$PATH
 install:
 - sh ./texlive_install.sh
 before_script:
