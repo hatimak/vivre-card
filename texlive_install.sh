@@ -27,7 +27,7 @@ if ! command -v xelatex > /dev/null; then
 		collection-latexextra 1
 		collection-bibtexextra 1
 		collection-binextra 1
-		collection-context 1
+		collection-context 0 
 		collection-fontsextra 1
 		collection-fontsrecommended 1
 		collection-fontutils 1
