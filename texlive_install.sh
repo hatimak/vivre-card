@@ -32,28 +32,28 @@ if ! command -v xelatex > /dev/null; then
 		collection-fontsrecommended 1
 		collection-fontutils 1
 		collection-formatsextra 1
-		collection-games 1
+		collection-games 0
 		collection-humanities 1
-		collection-langarabic 1
-		collection-langchinese 1
-		collection-langcjk 1
-		collection-langcyrillic 1
-		collection-langczechslovak 1
+		collection-langarabic 0
+		collection-langchinese 0
+		collection-langcjk 0
+		collection-langcyrillic 0
+		collection-langczechslovak 0
 		collection-langenglish 1
-		collection-langeuropean 1
-		collection-langfrench 1
+		collection-langeuropean 0
+		collection-langfrench 0
 		collection-langgerman 1
-		collection-langgreek 1
-		collection-langitalian 1
-		collection-langjapanese 1
-		collection-langkorean 1
-		collection-langother 1
+		collection-langgreek 0
+		collection-langitalian 0
+		collection-langjapanese 0
+		collection-langkorean 0
+		collection-langother 0
 		collection-langpolish 1
-		collection-langportuguese 1
-		collection-langspanish 1
-		collection-luatex 1
+		collection-langportuguese 0
+		collection-langspanish 0
+		collection-luatex 0
 		collection-mathscience 1
-		collection-music 1
+		collection-music 0
 		collection-pictures 1
 		collection-plaingeneric 1
 		collection-pstricks 1
