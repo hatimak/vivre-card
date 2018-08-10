@@ -753,8 +753,8 @@
   \setlength{\extrarowheight}{0pt}
   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.0cm} R{4.0cm}}
     \entrytitlestyle{#1} & \entrylocationstyle{#3} \\
-    \positionorgstyle{#2} & \entrydatestyle{#4} \\
-    \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}}
+    \positionorgstyle{#2} & \entrydatestyle{#4} \ifempty{#5} {} {\\
+    \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}}}
   \end{tabular*}
   \vspace{2.0mm}%
 }
