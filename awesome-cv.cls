@@ -93,6 +93,7 @@
 % Needed for last page in footer, # / ##
 \RequirePackage{lastpage}
 
+
 %-------------------------------------------------------------------------------
 %                Configuration for directory locations
 %-------------------------------------------------------------------------------
