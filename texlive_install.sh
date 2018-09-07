@@ -83,5 +83,3 @@ if ! command -v xelatex > /dev/null; then
 	cd ..
 fi
 
-# Update the TL install but add nothing new
-tlmgr update --self --all --no-auto-install
