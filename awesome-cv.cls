@@ -160,6 +160,11 @@
   \ifbool{acvSectionColorHighlight}{{\color{awesome}#1}}{#1}%
 }
 
+%-------------------------------------------------------------------------------
+%                Configuration for Education entries
+%-------------------------------------------------------------------------------
+\newbool{eduShowGrade}
+\setbool{eduShowGrade}{false}
 
 %-------------------------------------------------------------------------------
 %                Configuration for fonts
@@ -233,6 +238,7 @@
 % For elements of school
 \newcommand*{\schooldatestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\slshape\color{graytext} #1}}
 \newcommand*{\schoolinstitutionstyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
+\newcommand*{\degreetitlestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\slshape\color{awesome} #1}}
 \newcommand*{\schooldegreestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\scshape\color{graytext} #1}}
 \newcommand*{\schoolscorestyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\color{text} #1}}
 \newcommand*{\schoollocationstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
@@ -419,10 +425,10 @@
     \ifthenelse{\isundefined{\@photo}}{}{%
       \newlength{\photodim}
       \ifthenelse{\equal{\@photoshape}{circle}}%
-        {\setlength{\photodim}{1.3cm}}%
-        {\setlength{\photodim}{1.8cm}}%
+        {\setlength{\photodim}{1.2cm}}%
+        {\setlength{\photodim}{1.7cm}}%
       \ifthenelse{\equal{\@photoedge}{edge}}%
-        {\def\@photoborder{darkgray}}%
+        {\def\@photoborder{awesome}}%
         {\def\@photoborder{none}}%
       \begin{tikzpicture}%
         \node[\@photoshape, draw=\@photoborder, line width=0.3mm, inner sep=\photodim, fill overzoom image=\@photo] () {};
@@ -665,7 +671,7 @@
 }
 
 %-------------------------------------------------------------------------------
-% Modifications from Hatim follow
+% Modifications from @hatimak follow
 %-------------------------------------------------------------------------------
 
 % Define an environment for cveducation
@@ -675,15 +681,19 @@
     \vspace{-2mm}
     \setlength\tabcolsep{0pt}
     \setlength{\extrarowheight}{2.0pt}
-    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} C{2.65cm} L{\textwidth - 7.75cm} C{2.35cm} R{2.75cm}}
+    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 3.5cm} R{3.5cm}}
 }{%
     \end{tabular*}
   \end{center}
 }
-% Define a line of cv education (degree, institution, location, date and so on)
-% Usage: \cvschool{<degree>}{<institution>}{<location>}{<date>}{<score>}
-\newcommand*{\cvschool}[5]{%
-  \schooldatestyle{#4} & \schoolinstitutionstyle{#2}, \schooldegreestyle{#1} & \schoolscorestyle{#5} & \schoollocationstyle{#3} \\
+% Define a line of cv education
+\newcommand*{\cvschool}[8]{%
+  \schoolinstitutionstyle{#3} & \schoollocationstyle{#4} \\[-2.0pt]
+  \ifempty{#7} {\experiencepositionstyle{#1} & \entrydatestyle{#5} \\[-2.0pt]
+  \entrysubtitlestyle{#2} & \ifbool{eduShowGrade}{\entrydatestyle{#6}}{} \\[-2.0pt]}
+  {\experiencepositionstyle{#1, #2} & \entrydatestyle{#5} \\[-2.0pt]
+  \entrysubtitlestyle{Thesis:} ``\entrysubtitlestyle{#7}'' & \ifbool{eduShowGrade}{\entrydatestyle{#6}}{} }\ifempty{#8} {\\[3.0pt]} {\\[-2.0pt]
+  \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#8}} \\[3.0pt]}
 }
 
 
