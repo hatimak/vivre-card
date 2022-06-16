@@ -692,7 +692,7 @@
   \schoolinstitutionstyle{#3} & \schoollocationstyle{#4} \\[-2.0pt]
   \ifempty{#7} {\experiencepositionstyle{#1} & \entrydatestyle{#5} \\[-2.0pt]
   \entrysubtitlestyle{#2} & \ifbool{eduShowGrade}{\entrydatestyle{#6}}{} \\[-2.0pt]}
-  {\experiencepositionstyle{#1, #2} & \entrydatestyle{#5} \\[-2.0pt]
+  {\experiencepositionstyle{#1 #2} & \entrydatestyle{#5} \\[-2.0pt]
   \entrysubtitlestyle{Thesis:} ``\entrysubtitlestyle{#7}'' & \ifbool{eduShowGrade}{\entrydatestyle{#6}}{} }\ifempty{#8} {\\[3.0pt]} {\\[-2.0pt]
   \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#8}} \\[3.0pt]}
 }
