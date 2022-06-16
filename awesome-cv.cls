@@ -426,12 +426,12 @@
       \newlength{\photodim}
       \ifthenelse{\equal{\@photoshape}{circle}}%
         {\setlength{\photodim}{1.2cm}}%
-        {\setlength{\photodim}{1.7cm}}%
+        {\setlength{\photodim}{1.6cm}}%
       \ifthenelse{\equal{\@photoedge}{edge}}%
         {\def\@photoborder{awesome}}%
         {\def\@photoborder{none}}%
       \begin{tikzpicture}%
-        \node[\@photoshape, draw=\@photoborder, line width=0.3mm, inner sep=\photodim, fill overzoom image=\@photo] () {};
+        \node[\@photoshape, draw=\@photoborder, line width=0.4mm, inner sep=\photodim, fill overzoom image=\@photo] () {};
       \end{tikzpicture}
     }%
   }
@@ -536,6 +536,7 @@
   \begin{minipage}[c]{\headerphotowidth}%
     \ifthenelse{\equal{\@photoalign}{right}}{\raggedleft\drawphoto}{}
   \end{minipage}
+  \ifthenelse{\isundefined{\@photo}}{\vspace{-2mm}}{\vspace{-5mm}}
 }
 
 % Define a footer for CV
@@ -706,7 +707,6 @@
   \end{center}
 }
 % Define an entry of cv experience
-% Usage: \cvposition{<position>}{<title>}{<subtitle>}{<location>}{<date>}{<description>}
 \newcommand*{\cvposition}[6]{%
   \vspace{-2.0mm}
   \setlength\tabcolsep{0pt}
@@ -722,7 +722,6 @@
   \vspace{2.0mm}%
 }
 
-
 % Define an environment for cvprojects
 \newenvironment{cvprojects}{%
   \vspace{\acvSectionContentTopSkip}
@@ -732,7 +731,6 @@
   \end{center}
 }
 % Define an entry of cv projects
-% Usage: \cvproject{<title>}{<subtitle>}{<location>}{<date>}{<description>}
 \newcommand*{\cvproject}[5]{%
   \vspace{-2.0mm}
   \setlength\tabcolsep{0pt}
@@ -756,8 +754,8 @@
   \vspace{-2.0mm}
   \end{center}
 }
+
 % Define an entry of cv positions
-% Usage: \cvrole{<post>}{<organisation>}{<location>}{<date>}{<description>}
 \newcommand*{\cvrole}[5]{%
   \vspace{-2.0mm}
   \setlength\tabcolsep{0pt}
@@ -765,7 +763,22 @@
   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.0cm} R{4.0cm}}
     \entrytitlestyle{#1} & \entrylocationstyle{#3} \\
     \positionorgstyle{#2} & \entrydatestyle{#4} \ifempty{#5} {} {\\
-    \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}}}
+    \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}} }
+  \end{tabular*}
+  \vspace{2.0mm}%
+}
+
+% Define an entry of cv positions for 2 positions at the same institute/organisation
+\newcommand*{\cvroletwo}[8]{%
+  \vspace{-2.0mm}
+  \setlength\tabcolsep{0pt}
+  \setlength{\extrarowheight}{0pt}
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.0cm} R{4.0cm}}
+    \entrytitlestyle{#1} & \entrylocationstyle{#2} \\
+    \positionorgstyle{#3} & \entrydatestyle{#4} \ifempty{#5} {\\} {\\
+    \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}} \\}
+    \positionorgstyle{#6} & \entrydatestyle{#7} \ifempty{#8} {} {\\
+    \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#8}} }
   \end{tabular*}
   \vspace{2.0mm}%
 }
