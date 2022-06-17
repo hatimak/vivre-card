@@ -20,9 +20,9 @@
 	{J\"ulich, Germany (Remote)} % Location
 	{Oct. 2020 -- Feb. 2021} % Date(s)
 	{\begin{cvitems}
-		\item {Implemented power system models using the open-source code-generation tool ORTiS targeted towards High-Level Synthesis for real-time simulation on an FPGA.}
+		\item {Implemented power system models using the open-source code-generation tool ORTiS targeted towards High-Level Synthesis for real-time simulation on an FPGA. Extended the HLS models with a memory-mapped AXI4 register interface.}
   		\item {Developed a Makefile pipeline on Linux to streamline prototyping workflow handling the ORTiS code generation, Vivado High-Level Synthesis, Vivado IP Integrator and FPGA bitstream generation stages.}
-		\item {\# something about remote debugging setup}
+%		\item {\# something about remote debugging setup}
 	\end{cvitems}}
 %---------------------------------------------------------
 
@@ -35,7 +35,7 @@
 	{\begin{cvitems}
 		\item {Integrated Xilinx FPGA development boards into the \href{https://villas.fein-aachen.org}{VILLAS} co-simulation platform by designing an architecture built on top of the Aurora 8B/10B serial protocol from Xilinx, thereby providing a consistent interface between the CPU, over PCIe, and the real-time simulators, over a physical fibre link.}
 		\item {Engineered a Tcl-Makefile system of scripts to simplify file management of multiple source types and binary files and streamline project management using revision control systems. Developers could utilise the system to collaborate on version-agnostic local toolchains and to significantly reduce commit and check-out sizes.}
-		\item {Implemented an AXI4 memory-mapped register interface wrapper around the Aurora 8B/10B by extending the respective Xilinx Baremetal drivers.}
+		\item {Implemented an memory-mapped AXI4 register interface wrapper around the Aurora 8B/10B by extending the respective Xilinx Baremetal drivers.}
 	\end{cvitems}}
 %---------------------------------------------------------
 
