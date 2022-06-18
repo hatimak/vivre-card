@@ -425,8 +425,8 @@
     \ifthenelse{\isundefined{\@photo}}{}{%
       \newlength{\photodim}
       \ifthenelse{\equal{\@photoshape}{circle}}%
-        {\setlength{\photodim}{1.2cm}}%
-        {\setlength{\photodim}{1.6cm}}%
+        {\setlength{\photodim}{1.1cm}}%
+        {\setlength{\photodim}{1.5cm}}%
       \ifthenelse{\equal{\@photoedge}{edge}}%
         {\def\@photoborder{awesome}}%
         {\def\@photoborder{none}}%
@@ -536,7 +536,7 @@
   \begin{minipage}[c]{\headerphotowidth}%
     \ifthenelse{\equal{\@photoalign}{right}}{\raggedleft\drawphoto}{}
   \end{minipage}
-  \ifthenelse{\isundefined{\@photo}}{\vspace{-2mm}}{\vspace{-5mm}}
+  \ifthenelse{\isundefined{\@photo}}{\vspace{-3mm}}{\vspace{-6mm}}
 }
 
 % Define a footer for CV
@@ -687,6 +687,7 @@
 }{%
     \end{tabular*}
   \end{center}
+  \vspace{-2mm}
 }
 % Define a line of cv education
 \newcommand*{\cvschool}[8]{%

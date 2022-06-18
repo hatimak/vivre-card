@@ -9,7 +9,10 @@
 	{Aachen, Germany} % Location
 	{Apr. 2021 -- Dec. 2021} % Date(s)
 	{\begin{cvitems}
-		\item {Developed a design using soft-core microprocessors }
+		\item {Developed a design using soft-core microprocessors to rapidly prototype control-loop algorithms for FPGA-based real-time simulations of power systems and to allow the independent formulation of the power system and control-loop models.}
+		\item {Introduced a \textit{control} and \textit{data-logger} soft-cores, each based on the MicroBlaze soft-core microprocessor from Xilinx and implemented on the Xilinx Virtex Ultrascale+ VCU118 board, respectively dedicated to running control algorithms at the switching frequency and logging simulation data at each time step.} 
+		\item {Conceptualised a heterogenous architecture using multiple and dedicated soft-core microprocessors, enabling hierarchical control-loop systems and fine-grained administration of the real-time simulation.}
+  		\item {Assembled the final work product using a combination of proprietary Xilinx IPs from Vivado IP Integrator, HLS modules of the power system generated from ORTiS, self-authored Verilog modules and binaries for the soft-core microprocessor using Xilinx SDK.}
 	\end{cvitems}}
 %---------------------------------------------------------
 
@@ -20,7 +23,7 @@
 	{Remote} % Location
 	{Oct. 2020 -- Feb. 2021} % Date(s)
 	{\begin{cvitems}
-		\item {Implemented power system models using the open-source code-generation tool ORTiS targeted towards High-Level Synthesis for real-time simulation on an FPGA. Extended the HLS models with a memory-mapped AXI4 register interface. Tested and verified the hardware models on the Xilinx Virtex-7 FPGA using remote debugging.}
+		\item {Implemented power system models using the open-source code-generation tool ORTiS targeted towards High-Level Synthesis for real-time simulation on an FPGA. Extended the HLS models with a memory-mapped AXI4 register interface. Verified the hardware models on the Xilinx Virtex-7 VC707 FPGA board using remote debugging.}
   		\item {Developed a Makefile pipeline on Linux for the ORTiS code generation, Vivado High-Level Synthesis, Vivado IP Integrator and FPGA bitstream generation stages.}
 	\end{cvitems}}
 %---------------------------------------------------------
@@ -45,7 +48,7 @@
 	{Control and Instrumentation Lab, \href{https://www.iitp.ac.in}{IIT Patna}, India} % Location
 	{May 2018 -- Nov. 2018} % Date(s)
 	{\begin{cvitems} % Description(s)
-		\item {Implemented advanced filters for the Bearings-only Tracking problem - Distributed Extended Kalman Filter, Shifted Rayleigh Filter, Particle Filter with compound proposals, Particle Filter with MCMC, and Regularised Particle Filter.}
+		\item {Implemented advanced filters, like Distributed Extended Kalman Filter, Shifted Rayleigh Filter, Particle Filter with compound proposals, Particle Filter with MCMC, and Regularised Particle Filter, for the Bearings-only Tracking problem in MATLAB.}
 		\item {Simulated the performance of these filters on actual field manoeuvres provided by the sponsor, and prepared a comparative study as measured by time, resource and computational complexities, and target tracking accuracy. Concluded that Shifted Rayleigh Filter outperforms other filters in terms of computational complexity while still being superior at tracking the target.}
 	\end{cvitems}}
 %---------------------------------------------------------
