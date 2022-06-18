@@ -9,10 +9,10 @@
 	{Aachen, Germany} % Location
 	{Apr. 2021 -- Dec. 2021} % Date(s)
 	{\begin{cvitems}
-		\item {Developed a design using soft-core microprocessors to rapidly prototype control-loop algorithms for FPGA-based real-time simulations of power systems and to allow the independent formulation of the power system and control-loop models.}
-		\item {Introduced a \textit{control} and \textit{data-logger} soft-cores, each based on the MicroBlaze soft-core microprocessor from Xilinx and implemented on the Xilinx Virtex Ultrascale+ VCU118 board, respectively dedicated to running control algorithms at the switching frequency and logging simulation data at each time step.} 
-		\item {Conceptualised a heterogenous architecture using multiple and dedicated soft-core microprocessors, enabling hierarchical control-loop systems and fine-grained administration of the real-time simulation.}
-  		\item {Assembled the final work product using a combination of proprietary Xilinx IPs from Vivado IP Integrator, HLS modules of the power system generated from ORTiS, self-authored Verilog modules and binaries for the soft-core microprocessor using Xilinx SDK.}
+		\item {Developed a design using soft-core microprocessors to rapidly prototype control-loop algorithms for FPGA-based real-time simulators of power systems and to allow independent formulation of power system and control-loop models.}
+		\item {Introduced \textit{control} and \textit{data-logger} soft-cores, each based on MicroBlaze soft-core microprocessor from Xilinx and implemented on Xilinx Virtex Ultrascale+ VCU118 board, respectively dedicated to running control algorithms at switching frequency and logging simulation data at each time step.} 
+		\item {Conceptualised a heterogenous architecture using multiple and dedicated soft-core microprocessors, enabling hierarchical control-loop systems and fine-grained administration of real-time simulation.}
+  		\item {Assembled final work product using combination of proprietary Xilinx IPs from Vivado IP Integrator, HLS modules of power system generated from ORTiS, self-authored Verilog modules and binaries for soft-core microprocessor using Xilinx SDK.}
 	\end{cvitems}}
 %---------------------------------------------------------
 
@@ -23,8 +23,8 @@
 	{Remote} % Location
 	{Oct. 2020 -- Feb. 2021} % Date(s)
 	{\begin{cvitems}
-		\item {Implemented power system models using the open-source code-generation tool ORTiS targeted towards High-Level Synthesis for real-time simulation on an FPGA. Extended the HLS models with a memory-mapped AXI4 register interface. Verified the hardware models on the Xilinx Virtex-7 VC707 FPGA board using remote debugging.}
-  		\item {Developed a Makefile pipeline on Linux for the ORTiS code generation, Vivado High-Level Synthesis, Vivado IP Integrator and FPGA bitstream generation stages.}
+		\item {Implemented power system models using open-source code-generation tool ORTiS targeted towards High-Level Synthesis for real-time simulation on an FPGA. Extended HLS models with memory-mapped AXI4 register interface. Verified hardware models on Xilinx Virtex-7 VC707 FPGA board using remote debugging.}
+  		\item {Developed Makefile pipeline on Linux for ORTiS code generation, Vivado High-Level Synthesis, Vivado IP Integrator and FPGA bitstream generation stages.}
 	\end{cvitems}}
 %---------------------------------------------------------
 
@@ -35,9 +35,9 @@
 	{Aachen, Germany} % Location
 	{May 2019 -- Sept. 2020} % Date(s)
 	{\begin{cvitems}
-		\item {Integrated Xilinx FPGA development boards into the \href{https://villas.fein-aachen.org}{VILLAS} co-simulation platform by designing an architecture built on top of the Aurora 8B/10B serial protocol from Xilinx, thereby providing a consistent interface between the CPU, over PCIe, and the real-time simulators, over a physical fibre link.}
-		\item {Engineered a Tcl-Makefile system of scripts to simplify file management of multiple source types and binary files and streamline project management using revision control systems. Developers could utilise the system to collaborate on version-agnostic local toolchains and to significantly reduce commit and check-out sizes.}
-		\item {Implemented an memory-mapped AXI4 register interface wrapper around the Aurora 8B/10B by extending the respective Xilinx Baremetal drivers.}
+		\item {Integrated Xilinx FPGA development boards into \href{https://villas.fein-aachen.org}{VILLAS} co-simulation platform by designing an architecture built on top of Aurora 8B/10B serial protocol from Xilinx, thereby providing a consistent interface between CPU, over PCIe, and real-time simulators, over physical fibre link.}
+		\item {Engineered Tcl-Makefile system of scripts to simplify file management of multiple source types and binary files and streamline project management using revision control systems. Developers could utilise the system to collaborate on version-agnostic local toolchains and to significantly reduce commit and check-out sizes.}
+		\item {Implemented memory-mapped AXI4 register interface wrapper around Aurora 8B/10B by extending corresponding Xilinx Baremetal drivers in C/C++.}
 	\end{cvitems}}
 %---------------------------------------------------------
 
@@ -49,7 +49,7 @@
 	{May 2018 -- Nov. 2018} % Date(s)
 	{\begin{cvitems} % Description(s)
 		\item {Implemented advanced filters, like Distributed Extended Kalman Filter, Shifted Rayleigh Filter, Particle Filter with compound proposals, Particle Filter with MCMC, and Regularised Particle Filter, for the Bearings-only Tracking problem in MATLAB.}
-		\item {Simulated the performance of these filters on actual field manoeuvres provided by the sponsor, and prepared a comparative study as measured by time, resource and computational complexities, and target tracking accuracy. Concluded that Shifted Rayleigh Filter outperforms other filters in terms of computational complexity while still being superior at tracking the target.}
+		\item {Simulated performance of these filters on actual field manoeuvres provided by sponsor, and prepared comparative study as measured by time, resource and computational complexities, and target tracking accuracy. Concluded that Shifted Rayleigh Filter outperforms other filters in terms of computational complexity while still being superior at tracking target.}
 	\end{cvitems}}
 %---------------------------------------------------------
 
@@ -60,11 +60,11 @@
 	{\href{https://www.iitp.ac.in}{IIT Patna}, India} % Location
 	{Aug. 2017 -- May 2018} % Date(s)
 	{\begin{cvitems} % Description(s)
-		\item {Designed and implemented a parallel architecture of Sigma-point Kalman filtering algorithms on an FPGA by independently conceptualised a parallel routine to the Cholesky decomposition of a positive-definite matrix in $\mathcal{O} \left( N \right)$ time complexity.}
+		\item {Designed and implemented a parallel architecture of Sigma-point Kalman filtering algorithms on an FPGA by independently conceptualised parallel routine for Cholesky decomposition in $\mathcal{O} \left( N \right)$ time complexity.}
 		\item {Further optimised resource usage of parallel Cholesky decomposition architecture for maximum processor utilisation to achieve $\mathcal{O} \left( \frac{1}{4} N^2 \right)$ resource complexity, as compared to $\mathcal{O} \left( \frac{1}{2} N^2 \right)$ resource complexity of state-of-the-art.}
 %		\item {Customised and implemented a matrix inversion routine to compute covariance inverses in $\mathcal{O} \left( N \right)$ time complexity.}
-		\item {Implemented the parallel architectures using Verilog HDL and Xilinx Vivado on the Xilinx Zynq-7000 ZC702 and Digilent Nexys4 DDR FPGA boards, making use of open-source floating-point IPs and Xilinx Vivado IPs.}
-		\item {Presented the final work product to the professors of the department and was one of the only two students to receive a unanimous 10 / 10 grade out of a cohort of 50 candidates.}
+		\item {Implemented parallel architectures using Verilog HDL and Xilinx Vivado on Xilinx Zynq-7000 ZC702 and Digilent Nexys4 DDR FPGA boards, making use of open-source floating-point IPs and Xilinx Vivado IPs.}
+		\item {Presented final work product to the professors of the department and was one of only two students to receive unanimous 10 / 10 grade from cohort of 50 candidates.}
 	\end{cvitems}}
 %---------------------------------------------------------
 

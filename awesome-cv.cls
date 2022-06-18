@@ -536,7 +536,7 @@
   \begin{minipage}[c]{\headerphotowidth}%
     \ifthenelse{\equal{\@photoalign}{right}}{\raggedleft\drawphoto}{}
   \end{minipage}
-  \ifthenelse{\isundefined{\@photo}}{\vspace{-3mm}}{\vspace{-6mm}}
+  \ifthenelse{\isundefined{\@photo}}{\vspace{-3.5mm}}{\vspace{-6.5mm}}
 }
 
 % Define a footer for CV
@@ -686,8 +686,8 @@
     \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 3.5cm} R{3.5cm}}
 }{%
     \end{tabular*}
+    \vspace{-2mm}
   \end{center}
-  \vspace{-2mm}
 }
 % Define a line of cv education
 \newcommand*{\cvschool}[8]{%
@@ -721,7 +721,7 @@
     \entrysubtitlestyle{#3} & \multirow{1}{=}{\raggedleft \entrydatestyle{#5}} \\}
     \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#6}}
   \end{tabular*}
-  \vspace{2.0mm}%
+  \vspace{0.75mm}%
 }
 
 % Define an environment for cvprojects
@@ -744,7 +744,7 @@
     \entrysubtitlestyle{#2} & \entrydatestyle{#4} \\}
     \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}}
   \end{tabular*}
-  \vspace{2.0mm}%
+  \vspace{0.75mm}%
 }
 
 
@@ -753,7 +753,7 @@
   \vspace{\acvSectionContentTopSkip}
   \begin{center}
 }{%
-  \vspace{-2.0mm}
+  \vspace{-3.0mm}
   \end{center}
 }
 
@@ -767,7 +767,7 @@
     \positionorgstyle{#2} & \entrydatestyle{#4} \ifempty{#5} {} {\\
     \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}} }
   \end{tabular*}
-  \vspace{2.0mm}%
+  \vspace{0.75mm}%
 }
 
 % Define an entry of cv positions for 2 positions at the same institute/organisation
@@ -782,7 +782,7 @@
     \positionorgstyle{#6} & \entrydatestyle{#7} \ifempty{#8} {} {\\
     \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#8}} }
   \end{tabular*}
-  \vspace{2.0mm}%
+  \vspace{0.75mm}%
 }
 
 
