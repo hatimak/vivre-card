@@ -168,6 +168,20 @@
 \newbool{eduShowGrade}
 \setbool{eduShowGrade}{false}
 
+
+\newbool{showEmojis}
+\setbool{showEmojis}{false}
+
+\newbool{showTitleEmojis}
+\setbool{showTitleEmojis}{false}
+
+\newbool{showCalEmojis}
+\setbool{showCalEmojis}{false}
+
+\newbool{showSkillSubEmojis}
+\setbool{showSkillSubEmojis}{false}
+
+
 %-------------------------------------------------------------------------------
 %                Configuration for fonts
 %-------------------------------------------------------------------------------
@@ -649,7 +663,7 @@
   \begin{center}
     \setlength\tabcolsep{1ex}
     \setlength{\extrarowheight}{0pt}
-    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} r L{\textwidth * \real{0.9}}}
+    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} R{3.0cm} L{\textwidth - 3.0cm}}
 }{%
     \end{tabular*}
   \vspace{-2mm}
@@ -667,7 +681,7 @@
   \begin{justify}
   \begin{itemize}[leftmargin=2.67ex, nosep, noitemsep]
     \setlength{\parskip}{0pt}
-%    \renewcommand{\labelitemi}{\textbf{--}}
+%    \renewcommand{\labelitemi}{\tiny{\emoji{black-small-square}}}
     \renewcommand{\labelitemi}{\bullet}
 }{%
   \end{itemize}

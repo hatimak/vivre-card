@@ -1,24 +1,24 @@
-\cvsection{\emoji{gem-stone}\acvHeaderIconSep Skills}
+\cvsection{\ifbool{showTitleEmojis} {\emoji{gem-stone}\acvHeaderIconSep} {} Skills}
 
 \begin{cvskills}
 
 \cvskill
-	{Programming} % Category
+	{Programming\ifbool{showSkillSubEmojis} {\acvHeaderIconSep\emoji{desktop-computer}} {}} % Category
 	{Verilog, C/C++, Python, Assembly, JavaScript, Java, Shell, HTML/CSS} % Skills
 %---------------------------------------------------------
 
 \cvskill
-	{Software} % Category
+	{Software\ifbool{showSkillSubEmojis} {\acvHeaderIconSep\emoji{optical-disk}} {}} % Category
 	{Xilinx Vivado \& HLS, MATLAB, Simulink, RSCAD, NI LabVIEW, GNU/Linux, git/GitHub, gdb, Verilator, \LaTeX, gnuplot} % Skills
 %---------------------------------------------------------
 
 \cvskill
-	{Hardware} % Category
+	{Hardware\ifbool{showSkillSubEmojis} {\acvHeaderIconSep\emoji{gear}} {}} % Category
 	{Xilinx Virtex \& Zynq SoC, Digilent Nexys4 DDR, RTDS NovaCor, Raspberry Pi, Arduino, PIC Microcontroller} % Skills
 %---------------------------------------------------------
 
 \cvskill
-	{Languages} % Category
+	{Languages\ifbool{showSkillSubEmojis} {\acvHeaderIconSep\emoji{speaker-high-volume}} {}} % Category
 	{English (\textit{TOEFL 114/120}), German (\textit{B1}), Hindi (\textit{native})} % Skills
 %---------------------------------------------------------
 

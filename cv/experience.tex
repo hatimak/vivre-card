@@ -1,4 +1,4 @@
-\cvsection{\emoji{briefcase}\acvHeaderIconSep Experience}
+\cvsection{\ifbool{showTitleEmojis} {\emoji{briefcase}\acvHeaderIconSep} {} Experience}
 
 \begin{cvexperience}
 
@@ -6,8 +6,8 @@
 	{M.\,Sc. Thesis ``Field-Programmable Gate Array based Real-Time Control and Simulation''} % Job title
 	{IEK-10, Forschungszentrum J\"ulich \& Institute for Automation of Complex Power Systems} % Organization
 	{Supervisors: Univ.-Prof. Dr.-Ing. Andrea Benigni, Steffen Vogel, M.\,Sc., Dr.-Ing. Lukas Razik} % Subtitle
-	{Aachen, Germany\acvHeaderIconSep\emoji{flag-germany}} % Location
-	{Apr. 2021 -- Dec. 2021} % Date(s)
+	{Aachen, Germany \ifbool{showEmojis} {\acvHeaderIconSep\emoji{flag-germany}} {} } % Location
+	{Apr. 2021 -- Dec. 2021 \ifbool{showCalEmojis} {\acvHeaderIconSep\emoji{spiral-calendar}} {} } % Date(s)
 	{\begin{cvitems}
 		\item {Developed design using soft-core microprocessors to rapidly prototype control-loop algorithms for FPGA-based real-time simulators of power systems and to allow independent formulation of power system and control-loop models.}
 		\item {Introduced \textit{control} and \textit{data-logger} soft-cores, each based on MicroBlaze soft-core microprocessor from Xilinx and implemented on Xilinx Virtex Ultrascale+ VCU118 board, respectively dedicated to running control algorithms at switching frequency and logging simulation data at each time step.} 
@@ -20,8 +20,8 @@
 	{Student Intern} % Job title
 	{IEK-10, Forschungszentrum J\"ulich} % Organization
 	{Supervisor: Dr.-Ing. Lukas Razik, Head, HPC Department, IEK-10} % Subtitle
-	{Remote\acvHeaderIconSep\emoji{world-map}} % Location
-	{Oct. 2020 -- Feb. 2021} % Date(s)
+	{Remote \ifbool{showEmojis} {\acvHeaderIconSep\emoji{world-map}} {} } % Location
+	{Oct. 2020 -- Feb. 2021 \ifbool{showCalEmojis} {\acvHeaderIconSep\emoji{spiral-calendar}} {} } % Date(s)
 	{\begin{cvitems}
 		\item {Implemented power s models using open-source code-generation tool ORTiS targeted toward High-Level Synthesis for real-time simulation on an FPGA. Extended HLS models with memory-mapped AXI4 register interface. Verified hardware models on Xilinx Virtex-7 VC707 FPGA board using remote debugging.}
   		\item {Developed Makefile pipeline on Linux for ORTiS code generation, Vivado High-Level Synthesis, Vivado IP Integrator and FPGA bitstream generation stages.}
@@ -32,8 +32,8 @@
 	{Student Assistant} % Job title
 	{Institute for Automation of Complex Power Systems, E.ON Energy Research Centre} % Organization
 	{Supervisor: \href{https://www.acs.eonerc.rwth-aachen.de/go/id/msul}{Steffen Vogel, M.\, Sc.}} % Subtitle
-	{Aachen, Germany\acvHeaderIconSep\emoji{flag-germany}} % Location
-	{May 2019 -- Sept. 2020} % Date(s)
+	{Aachen, Germany \ifbool{showEmojis} {\acvHeaderIconSep\emoji{flag-germany}} {} } % Location
+	{May 2019 -- Sept. 2020 \ifbool{showCalEmojis} {\acvHeaderIconSep\emoji{spiral-calendar}} {} } % Date(s)
 	{\begin{cvitems}
 		\item {Integrated Xilinx FPGA development boards into \href{https://villas.fein-aachen.org}{VILLAS} co-simulation platform by designing an architecture built on top of Aurora 8B/10B serial protocol from Xilinx, thereby providing a consistent interface between CPU, over PCIe, and real-time simulators, over physical fibre link.}
 		\item {Engineered Tcl-Makefile system of scripts to simplify file management of multiple source types and binary files and streamline project management using revision control systems. Developers could utilise system to collaborate on version-agnostic local toolchains and significantly reduce commit and check-out sizes.}
@@ -45,8 +45,8 @@
 	{Senior Research Fellow} % Position
 	{``Underwater Target Motion Analysis with Passive Sensors''} % Title
 	{Supervisor: \href{http://www.tutorialpoint.org/ShovanBhaumik/index.html}{Dr Shovan Bhaumik}, Sponsor: Naval Physical \& Oceanographic Laboratory (DRDO)} % Subtitle
-	{Control and Instrumentation Lab, \href{https://www.iitp.ac.in}{IIT Patna}, India\acvHeaderIconSep\emoji{flag-india}} % Location
-	{May 2018 -- Nov. 2018} % Date(s)
+	{Control and Instrumentation Lab, \href{https://www.iitp.ac.in}{IIT Patna}, India \ifbool{showEmojis} {\acvHeaderIconSep\emoji{flag-india}} {} } % Location
+	{May 2018 -- Nov. 2018 \ifbool{showCalEmojis} {\acvHeaderIconSep\emoji{spiral-calendar}} {} } % Date(s)
 	{\begin{cvitems} % Description(s)
 		\item {Implemented advanced filters, like Distributed Extended Kalman Filter, Shifted Rayleigh Filter, Particle Filter with compound proposals, Particle Filter with MCMC, and Regularised Particle Filter, for the Bearings-only Tracking problem in MATLAB.}
 		\item {Simulated performance of these filters on actual field manoeuvres provided by sponsor, and prepared comparative study as measured by time, resource and computational complexities, and target tracking accuracy.}
@@ -58,8 +58,8 @@
 	{B.\,Tech. Thesis\quad\textbar\quad Nominated for the Best B.Tech. Thesis award from Dept of Electrical Engineering} % Position
 	{\href{https://github.com/haitmak/sigma}{``Hardware Architecture of a Family of Sigma-Point Kalman Filters for Bayesian Estimation''}} % Title
 	{Supervisor: \href{http://www.tutorialpoint.org/ShovanBhaumik/index.html}{Dr Shovan Bhaumik}, Assistant Professor, IIT Patna} % Subtitle
-	{\href{https://www.iitp.ac.in}{IIT Patna}, India\acvHeaderIconSep\emoji{flag-india}} % Location
-	{Aug. 2017 -- May 2018} % Date(s)
+	{\href{https://www.iitp.ac.in}{IIT Patna}, India \ifbool{showEmojis} {\acvHeaderIconSep\emoji{flag-india}} {} } % Location
+	{Aug. 2017 -- May 2018 \ifbool{showCalEmojis} {\acvHeaderIconSep\emoji{spiral-calendar}} {} } % Date(s)
 	{\begin{cvitems} % Description(s)
 		\item {Designed and implemented a parallel architecture of Sigma-point Kalman filtering algorithms on an FPGA by independently conceptualised parallel routine for Cholesky decomposition in $\mathcal{O} \left( N \right)$ time complexity.}
 		\item {Further optimised resource usage of parallel Cholesky decomposition architecture for maximum processor utilisation to achieve $\mathcal{O} \left( \frac{1}{4} N^2 \right)$ resource complexity, as compared to $\mathcal{O} \left( \frac{1}{2} N^2 \right)$ resource complexity of state-of-the-art.}
@@ -74,7 +74,7 @@
 	{\href{https://fossi-foundation.org}{Free and Open Source Silicon Foundation}} % Organization
 	{Mentor: \href{http://www.jeremybennett.com}{Dr Jeremy Bennett}, \href{https://www.embecosm.com/about/meet-the-team/jeremy-bennett/}{Founder \& Chief Executive}, Embecosm Ltd} % Subtitle
 	{\href{https://summerofcode.withgoogle.com/archive/2017/projects/6470218444439552/}{Google Summer of Code 2017}} % Location
-	{May 2017 -- Aug. 2017} % Date(s)
+	{May 2017 -- Aug. 2017 \ifbool{showCalEmojis} {\acvHeaderIconSep\emoji{spiral-calendar}} {} } % Date(s)
 	{\begin{cvitems} % Description(s)
 		\item {Built Verilog model of historic EDSAC computer from original but incomplete documentation in collaboration with members of ``The EDSAC Replica Project'' team (TNMOC, Bletchley Park, UK).}
 		\item {Programmed and simulated EDSAC architecture and ISA on \href{https://mystorm.uk/}{myStorm} Lattice iCE FPGA board using open-source toolchains, like \href{http://www.clifford.at/yosys/}{Yosys} and \href{http://iverilog.icarus.com}{iverilog}.}
@@ -89,7 +89,7 @@
 	{\href{https://www.coreboot.org}{Coreboot} (\href{https://www.flashrom.org/Flashrom}{Flashrom})} % Organization
 	{} % Subtitle
 	{\href{https://summerofcode.withgoogle.com/archive/2016/projects/5439533130711040/}{Google Summer of Code 2016}} % Location
-	{Feb. 2016 -- Aug. 2016} % Date(s)
+	{Feb. 2016 -- Aug. 2016 \ifbool{showCalEmojis} {\acvHeaderIconSep\emoji{spiral-calendar}} {} } % Date(s)
 	{\begin{cvitems} % Description(s)
 		\item {Designed unified abstraction of multiple status registers in SPI Flash-memory chips to provide consistent interface between flashrom and diverse chip manufacturers.}
 		\item {Programmed routines to lock/unlock memory space governed by status registers, handle configuration bits, access/lock OTP memory areas, and automatically generate memory protection maps.}
