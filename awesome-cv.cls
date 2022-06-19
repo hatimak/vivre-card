@@ -92,6 +92,8 @@
 \RequirePackage{multirow}
 % Needed for last page in footer, # / ##
 \RequirePackage{lastpage}
+% Needed for emoji symbols
+\RequirePackage{emoji}
 
 
 %-------------------------------------------------------------------------------
@@ -459,20 +461,20 @@
       \ifthenelse{\isundefined{\@mobile}}%
         {}%
         {%
-          \faMobile\acvHeaderIconSep\@mobile%
+          \emoji{mobile-phone}\acvHeaderIconSep\@mobile%
           \setbool{isstart}{false}%
         }%
       \ifthenelse{\isundefined{\@email}}%
         {}%
         {%
           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{mailto:\@email}{\faEnvelope\acvHeaderIconSep\@email}%
+          \href{mailto:\@email}{\emoji{envelope}\acvHeaderIconSep\@email}%
         }%
       \ifthenelse{\isundefined{\@homepage}}%
         {}%
         {%
           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{https://\@homepage}{\faHome\acvHeaderIconSep\@homepage}%
+          \href{https://\@homepage}{\emoji{globe-with-meridians}\acvHeaderIconSep\@homepage}%
         }%
       \ifthenelse{\isundefined{\@github}}%
         {}%
@@ -650,6 +652,7 @@
     \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} r L{\textwidth * \real{0.9}}}
 }{%
     \end{tabular*}
+  \vspace{-2mm}
   \end{center}
 }
 % Define a line of cv information(skill)
