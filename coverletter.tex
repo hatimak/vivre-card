@@ -31,7 +31,7 @@
 %                 awesome-nephritis, awesome-concrete, awesome-darknight
 \colorlet{awesome}{awesome-red}
 % Uncomment if you would like to specify your own color
-% \definecolor{awesome}{HTML}{CA63A8}
+\definecolor{awesome}{HTML}{792427}
 
 % Colors for text
 % Uncomment if you would like to specify your own color
@@ -43,6 +43,15 @@
 % Set false if you don't want to highlight section with awesome color
 \setbool{acvSectionColorHighlight}{true}
 
+% Set false if you don't want to include scores/grades for your education entries
+\setbool{eduShowGrade}{true}
+
+% Set false if you don't want to have emojis
+\setbool{showEmojis}{true}
+\setbool{showTitleEmojis}{false}
+\setbool{showCalEmojis}{false}
+\setbool{showSkillSubEmojis}{false}
+
 % If you would like to change the social information separator from a pipe (|) to something else
 \renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
 
@@ -52,24 +61,17 @@
 %	Comment any of the lines below if they are not required
 %-------------------------------------------------------------------------------
 % Available options: circle|rectangle,edge/noedge,left/right
-\photo[circle,noedge,left]{./profile}
-\name{Claud D.}{Park}
-\position{Software Architect{\enskip\cdotp\enskip}Security Expert}
-\address{42-8, Bangbae-ro 15-gil, Seocho-gu, Seoul, 00681, Rep. of KOREA}
+\photo[circle,edge,left]{./profile}
+\name{Hatim}{Kanchwala}
+\position{M.\,Sc. Electrical Engineering, Information Technology, Computer Engineering}
+\address{\ifbool{showEmojis} {\emoji{house-with-garden}\acvHeaderIconSep} {} Engelbertstr. 12, 52078 Aachen, Germany}
 
-\mobile{(+82) 10-9030-1843}
-\email{posquit0.bj@gmail.com}
-\homepage{www.posquit0.com}
-\github{posquit0}
-\linkedin{posquit0}
-% \gitlab{gitlab-id}
-% \stackoverflow{SO-id}{SO-name}
-% \twitter{@twit}
-% \skype{skype-id}
-% \reddit{reddit-id}
-% \extrainfo{extra informations}
-
-\quote{``Be the change that you want to see in the world."}
+\mobile{+49 176 45 9995 53}
+\email{hatim@hatimak.me}
+%\email{hatim.kanchwala@rwth-aachen.de}
+%\homepage{hatimak.me}
+%\github{hatimak}
+\linkedin{hatimak}
 
 
 %-------------------------------------------------------------------------------
@@ -78,14 +80,14 @@
 %-------------------------------------------------------------------------------
 % The company being applied to
 \recipient
-  {Company Recruitment Team}
-  {Google Inc.\\1600 Amphitheatre Parkway\\Mountain View, CA 94043}
+  {Recruiting, DR\"AXLMAIER Group}
+  {Lisa Dr\"axlmaier GmbH\newline Landshuter Str. 100\newline 84137 Vilsbiburg}
 % The date on the letter, default is the date of compilation
 \letterdate{\today}
 % The title of the letter
-\lettertitle{Job Application for Software Engineer}
+\lettertitle{Job Application for Junior Software Entwickler Automotive, Garching}
 % How the letter is opened
-\letteropening{Dear Mr./Ms./Dr. LastName,}
+\letteropening{Dear Mrs Julia Hausperger,}
 % How the letter is closed
 \letterclosing{Sincerely,}
 % Any enclosures with the letter
@@ -95,6 +97,8 @@
 %-------------------------------------------------------------------------------
 \begin{document}
 
+\setemojifont{TwemojiMozilla}
+
 % Print the header with above personal informations
 % Give optional argument to change alignment(C: center, L: left, R: right)
 \makecvheader[R]
@@ -102,9 +106,9 @@
 % Print the footer with 3 arguments(<left>, <center>, <right>)
 % Leave any of these blank if they are not needed
 \makecvfooter
-  {\today}
-  {Claud D. Park~~~·~~~Cover Letter}
   {}
+  {Hatim Kanchwala~~~·~~~Cover Letter}
+  {\thepage~/~\pageref{LastPage}}
 
 % Print the title with above letter informations
 \makelettertitle
@@ -115,13 +119,16 @@
 \begin{cvletter}
 
 \lettersection{About Me}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ullamcorper neque sit amet lectus facilisis sed luctus nisl iaculis. Vivamus at neque arcu, sed tempor quam. Curabitur pharetra tincidunt tincidunt. Morbi volutpat feugiat mauris, quis tempor neque vehicula volutpat. Duis tristique justo vel massa fermentum accumsan. Mauris ante elit, feugiat vestibulum tempor eget, eleifend ac ipsum. Donec scelerisque lobortis ipsum eu vestibulum. Pellentesque vel massa at felis accumsan rhoncus.
+I am a Master's graduate from the RWTH Aachen University and a Bachelor's graduate from the Indian Institute of Technology Patna, India. My professional interests lie at the intersection of embedded computing, electrical engineering, control systems and communication engineering; the intra-disciplinary application of these concepts to solving real-world problems is a strong motivation for me. I pride myself on being a quick and independent learner who is often among those who ask a lot of curious questions. My academic and professional journey has been an enriching experience reflecting my ability to collaborate with colleagues from diverse cultural backgrounds.
 
-\lettersection{Why Google?}
-Suspendisse commodo, massa eu congue tincidunt, elit mauris pellentesque orci, cursus tempor odio nisl euismod augue. Aliquam adipiscing nibh ut odio sodales et pulvinar tortor laoreet. Mauris a accumsan ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse vulputate sem vehicula ipsum varius nec tempus dui dapibus. Phasellus et est urna, ut auctor erat. Sed tincidunt odio id odio aliquam mattis. Donec sapien nulla, feugiat eget adipiscing sit amet, lacinia ut dolor. Phasellus tincidunt, leo a fringilla consectetur, felis diam aliquam urna, vitae aliquet lectus orci nec velit. Vivamus dapibus varius blandit.
+\lettersection{Why DR\"AXLMAIER?}
+Dräxlmaier offers a chance to be part of a global and diverse company working at the bleeding edge of the automotive supply chain. The company provides a remarkable inter-disciplinary opportunity to further one's professional career by honing their skills across departments and collaborating with senior experts. The ability to advance my professional skills with Business Academy particularly appeals to me. The automotive industry is transitioning towards a green future made possible by a reliable and innovative supply chain, of which Dräxlmaier is an industry leader.
 
 \lettersection{Why Me?}
-Duis sit amet magna ante, at sodales diam. Aenean consectetur porta risus et sagittis. Ut interdum, enim varius pellentesque tincidunt, magna libero sodales tortor, ut fermentum nunc metus a ante. Vivamus odio leo, tincidunt eu luctus ut, sollicitudin sit amet metus. Nunc sed orci lectus. Ut sodales magna sed velit volutpat sit amet pulvinar diam venenatis.
+I believe I am an innovative thinker with strong communication and presentation skills capable of working according to a "big picture" while also holding in-depth subject-specific conversations. In my previous experiences, I have demonstrated the ability to identify the problem, break it into solvable chunks, engineer an actionable solution, and communicate with colleagues. My supervisors often appreciate my attitude and approach to problem-solving and value my contributions as high-quality.
+
+\lettersection{}
+I hope my application for the job is considered, as I continue to be very excited about the possibilities. Please let me know if you have any questions or if I can provide additional information.
 
 \end{cvletter}
 
