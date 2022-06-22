@@ -703,7 +703,7 @@
     \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 3.5cm} R{3.5cm}}
 }{%
     \end{tabular*}
-    \vspace{-2mm}
+    \vspace{-4.0mm}
   \end{center}
 }
 % Define a line of cv education
@@ -770,7 +770,7 @@
   \vspace{\acvSectionContentTopSkip}
   \begin{center}
 }{%
-  \vspace{-3.0mm}
+  \vspace{-4.0mm}
   \end{center}
 }
 
@@ -784,7 +784,7 @@
     \positionorgstyle{#2} & \entrydatestyle{#4} \ifempty{#5} {} {\\
     \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}} }
   \end{tabular*}
-  \vspace{0.75mm}%
+%  \vspace{0.5mm}%
 }
 
 % Define an entry of cv positions for 2 positions at the same institute/organisation
@@ -799,7 +799,7 @@
     \positionorgstyle{#6} & \entrydatestyle{#7} \ifempty{#8} {} {\\
     \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#8}} }
   \end{tabular*}
-  \vspace{0.75mm}%
+%  \vspace{0.5mm}%
 }
 
 
