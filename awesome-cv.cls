@@ -826,25 +826,29 @@
 % Usage: \makelettertitle
 \newcommand*{\makelettertitle}{%
   \vspace{8.4mm}
-  \setlength\tabcolsep{0pt}
-  \setlength{\extrarowheight}{0pt}
-  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
-    \recipienttitlestyle{\@recipientname} & \letterdatestyle{\@letterdate}
-  \end{tabular*}
-  \begin{singlespace}
-    \recipientaddressstyle{\@recipientaddress} \\
-  \end{singlespace}
-  \ifthenelse{\isundefined{\@lettertitle}}
-    {}
-    {\lettertitlestyle{\@lettertitle} \\ \\}
-  \lettertextstyle{\@letteropening}
+  \begin{spacing}{1.0}
+    \recipienttitlestyle{\@recipientname}
+  \end{spacing}
+  \begin{spacing}{0.8}
+    \recipientaddressstyle{\@recipientaddress}
+  \end{spacing}
+  \begin{spacing}{0.9}
+    \recipientaddressstyle{\@letterdate} \\ \\
+    \ifthenelse{\isundefined{\@lettertitle}}
+      {}
+      {\lettertitlestyle{\@lettertitle} \\ \\}
+    \lettertextstyle{\@letteropening}
+  \end{spacing}
 }
 
 % Define a closing of the cover letter
 % Usage: \makeletterclosing
 \newcommand*{\makeletterclosing}{%
   \vspace{3.4mm}
-  \lettertextstyle{\@letterclosing} \\\\\\\\
+  \lettertextstyle{\@letterclosing}
+  \begin{figure}[h!]
+    \includegraphics[width=0.18\linewidth]{sign}
+  \end{figure} \\
   \letternamestyle{\@firstname\ \@lastname}
   \ifthenelse{\isundefined{\@letterenclosure}}
     {\\}
