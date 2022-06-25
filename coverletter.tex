@@ -80,17 +80,24 @@
 %-------------------------------------------------------------------------------
 % The company being applied to
 \recipient
-  {Recruiting, DR\"AXLMAIER Group}
-  {Lisa Dr\"axlmaier GmbH\newline Landshuter Str. 100\newline 84137 Vilsbiburg}
-% The date on the letter, default is the date of compilation
+  {Recruiting, DR\"AXLMAIER Group} % company name or dept
+  {Lisa Dr\"axlmaier GmbH\newline Landshuter Str. 100\newline 84137 Vilsbiburg} % recipient address
+
 \letterdate{\today}
-% The title of the letter
+
 \lettertitle{Job Application for Junior Software Entwickler Automotive, Garching}
-% How the letter is opened
-\letteropening{Dear Mrs Julia Hausperger,}
-% How the letter is closed
+
+% Letter salutation / address
+\letteropening{Dear Mrs Julia Hausperger}
+
+% Closing signing of letter
+%% TODO @hatimak
+%% This is only a dummy field here, the signing off is automatically included 
+%% in the Class file depending on EN or DE version. If you want to change the 
+%% defaut signing, then please edit it in the class file
 \letterclosing{Sincerely,}
-% Any enclosures with the letter
+
+% Enclosures with letter
 %\letterenclosure[Attached]{Curriculum Vitae}
 
 
