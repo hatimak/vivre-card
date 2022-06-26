@@ -434,6 +434,8 @@ pdfkeywords={}
 % Conditional statements to check empty string
 \newcommand*{\ifempty}[3]{\ifthenelse{\isempty{#1}}{#2}{#3}}
 
+% Macro to to encapsulate language switch
+\newcommand*{\switchDE}[2]{ \ifthenelse{\equal{DE}{\cvLang}} {#1} {#2} }
 
 %-------------------------------------------------------------------------------
 % CV Structure
@@ -644,21 +646,38 @@ pdfkeywords={}
 	\vspace{-4.0mm}%
 }
 
+\newcommand{\cvEducationDegree}[2]{%
+	\ifthenelse{\equal{DE}{#1}} {\def\@cvEducationDegreeDE{#2}} {\def\@cvEducationDegreeEN{#2}} }
+\newcommand{\cvEducationDegreeName}[2]{%
+	\ifthenelse{\equal{DE}{#1}} {\def\@cvEducationDegreeNameDE{#2}} {\def\@cvEducationDegreeNameEN{#2}} }
+\newcommand{\cvEducationInstitution}[2]{%
+	\ifthenelse{\equal{DE}{#1}} {\def\@cvEducationInstitutionDE{#2}} {\def\@cvEducationInstitutionEN{#2}} }
+\newcommand{\cvEducationLocation}[2]{%
+	\ifthenelse{\equal{DE}{#1}} {\def\@cvEducationLocationDE{#2}} {\def\@cvEducationLocationEN{#2}} }
+\newcommand{\cvEducationDescription}[2]{%
+	\ifthenelse{\equal{DE}{#1}} {\def\@cvEducationDescriptionDE{#2}} {\def\@cvEducationDescriptionEN{#2}} }
+\newcommand{\cvEducationDates}[2]{%
+	\ifthenelse{\equal{DE}{#1}} {\def\@cvEducationDatesDE{#2}} {\def\@cvEducationDatesEN{#2}} }
+\newcommand{\cvEducationGrade}[2]{%
+	\def\@cvEducationGradeDE{#2}%
+	\def\@cvEducationGradeEN{#2}%
+}
+
 % Entry for education section
-\newcommand*{\cvschool}[7]{%
+\newcommand*{\cvSchoolFlush}{%
 	\ifthenelse{\equal{fancy}{\cvNature}}{%
 		\begin{tabular*}{\textwidth}{ L{\textwidth - 3.5cm} R{3.5cm} }%
-			\schoolinstitutionstyle{#3} & \schoollocationstyle{#4} \\
-			\experiencepositionstyle{#1 #2} & \entrydatestyle{#5} \\
-			\ifbool{eduShowGrade}{\entrydatestyle{#6} & \\}{}
-			\multicolumn{2}{L{\textwidth}}{\descriptionstyle{#7}}
+			\schoolinstitutionstyle{ \switchDE{\@cvEducationInstitutionDE}{\@cvEducationInstitutionEN} } & \schoollocationstyle{ \switchDE{\@cvEducationLocationDE}{\@cvEducationLocationEN} } \\
+			\experiencepositionstyle{ \switchDE{\@cvEducationDegreeDE \@cvEducationDegreeNameDE}{\@cvEducationDegreeEN\space\@cvEducationDegreeNameEN} } & \entrydatestyle{ \switchDE{\@cvEducationDatesDE}{\@cvEducationDatesEN} } \\
+			\ifempty{\@cvEducationGradeDE} {} {\entrydatestyle{ \switchDE{Abschlussnote}{Final Grade} \@cvEducationGradeDE } & \\}
+			\multicolumn{2}{L{\textwidth}}{\descriptionstyle{ \switchDE{\@cvEducationDescriptionDE}{\@cvEducationDescriptionEN} }}
 		\end{tabular*}%
 	}{%
 		\begin{tabular*}{\textwidth}{ R{\cvNatureLeftSidebar} @{\hspace{\cvNatureColumnInset}} L{\textwidth - \cvNatureLeftSidebar - \cvNatureColumnInset} }%
-			\multirow{2}{=}{ \raggedleft \ifbool{showCalEmojis} {\emoji{spiral-calendar}\acvHeaderIconSep} {} \cvStylesSimpleDate{#5}\newline \cvStylesSimpleLocation{#4}} & \cvStylesSimpleTitle{#1 #2} \\
-			& \cvStylesSimpleOrganisation{#3} \ifbool{eduShowGrade} {\\
-			& \cvStylesSimpleSubtitle{\ifbool{showCalEmojis} {\emoji{graduation-cap}\acvHeaderIconSep} {} \ifthenelse{\equal{DE}{\cvLang}} {Abschlussnote} {Final Grade} #6}} {} \ifempty{#7} {} {\\
-			& \cvStylesSimpleDescriptions{#7}}%
+			\multirow{2}{=}{ \raggedleft \ifbool{showCalEmojis} {\emoji{spiral-calendar}\acvHeaderIconSep} {} \cvStylesSimpleDate{ \switchDE{\@cvEducationDatesDE}{\@cvEducationDatesEN} }\newline \cvStylesSimpleLocation{ \switchDE{\@cvEducationLocationDE}{\@cvEducationLocationEN} }} & \cvStylesSimpleTitle{ \switchDE{\@cvEducationDegreeDE\space\@cvEducationDegreeNameDE}{\@cvEducationDegreeEN \@cvEducationDegreeNameEN} } \\
+			& \cvStylesSimpleOrganisation{ \switchDE{\@cvEducationInstitutionDE}{\@cvEducationInstitutionEN} } \ifempty{\@cvEducationGradeDE} {} {\\
+			& \cvStylesSimpleSubtitle{\ifbool{showCalEmojis} {\emoji{graduation-cap}\acvHeaderIconSep} {} \switchDE{Abschlussnote}{Final Grade} \@cvEducationGradeDE}} \ifempty{\@cvEducationDescriptionDE} {} {\\
+			& \cvStylesSimpleDescriptions{ \switchDE{\@cvEducationDescriptionDE}{\@cvEducationDescriptionEN} }}%
 		\end{tabular*}%
 	}%
 	\vspace{2.0mm}%
@@ -715,17 +734,13 @@ pdfkeywords={}
 }
 
 \newcommand{\cvPositionPost}[2]{%
-	\ifthenelse{\equal{DE}{#1}} {\def\@cvPositionPostDE{#2}} {\def\@cvPositionPostEN{#2}}%
-}
+	\ifthenelse{\equal{DE}{#1}} {\def\@cvPositionPostDE{#2}} {\def\@cvPositionPostEN{#2}} }
 \newcommand{\cvPositionLocation}[2]{%
-	\ifthenelse{\equal{DE}{#1}} {\def\@cvPositionLocationDE{#2}} {\def\@cvPositionLocationEN{#2}}%
-}
+	\ifthenelse{\equal{DE}{#1}} {\def\@cvPositionLocationDE{#2}} {\def\@cvPositionLocationEN{#2}} }
 \newcommand{\cvPositionDates}[2]{%
-	\ifthenelse{\equal{DE}{#1}} {\def\@cvPositionDatesDE{#2}} {\def\@cvPositionDatesEN{#2}}%
-}
+	\ifthenelse{\equal{DE}{#1}} {\def\@cvPositionDatesDE{#2}} {\def\@cvPositionDatesEN{#2}} }
 \newcommand{\cvPositionDescription}[2]{%
-	\ifthenelse{\equal{DE}{#1}} {\def\@cvPositionDescriptionDE{#2}} {\def\@cvPositionDescriptionEN{#2}}%
-}
+	\ifthenelse{\equal{DE}{#1}} {\def\@cvPositionDescriptionDE{#2}} {\def\@cvPositionDescriptionEN{#2}} }
 \newcommand{\cvPositionOrganisation}[2]{%
 	\def\@cvPositionOrganisationDE{#2}%
 	\def\@cvPositionOrganisationEN{#2}%
