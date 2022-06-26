@@ -9,7 +9,6 @@
 %
 % TODO @hatimak:
 % 	license
-% 	indentation
 %
 
 
@@ -87,6 +86,10 @@ pdfkeywords={}
 \RequirePackage{multirow}
 % Needed for last page in footer for ## / ##
 \RequirePackage{lastpage}
+
+% Using key-value pairs to switch between EN / DE
+\RequirePackage{xkeyval}
+
 % Emoji symbols
 %% Works only with LuaLaTeX
 \RequirePackage{emoji}
@@ -432,7 +435,7 @@ pdfkeywords={}
 		\ifthenelse{\isundefined{\@photo}}%
 			{}%
 			{%
-				\newlength{\photodim}
+				\newlength{\photodim}%
 				\ifthenelse{\equal{\@photoshape}{circle}}%
 					{\setlength{\photodim}{1.1cm}}%
 					{\setlength{\photodim}{1.5cm}}%
@@ -441,275 +444,202 @@ pdfkeywords={}
 					{\def\@photoborder{none}}%
 				\begin{tikzpicture}%
 					\node[\@photoshape, draw=\@photoborder, line width=0.4mm, inner sep=\photodim, fill overzoom image=\@photo] () {};
-				\end{tikzpicture}
+				\end{tikzpicture}%
 			}%
 	}
-	\newlength{\headertextwidth}
-	\newlength{\headerphotowidth}
-	\ifthenelse{\isundefined{\@photo}}%
-		{%
-			\setlength{\headertextwidth}{\textwidth}%
-			\setlength{\headerphotowidth}{0cm}%
-		}{%
-	\setlength{\headertextwidth}{0.76\textwidth}
-	\setlength{\headerphotowidth}{0.24\textwidth}
+	\newlength{\headertextwidth}%
+	\newlength{\headerphotowidth}%
+	\ifthenelse{\isundefined{\@photo}}{%
+		\setlength{\headertextwidth}{\textwidth}%
+		\setlength{\headerphotowidth}{0cm}%
+	}{%
+		\setlength{\headertextwidth}{0.76\textwidth}%
+		\setlength{\headerphotowidth}{0.24\textwidth}%
 	}%
 	\begin{minipage}[c]{\headerphotowidth}%
-		\ifthenelse{\equal{\@photoalign}{left}}{\raggedright\drawphoto}{}
-	\end{minipage}
-	\begin{minipage}[c]{\headertextwidth}
-		\ifthenelse{\equal{#1}{L}}{\raggedright}{\ifthenelse{\equal{#1}{R}}{\raggedleft}{\centering}}
+		\ifthenelse{\equal{\@photoalign}{left}}
+			{\raggedright\drawphoto}%
+			{}%
+	\end{minipage}%
+	\begin{minipage}[c]{\headertextwidth}%
+		\ifthenelse{\equal{#1}{L}}%
+			{\raggedright}%
+			{\ifthenelse{\equal{#1}{R}}%
+				{\raggedleft}%
+				{\centering}%
+			}%
 		\headerfirstnamestyle{\@firstname}\headerlastnamestyle{{}\acvHeaderNameDelim\@lastname}%
 		\\[\acvHeaderAfterNameSkip]%
-		\ifthenelse{\isundefined{\@position}}{}{\headerpositionstyle{\@position\\[\acvHeaderAfterPositionSkip]}}%
-		\ifthenelse{\isundefined{\@address}}{}{\headeraddressstyle{\@address\\[\acvHeaderAfterAddressSkip]}}%
+		\ifthenelse{\isundefined{\@position}}%
+			{}%
+			{\headerpositionstyle{\@position\\[\acvHeaderAfterPositionSkip]}}%
+		\ifthenelse{\isundefined{\@address}}%
+			{}%
+			{\headeraddressstyle{\@address\\[\acvHeaderAfterAddressSkip]}}%
 		\headersocialstyle{%
-		\newbool{isstart}%
-		\setbool{isstart}{true}%
-		\ifthenelse{\isundefined{\@mobile}}%
-		{}%
-		{%
-		\emoji{mobile-phone}\acvHeaderIconSep\@mobile%
-		\setbool{isstart}{false}%
-		}%
-		\ifthenelse{\isundefined{\@email}}%
-		{}%
-		{%
-		\ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-		\href{mailto:\@email}{\emoji{envelope}\acvHeaderIconSep\@email}%
-		}%
-		\ifthenelse{\isundefined{\@homepage}}%
-		{}%
-		{%
-		\ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-		\href{https://\@homepage}{\emoji{globe-with-meridians}\acvHeaderIconSep\@homepage}%
-		}%
-		\ifthenelse{\isundefined{\@github}}%
-		{}%
-		{%
-		\ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-		\href{https://github.com/\@github}{\faGithubSquare\acvHeaderIconSep\@github}%
-		}%
-		\ifthenelse{\isundefined{\@gitlab}}%
-		{}%
-		{%
-		\ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-		\href{https://gitlab.com/\@gitlab}{\faGitlab\acvHeaderIconSep\@gitlab}%
-		}%
-		\ifthenelse{\isundefined{\@stackoverflowid}}%
-		{}%
-		{%
-		\ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-		\href{https://stackoverflow.com/users/\@stackoverflowid}{\faStackOverflow\acvHeaderIconSep\@stackoverflowname}%
-		}%
-		\ifthenelse{\isundefined{\@linkedin}}%
-		{}%
-		{%
-		\ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-		\href{https://www.linkedin.com/in/\@linkedin}{\faLinkedinSquare\acvHeaderIconSep\@linkedin}%
-		}%
-		\ifthenelse{\isundefined{\@twitter}}%
-		{}%
-		{%
-		\ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-		\href{https://twitter.com/\@twitter}{\faTwitter\acvHeaderIconSep\@twitter}%
-		}%
-		\ifthenelse{\isundefined{\@skype}}%
-		{}%
-		{%
-		\ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-		\faSkype\acvHeaderIconSep\@skype%
-		}%
-		\ifthenelse{\isundefined{\@reddit}}%
-		{}%
-		{%
-		\ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-		\href{https://www.reddit.com/user/\@reddit}{\faReddit\acvHeaderIconSep\@reddit}%
-		}%
-		\ifthenelse{\isundefined{\@xing}}%
-		{}%
-		{%
-		\ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-		\href{https://www.xing.com/profile/\@xing}{\faXingSquare\acvHeaderIconSep\@xing}
-		}%
-		\ifthenelse{\isundefined{\@extrainfo}}%
-		{}%
-		{%
-		\ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-		\@extrainfo%
-		}%
+			\newbool{isstart}%
+			\setbool{isstart}{true}%
+			\ifthenelse{\isundefined{\@mobile}}%
+				{}{%
+				\emoji{mobile-phone}\acvHeaderIconSep\@mobile%
+				\setbool{isstart}{false}}%
+			\ifthenelse{\isundefined{\@email}}%
+				{}{%
+				\ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
+				\href{mailto:\@email}{\emoji{envelope}\acvHeaderIconSep\@email}}%
+			\ifthenelse{\isundefined{\@homepage}}%
+				{}{%
+				\ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
+				\href{https://\@homepage}{\emoji{globe-with-meridians}\acvHeaderIconSep\@homepage}}%
+			\ifthenelse{\isundefined{\@github}}%
+				{}{%
+				\ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
+				\href{https://github.com/\@github}{\faGithubSquare\acvHeaderIconSep\@github}}%
+			\ifthenelse{\isundefined{\@gitlab}}%
+				{}{%
+				\ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
+				\href{https://gitlab.com/\@gitlab}{\faGitlab\acvHeaderIconSep\@gitlab}}%
+			\ifthenelse{\isundefined{\@linkedin}}%
+				{}{%
+				\ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
+				\href{https://www.linkedin.com/in/\@linkedin}{\faLinkedinSquare\acvHeaderIconSep\@linkedin}}%
+			\ifthenelse{\isundefined{\@twitter}}%
+				{}{%
+				\ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
+				\href{https://twitter.com/\@twitter}{\faTwitter\acvHeaderIconSep\@twitter}}%
+			\ifthenelse{\isundefined{\@xing}}%
+				{}{%
+				\ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
+				\href{https://www.xing.com/profile/\@xing}{\faXingSquare\acvHeaderIconSep\@xing}}%
 		} \\[\acvHeaderAfterSocialSkip]%
 		\ifthenelse{\isundefined{\@quote}}%
-		{}%
-		{\headerquotestyle{\@quote\\}\vspace{\acvHeaderAfterQuoteSkip}}%
+			{}{%
+			\headerquotestyle{\@quote\\}\vspace{\acvHeaderAfterQuoteSkip}}%
 	\end{minipage}%
 	\begin{minipage}[c]{\headerphotowidth}%
-		\ifthenelse{\equal{\@photoalign}{right}}{\raggedleft\drawphoto}{}
-	\end{minipage}
-	\ifthenelse{\isundefined{\@photo}}{\vspace{-3.5mm}}{\vspace{-6.5mm}}
+		\ifthenelse{\equal{\@photoalign}{right}}%
+			{\raggedleft\drawphoto}%
+			{}%
+	\end{minipage}%
+	\ifthenelse{\isundefined{\@photo}}%
+		{\vspace{-3.5mm}}%
+		{\vspace{-6.5mm}}%
 }
 
-% Define a footer for CV
-% Usage: \makecvfooter{<left>}{<center>}{<right>}
+% Footer
+%% Usage: \makecvfooter{<left>}{<center>}{<right>}
 \newcommand*{\makecvfooter}[3]{%
-\fancyfoot{}
-\fancyfoot[L]{\footerstyle{#1}}
-\fancyfoot[C]{\footerstyle{#2}}
-\fancyfoot[R]{\footerstyle{#3}}
+	\fancyfoot{}
+	\fancyfoot[L]{\footerstyle{#1}}
+	\fancyfoot[C]{\footerstyle{#2}}
+	\fancyfoot[R]{\footerstyle{#3}}
 }
 
-% Define a section for CV
-% Usage: \cvsection{<section-title>}
+% Section, like Education, Experience
+%% TODO @hatimak: Make English and German versions
+%% Usage: \cvsection{<section-title>}
 \newcommand{\cvsection}[1]{%
-\vspace{\acvSectionTopSkip}
-\sectionstyle{#1}
-\phantomsection
-\color{gray}\vhrulefill{0.9pt}
+	\vspace{\acvSectionTopSkip}
+	\sectionstyle{#1}
+	\phantomsection
+	\color{awesome}\vhrulefill{0.9pt}
 }
 
-% Define a subsection for CV
-% Usage: \cvsubsection{<subsection-title>}
+% Subsection
+%% Usage: \cvsubsection{<subsection-title>}
 \newcommand{\cvsubsection}[1]{%
-\vspace{\acvSectionContentTopSkip}
-\vspace{-3mm}
-\subsectionstyle{#1}
-\phantomsection
+	\vspace{\acvSectionContentTopSkip}
+	\vspace{-3mm}
+	\subsectionstyle{#1}
+	\phantomsection
 }
 
-% Define a paragraph for CV
+% Paragraph environment
 \newenvironment{cvparagraph}{%
-\vspace{\acvSectionContentTopSkip}
-\vspace{-3mm}
-\paragraphstyle
+	\vspace{\acvSectionContentTopSkip}
+	\vspace{-3mm}
+	\paragraphstyle
 }{%
-\par
-\vspace{2mm}
+	\par
+	\vspace{2mm}
 }
 
-% Define an environment for cventry
-\newenvironment{cventries}{%
-\vspace{\acvSectionContentTopSkip}
-\begin{center}
-	}{%
-\end{center}
-}
-% Define an entry of cv information
-% Usage: \cventry{<position>}{<title>}{<location>}{<date>}{<description>}
-\newcommand*{\cventry}[5]{%
-\vspace{-2.0mm}
-\setlength\tabcolsep{0pt}
-\setlength{\extrarowheight}{0pt}
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 5.5cm} R{5.5cm}}
-	\ifempty{#2#3}
-	{\entrypositionstyle{#1} & \entrydatestyle{#4} \\}
-	{\entrytitlestyle{#2} & \entrylocationstyle{#3} \\
-	\entrypositionstyle{#1} & \entrydatestyle{#4} \\}
-	\multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}}
-\end{tabular*}%
-}
-
-% Define an environment for cvsubentry
-\newenvironment{cvsubentries}{%
-\begin{center}
-	}{%
-\end{center}
-}
-% Define a subentry of cv information
-% Usage: \cvsubentry{<position>}{<title>}{<date>}{<description>}
-\newcommand*{\cvsubentry}[4]{%
-\setlength\tabcolsep{0pt}
-\setlength{\extrarowheight}{0pt}
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
-	\setlength\leftskip{0.2cm}
-	\subentrytitlestyle{#2} & \ifthenelse{\equal{#1}{}}
-	{\subentrydatestyle{#3}}{}
-	\ifthenelse{\equal{#1}{}}
-	{}
-	{\subentrypositionstyle{#1} & \subentrydatestyle{#3} \\}
-	\ifthenelse{\equal{#4}{}}
-	{}
-	{\multicolumn{2}{L{17.0cm}}{\subdescriptionstyle{#4}} \\}
-\end{tabular*}
-}
-
-% Define an environment for cvhonor
+% Environment for honors / achievements / awards
 \newenvironment{cvhonors}{%
-\vspace{\acvSectionContentTopSkip}
-\vspace{-2mm}
-\begin{center}
-	\setlength\tabcolsep{0pt}
-	\setlength{\extrarowheight}{1pt}
-	\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} C{1.5cm} L{\textwidth - 4.0cm} R{2.5cm}}
-		}{%
-	\end{tabular*}
-\end{center}
+	\vspace{\acvSectionContentTopSkip}
+	\vspace{-2mm}
+	\begin{center}
+		\setlength\tabcolsep{0pt}
+		\setlength{\extrarowheight}{1pt}
+		\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} C{1.5cm} L{\textwidth - 4.0cm} R{2.5cm}}
+}{%
+		\end{tabular*}
+	\end{center}
 }
-% Define a line of cv information(honor, award or something else)
-% Usage: \cvhonor{<position>}{<title>}{<location>}{<date>}
+
+% Entry for honor / achievement / award
+%% Usage: \cvhonor{<position>}{<title>}{<location>}{<date>}
 \newcommand*{\cvhonor}[4]{%
-\honordatestyle{#4} & \honorpositionstyle{#1}\ifempty{#2}{}{, \honortitlestyle{#2}} & \honorlocationstyle{#3} \\
+	\honordatestyle{#4} & \honorpositionstyle{#1} \ifempty{#2}{}{, \honortitlestyle{#2}} & \honorlocationstyle{#3} \\
 }
 
-% Define an environment for cvskill
+% Environment for skills
 \newenvironment{cvskills}{%
-\vspace{\acvSectionContentTopSkip}
-\vspace{-2.0mm}
-\begin{center}
-	\setlength\tabcolsep{1ex}
-	\setlength{\extrarowheight}{0pt}
-	\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} R{3.0cm} L{\textwidth - 3.0cm}}
-		}{%
-	\end{tabular*}
+	\vspace{\acvSectionContentTopSkip}
+	\vspace{-2.0mm}
+	\begin{center}
+		\setlength\tabcolsep{1ex}
+		\setlength{\extrarowheight}{0pt}
+		\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} R{3.0cm} L{\textwidth - 3.0cm}}
+}{%
+		\end{tabular*}
+	\end{center}
 	\vspace{-2mm}
-\end{center}
 }
-% Define a line of cv information(skill)
-% Usage: \cvskill{<type>}{<skillset>}
+
+% Entry for skill
+%% Usage: \cvskill{<type>}{<skillset>}
 \newcommand*{\cvskill}[2]{%
-\skilltypestyle{#1} & \skillsetstyle{#2} \\
+	\skilltypestyle{#1} & \skillsetstyle{#2} \\
 }
 
-% Define an environment for cvitems(for cventry)
+% Environment for CV items, bullet list for description, particularly in the Experiences section
 \newenvironment{cvitems}{%
-\vspace{-4.0mm}
-\begin{justify}
-	\begin{itemize}[leftmargin=2.67ex, nosep, noitemsep]
-		\setlength{\parskip}{0pt}
-		%    \renewcommand{\labelitemi}{\tiny{\emoji{black-small-square}}}
-		\renewcommand{\labelitemi}{\bullet}
-		}{%
-	\end{itemize}
-\end{justify}
-\vspace{-4.0mm}
-}
-
-%-------------------------------------------------------------------------------
-% Modifications from @hatimak follow
-%-------------------------------------------------------------------------------
-
-% Define an environment for cveducation
-\newenvironment{cveducation}{%
-\vspace{\acvSectionContentTopSkip}
-\begin{center}
-	\vspace{-2mm}
-	\setlength\tabcolsep{0pt}
-	\setlength{\extrarowheight}{2.0pt}
-	\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 3.5cm} R{3.5cm}}
-		}{%
-	\end{tabular*}
 	\vspace{-4.0mm}
-\end{center}
-}
-% Define a line of cv education
-\newcommand*{\cvschool}[8]{%
-\schoolinstitutionstyle{#3} & \schoollocationstyle{#4} \\[-2.0pt]
-\ifempty{#7} {\experiencepositionstyle{#1} & \entrydatestyle{#5} \\[-2.0pt]
-\entrysubtitlestyle{#2} & \ifbool{eduShowGrade}{\entrydatestyle{#6}}{} \\[-2.0pt]}
-{\experiencepositionstyle{#1 #2} & \entrydatestyle{#5} \\[-2.0pt]
-\entrysubtitlestyle{Thesis:} ``\entrysubtitlestyle{#7}'' & \ifbool{eduShowGrade}{\entrydatestyle{#6}}{} }\ifempty{#8} {\\[3.0pt]} {\\[-2.0pt]
-\multicolumn{2}{L{\textwidth}}{\descriptionstyle{#8}} \\[3.0pt]}
+	\begin{justify}
+		\begin{itemize}[leftmargin=2.67ex, nosep, noitemsep]
+			\setlength{\parskip}{0pt}
+			\renewcommand{\labelitemi}{\bullet}
+}{%
+		\end{itemize}
+	\end{justify}
+	\vspace{-4.0mm}
 }
 
+% Environment for Education
+\newenvironment{cveducation}{%
+	\vspace{\acvSectionContentTopSkip}
+	\vspace{-2mm}
+	\begin{center}
+		\setlength\tabcolsep{0pt}
+		\setlength{\extrarowheight}{2.0pt}
+		\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 3.5cm} R{3.5cm}}
+}{%
+		\end{tabular*}
+	\end{center}
+	\vspace{-4.0mm}
+}
+
+% Entry for education section
+\newcommand*{\cvschool}[8]{%
+	\schoolinstitutionstyle{#3} & \schoollocationstyle{#4} \\[-2.0pt]
+
+	\ifempty{#7} {\experiencepositionstyle{#1} & \entrydatestyle{#5} \\[-2.0pt]
+	\entrysubtitlestyle{#2} & \ifbool{eduShowGrade}{\entrydatestyle{#6}}{} \\[-2.0pt]}
+	{\experiencepositionstyle{#1 #2} & \entrydatestyle{#5} \\[-2.0pt]
+	\entrysubtitlestyle{Thesis:} ``\entrysubtitlestyle{#7}'' & \ifbool{eduShowGrade}{\entrydatestyle{#6}}{} }\ifempty{#8} {\\[3.0pt]} {\\[-2.0pt]
+	\multicolumn{2}{L{\textwidth}}{\descriptionstyle{#8}} \\[3.0pt]}
+}
 
 % Define an environment for cvexperience
 \newenvironment{cvexperience}{%
@@ -798,56 +728,54 @@ pdfkeywords={}
 
 
 %-------------------------------------------------------------------------------
-%                Commands for elements of Cover Letter
+% Cover Letter elements
 %-------------------------------------------------------------------------------
 % Define an environment for cvletter
 \newenvironment{cvletter}{%
-\lettertextstyle
+	\lettertextstyle
 }{%
 }
 
-% Define a section for the cover letter
-% Usage: \lettersection{<section-title>}
+% Section
+%% Usage: \lettersection{<section-title>}
 \newcommand{\lettersection}[1]{%
-\par\addvspace{2.5ex}
-\phantomsection{}
-\lettersectionstyle{#1}
-%  \color{gray}\vhrulefill{0.9pt}
-\par\nobreak\addvspace{0.4ex}
+	\par\addvspace{2.5ex}
+	\phantomsection{}
+	\lettersectionstyle{#1}
+	\par\nobreak\addvspace{0.4ex}
 }
 
-% Define a title of the cover letter
-% Usage: \makelettertitle
+% Title
+%% Usage: \makelettertitle
 \newcommand*{\makelettertitle}{%
-\vspace{8.4mm}
-\begin{spacing}{1.0}
-	\recipienttitlestyle{\@recipientname}
-\end{spacing}
-\begin{spacing}{0.8}
-	\recipientaddressstyle{\@recipientaddress}
-\end{spacing}
-\begin{spacing}{0.9}
-	\recipientaddressstyle{\@letterdate} \\ \\
-	\ifthenelse{\isundefined{\@lettertitle}}
-	{}
-	{\lettertitlestyle{\@lettertitle} \\ \\}
-	\lettertextstyle{\@letteropening}
-\end{spacing}
+	\vspace{8.4mm}
+	\begin{spacing}{1.0}
+		\recipienttitlestyle{\@recipientname}
+	\end{spacing}
+	\begin{spacing}{0.8}
+		\recipientaddressstyle{\@recipientaddress}
+	\end{spacing}
+	\begin{spacing}{0.9}
+		\recipientaddressstyle{\@letterdate} \\ \\
+		\ifthenelse{\isundefined{\@lettertitle}}
+		{}
+		{\lettertitlestyle{\@lettertitle} \\ \\}
+		\lettertextstyle{\@letteropening}
+	\end{spacing}
 }
 
-% Define a closing of the cover letter
-% Usage: \makeletterclosing
+% Closing / signing off
+%% Usage: \makeletterclosing
 \newcommand*{\makeletterclosing}{%
-\vspace{3.4mm}
-\lettertextstyle{\@letterclosing}
-\begin{figure}[h!]
-	\includegraphics[width=0.18\linewidth]{sign}
-\end{figure} \\
-\letternamestyle{\@firstname\ \@lastname}
-\ifthenelse{\isundefined{\@letterenclosure}}
-{\\}
-{%
-\\\\\\
-\letterenclosurestyle{\@letterenclname: \@letterenclosure} \\
-}
+	\vspace{3.4mm}
+	\lettertextstyle{\@letterclosing}
+	\begin{figure}[h!]
+		\includegraphics[width=0.18\linewidth]{sign}
+	\end{figure} \\
+	\letternamestyle{\@firstname\ \@lastname}
+	\ifthenelse{\isundefined{\@letterenclosure}}%
+		{\\}{%
+		\\\\\\
+		\letterenclosurestyle{\@letterenclname: \@letterenclosure} \\
+		}%
 }
