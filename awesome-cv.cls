@@ -87,9 +87,6 @@ pdfkeywords={}
 % Needed for last page in footer for ## / ##
 \RequirePackage{lastpage}
 
-% Needed to support language switch constructs DE / EN in some places
-\RequirePackage{xkeyval}
-
 % Emoji symbols
 %% Works only with LuaLaTeX
 \RequirePackage{emoji}
@@ -576,8 +573,12 @@ pdfkeywords={}
 	\honordatestyle{#4} & \honorpositionstyle{#1} \ifempty{#2}{}{, \honortitlestyle{#2}} & \honorlocationstyle{#3} \\
 }
 
-% Environment for skills
+% Skills
+%-------
 \newenvironment{cvskills}{%
+	\ifthenelse{\equal{DE}{\cvLang}}%
+		{\cvsection{\ifbool{showTitleEmojis} {\emoji{gem-stone}\acvHeaderIconSep} {} Kenntnisse}}%
+		{\cvsection{\ifbool{showTitleEmojis} {\emoji{gem-stone}\acvHeaderIconSep} {} Skills}}%
 	\vspace{\acvSectionContentTopSkip}
 	\vspace{-2.0mm}
 	\begin{center}
@@ -595,6 +596,7 @@ pdfkeywords={}
 \newcommand*{\cvskill}[2]{%
 	\skilltypestyle{#1} & \skillsetstyle{#2} \\
 }
+%-------------------------------------------------------------------------------
 
 % Environment for CV items, bullet list for description, particularly in the Experiences section
 \newenvironment{cvitems}{%
@@ -609,8 +611,12 @@ pdfkeywords={}
 	\vspace{-4.0mm}
 }
 
-% Environment for Education
+% Education
+%----------
 \newenvironment{cveducation}{%
+	\ifthenelse{\equal{DE}{\cvLang}}%
+		{\cvsection{\ifbool{showTitleEmojis} {\emoji{classical-building}\acvHeaderIconSep} {} Ausbildung}}%
+		{\cvsection{\ifbool{showTitleEmojis} {\emoji{classical-building}\acvHeaderIconSep} {} Education}}%
 	\vspace{\acvSectionContentTopSkip}
 	\vspace{-2mm}
 	\begin{center}
@@ -633,16 +639,22 @@ pdfkeywords={}
 	\entrysubtitlestyle{Thesis:} ``\entrysubtitlestyle{#7}'' & \ifbool{eduShowGrade}{\entrydatestyle{#6}}{} }\ifempty{#8} {\\[3.0pt]} {\\[-2.0pt]
 	\multicolumn{2}{L{\textwidth}}{\descriptionstyle{#8}} \\[3.0pt]}
 }
+%-------------------------------------------------------------------------------
 
-% Define an environment for cvexperience
+% Experience
+%-----------
 \newenvironment{cvexperience}{%
-\vspace{\acvSectionContentTopSkip}
-\begin{center}
-	}{%
+	\ifthenelse{\equal{DE}{\cvLang}}%
+		{\cvsection{\ifbool{showTitleEmojis} {\emoji{briefcase}\acvHeaderIconSep} {} Berufserfahrung}}%
+		{\cvsection{\ifbool{showTitleEmojis} {\emoji{briefcase}\acvHeaderIconSep} {} Experience}}%
+	\vspace{\acvSectionContentTopSkip}
+	\begin{center}
+}{%
+	\end{center}
 	\vspace{-4.0mm}
-\end{center}
 }
-% Define an entry of cv experience
+
+% Entry for CV experience
 \newcommand*{\cvposition}[6]{%
 \vspace{-2.0mm}
 \setlength\tabcolsep{0pt}
@@ -657,6 +669,7 @@ pdfkeywords={}
 \end{tabular*}
 \vspace{0.75mm}%
 }
+%-------------------------------------------------------------------------------
 
 % Define an environment for cvprojects
 \newenvironment{cvprojects}{%
