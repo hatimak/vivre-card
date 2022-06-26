@@ -87,6 +87,9 @@ pdfkeywords={}
 % Needed for last page in footer for ## / ##
 \RequirePackage{lastpage}
 
+% Needed to support language switch constructs DE / EN in some places
+\RequirePackage{xkeyval}
+
 % Emoji symbols
 %% Works only with LuaLaTeX
 \RequirePackage{emoji}
@@ -727,15 +730,34 @@ pdfkeywords={}
 }
 
 % Section
-%% Usage: \lettersection{<section-title>}
-\newcommand{\lettersection}[1]{%
-	\par\addvspace{2.5ex}
-	\phantomsection{}
-	\lettersectionstyle{#1}
-	\par\nobreak\addvspace{0.4ex}
+%--------
+\newcommand{\lettersection}[3]{%
+	\ifthenelse{\equal{DE}{#1}}{%
+		\def\@letterSectionTitleDE{#2}%
+		\def\@letterSectionTextDE{#3}%
+	}{%
+		\def\@letterSectionTitleEN{#2}%
+		\def\@letterSectionTextEN{#3}%
+	}%
 }
 
+\newcommand{\lettersectionflush}{%
+	\par\addvspace{2.5ex}
+	\phantomsection{}
+	\ifthenelse{\equal{DE}{\cvLang}}{%
+		\lettersectionstyle{\@letterSectionTitleDE}
+		\par\nobreak\addvspace{0.4ex}
+		\@letterSectionTextDE
+	}{%
+		\lettersectionstyle{\@letterSectionTitleEN}
+		\par\nobreak\addvspace{0.4ex}
+		\@letterSectionTextEN
+	}%
+}
+%-------------------------------------------------------------------------------
+
 % Opening (cover letter)
+%-----------------------
 \newcommand*{\letterOpeningMale}[1]{%
 	\ifthenelse{\equal{DE}{#1}}%
 		{Sehr geehrter Herr}%
@@ -760,6 +782,7 @@ pdfkeywords={}
 		{\def\@letteropening{\letterOpeningUnknown{\cvLang},}}%
 	}%
 }
+%-------------------------------------------------------------------------------
 
 % Title
 %% Usage: \makelettertitle
