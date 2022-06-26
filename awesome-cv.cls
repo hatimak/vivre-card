@@ -714,19 +714,35 @@ pdfkeywords={}
 	\vspace{-4.0mm}
 }
 
-% Define an entry of cv positions
-\newcommand*{\cvrole}[5]{%
+\newcommand{\cvPositionPost}[2]{%
+	\ifthenelse{\equal{DE}{#1}} {\def\@cvPositionPostDE{#2}} {\def\@cvPositionPostEN{#2}}%
+}
+\newcommand{\cvPositionLocation}[2]{%
+	\ifthenelse{\equal{DE}{#1}} {\def\@cvPositionLocationDE{#2}} {\def\@cvPositionLocationEN{#2}}%
+}
+\newcommand{\cvPositionDates}[2]{%
+	\ifthenelse{\equal{DE}{#1}} {\def\@cvPositionDatesDE{#2}} {\def\@cvPositionDatesEN{#2}}%
+}
+\newcommand{\cvPositionDescription}[2]{%
+	\ifthenelse{\equal{DE}{#1}} {\def\@cvPositionDescriptionDE{#2}} {\def\@cvPositionDescriptionEN{#2}}%
+}
+\newcommand{\cvPositionOrganisation}[2]{%
+	\def\@cvPositionOrganisationDE{#2}%
+	\def\@cvPositionOrganisationEN{#2}%
+}
+
+\newcommand*{\cvPositionFlush}{%
 	\ifthenelse{\equal{fancy}{\cvNature}}{%
 		\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.0cm} R{4.0cm}}%
-			\entrytitlestyle{#1} & \entrylocationstyle{#3} \\
-			\positionorgstyle{#2} & \entrydatestyle{#4} \ifempty{#5} {} {\\
-			\multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}} }
+			\entrytitlestyle{\ifthenelse{\equal{DE}{\cvLang}}{\@cvPositionOrganisationDE}{\@cvPositionOrganisationEN}} & \entrylocationstyle{\ifthenelse{\equal{DE}{\cvLang}}{\@cvPositionLocationDE}{\@cvPositionLocationEN}} \\
+			\positionorgstyle{\ifthenelse{\equal{DE}{\cvLang}}{\@cvPositionPostDE}{\@cvPositionPostEN}} & \entrydatestyle{\ifthenelse{\equal{DE}{\cvLang}}{\@cvPositionDatesDE}{\@cvPositionDatesEN}}\\
+			\multicolumn{2}{L{\textwidth}}{\descriptionstyle{\ifthenelse{\equal{DE}{\cvLang}}{\@cvPositionDescriptionDE}{\@cvPositionDescriptionEN}}}
 		\end{tabular*}%
 	}{%
 		\begin{tabular*}{\textwidth}{ R{\cvNatureLeftSidebar} @{\hspace{\cvNatureColumnInset}} L{\textwidth - \cvNatureLeftSidebar - \cvNatureColumnInset} }%
-			\multirow{3}{=}{ \raggedleft \ifbool{showCalEmojis} {\emoji{spiral-calendar}\acvHeaderIconSep} {} \cvStylesSimpleDate{#4}\newline \cvStylesSimpleLocation{#3}} & \cvStylesSimpleTitle{#2} \\
-			& \cvStylesSimpleOrganisation{#1} \\
-			& \cvStylesSimpleDescriptions{#5}
+			\multirow{3}{=}{ \raggedleft \ifbool{showCalEmojis} {\emoji{spiral-calendar}\acvHeaderIconSep} {} \cvStylesSimpleDate{\ifthenelse{\equal{DE}{\cvLang}}{\@cvPositionDatesDE}{\@cvPositionDatesEN}}\newline \cvStylesSimpleLocation{\ifthenelse{\equal{DE}{\cvLang}}{\@cvPositionLocationDE}{\@cvPositionLocationEN}}} & \cvStylesSimpleTitle{\ifthenelse{\equal{DE}{\cvLang}}{\@cvPositionPostDE}{\@cvPositionPostEN}} \\
+			& \cvStylesSimpleOrganisation{\ifthenelse{\equal{DE}{\cvLang}}{\@cvPositionOrganisationDE}{\@cvPositionOrganisationEN}} \\
+			& \cvStylesSimpleDescriptions{\ifthenelse{\equal{DE}{\cvLang}}{\@cvPositionDescriptionDE}{\@cvPositionDescriptionEN}}
 		\end{tabular*}%
 	}%
 	\vspace{2.0mm}%
