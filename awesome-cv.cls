@@ -87,9 +87,6 @@ pdfkeywords={}
 % Needed for last page in footer for ## / ##
 \RequirePackage{lastpage}
 
-% Using key-value pairs to switch between EN / DE
-\RequirePackage{xkeyval}
-
 % Emoji symbols
 %% Works only with LuaLaTeX
 \RequirePackage{emoji}
@@ -121,11 +118,15 @@ pdfkeywords={}
 
 
 %-------------------------------------------------------------------------------
-% Boolean switches
+% Declarations, booleans, macros
 %-------------------------------------------------------------------------------
 % Control the behaviour of some display artefacts, colour display, conditional
 % display of some information
 %-------------------------------------------------------------------------------
+% Language of the CV
+%% Either EN or DE
+\newcommand{\cvLang}{DE}
+
 % Switch section color highlighting
 \newbool{acvSectionColorHighlight}
 \setbool{acvSectionColorHighlight}{true}
@@ -188,7 +189,9 @@ pdfkeywords={}
 
 % Awesome section color
 \def\@sectioncolor[#1]{%
-\ifbool{acvSectionColorHighlight}{{\color{awesome}#1}}{#1}%
+	\ifbool{acvSectionColorHighlight}%
+		{{\color{awesome}#1}}%
+		{#1}%
 }
 
 
@@ -371,11 +374,6 @@ pdfkeywords={}
 %% Also take the name of the recipient
 %% Usage: \letteropening{<salutation>}
 \newcommand*{\letteropening}[1]{\def\@letteropening{#1}}
-
-% Closing / signing off (cover letter)
-%% TODO @hatimak: automatic sincerely or mit freundlichen gruessen based on EN / DE
-%% Usage: \letterclosing{<signing>}
-\newcommand*{\letterclosing}[1]{\def\@letterclosing{#1}}
 
 % Enclosure for letter (cover letter, optional)
 %% TODO @hatimak: Automatic Attacehd or Anhang based on EN / DE
@@ -766,9 +764,16 @@ pdfkeywords={}
 
 % Closing / signing off
 %% Usage: \makeletterclosing
+
+\newcommand*{\letterclosing}[1]{%
+	\ifthenelse{\equal{DE}{#1}}%
+		{Mit freundlichen Gr{\"u}{\ss}en}%
+		{Sincerely,}%
+}%
+
 \newcommand*{\makeletterclosing}{%
 	\vspace{3.4mm}
-	\lettertextstyle{\@letterclosing}
+	\lettertextstyle{\letterclosing{\cvLang}}
 	\begin{figure}[h!]
 		\includegraphics[width=0.18\linewidth]{sign}
 	\end{figure} \\
