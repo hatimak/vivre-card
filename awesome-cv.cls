@@ -289,12 +289,13 @@ pdfkeywords={}
 \newcommand*{\letterenclosurestyle}[1]{{\fontsize{10pt}{1em}\bodyfontlight\slshape\color{lighttext} #1}}
 
 % New styles
+%-----------
 %% TODO @hatimak: Create new styles and discard old ones
 %% Elements of the content of the CV, the data, the crux
-\newcommand*{\cvStylesSimpleDate}[1]{{\fontsize{9.5pt}{1em}\bodyfontlight\slshape\color{darktext} #1}}
-\newcommand*{\cvStylesSimpleLocation}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
-\newcommand*{\cvStylesSimpleTitle}[1]{{\fontsize{9.5pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
-\newcommand*{\cvStylesSimpleOrganisation}[1]{{\fontsize{9pt}{1em}\bodyfont\slshape\color{graytext} #1}}
+\newcommand*{\cvStylesSimpleDate}[1]{{\fontsize{10pt}{1em}\bodyfontlight\slshape\color{darktext} #1}}
+\newcommand*{\cvStylesSimpleLocation}[1]{{\fontsize{9.25pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
+\newcommand*{\cvStylesSimpleTitle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
+\newcommand*{\cvStylesSimpleOrganisation}[1]{{\fontsize{9.25pt}{1em}\bodyfont\slshape\color{graytext} #1}}
 \newcommand*{\cvStylesSimpleSubtitle}[1]{{\fontsize{9pt}{1em}\bodyfont\slshape\color{lighttext} #1}}
 \newcommand*{\cvStylesSimpleDescriptions}[1]{{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text} #1}}
 
@@ -415,7 +416,7 @@ pdfkeywords={}
 \newcommand{\acvSectionContentTopSkip}{2.5mm}
 
 % Simple Nature geometrical measurements
-\newcommand{\cvNatureLeftSidebar}{3.33cm}
+\newcommand{\cvNatureLeftSidebar}{3.50cm}
 \newcommand{\cvNatureColumnInset}{1.0em}
 
 
@@ -644,15 +645,13 @@ pdfkeywords={}
 }
 
 % Entry for education section
-\newcommand*{\cvschool}[8]{%
+\newcommand*{\cvschool}[7]{%
 	\ifthenelse{\equal{fancy}{\cvNature}}{%
 		\begin{tabular*}{\textwidth}{ L{\textwidth - 3.5cm} R{3.5cm} }%
 			\schoolinstitutionstyle{#3} & \schoollocationstyle{#4} \\
-			\ifempty{#7} {\experiencepositionstyle{#1} & \entrydatestyle{#5} \\
-			\entrysubtitlestyle{#2} & \ifbool{eduShowGrade}{\entrydatestyle{#6}}{} \\}
-			{\experiencepositionstyle{#1 #2} & \entrydatestyle{#5} \\
-			\entrysubtitlestyle{Thesis:} ``\entrysubtitlestyle{#7}'' & \ifbool{eduShowGrade}{\entrydatestyle{#6}}{} }\ifempty{#8} {} {\\
-			\multicolumn{2}{L{\textwidth}}{\descriptionstyle{#8}} }
+			\experiencepositionstyle{#1 #2} & \entrydatestyle{#5} \\
+			\ifbool{eduShowGrade}{\entrydatestyle{#6} & \\}{}
+			\multicolumn{2}{L{\textwidth}}{\descriptionstyle{#7}}
 		\end{tabular*}%
 	}{%
 		\begin{tabular*}{\textwidth}{ R{\cvNatureLeftSidebar} @{\hspace{\cvNatureColumnInset}} L{\textwidth - \cvNatureLeftSidebar - \cvNatureColumnInset} }%
