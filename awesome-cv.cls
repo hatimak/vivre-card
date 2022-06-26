@@ -367,14 +367,6 @@ pdfkeywords={}
 %% Usage: \letterdate{<date>}
 \newcommand*{\letterdate}[1]{\def\@letterdate{#1}}
 
-% Opening (cover letter)
-% TODO @hatimak: Like letter closing, include this
-%% functionality entirely in class file, take input argument as Mr / Mrs / X
-%% to correspond to Sehr geehrte Frau / geehrter Herr and so on.
-%% Also take the name of the recipient
-%% Usage: \letteropening{<salutation>}
-\newcommand*{\letteropening}[1]{\def\@letteropening{#1}}
-
 % Enclosure for letter (cover letter, optional)
 %% TODO @hatimak: Automatic Attacehd or Anhang based on EN / DE
 %% Usage: \letterenclosure[<enclosure name>]{<enclosure>}
@@ -741,6 +733,32 @@ pdfkeywords={}
 	\phantomsection{}
 	\lettersectionstyle{#1}
 	\par\nobreak\addvspace{0.4ex}
+}
+
+% Opening (cover letter)
+\newcommand*{\letterOpeningMale}[1]{%
+	\ifthenelse{\equal{DE}{#1}}%
+		{Sehr geehrter Herr}%
+		{Dear Mr}%
+}%
+\newcommand*{\letterOpeningFemale}[1]{%
+	\ifthenelse{\equal{DE}{#1}}%
+		{Sehr geehrte Frau}%
+		{Dear Mrs}%
+}%
+\newcommand*{\letterOpeningUnknown}[1]{%
+	\ifthenelse{\equal{DE}{#1}}%
+		{Sehr geehrte Damen und Herren}%
+		{Dear Sir / Madam}%
+}%
+
+\newcommand*{\letteropening}[2]{%
+	\ifthenelse{\equal{male}{#1}}%
+		{\def\@letteropening{\letterOpeningMale{\cvLang} #2,}}%
+	{\ifthenelse{\equal{female}{#1}}%
+		{\def\@letteropening{\letterOpeningFemale{\cvLang} #2,}}%
+		{\def\@letteropening{\letterOpeningUnknown{\cvLang},}}%
+	}%
 }
 
 % Title
