@@ -606,6 +606,7 @@ pdfkeywords={}
 }{%
 		\end{tabular*}
 	\end{center}
+	\vspace{2.0mm}%
 	\vspace{-4.0mm}
 }
 
@@ -661,6 +662,7 @@ pdfkeywords={}
 			& \cvStylesSimpleDescriptions{#7}}%
 		\end{tabular*}%
 	}%
+	\vspace{2.0mm}%
 }
 %-------------------------------------------------------------------------------
 
@@ -699,6 +701,39 @@ pdfkeywords={}
 }
 %-------------------------------------------------------------------------------
 
+
+% Positions / Extracurricular activities 
+%---------------------------------------
+\newenvironment{cvpositions}{%
+	\ifthenelse{\equal{DE}{\cvLang}}%
+		{\cvsection{\ifbool{showTitleEmojis} {\emoji{rocket}\acvHeaderIconSep} {} Freiwilligenarbeit}}%
+		{\cvsection{\ifbool{showTitleEmojis} {\emoji{rocket}\acvHeaderIconSep} {} Extracurricular Activities}}%
+	\vspace{\acvSectionContentTopSkip}
+	\begin{center}
+}{%
+	\end{center}
+	\vspace{-4.0mm}
+}
+
+% Define an entry of cv positions
+\newcommand*{\cvrole}[5]{%
+	\ifthenelse{\equal{fancy}{\cvNature}}{%
+		\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.0cm} R{4.0cm}}%
+			\entrytitlestyle{#1} & \entrylocationstyle{#3} \\
+			\positionorgstyle{#2} & \entrydatestyle{#4} \ifempty{#5} {} {\\
+			\multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}} }
+		\end{tabular*}%
+	}{%
+		\begin{tabular*}{\textwidth}{ R{\cvNatureLeftSidebar} @{\hspace{\cvNatureColumnInset}} L{\textwidth - \cvNatureLeftSidebar - \cvNatureColumnInset} }%
+			\multirow{3}{=}{ \raggedleft \ifbool{showCalEmojis} {\emoji{spiral-calendar}\acvHeaderIconSep} {} \cvStylesSimpleDate{#4}\newline \cvStylesSimpleLocation{#3}} & \cvStylesSimpleTitle{#2} \\
+			& \cvStylesSimpleOrganisation{#1} \\
+			& \cvStylesSimpleDescriptions{#5}
+		\end{tabular*}%
+	}%
+	\vspace{2.0mm}%
+}
+%-------------------------------------------------------------------------------
+
 % Define an environment for cvprojects
 \newenvironment{cvprojects}{%
 \vspace{\acvSectionContentTopSkip}
@@ -721,45 +756,6 @@ pdfkeywords={}
 \end{tabular*}
 \vspace{0.75mm}%
 }
-
-
-% Define an environment for cvpositions
-\newenvironment{cvpositions}{%
-\vspace{\acvSectionContentTopSkip}
-\begin{center}
-	}{%
-	\vspace{-4.0mm}
-\end{center}
-}
-
-% Define an entry of cv positions
-\newcommand*{\cvrole}[5]{%
-\vspace{-2.0mm}
-\setlength\tabcolsep{0pt}
-\setlength{\extrarowheight}{0pt}
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.0cm} R{4.0cm}}
-	\entrytitlestyle{#1} & \entrylocationstyle{#3} \\
-	\positionorgstyle{#2} & \entrydatestyle{#4} \ifempty{#5} {} {\\
-	\multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}} }
-\end{tabular*}
-%  \vspace{0.5mm}%
-}
-
-% Define an entry of cv positions for 2 positions at the same institute/organisation
-\newcommand*{\cvroletwo}[8]{%
-\vspace{-2.0mm}
-\setlength\tabcolsep{0pt}
-\setlength{\extrarowheight}{0pt}
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.0cm} R{4.0cm}}
-	\entrytitlestyle{#1} & \entrylocationstyle{#2} \\
-	\positionorgstyle{#3} & \entrydatestyle{#4} \ifempty{#5} {\\} {\\
-	\multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}} \\}
-	\positionorgstyle{#6} & \entrydatestyle{#7} \ifempty{#8} {} {\\
-	\multicolumn{2}{L{\textwidth}}{\descriptionstyle{#8}} }
-\end{tabular*}
-%  \vspace{0.5mm}%
-}
-
 
 %-------------------------------------------------------------------------------
 % Cover Letter elements
