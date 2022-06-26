@@ -127,7 +127,7 @@ pdfkeywords={}
 %-------------------------------------------------------------------------------
 % Language of the CV
 %% Either EN or DE
-\newcommand{\cvLang}{DE}
+\newcommand{\cvLang}{EN}
 
 % Nature of the CV
 %% Either simple or fancy
@@ -697,22 +697,34 @@ pdfkeywords={}
 	\vspace{-4.0mm}
 }
 
-% Entry for CV experience
-\newcommand*{\cvposition}[6]{%
+\newcommand{\cvExperienceTitle}[2]{%
+	\ifthenelse{\equal{DE}{#1}} {\def\@cvExperienceTitleDE{#2}} {\def\@cvExperienceTitleEN{#2}} }
+\newcommand{\cvExperienceSubtitle}[2]{%
+	\ifthenelse{\equal{DE}{#1}} {\def\@cvExperienceSubtitleDE{#2}} {\def\@cvExperienceSubtitleEN{#2}} }
+\newcommand{\cvExperienceLocation}[2]{%
+	\ifthenelse{\equal{DE}{#1}} {\def\@cvExperienceLocationDE{#2}} {\def\@cvExperienceLocationEN{#2}} }
+\newcommand{\cvExperienceDates}[2]{%
+	\ifthenelse{\equal{DE}{#1}} {\def\@cvExperienceDatesDE{#2}} {\def\@cvExperienceDatesEN{#2}} }
+\newcommand{\cvExperienceDescription}[2]{%
+	\ifthenelse{\equal{DE}{#1}} {\def\@cvExperienceDescriptionDE{#2}} {\def\@cvExperienceDescriptionEN{#2}} }
+\newcommand{\cvExperienceOrganisation}[2]{%
+	\ifthenelse{\equal{DE}{#1}} {\def\@cvExperienceOrganisationDE{#2}} {\def\@cvExperienceOrganisationEN{#2}} }
+
+\newcommand*{\cvExperienceFlush}{%
 	\ifthenelse{\equal{fancy}{\cvNature}}{%
 		\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.0cm} p{4.0cm}}%
-			\experiencepositionstyle{#1} & \ifempty{#3} {\multirow{1}{=}{\raggedleft \entrylocationstyle{#4}} \\
-			\entrytitlestyle{#2} & \multirow{1}{=}{\raggedleft \entrydatestyle{#5}} \\}
-			{\multirow[b]{2}{=}{\raggedleft \entrylocationstyle{#4}} \\
-			\entrytitlestyle{#2} & \\
-			\entrysubtitlestyle{#3} & \multirow{1}{=}{\raggedleft \entrydatestyle{#5}} \\}
-			\multicolumn{2}{L{\textwidth}}{\descriptionstyle{#6}}
+			\experiencepositionstyle{ \switchDE{\@cvExperienceTitleDE}{\@cvExperienceTitleEN} } & \ifempty{\@cvExperienceSubtitleDE} {\multirow{1}{=}{\raggedleft \entrylocationstyle{ \switchDE{\@cvExperienceLocationDE}{\@cvExperienceLocationEN} }} \\
+			\entrytitlestyle{ \switchDE{\@cvExperienceOrganisationDE}{\@cvExperienceOrganisationEN} } & \multirow{1}{=}{\raggedleft \entrydatestyle{ \switchDE{\@cvExperienceDatesDE}{\@cvExperienceDatesEN} }} \\}
+			{\multirow[b]{2}{=}{\raggedleft \entrylocationstyle{ \switchDE{\@cvExperienceLocationDE}{\@cvExperienceLocationEN} }} \\
+			\entrytitlestyle{ \switchDE{\@cvExperienceOrganisationDE}{\@cvExperienceOrganisationEN} } & \\
+			\entrysubtitlestyle{ \switchDE{\@cvExperienceSubtitleDE}{\@cvExperienceSubtitleEN} } & \multirow{1}{=}{\raggedleft \entrydatestyle{ \switchDE{\@cvExperienceDatesDE}{\@cvExperienceDatesEN} }} \\}
+			\multicolumn{2}{L{\textwidth}}{\descriptionstyle{ \switchDE{\@cvExperienceDescriptionDE}{\@cvExperienceDescriptionEN} }}
 		\end{tabular*}%
 	}{%
 		\begin{tabular*}{\textwidth}{ R{\cvNatureLeftSidebar} @{\hspace{\cvNatureColumnInset}} L{\textwidth - \cvNatureLeftSidebar - \cvNatureColumnInset} }%
-			\multirow{3}{=}{ \raggedleft \ifbool{showCalEmojis} {\emoji{spiral-calendar}\acvHeaderIconSep} {} \cvStylesSimpleDate{#5}\newline \cvStylesSimpleLocation{#4}} & \cvStylesSimpleTitle{#1} \\
-			& \cvStylesSimpleOrganisation{#2} \\
-			& \cvStylesSimpleDescriptions{#6}
+			\multirow{3}{=}{ \raggedleft \ifbool{showCalEmojis} {\emoji{spiral-calendar}\acvHeaderIconSep} {} \cvStylesSimpleDate{ \switchDE{\@cvExperienceDatesDE}{\@cvExperienceDatesEN} }\newline \cvStylesSimpleLocation{ \switchDE{\@cvExperienceLocationDE}{\@cvExperienceLocationEN} }} & \cvStylesSimpleTitle{ \switchDE{\@cvExperienceTitleDE}{\@cvExperienceTitleEN} } \\
+			& \cvStylesSimpleOrganisation{ \switchDE{\@cvExperienceOrganisationDE}{\@cvExperienceOrganisationEN} } \\
+			& \cvStylesSimpleDescriptions{ \switchDE{\@cvExperienceDescriptionDE}{\@cvExperienceDescriptionEN} }
 		\end{tabular*}%
 	}%
 	\vspace{2.0mm}%
