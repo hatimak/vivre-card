@@ -9,6 +9,8 @@
 %
 % TODO @hatimak:
 % 	license
+%	uniform spacing
+%	uniform text styling
 %
 
 
@@ -593,8 +595,8 @@ pdfkeywords={}
 
 % Entry for skill
 %% Usage: \cvskill{<type>}{<skillset>}
-\newcommand*{\cvskill}[2]{%
-	\skilltypestyle{#1} & \skillsetstyle{#2} \\
+\newcommand*{\cvskill}[3]{%
+	\ifthenelse{\equal{DE}{\cvLang}} {\skilltypestyle{#2}} {\skilltypestyle{#1}} & \skillsetstyle{#3} \\
 }
 %-------------------------------------------------------------------------------
 
