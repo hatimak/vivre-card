@@ -129,6 +129,10 @@ pdfkeywords={}
 %% Either EN or DE
 \newcommand{\cvLang}{DE}
 
+% Nature of the CV
+%% Either simple or fancy
+\newcommand{\cvNature}{simple}
+
 % Switch section color highlighting
 \newbool{acvSectionColorHighlight}
 \setbool{acvSectionColorHighlight}{true}
@@ -284,6 +288,18 @@ pdfkeywords={}
 \newcommand*{\letternamestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
 \newcommand*{\letterenclosurestyle}[1]{{\fontsize{10pt}{1em}\bodyfontlight\slshape\color{lighttext} #1}}
 
+% New styles
+%% TODO @hatimak: Create new styles and discard old ones
+%% Elements of the content of the CV, the data, the crux
+\newcommand*{\cvStylesSimpleDate}[1]{{\fontsize{9.5pt}{1em}\bodyfontlight\slshape\color{darktext} #1}}
+\newcommand*{\cvStylesSimpleLocation}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
+\newcommand*{\cvStylesSimpleTitle}[1]{{\fontsize{9.5pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
+\newcommand*{\cvStylesSimpleOrganisation}[1]{{\fontsize{9pt}{1em}\bodyfont\slshape\color{graytext} #1}}
+\newcommand*{\cvStylesSimpleSubtitle}[1]{{\fontsize{9pt}{1em}\bodyfont\slshape\color{lighttext} #1}}
+\newcommand*{\cvStylesSimpleDescriptions}[1]{{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text} #1}}
+
+%% Elements of the CV structure, meta-elements
+\newcommand*{\cvStylesSimpleSection}[1]{{\fontsize{16pt}{1em}\bodyfont\bfseries\scshape\color{text}#1}}
 
 %-------------------------------------------------------------------------------
 % Commands for personal information
@@ -381,7 +397,7 @@ pdfkeywords={}
 
 
 %-------------------------------------------------------------------------------
-% Helpers
+% Helpers TODO: @hatimak
 %-------------------------------------------------------------------------------
 %% Define helper macros a user can change easily
 % Header
@@ -397,6 +413,10 @@ pdfkeywords={}
 % Others
 \newcommand{\acvSectionTopSkip}{3mm}
 \newcommand{\acvSectionContentTopSkip}{2.5mm}
+
+% Simple Nature geometrical measurements
+\newcommand{\cvNatureLeftSidebar}{3.33cm}
+\newcommand{\cvNatureColumnInset}{1.0em}
 
 
 %-------------------------------------------------------------------------------
@@ -467,7 +487,7 @@ pdfkeywords={}
 			{\headerpositionstyle{\@position\\[\acvHeaderAfterPositionSkip]}}%
 		\ifthenelse{\isundefined{\@address}}%
 			{}%
-			{\headeraddressstyle{\@address\\[\acvHeaderAfterAddressSkip]}}%
+			{\ifbool{showEmojis} {\emoji{house-with-garden}\acvHeaderIconSep} {} \headeraddressstyle{\@address\\[\acvHeaderAfterAddressSkip]}}%
 		\headersocialstyle{%
 			\newbool{isstart}%
 			\setbool{isstart}{true}%
@@ -528,13 +548,12 @@ pdfkeywords={}
 }
 
 % Section, like Education, Experience
-%% TODO @hatimak: Make English and German versions
 %% Usage: \cvsection{<section-title>}
 \newcommand{\cvsection}[1]{%
 	\vspace{\acvSectionTopSkip}
-	\sectionstyle{#1}
+	\cvStylesSimpleSection{ \ifthenelse{\equal{fancy}{\cvNature}} {\@sectioncolor[#1]} {#1} }
 	\phantomsection
-	\color{awesome}\vhrulefill{0.9pt}
+	\ifthenelse{\equal{fancy}{\cvNature}} {\color{awesome}\vhrulefill{0.9pt}} {}
 }
 
 % Subsection
@@ -582,15 +601,12 @@ pdfkeywords={}
 		{\cvsection{\ifbool{showTitleEmojis} {\emoji{gem-stone}\acvHeaderIconSep} {} Kenntnisse}}%
 		{\cvsection{\ifbool{showTitleEmojis} {\emoji{gem-stone}\acvHeaderIconSep} {} Skills}}%
 	\vspace{\acvSectionContentTopSkip}
-	\vspace{-2.0mm}
 	\begin{center}
-		\setlength\tabcolsep{1ex}
-		\setlength{\extrarowheight}{0pt}
-		\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} R{3.0cm} L{\textwidth - 3.0cm}}
+		\begin{tabular*}{\textwidth}{ R{\cvNatureLeftSidebar} @{\hspace{\cvNatureColumnInset}} L{\textwidth - \cvNatureLeftSidebar - \cvNatureColumnInset} }
 }{%
 		\end{tabular*}
 	\end{center}
-	\vspace{-2mm}
+	\vspace{-4.0mm}
 }
 
 % Entry for skill
@@ -619,27 +635,32 @@ pdfkeywords={}
 	\ifthenelse{\equal{DE}{\cvLang}}%
 		{\cvsection{\ifbool{showTitleEmojis} {\emoji{classical-building}\acvHeaderIconSep} {} Ausbildung}}%
 		{\cvsection{\ifbool{showTitleEmojis} {\emoji{classical-building}\acvHeaderIconSep} {} Education}}%
-	\vspace{\acvSectionContentTopSkip}
-	\vspace{-2mm}
-	\begin{center}
-		\setlength\tabcolsep{0pt}
-		\setlength{\extrarowheight}{2.0pt}
-		\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 3.5cm} R{3.5cm}}
+	\vspace{\acvSectionContentTopSkip}%
+	\begin{center}%
 }{%
-		\end{tabular*}
-	\end{center}
-	\vspace{-4.0mm}
+	\end{center}%
+	\vspace{-4.0mm}%
 }
 
 % Entry for education section
 \newcommand*{\cvschool}[8]{%
-	\schoolinstitutionstyle{#3} & \schoollocationstyle{#4} \\[-2.0pt]
-
-	\ifempty{#7} {\experiencepositionstyle{#1} & \entrydatestyle{#5} \\[-2.0pt]
-	\entrysubtitlestyle{#2} & \ifbool{eduShowGrade}{\entrydatestyle{#6}}{} \\[-2.0pt]}
-	{\experiencepositionstyle{#1 #2} & \entrydatestyle{#5} \\[-2.0pt]
-	\entrysubtitlestyle{Thesis:} ``\entrysubtitlestyle{#7}'' & \ifbool{eduShowGrade}{\entrydatestyle{#6}}{} }\ifempty{#8} {\\[3.0pt]} {\\[-2.0pt]
-	\multicolumn{2}{L{\textwidth}}{\descriptionstyle{#8}} \\[3.0pt]}
+	\ifthenelse{\equal{fancy}{\cvNature}}{%
+		\begin{tabular*}{\textwidth}{ L{\textwidth - 3.5cm} R{3.5cm} }%
+			\schoolinstitutionstyle{#3} & \schoollocationstyle{#4} \\
+			\ifempty{#7} {\experiencepositionstyle{#1} & \entrydatestyle{#5} \\
+			\entrysubtitlestyle{#2} & \ifbool{eduShowGrade}{\entrydatestyle{#6}}{} \\}
+			{\experiencepositionstyle{#1 #2} & \entrydatestyle{#5} \\
+			\entrysubtitlestyle{Thesis:} ``\entrysubtitlestyle{#7}'' & \ifbool{eduShowGrade}{\entrydatestyle{#6}}{} }\ifempty{#8} {} {\\
+			\multicolumn{2}{L{\textwidth}}{\descriptionstyle{#8}} }
+		\end{tabular*}%
+	}{%
+		\begin{tabular*}{\textwidth}{ R{\cvNatureLeftSidebar} @{\hspace{\cvNatureColumnInset}} L{\textwidth - \cvNatureLeftSidebar - \cvNatureColumnInset} }%
+			\multirow{2}{=}{ \raggedleft \ifbool{showCalEmojis} {\emoji{spiral-calendar}\acvHeaderIconSep} {} \cvStylesSimpleDate{#5}\newline \cvStylesSimpleLocation{#4}} & \cvStylesSimpleTitle{#1 #2} \\
+			& \cvStylesSimpleOrganisation{#3} \ifbool{eduShowGrade} {\\
+			& \cvStylesSimpleSubtitle{\ifbool{showCalEmojis} {\emoji{graduation-cap}\acvHeaderIconSep} {} \ifthenelse{\equal{DE}{\cvLang}} {Abschlussnote} {Final Grade} #6}} {} \ifempty{#7} {} {\\
+			& \cvStylesSimpleDescriptions{#7}}%
+		\end{tabular*}%
+	}%
 }
 %-------------------------------------------------------------------------------
 
@@ -658,18 +679,23 @@ pdfkeywords={}
 
 % Entry for CV experience
 \newcommand*{\cvposition}[6]{%
-\vspace{-2.0mm}
-\setlength\tabcolsep{0pt}
-\setlength{\extrarowheight}{0pt}
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.0cm} p{4.0cm}}
-	\experiencepositionstyle{#1} & \ifempty{#3} {\multirow{1}{=}{\raggedleft \entrylocationstyle{#4}} \\
-	\entrytitlestyle{#2} & \multirow{1}{=}{\raggedleft \entrydatestyle{#5}} \\}
-	{\multirow[b]{2}{=}{\raggedleft \entrylocationstyle{#4}} \\
-	\entrytitlestyle{#2} & \\
-	\entrysubtitlestyle{#3} & \multirow{1}{=}{\raggedleft \entrydatestyle{#5}} \\}
-	\multicolumn{2}{L{\textwidth}}{\descriptionstyle{#6}}
-\end{tabular*}
-\vspace{0.75mm}%
+	\ifthenelse{\equal{fancy}{\cvNature}}{%
+		\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.0cm} p{4.0cm}}%
+			\experiencepositionstyle{#1} & \ifempty{#3} {\multirow{1}{=}{\raggedleft \entrylocationstyle{#4}} \\
+			\entrytitlestyle{#2} & \multirow{1}{=}{\raggedleft \entrydatestyle{#5}} \\}
+			{\multirow[b]{2}{=}{\raggedleft \entrylocationstyle{#4}} \\
+			\entrytitlestyle{#2} & \\
+			\entrysubtitlestyle{#3} & \multirow{1}{=}{\raggedleft \entrydatestyle{#5}} \\}
+			\multicolumn{2}{L{\textwidth}}{\descriptionstyle{#6}}
+		\end{tabular*}%
+	}{%
+		\begin{tabular*}{\textwidth}{ R{\cvNatureLeftSidebar} @{\hspace{\cvNatureColumnInset}} L{\textwidth - \cvNatureLeftSidebar - \cvNatureColumnInset} }%
+			\multirow{3}{=}{ \raggedleft \ifbool{showCalEmojis} {\emoji{spiral-calendar}\acvHeaderIconSep} {} \cvStylesSimpleDate{#5}\newline \cvStylesSimpleLocation{#4}} & \cvStylesSimpleTitle{#1} \\
+			& \cvStylesSimpleOrganisation{#2} \\
+			& \cvStylesSimpleDescriptions{#6}
+		\end{tabular*}%
+	}%
+	\vspace{2.0mm}%
 }
 %-------------------------------------------------------------------------------
 

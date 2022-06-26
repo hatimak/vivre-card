@@ -43,7 +43,7 @@
 \setbool{eduShowGrade}{true}
 
 % Set false if you don't want to have emojis
-\setbool{showEmojis}{true}
+\setbool{showEmojis}{false}
 \setbool{showTitleEmojis}{false}
 \setbool{showCalEmojis}{false}
 \setbool{showSkillSubEmojis}{false}
@@ -59,7 +59,7 @@
 \photo[circle,edge,right]{./profile}
 \name{Hatim}{Kanchwala}
 \position{born on 7\textsuperscript{th} February 1995 in Indore, India}
-\address{\ifbool{showEmojis} {\emoji{house-with-garden}\acvHeaderIconSep} {} Engelbertstr. 12, 52078 Aachen, Germany}
+\address{Engelbertstr. 12, 52078 Aachen, Germany}
 
 \mobile{+49 176 45 9995 53}
 \email{hatim@hatimak.me}
@@ -76,7 +76,7 @@
 
 % Print the header with above personal informations
 % Give optional argument to change alignment(C: center, L: left, R: right)
-\makecvheader
+\makecvheader[C]
 
 % Print the footer with 3 arguments(<left>, <center>, <right>)
 % Leave any of these blank if they are not needed
