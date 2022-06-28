@@ -58,8 +58,11 @@
 % Available options: circle|rectangle,edge/noedge,left/right
 \photo[circle,edge,right]{./profile}
 \name{Hatim}{Kanchwala}
-\position{born on 7\textsuperscript{th} February 1995 in Indore, India}
-\address{Engelbertstr. 12, 52078 Aachen, Germany}
+%\position{born on 7\textsuperscript{th} February 1995 in Indore, India}
+\birthdate{07}{02}{1995}
+\birthplace{EN}{Indore, India}
+\birthplace{DE}{Indore, Indien}
+\address{Engelbertstra{\ss}e 12, 52078 Aachen, Germany}
 
 \mobile{+49 176 45 9995 53}
 \email{hatim@hatimak.me}
@@ -81,14 +84,13 @@
 % Print the footer with 3 arguments(<left>, <center>, <right>)
 % Leave any of these blank if they are not needed
 \makecvfooter
-  {}
-  {Hatim Kanchwala~~~·~~~Curriculum Vitae}
-  {\thepage~/~\pageref{LastPage}}
-
+	{}
+	{Hatim Kanchwala~~~·~~~\switchDE{Lebenslauf}{Curriculum Vitae}}
+	{\thepage~/~\pageref{LastPage}}
 
 %-------------------------------------------------------------------------------
-%	CV CONTENT
-%	Each section is imported separately
+% CV CONTENT
+% Each section is imported separately
 %-------------------------------------------------------------------------------
 
 \input{cv/education.tex}
@@ -97,6 +99,7 @@
 %\input{cv/achievements.tex}
 \input{cv/skills.tex}
 \input{cv/positions.tex}
+\input{cv/references.tex}
 %-------------------------------------------------------------------------------
 
 \end{document}
