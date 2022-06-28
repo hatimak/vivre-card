@@ -9,8 +9,6 @@
 %
 % TODO @hatimak:
 % 	license
-%	uniform spacing
-%	uniform text styling
 %	birth date and place must be defined, no infrastructure in place to check if any of it is undefined
 %
 
@@ -665,6 +663,7 @@ pdfkeywords={}
 	\vspace{-4.0mm}
 		\begin{itemize}[leftmargin=3.33ex]
 			\setlength{\parskip}{0pt}
+			\setlength\itemsep{0.25em}
 			\renewcommand{\labelitemi}{\bullet}
 }{%
 		\end{itemize}

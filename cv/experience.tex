@@ -29,7 +29,7 @@
 	\begin{cvitems}
 		\item {Developed design using soft-core microprocessors to rapidly prototype control-loop algorithms for FPGA-based real-time simulators of power systems and to allow independent formulation of power system and control-loop models.}
 		\item {Introduced \textit{control} and \textit{data-logger} soft-cores, each based on MicroBlaze soft-core microprocessor from Xilinx and implemented on Xilinx Virtex Ultrascale+ VCU118 board, respectively dedicated to running control algorithms at switching frequency and logging simulation data at each time step.} 
-		\item {Conceptualised heterogenous architecture using multiple and dedicated soft-core microprocessors, enabling hierarchical control-loop systems and fine-grained administration of real-time simulation.}
+		\item {Konzipierte eine heterogene Architektur mit mehreren speziellen Soft-Core-Mikroprozessoren, die hierarchische Regelkreissysteme und eine detailliertere Verwaltung der Echtzeitsimulation erm{\"o}glicht.}
   		\item {Assembled final work product using combination of proprietary Xilinx IPs from Vivado IP Integrator, HLS modules of power systems generated from ORTiS, self-authored Verilog RTL modules and binaries for soft-core microprocessor using Xilinx SDK.}
 	\end{cvitems}%
 }
@@ -54,15 +54,17 @@
 
 \cvExperienceDescription{EN}{%
 	\begin{cvitems}
-		\item {Implemented power sytems models using open-source code-generation tool ORTiS targeted toward High-Level Synthesis for RTL co-simulation and real-time simulation on an FPGA. Extended HLS models with memory-mapped AXI4 register interface. Verified hardware models on Xilinx Virtex-7 VC707 FPGA board using remote debugging.}
+		\item {Implemented power sytems models using open-source code-generation tool ORTiS targeted toward High-Level Synthesis for RTL co-simulation and real-time simulation on an FPGA.}
+		\item {Extended HLS models with memory-mapped AXI4 register interface. Verified hardware models on Xilinx Virtex-7 VC707 FPGA board using remote debugging.}
   		\item {Developed Makefile pipeline on Linux for ORTiS code generation, Vivado High-Level Synthesis, Vivado IP Integrator and FPGA bitstream generation stages.}
 	\end{cvitems}%
 }
 %% TODO @hatimak: German descriptions
 \cvExperienceDescription{DE}{%
 	\begin{cvitems}
-		\item {Implemented power sytems models using open-source code-generation tool ORTiS targeted toward High-Level Synthesis for RTL co-simulation and real-time simulation on an FPGA. Extended HLS models with memory-mapped AXI4 register interface. Verified hardware models on Xilinx Virtex-7 VC707 FPGA board using remote debugging.}
-  		\item {Developed Makefile pipeline on Linux for ORTiS code generation, Vivado High-Level Synthesis, Vivado IP Integrator and FPGA bitstream generation stages.}
+		\item {Implementierte Stromnetzmodelle mit dem Open-Source-Code-Generierungstool ORTiS, das auf High-Level-Synthese f{\"u}r RTL-Co-simulation und Echtzeitsimulation auf einem FPGA ausgerichtet war.}
+		\item {Erweiterte HLS-Modelle mit memory-mapped AXI4-Register-Interface. Verifizierte Hardware-Modelle auf Xilinx Virtex-7 VC707 FPGA-Board mit Remote-Debugging.}
+  		\item {Entwickelte Makefile-Pipeline unter Linux für ORTiS-Code-Generierung, Vivado High-Level Synthesis, Vivado IP Integrator und FPGA-Bitstream-Generierung.}
 	\end{cvitems}%
 }
 
@@ -86,17 +88,18 @@
 
 \cvExperienceDescription{EN}{%
 	\begin{cvitems}
-		\item {Integrated Xilinx FPGA development boards into \href{https://villas.fein-aachen.org}{VILLAS} co-simulation platform by designing an architecture built on top of Aurora 8B/10B serial protocol from Xilinx, thereby providing a consistent interface between CPU, over PCIe, and real-time simulators, over physical fibre link.}
-		\item {Engineered Tcl-Makefile system of scripts to simplify file management of multiple source types and binary files and streamline project management using revision control systems. Developers could utilise system to collaborate on version-agnostic local toolchains and significantly reduce commit and check-out sizes.}
-		\item {Implemented memory-mapped AXI4 register interface wrapper around Aurora 8B/10B by extending corresponding Xilinx Baremetal drivers in C/C++.}
+		\item {Integrated Xilinx FPGA boards into \href{https://villas.fein-aachen.org}{VILLAS} co-simulation platform by designing an architecture built on top of Aurora 8B/10B serial protocol.}
+%		\item {Engineered Tcl-Makefile system of scripts to automate design generation and bitstream compilation. Developers could utilise system to collaborate on version-agnostic local toolchains and significantly reduce commit and check-out sizes.}
+		\item {Engineered Tcl-Makefile system of scripts to automate design generation and bitstream compilation.}
+		\item {Developed bare-metal driver programs in C/C++ for FPGA firmware.}
 	\end{cvitems}%
 }
-%% TODO @hatimak: German descriptions
 \cvExperienceDescription{DE}{%
 	\begin{cvitems}
-		\item {Integrated Xilinx FPGA development boards into \href{https://villas.fein-aachen.org}{VILLAS} co-simulation platform by designing an architecture built on top of Aurora 8B/10B serial protocol from Xilinx, thereby providing a consistent interface between CPU, over PCIe, and real-time simulators, over physical fibre link.}
-		\item {Engineered Tcl-Makefile system of scripts to simplify file management of multiple source types and binary files and streamline project management using revision control systems. Developers could utilise system to collaborate on version-agnostic local toolchains and significantly reduce commit and check-out sizes.}
-		\item {Implemented memory-mapped AXI4 register interface wrapper around Aurora 8B/10B by extending corresponding Xilinx Baremetal drivers in C/C++.}
+		\item {Integrierte Xilinx-FPGA-Boards in die VILLAS-Cosimulations-Plattform durch den Aufbau einer Architektur auf dem seriellen Aurora 8B/10B-Protokoll.}
+%		\item {Entwickelte ein Tcl-Makefile-System mit Skripten zur Automatisierung der Design-Generierung und Bitstream-Kompilierung. Entwickler k{\"o}nnten das System nutzen, um mit versionsunabhängigen lokalen Toolchains zu arbeiten und die Commit- und Checkout-Gr{\"o}{\ss}en erheblich zu reduzieren.}
+		\item {Entwickelte ein Tcl-Makefile-System mit Skripten zur Automatisierung der Design-Generierung und Bitstream-Kompilierung.}
+		\item {Entwickelte Bare-Metal-Driver-Programme in C/C++ f{\"u}r FPGA-Firmware.}
 	\end{cvitems}%
 }
 
