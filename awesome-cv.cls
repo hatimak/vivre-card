@@ -300,8 +300,8 @@ pdfkeywords={}
 \newcommand*{\cvStylesSimpleSubtitle}[1]{{\fontsize{9pt}{1em}\bodyfont\slshape\color{lighttext} #1}}
 \newcommand*{\cvStylesSimpleDescriptions}[1]{{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text} #1}}
 
-\newcommand*{\cvStylesSimpleHeaderMainData}[1]{{\fontsize{8pt}{1em}\bodyfontlight\slshape\color{text} #1}}
-\newcommand*{\cvStylesSimpleHeaderSupplementData}[1]{{\fontsize{8pt}{1em}\bodyfontlight\slshape\color{darktext} #1}}
+\newcommand*{\cvStylesSimpleHeaderMainData}[1]{{\fontsize{8pt}{1em}\bodyfontlight\upshape\color{text} #1}}
+\newcommand*{\cvStylesSimpleHeaderSupplementData}[1]{{\fontsize{8pt}{1em}\bodyfontlight\upshape\color{darktext} #1}}
 \newcommand*{\cvStylesSimpleHeaderField}[1]{{\fontsize{8pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
 
 \newcommand*{\cvStylesSimpleSection}[1]{{\fontsize{16pt}{1em}\bodyfont\bfseries\scshape\color{text}#1}}
@@ -343,7 +343,7 @@ pdfkeywords={}
 
 % Date of Birth
 %% Usage: \birthdate{<birth date>}{<birth month>}{<birth year>}
-\newcommand*{\birthdate}[3]{\def\@birthdate{#1}\def\@birthmonth{#2}\def\@birthyear{#3}}
+\newcommand*{\birthdate}[1]{\def\@birthdate{#1}}
 
 % Birth Place
 %% Usage: \birthplace{cvLang}{<birth place>}
@@ -546,10 +546,8 @@ pdfkeywords={}
 					\vspace{1.5mm}{%
 					\setlength{\tabcolsep}{0pt}
 					\setlength\extrarowheight{-3pt}
-					\begin{tabular}{r l}%
-						\ifthenelse{ \isundefined{\@birthdate} \AND \isundefined{\@birthplaceDE} }%
-							{}%
-							{ \cvStylesSimpleHeaderField{\switchDE{Geburtsdatum und -ort}{Birth date and place}:} & \cvStylesSimpleHeaderMainData{\switchDE{\@birthdate.\@birthmonth.\@birthyear}{\@birthdate-\@birthmonth-\@birthyear}, \switchDE{\@birthplaceDE}{\@birthplaceEN}} \\ }%
+					\begin{tabular}{ r l }%
+						\cvStylesSimpleHeaderField{\switchDE{Geburtsdatum}{Birth date}:}\space\space & \cvStylesSimpleHeaderMainData{\@birthdate} \\%
 						\ifthenelse{\isundefined{\@address}}%
 							{}%
 							{ \isFancy{\emoji{house-with-garden}}{\cvStylesSimpleHeaderField{\switchDE{Anschrift}{Address}:}} & \cvStylesSimpleHeaderMainData{\@address} \\ }%
