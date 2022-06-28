@@ -3548,7 +3548,7 @@ endef
 #
 # vim: noet sts=0 sw=8 ts=8
 
-# Additions by @hatimak
+# Additions by @hatimak, tested only on macOS with gsed installed
 vivre-card: cv.tex coverletter.tex awesome-cv.cls cv/education.tex cv/experience.tex cv/skills.tex cv/positions.tex cv/references.tex
 	lualatex cv.tex && lualatex cv.tex
 	mv cv.pdf cv\ de-de.pdf
