@@ -169,9 +169,9 @@ pdfkeywords={}
 % Gray-scale colors
 \definecolor{white}{HTML}{FFFFFF}
 \definecolor{black}{HTML}{000000}
-\definecolor{darkgray}{HTML}{363636}
-\definecolor{gray}{HTML}{616161}
-\definecolor{lightgray}{HTML}{999999}
+\definecolor{darkgray}{HTML}{393939}
+\definecolor{gray}{HTML}{696969}
+\definecolor{lightgray}{HTML}{9b9b9b}
 % Basic colors
 \definecolor{green}{HTML}{C2E15F}
 \definecolor{orange}{HTML}{FDA333}
@@ -179,8 +179,8 @@ pdfkeywords={}
 \definecolor{red}{HTML}{FB4485}
 \definecolor{blue}{HTML}{6CE0F1}
 % Text colors
-\definecolor{darktext}{HTML}{414141}
-\colorlet{text}{darkgray}
+\definecolor{darktext}{HTML}{474747}
+\definecolor{text}{HTML}{424242}
 \colorlet{graytext}{gray}
 \colorlet{lighttext}{lightgray}
 % Awesome colors
@@ -205,23 +205,6 @@ pdfkeywords={}
 %-------------------------------------------------------------------------------
 % Fonts
 %-------------------------------------------------------------------------------
-% Set font for header (default is Roboto)
-\newfontfamily\headerfont[
-	Path=\@fontdir,
-	UprightFont=*-Regular,
-	ItalicFont=*-Italic,
-	BoldFont=*-Bold,
-	BoldItalicFont=*-BoldItalic,
-]{Roboto}
-
-\newfontfamily\headerfontlight[
-	Path=\@fontdir,
-	UprightFont=*-Thin,
-	ItalicFont=*-ThinItalic,
-	BoldFont=*-Medium,
-	BoldItalicFont=*-MediumItalic,
-]{Roboto}
-
 \newcommand*{\footerfont}{\sourcesanspro}
 \newcommand*{\bodyfont}{\sourcesanspro}
 \newcommand*{\bodyfontlight}{\sourcesansprolight}
@@ -231,11 +214,11 @@ pdfkeywords={}
 %-------------------------------------------------------------------------------
 % Configure styles for each CV elements
 % For fundamental structures
-\newcommand*{\headerfirstnamestyle}[1]{{\fontsize{32pt}{1em}\headerfont\bfseries\color{text} #1}}
-\newcommand*{\headerlastnamestyle}[1]{{\fontsize{32pt}{1em}\headerfontlight\color{graytext} #1}}
+\newcommand*{\headerfirstnamestyle}[1]{{\fontsize{32pt}{1em}\bodyfont\bfseries\color{text} #1}}
+\newcommand*{\headerlastnamestyle}[1]{{\fontsize{32pt}{1em}\bodyfontlight\color{graytext} #1}}
 \newcommand*{\headerpositionstyle}[1]{{\fontsize{7.6pt}{1em}\bodyfont\scshape\color{awesome} #1}}
-\newcommand*{\headeraddressstyle}[1]{{\fontsize{8pt}{1em}\headerfont\itshape\color{lighttext} #1}}
-\newcommand*{\headersocialstyle}[1]{{\fontsize{6.8pt}{1em}\headerfont\color{text} #1}}
+\newcommand*{\headeraddressstyle}[1]{{\fontsize{8pt}{1em}\bodyfont\itshape\color{lighttext} #1}}
+\newcommand*{\headersocialstyle}[1]{{\fontsize{6.8pt}{1em}\bodyfont\color{text} #1}}
 \newcommand*{\headerquotestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\itshape\color{darktext} #1}}
 \newcommand*{\footerstyle}[1]{{\fontsize{8pt}{1em}\footerfont\scshape\color{lighttext} #1}}
 \newcommand*{\sectionstyle}[1]{{\fontsize{16pt}{1em}\bodyfont\bfseries\scshape\color{text}\@sectioncolor[#1]}}
@@ -293,18 +276,18 @@ pdfkeywords={}
 %-----------
 %% TODO @hatimak: Create new styles and discard old ones
 %% Elements of the content of the CV, the data, the crux
-\newcommand*{\cvStylesSimpleDate}[1]{{\fontsize{10pt}{1em}\bodyfontlight\slshape\color{darktext} #1}}
-\newcommand*{\cvStylesSimpleLocation}[1]{{\fontsize{9.25pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
-\newcommand*{\cvStylesSimpleTitle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
-\newcommand*{\cvStylesSimpleOrganisation}[1]{{\fontsize{9.25pt}{1em}\bodyfont\slshape\color{graytext} #1}}
-\newcommand*{\cvStylesSimpleSubtitle}[1]{{\fontsize{9pt}{1em}\bodyfont\slshape\color{lighttext} #1}}
-\newcommand*{\cvStylesSimpleDescriptions}[1]{{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text} #1}}
+\newcommand*{\cvStylesSimpleDate}[1]{{\fontsize{10.25pt}{1em}\bodyfontlight\slshape\color{darktext} #1}}
+\newcommand*{\cvStylesSimpleLocation}[1]{{\fontsize{9.5pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
+\newcommand*{\cvStylesSimpleTitle}[1]{{\fontsize{10.25pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
+\newcommand*{\cvStylesSimpleOrganisation}[1]{{\fontsize{9.5pt}{1em}\bodyfont\slshape\color{graytext} #1}}
+\newcommand*{\cvStylesSimpleSubtitle}[1]{{\fontsize{9.25pt}{1em}\bodyfont\slshape\color{lighttext} #1}}
+\newcommand*{\cvStylesSimpleDescriptions}[1]{{\fontsize{9.25pt}{1em}\bodyfontlight\upshape\color{text} #1}}
 
-\newcommand*{\cvStylesSimpleHeaderMainData}[1]{{\fontsize{8pt}{1em}\bodyfontlight\upshape\color{text} #1}}
-\newcommand*{\cvStylesSimpleHeaderSupplementData}[1]{{\fontsize{8pt}{1em}\bodyfontlight\upshape\color{darktext} #1}}
-\newcommand*{\cvStylesSimpleHeaderField}[1]{{\fontsize{8pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
+\newcommand*{\cvStylesSimpleHeaderMainData}[1]{{\fontsize{8.25pt}{1em}\bodyfontlight\upshape\color{text} #1}}
+\newcommand*{\cvStylesSimpleHeaderSupplementData}[1]{{\fontsize{8.25pt}{1em}\bodyfontlight\upshape\color{graytext} #1}}
+\newcommand*{\cvStylesSimpleHeaderField}[1]{{\fontsize{8.25pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
 
-\newcommand*{\cvStylesSimpleSection}[1]{{\fontsize{16pt}{1em}\bodyfont\bfseries\scshape\color{text}#1}}
+\newcommand*{\cvStylesSimpleSection}[1]{{\fontsize{16pt}{1em}\bodyfont\bfseries\color{text}#1}}
 
 %-------------------------------------------------------------------------------
 % Commands for personal information
@@ -469,7 +452,7 @@ pdfkeywords={}
 					{\setlength{\photodim}{1.2cm}}%
 					{\setlength{\photodim}{1.2cm}}%
 				\ifthenelse{\equal{\@photoedge}{edge}}%
-					{\def\@photoborder{awesome}}%
+					{\isFancy{\def\@photoborder{awesome}}{\def\@photoborder{darkgray}}}%
 					{\def\@photoborder{none}}%
 				\begin{tikzpicture}%
 					\node[\@photoshape, draw=\@photoborder, line width=0.9pt, inner sep=\photodim, fill overzoom image=\@photo] () {};
@@ -580,7 +563,7 @@ pdfkeywords={}
 				\end{center}
 			}%
 		\vspace{\acvHeaderAfterSocialSkip}
-		\isFancy{}{\noindent\centering\color{awesome}\rule{0.67\headertextwidth}{0.9pt}}
+		\isFancy{}{\noindent\centering\color{lightgray}\rule{0.67\headertextwidth}{0.9pt}}
 		\ifthenelse{\isundefined{\@quote}}%
 			{}{%
 			\headerquotestyle{\@quote\\}\vspace{\acvHeaderAfterQuoteSkip}}%
@@ -680,13 +663,11 @@ pdfkeywords={}
 % Environment for CV items, bullet list for description, particularly in the Experiences section
 \newenvironment{cvitems}{%
 	\vspace{-4.0mm}
-%	\begin{justify}
 		\begin{itemize}[leftmargin=3.33ex]
 			\setlength{\parskip}{0pt}
 			\renewcommand{\labelitemi}{\bullet}
 }{%
 		\end{itemize}
-%	\end{justify}
 	\vspace{-4.0mm}
 }
 
@@ -700,26 +681,24 @@ pdfkeywords={}
 	\begin{center}%
 }{%
 	\end{center}%
-	\vspace{2.0mm}%
+	\vspace{3.0mm}%
 	\vspace{-4.0mm}%
 }
 
 \newcommand{\cvEducationDegree}[2]{%
-	\ifthenelse{\equal{DE}{#1}} {\def\@cvEducationDegreeDE{#2}} {\def\@cvEducationDegreeEN{#2}} }
+	\switchDE {\def\@cvEducationDegreeDE{#2}} {\def\@cvEducationDegreeEN{#2}} }%
 \newcommand{\cvEducationDegreeName}[2]{%
-	\ifthenelse{\equal{DE}{#1}} {\def\@cvEducationDegreeNameDE{#2}} {\def\@cvEducationDegreeNameEN{#2}} }
+	\switchDE {\def\@cvEducationDegreeNameDE{#2}} {\def\@cvEducationDegreeNameEN{#2}} }%
 \newcommand{\cvEducationInstitution}[2]{%
-	\ifthenelse{\equal{DE}{#1}} {\def\@cvEducationInstitutionDE{#2}} {\def\@cvEducationInstitutionEN{#2}} }
+	\switchDE {\def\@cvEducationInstitutionDE{#2}} {\def\@cvEducationInstitutionEN{#2}} }%
 \newcommand{\cvEducationLocation}[2]{%
-	\ifthenelse{\equal{DE}{#1}} {\def\@cvEducationLocationDE{#2}} {\def\@cvEducationLocationEN{#2}} }
+	\switchDE {\def\@cvEducationLocationDE{#2}} {\def\@cvEducationLocationEN{#2}} }%
 \newcommand{\cvEducationDescription}[2]{%
-	\ifthenelse{\equal{DE}{#1}} {\def\@cvEducationDescriptionDE{#2}} {\def\@cvEducationDescriptionEN{#2}} }
+	\switchDE {\def\@cvEducationDescriptionDE{#2}} {\def\@cvEducationDescriptionEN{#2}} }%
 \newcommand{\cvEducationDates}[2]{%
-	\ifthenelse{\equal{DE}{#1}} {\def\@cvEducationDatesDE{#2}} {\def\@cvEducationDatesEN{#2}} }
+	\switchDE {\def\@cvEducationDatesDE{#2}} {\def\@cvEducationDatesEN{#2}} }%
 \newcommand{\cvEducationGrade}[2]{%
-	\def\@cvEducationGradeDE{#2}%
-	\def\@cvEducationGradeEN{#2}%
-}
+	\switchDE {\def\@cvEducationGradeDE{#2}} {\def\@cvEducationGradeEN{#2}} }%
 
 % Entry for education section
 \newcommand*{\cvSchoolFlush}{%
@@ -727,16 +706,17 @@ pdfkeywords={}
 		\begin{tabular*}{\textwidth}{ L{\textwidth - 3.5cm} R{3.5cm} }%
 			\schoolinstitutionstyle{ \switchDE{\@cvEducationInstitutionDE}{\@cvEducationInstitutionEN} } & \schoollocationstyle{ \switchDE{\@cvEducationLocationDE}{\@cvEducationLocationEN} } \\
 			\experiencepositionstyle{ \switchDE{\@cvEducationDegreeDE \@cvEducationDegreeNameDE}{\@cvEducationDegreeEN\space\@cvEducationDegreeNameEN} } & \entrydatestyle{ \switchDE{\@cvEducationDatesDE}{\@cvEducationDatesEN} } \\
-			\ifempty{\@cvEducationGradeDE} {} {\entrydatestyle{ \switchDE{Abschlussnote}{Final Grade} \@cvEducationGradeDE } & \\}
+			\ifempty{\@cvEducationGradeDE} {} {\entrydatestyle{ \switchDE{Abschlussnote}{Final Grade} \switchDE{\@cvEducationGradeDE}{\@cvEducationGradeEN} } & \\}
 			\multicolumn{2}{L{\textwidth}}{\descriptionstyle{ \switchDE{\@cvEducationDescriptionDE}{\@cvEducationDescriptionEN} }}
 		\end{tabular*}%
 	}{%
 		\begin{tabular*}{\textwidth}{ R{\cvNatureLeftSidebar} @{\hspace{\cvNatureColumnInset}} L{\textwidth - \cvNatureLeftSidebar - \cvNatureColumnInset} }%
 			\multirow{2}{=}{ \raggedleft \ifbool{showCalEmojis} {\emoji{spiral-calendar}\acvHeaderIconSep} {} \cvStylesSimpleDate{ \switchDE{\@cvEducationDatesDE}{\@cvEducationDatesEN} }\newline \cvStylesSimpleLocation{ \switchDE{\@cvEducationLocationDE}{\@cvEducationLocationEN} }} & \cvStylesSimpleTitle{ \switchDE{\@cvEducationDegreeDE\space\@cvEducationDegreeNameDE}{\@cvEducationDegreeEN \@cvEducationDegreeNameEN} } \\
 			& \cvStylesSimpleOrganisation{ \switchDE{\@cvEducationInstitutionDE}{\@cvEducationInstitutionEN} } \ifempty{\@cvEducationGradeDE} {} {\\
-			& \cvStylesSimpleSubtitle{\ifbool{showCalEmojis} {\emoji{graduation-cap}\acvHeaderIconSep} {} \switchDE{Abschlussnote}{Final Grade} \@cvEducationGradeDE}} \ifempty{\@cvEducationDescriptionDE} {} {\\
+			& \cvStylesSimpleSubtitle{\ifbool{showCalEmojis} {\emoji{graduation-cap}\acvHeaderIconSep} {} \switchDE{Abschlussnote}{Final Grade} \switchDE{\@cvEducationGradeDE}{\@cvEducationGradeEN}}} \ifempty{\@cvEducationDescriptionDE} {} {\\
 			& \cvStylesSimpleDescriptions{ \switchDE{\@cvEducationDescriptionDE}{\@cvEducationDescriptionEN} }}%
 		\end{tabular*}%
+		\vspace{-1.0mm}%
 	}%
 }
 %-------------------------------------------------------------------------------
@@ -791,7 +771,7 @@ pdfkeywords={}
 	\begin{center}
 }{%
 	\end{center}
-	\vspace{-4.0mm}
+	\vspace{-3.0mm}
 }
 
 \newcommand{\cvExperienceTitle}[2]{%
@@ -824,7 +804,7 @@ pdfkeywords={}
 			& \cvStylesSimpleDescriptions{ \switchDE{\@cvExperienceDescriptionDE}{\@cvExperienceDescriptionEN} }
 		\end{tabular*}%
 	}%
-	\vspace{2.0mm}%
+	\vspace{-1.0mm}%
 }
 %-------------------------------------------------------------------------------
 

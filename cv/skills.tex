@@ -21,7 +21,16 @@
 \cvskill
 	{Languages\ifbool{showSkillSubEmojis} {\acvHeaderIconSep\emoji{speaker-high-volume}} {}} % Category in EN
 	{Sprachen\ifbool{showSkillSubEmojis} {\acvHeaderIconSep\emoji{speaker-high-volume}} {}} % Category in DE
-	{English (\textit{TOEFL 114/120}), Deutsch (\textit{B1}), Hindi (\textit{native})} % Skills
+%	{English (\textit{TOEFL 114/120})\newline Deutsch (\textit{B1})\newline Hindi (\textit{native})} % Skills
+	{%
+%		\setlength{\tabcolsep}{10pt}
+		\setlength\extrarowheight{0.33pt}
+		\begin{tabular}{l l l l l}%
+			English & \cvStylesSimpleHeaderField{Hearing} C2 & \cvStylesSimpleHeaderField{Reading} C2 & \cvStylesSimpleHeaderField{Speaking} C2 & \cvStylesSimpleHeaderField{Writing} C2 \\
+			Deutsch & \cvStylesSimpleHeaderField{H{\"o}ren} B1 & \cvStylesSimpleHeaderField{Lesen} B2 & \cvStylesSimpleHeaderField{Sprechen} B1 & \cvStylesSimpleHeaderField{Schreiben} B1 \\
+			Hindi & \cvStylesSimpleHeaderSupplementData{\switchDE{Muttersprache}{native}} & & & \\
+		\end{tabular}%
+	}
 %---------------------------------------------------------
 
 \end{cvskills}
