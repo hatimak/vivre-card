@@ -70,7 +70,11 @@
 % Needed to use icons from font-awesome
 % (https://github.com/posquit0/latex-fontawesome)
 \RequirePackage{fontawesome}
-\RequirePackage[default,opentype]{sourcesanspro}
+%\RequirePackage[default,opentype]{sourcesanspro}
+\RequirePackage{lmodern}
+\renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
+\RequirePackage[T1]{fontenc}
+
 % Needed for the photo ID
 \RequirePackage[skins]{tcolorbox}
 
@@ -169,7 +173,7 @@ pdfkeywords={}
 \definecolor{black}{HTML}{000000}
 \definecolor{darkgray}{HTML}{393939}
 \definecolor{gray}{HTML}{696969}
-\definecolor{lightgray}{HTML}{9b9b9b}
+\definecolor{lightgray}{HTML}{9e9e9e}
 % Basic colors
 \definecolor{green}{HTML}{C2E15F}
 \definecolor{orange}{HTML}{FDA333}
@@ -201,91 +205,84 @@ pdfkeywords={}
 
 
 %-------------------------------------------------------------------------------
-% Fonts
-%-------------------------------------------------------------------------------
-\newcommand*{\footerfont}{\sourcesanspro}
-\newcommand*{\bodyfont}{\sourcesanspro}
-\newcommand*{\bodyfontlight}{\sourcesansprolight}
-
-%-------------------------------------------------------------------------------
 % Styles TODO @hatimak
 %-------------------------------------------------------------------------------
 % Configure styles for each CV elements
 % For fundamental structures
-\newcommand*{\headerfirstnamestyle}[1]{{\fontsize{32pt}{1em}\bodyfont\bfseries\color{text} #1}}
-\newcommand*{\headerlastnamestyle}[1]{{\fontsize{32pt}{1em}\bodyfontlight\color{graytext} #1}}
-\newcommand*{\headerpositionstyle}[1]{{\fontsize{7.6pt}{1em}\bodyfont\scshape\color{awesome} #1}}
-\newcommand*{\headeraddressstyle}[1]{{\fontsize{8pt}{1em}\bodyfont\itshape\color{lighttext} #1}}
-\newcommand*{\headersocialstyle}[1]{{\fontsize{6.8pt}{1em}\bodyfont\color{text} #1}}
-\newcommand*{\headerquotestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\itshape\color{darktext} #1}}
-\newcommand*{\footerstyle}[1]{{\fontsize{8pt}{1em}\footerfont\scshape\color{lighttext} #1}}
-\newcommand*{\sectionstyle}[1]{{\fontsize{16pt}{1em}\bodyfont\bfseries\scshape\color{text}\@sectioncolor[#1]}}
-\newcommand*{\subsectionstyle}[1]{{\fontsize{12pt}{1em}\bodyfont\scshape\textcolor{text}{#1}}}
-\newcommand*{\paragraphstyle}{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text}}
+\newcommand*{\headerfirstnamestyle}[1]{{\fontsize{32pt}{1em}\bfseries\color{text} #1}}
+\newcommand*{\headerlastnamestyle}[1]{{\fontsize{32pt}{1em}\normalfont\color{graytext} #1}}
+\newcommand*{\headerpositionstyle}[1]{{\fontsize{7.6pt}{1em}\scshape\color{awesome} #1}}
+\newcommand*{\headeraddressstyle}[1]{{\fontsize{8pt}{1em}\itshape\color{lighttext} #1}}
+\newcommand*{\headersocialstyle}[1]{{\fontsize{6.8pt}{1em}\color{text} #1}}
+\newcommand*{\headerquotestyle}[1]{{\fontsize{9pt}{1em}\itshape\color{darktext} #1}}
+\newcommand*{\footerstyle}[1]{{\fontsize{8pt}{1em}\scshape\color{lighttext} #1}}
+\newcommand*{\sectionstyle}[1]{{\fontsize{16pt}{1em}\bfseries\scshape\color{text}\@sectioncolor[#1]}}
+\newcommand*{\subsectionstyle}[1]{{\fontsize{12pt}{1em}\scshape\textcolor{text}{#1}}}
+\newcommand*{\paragraphstyle}{\fontsize{9pt}{1em}\upshape\color{text}}
 
 % For elements of entry
-\newcommand*{\entrytitlestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
-\newcommand*{\entrypositionstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\slshape\color{graytext} #1}}
-\newcommand*{\entrydatestyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
-\newcommand*{\entrylocationstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
-\newcommand*{\descriptionstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text} #1}}
+\newcommand*{\entrytitlestyle}[1]{{\fontsize{10pt}{1em}\bfseries\color{darktext} #1}}
+\newcommand*{\entrypositionstyle}[1]{{\fontsize{9pt}{1em}\slshape\color{graytext} #1}}
+\newcommand*{\entrydatestyle}[1]{{\fontsize{9pt}{1em}\slshape\color{graytext} #1}}
+\newcommand*{\entrylocationstyle}[1]{{\fontsize{9pt}{1em}\slshape\color{awesome} #1}}
+\newcommand*{\descriptionstyle}[1]{{\fontsize{9pt}{1em}\upshape\color{text} #1}}
 
-\newcommand*{\experiencepositionstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\scshape\color{awesome} #1}}
-\newcommand*{\entrysubtitlestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\slshape\color{graytext} #1}}
+\newcommand*{\experiencepositionstyle}[1]{{\fontsize{9pt}{1em}\scshape\color{awesome} #1}}
+\newcommand*{\entrysubtitlestyle}[1]{{\fontsize{9pt}{1em}\slshape\color{graytext} #1}}
 
-\newcommand*{\positionorgstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\slshape\color{awesome} #1}}
+\newcommand*{\positionorgstyle}[1]{{\fontsize{9pt}{1em}\slshape\color{awesome} #1}}
 
 % For elements of subentry
-\newcommand*{\subentrytitlestyle}[1]{{\fontsize{8pt}{1em}\bodyfont\mdseries\color{graytext} #1}}
-\newcommand*{\subentrypositionstyle}[1]{{\fontsize{7pt}{1em}\bodyfont\scshape\color{graytext} #1}}
-\newcommand*{\subentrydatestyle}[1]{{\fontsize{7pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
-\newcommand*{\subentrylocationstyle}[1]{{\fontsize{7pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
-\newcommand*{\subdescriptionstyle}[1]{{\fontsize{8pt}{1em}\bodyfontlight\upshape\color{text} #1}}
+\newcommand*{\subentrytitlestyle}[1]{{\fontsize{8pt}{1em}\mdseries\color{graytext} #1}}
+\newcommand*{\subentrypositionstyle}[1]{{\fontsize{7pt}{1em}\scshape\color{graytext} #1}}
+\newcommand*{\subentrydatestyle}[1]{{\fontsize{7pt}{1em}\slshape\color{graytext} #1}}
+\newcommand*{\subentrylocationstyle}[1]{{\fontsize{7pt}{1em}\slshape\color{awesome} #1}}
+\newcommand*{\subdescriptionstyle}[1]{{\fontsize{8pt}{1em}\upshape\color{text} #1}}
 
 % For elements of honor
-\newcommand*{\honortitlestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\color{graytext} #1}}
-\newcommand*{\honorpositionstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
-\newcommand*{\honordatestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\slshape\color{graytext} #1}}
-\newcommand*{\honorlocationstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
+\newcommand*{\honortitlestyle}[1]{{\fontsize{9pt}{1em}\color{graytext} #1}}
+\newcommand*{\honorpositionstyle}[1]{{\fontsize{9pt}{1em}\bfseries\color{darktext} #1}}
+\newcommand*{\honordatestyle}[1]{{\fontsize{9pt}{1em}\slshape\color{graytext} #1}}
+\newcommand*{\honorlocationstyle}[1]{{\fontsize{9pt}{1em}\slshape\color{awesome} #1}}
 
 % For elements of skill
-\newcommand*{\skilltypestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
-\newcommand*{\skillsetstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\color{text} #1}}
+\newcommand*{\skilltypestyle}[1]{{\fontsize{10pt}{1em}\bfseries\color{darktext} #1}}
+\newcommand*{\skillsetstyle}[1]{{\fontsize{9pt}{1em}\color{text} #1}}
 
 % For elements of school
-\newcommand*{\schooldatestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\slshape\color{graytext} #1}}
-\newcommand*{\schoolinstitutionstyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
-\newcommand*{\degreetitlestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\slshape\color{awesome} #1}}
-\newcommand*{\schooldegreestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\scshape\color{graytext} #1}}
-\newcommand*{\schoolscorestyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\color{text} #1}}
-\newcommand*{\schoollocationstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
+\newcommand*{\schooldatestyle}[1]{{\fontsize{9pt}{1em}\slshape\color{graytext} #1}}
+\newcommand*{\schoolinstitutionstyle}[1]{{\fontsize{10pt}{1em}\bfseries\color{darktext} #1}}
+\newcommand*{\degreetitlestyle}[1]{{\fontsize{9pt}{1em}\slshape\color{awesome} #1}}
+\newcommand*{\schooldegreestyle}[1]{{\fontsize{9pt}{1em}\scshape\color{graytext} #1}}
+\newcommand*{\schoolscorestyle}[1]{{\fontsize{9pt}{1em}\color{text} #1}}
+\newcommand*{\schoollocationstyle}[1]{{\fontsize{9pt}{1em}\slshape\color{awesome} #1}}
 
 % For elements of the cover letter
-\newcommand*{\lettersectionstyle}[1]{{\fontsize{14pt}{1em}\bodyfont\bfseries\color{text}\@sectioncolor[#1]}}
-\newcommand*{\recipientaddressstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\scshape\color{graytext} #1}}
-\newcommand*{\recipienttitlestyle}[1]{{\fontsize{11pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
-\newcommand*{\lettertitlestyle}[1]{{\fontsize{10pt}{1em}\bodyfontlight\bfseries\color{darktext} \underline{#1}}}
-\newcommand*{\letterdatestyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
-\newcommand*{\lettertextstyle}{\fontsize{10pt}{1.4em}\bodyfontlight\upshape\color{graytext}}
-\newcommand*{\letternamestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
-\newcommand*{\letterenclosurestyle}[1]{{\fontsize{10pt}{1em}\bodyfontlight\slshape\color{lighttext} #1}}
+\newcommand*{\lettersectionstyle}[1]{{\fontsize{14pt}{1em}\bfseries\color{text}\@sectioncolor[#1]}}
+\newcommand*{\recipientaddressstyle}[1]{{\fontsize{9pt}{1em}\scshape\color{graytext} #1}}
+\newcommand*{\recipienttitlestyle}[1]{{\fontsize{11pt}{1em}\bfseries\color{darktext} #1}}
+\newcommand*{\lettertitlestyle}[1]{{\fontsize{10pt}{1em}\bfseries\color{darktext} \underline{#1}}}
+\newcommand*{\letterdatestyle}[1]{{\fontsize{9pt}{1em}\slshape\color{graytext} #1}}
+\newcommand*{\lettertextstyle}{\fontsize{10pt}{1.4em}\upshape\color{graytext}}
+\newcommand*{\letternamestyle}[1]{{\fontsize{10pt}{1em}\bfseries\color{darktext} #1}}
+\newcommand*{\letterenclosurestyle}[1]{{\fontsize{10pt}{1em}\slshape\color{lighttext} #1}}
 
 % New styles
 %-----------
 %% TODO @hatimak: Create new styles and discard old ones
 %% Elements of the content of the CV, the data, the crux
-\newcommand*{\cvStylesSimpleDate}[1]{{\fontsize{10.25pt}{1em}\bodyfontlight\slshape\color{darktext} #1}}
-\newcommand*{\cvStylesSimpleLocation}[1]{{\fontsize{9.5pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
-\newcommand*{\cvStylesSimpleTitle}[1]{{\fontsize{10.25pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
-\newcommand*{\cvStylesSimpleOrganisation}[1]{{\fontsize{9.5pt}{1em}\bodyfont\slshape\color{graytext} #1}}
-\newcommand*{\cvStylesSimpleSubtitle}[1]{{\fontsize{9.25pt}{1em}\bodyfont\slshape\color{lighttext} #1}}
-\newcommand*{\cvStylesSimpleDescriptions}[1]{{\fontsize{9.25pt}{1em}\bodyfontlight\upshape\color{text} #1}}
+\newcommand*{\cvStylesSimpleDate}[1]{{\fontsize{10.25pt}{1em}\slshape\color{darktext} #1}}
+\newcommand*{\cvStylesSimpleLocation}[1]{{\fontsize{9.5pt}{1em}\slshape\color{graytext} #1}}
+\newcommand*{\cvStylesSimpleTitle}[1]{{\fontsize{10.25pt}{1em}\bfseries\color{darktext} #1}}
+\newcommand*{\cvStylesSimpleOrganisation}[1]{{\fontsize{9.5pt}{1em}\slshape\color{graytext} #1}}
+\newcommand*{\cvStylesSimpleSubtitle}[1]{{\fontsize{9.25pt}{1em}\slshape\color{lighttext} #1}}
+\newcommand*{\cvStylesSimpleDescriptions}[1]{{\fontsize{9.25pt}{1em}\upshape\color{text} #1}}
 
-\newcommand*{\cvStylesSimpleHeaderMainData}[1]{{\fontsize{8.25pt}{1em}\bodyfontlight\upshape\color{text} #1}}
-\newcommand*{\cvStylesSimpleHeaderSupplementData}[1]{{\fontsize{8.25pt}{1em}\bodyfontlight\upshape\color{graytext} #1}}
-\newcommand*{\cvStylesSimpleHeaderField}[1]{{\fontsize{8.25pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
+\newcommand*{\cvStylesSimpleHeaderMainData}[1]{{\fontsize{8.25pt}{1em}\upshape\color{text} #1}}
+\newcommand*{\cvStylesSimpleHeaderSupplementData}[1]{{\fontsize{8.25pt}{1em}\upshape\color{graytext} #1}}
+\newcommand*{\cvStylesSimpleHeaderField}[1]{{\fontsize{8.25pt}{1em}\slshape\color{graytext} #1}}
 
-\newcommand*{\cvStylesSimpleSection}[1]{{\fontsize{16pt}{1em}\bodyfont\bfseries\color{text}#1}}
+\newcommand*{\cvStylesSimpleSection}[1]{{\fontsize{16pt}{1em}\bfseries\color{text}#1}}
 
 %-------------------------------------------------------------------------------
 % Commands for personal information
@@ -408,8 +405,8 @@ pdfkeywords={}
 \newcommand{\acvSectionContentTopSkip}{0.0mm}
 
 % Simple Nature geometrical measurements
-\newcommand{\cvNatureLeftSidebar}{3.50cm}
-\newcommand{\cvNatureColumnInset}{1.0em}
+\newcommand{\cvNatureLeftSidebar}{4.0cm}
+\newcommand{\cvNatureColumnInset}{0.75em}
 
 
 %-------------------------------------------------------------------------------
@@ -664,7 +661,7 @@ pdfkeywords={}
 		\begin{itemize}[leftmargin=3.33ex]
 			\setlength{\parskip}{0pt}
 			\setlength\itemsep{0.25em}
-			\renewcommand{\labelitemi}{\bullet}
+%			\renewcommand{\labelitemi}{\bullet}
 }{%
 		\end{itemize}
 	\vspace{-4.0mm}
