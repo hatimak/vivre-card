@@ -3551,10 +3551,18 @@ endef
 # Additions by @hatimak, tested only on macOS with gsed installed
 vivre-card: cv.tex coverletter.tex awesome-cv.cls cv/education.tex cv/experience.tex cv/skills.tex cv/positions.tex cv/references.tex
 	lualatex cv.tex && lualatex cv.tex
-	mv cv.pdf cv\ de-de.pdf
+	mv cv.pdf cv\ de-de\ online.pdf
+	gsed -i 's/\\setbool{showEmojis}{false}/\\setbool{showEmojis}{true}/g' cv.tex
+	lualatex cv.tex && lualatex cv.tex
+	mv cv.pdf cv\ de-de\ handout.pdf
+
 	gsed -i 's/\\newcommand{\\cvLang}{DE}/\\newcommand{\\cvLang}{EN}/g' awesome-cv.cls
 	lualatex cv.tex && lualatex cv.tex
-	mv cv.pdf cv\ en-de.pdf
+	mv cv.pdf cv\ en-de\ handout.pdf
+	gsed -i 's/\\setbool{showEmojis}{true}/\\setbool{showEmojis}{false}/g' cv.tex
+	lualatex cv.tex && lualatex cv.tex
+	mv cv.pdf cv\ en-de\ online.pdf
+
 	gsed -i 's/\\newcommand{\\cvLang}{EN}/\\newcommand{\\cvLang}{DE}/g' awesome-cv.cls
 #	lualatex coverletter.tex && lualatex coverletter.tex
 	$(MAKE) clean

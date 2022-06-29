@@ -173,7 +173,7 @@ pdfkeywords={}
 \definecolor{black}{HTML}{000000}
 \definecolor{darkgray}{HTML}{393939}
 \definecolor{gray}{HTML}{696969}
-\definecolor{lightgray}{HTML}{acacac}
+\definecolor{lightgray}{HTML}{909090}
 % Basic colors
 \definecolor{green}{HTML}{C2E15F}
 \definecolor{orange}{HTML}{FDA333}
@@ -500,34 +500,34 @@ pdfkeywords={}
 					\setlength{\tabcolsep}{0pt}
 					\setlength\extrarowheight{-3pt}
 					\begin{tabular}{ r l }%
-						\cvStylesSimpleHeaderField{\switchDE{Geburtsdatum}{Birth date}:}\space\space & \cvStylesSimpleHeaderMainData{\@birthdate} \\%
+						\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\emoji{birthday-cake}\space}{\switchDE{Geburtsdatum:}{Birth date:}{}}} & \cvStylesSimpleHeaderMainData{\@birthdate} \\%
 						\ifthenelse{\isundefined{\@address}}%
-							{}%
-							{ \isFancy{\emoji{house-with-garden}}{\cvStylesSimpleHeaderField{\switchDE{Anschrift}{Address}:}} & \cvStylesSimpleHeaderMainData{\@address} \\ }%
+							{}{%
+							\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\emoji{house-with-garden}\space}{\switchDE{Anschrift:}{Address:}{}}} & \cvStylesSimpleHeaderMainData{\@address} \\ }%
 						\ifthenelse{\isundefined{\@mobile}}%
 							{}{%
-							\isFancy{\emoji{mobile-phone}}{\cvStylesSimpleHeaderField{\switchDE{Telefon}{Phone}:}} & \cvStylesSimpleHeaderMainData{\@mobile} \\ }%
+							\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\emoji{mobile-phone}\space}{\switchDE{Telefon:}{Phone:}{}}} & \cvStylesSimpleHeaderMainData{\@mobile} \\ }%
 						\ifthenelse{\isundefined{\@email}}%
 							{}{%
-							\isFancy{\emoji{envelope}}{\cvStylesSimpleHeaderField{Email:}}  & \cvStylesSimpleHeaderMainData{\href{mailto:\@email}{\@email}} \\ }%
+							\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\emoji{envelope}\space}{\switchDE{Email:}{Email:}{}}} & \cvStylesSimpleHeaderMainData{\href{mailto:\@email}{\@email}} \\ }%
 						\ifthenelse{\isundefined{\@homepage}}%
 							{}{%
-							\isFancy{\emoji{globe-with-meridians}}{\cvStylesSimpleHeaderField{\switchDE{Homepage}{Home page}:}} & \cvStylesSimpleHeaderMainData{\href{https://\@homepage}{\cvStylesSimpleHeaderSupplementData{https://}\@homepage}} \\ }%
+							\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\emoji{globe-with-meridians}\space}{\switchDE{Homepage:}{Home page:}{}}} & \cvStylesSimpleHeaderMainData{\href{https://\@homepage}{\cvStylesSimpleHeaderSupplementData{https://}\@homepage}} \\ }%
 						\ifthenelse{\isundefined{\@github}}%
 							{}{%
-							\isFancy{\faGithubSquare}{\cvStylesSimpleHeaderField{GitHub:}} & \cvStylesSimpleHeaderMainData{\href{https://github.com/\@github}{\cvStylesSimpleHeaderSupplementData{https://github.com/}\@github}} \\ }%
+							\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\faGithubSquare\space}{\switchDE{GitHub:}{GitHub:}{}}} & \cvStylesSimpleHeaderMainData{\href{https://github.com/\@github}{\cvStylesSimpleHeaderSupplementData{https://github.com/}\@github}} \\ }%
 						\ifthenelse{\isundefined{\@gitlab}}%
 							{}{%
-							\isFancy{\faGitlab}{\cvStylesSimpleHeaderField{GitLab:}} & \cvStylesSimpleHeaderMainData{\href{https://gitlab.com/\@gitlab}{\cvStylesSimpleHeaderSupplementData{https://gitlab.com/}\@gitlab}} \\ }%
+							\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\faGitlab\space}{\switchDE{GitLab:}{GitLab:}{}}} & \cvStylesSimpleHeaderMainData{\href{https://gitlab.com/\@gitlab}{\cvStylesSimpleHeaderSupplementData{https://gitlab.com/}\@gitlab}} \\ }%
 						\ifthenelse{\isundefined{\@linkedin}}%
 							{}{%
-							\isFancy{\faLinkedinSquare}{\cvStylesSimpleHeaderField{LinkedIn:}} & \cvStylesSimpleHeaderMainData{\href{https://www.linkedin.com/in/\@linkedin}{\cvStylesSimpleHeaderSupplementData{https://www.linkedin.com/in/}\@linkedin}} \\ }%
+							\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\faLinkedinSquare\space}{\switchDE{LinkedIn:}{LinkedIn:}{}}} & \cvStylesSimpleHeaderMainData{\href{https://www.linkedin.com/in/\@linkedin}{\cvStylesSimpleHeaderSupplementData{https://www.linkedin.com/in/}\@linkedin}} \\ }%
 						\ifthenelse{\isundefined{\@twitter}}%
 							{}{%
-							\isFancy{\faTwitter}{\cvStylesSimpleHeaderField{Twitter:}} & \cvStylesSimpleHeaderMainData{\href{https://twitter.com/\@twitter}{\cvStylesSimpleHeaderSupplementData{https://twitter.com/}\@twitter}} \\ }%
+							\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\faTwitter\space}{\switchDE{Twitter:}{Twitter:}{}}} & \cvStylesSimpleHeaderMainData{\href{https://twitter.com/\@twitter}{\cvStylesSimpleHeaderSupplementData{https://twitter.com/}\@twitter}} \\ }%
 						\ifthenelse{\isundefined{\@xing}}%
 							{}{%
-							\isFancy{\faXingSquare}{\cvStylesSimpleHeaderField{Xing:}} & \cvStylesSimpleHeaderMainData{\href{https://www.xing.com/profile/\@xing}{\cvStylesSimpleHeaderSupplementData{https://www/xing.com/profile/}\@xing}} \\ }%
+							\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\faXingSquare\space}{\switchDE{Xing:}{Xing:}{}}} & \cvStylesSimpleHeaderMainData{\href{https://www.xing.com/profile/\@xing}{\cvStylesSimpleHeaderSupplementData{https://www/xing.com/profile/}\@xing}} \\ }%
 					\end{tabular}}%
 					\vspace{-9.0mm}
 				\end{center}
@@ -624,7 +624,7 @@ pdfkeywords={}
 % Environment for CV items, bullet list for description, particularly in the Experiences section
 \newenvironment{cvitems}{%
 	\vspace{-4.0mm}
-		\begin{itemize}[leftmargin=3.33ex]
+		\begin{itemize}[leftmargin=4.0ex]
 			\setlength{\parskip}{0pt}
 			\setlength\itemsep{0.27em}
 }{%
@@ -714,8 +714,8 @@ pdfkeywords={}
 		\cvStylesSimpleTitle{\@cvRefereeNameOne} & \cvStylesSimpleTitle{\@cvRefereeNameTwo} \\
 		\cvStylesSimpleOrganisation{\@cvRefereePostOne} & \cvStylesSimpleOrganisation{\@cvRefereePostTwo} \\
 		\cvStylesSimpleDescriptions{\@cvRefereeOrganisationOne} & \cvStylesSimpleDescriptions{\@cvRefereeOrganisationTwo} \\
-		\cvStylesSimpleDate{\@cvRefereeTelephoneOne} & \cvStylesSimpleDate{\@cvRefereeTelephoneTwo} \\
-		\cvStylesSimpleDate{ \href{mailto:\@cvRefereeEmailOne}{\@cvRefereeEmailOne} } & \cvStylesSimpleDate{ \href{mailto:\@cvRefereeEmailTwo}{\@cvRefereeEmailTwo} }
+		\cvStylesSimpleSubtitle{\ifbool{showEmojis}{\emoji{mobile-phone}}{\cvStylesSimpleHeaderField{\switchDE{Telefon}{Phone}:}}} \cvStylesSimpleDate{\@cvRefereeTelephoneOne} & \cvStylesSimpleSubtitle{\ifbool{showEmojis}{\emoji{mobile-phone}}{\cvStylesSimpleHeaderField{\switchDE{Telefon}{Phone}:}}} \cvStylesSimpleDate{\@cvRefereeTelephoneTwo} \\
+		\cvStylesSimpleSubtitle{\ifbool{showEmojis}{\emoji{envelope}}{\cvStylesSimpleHeaderField{Email:}}} \cvStylesSimpleDate{ \href{mailto:\@cvRefereeEmailOne}{\@cvRefereeEmailOne} } & \cvStylesSimpleSubtitle{\ifbool{showEmojis}{\emoji{envelope}}{\cvStylesSimpleHeaderField{Email:}}} \cvStylesSimpleDate{ \href{mailto:\@cvRefereeEmailTwo}{\@cvRefereeEmailTwo} }
 	\end{tabular*}%
 	\vspace{2.0mm}%
 }
