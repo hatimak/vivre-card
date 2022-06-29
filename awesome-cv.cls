@@ -239,8 +239,8 @@ pdfkeywords={}
 % New styles
 %-----------
 %% TODO @hatimak: Create new styles and discard old ones
-\newcommand*{\cvStylesHeaderFirstName}[1]{{\fontsize{32pt}{1em}\bfseries\color{text} #1}}
-\newcommand*{\cvStylesHeaderLastName}[1]{{\fontsize{32pt}{1em}\normalfont\color{graytext} #1}}
+\newcommand*{\cvStylesHeaderFirstName}[1]{{\fontsize{32pt}{1em}\normalfont\color{text} #1}}
+\newcommand*{\cvStylesHeaderLastName}[1]{{\fontsize{32pt}{1em}\bfseries\color{graytext} #1}}
 
 \newcommand*{\cvStylesSimpleDate}[1]{{\fontsize{10.125pt}{1em}\fontseries{sbc}\selectfont\slshape\color{darktext} #1}}
 \newcommand*{\cvStylesSimpleLocation}[1]{{\fontsize{9.5pt}{1em}\slshape\color{graytext} #1}}
@@ -252,7 +252,7 @@ pdfkeywords={}
 
 \newcommand*{\cvStylesSimpleHeaderMainData}[1]{{\fontsize{8.25pt}{1em}\upshape\color{text} #1}}
 \newcommand*{\cvStylesSimpleHeaderSupplementData}[1]{{\fontsize{8.25pt}{1em}\upshape\color{graytext} #1}}
-\newcommand*{\cvStylesSimpleHeaderField}[1]{{\fontsize{8.25pt}{1em}\slshape\color{graytext} #1}}
+\newcommand*{\cvStylesSimpleHeaderField}[1]{{\fontsize{8.25pt}{1em}\normalfont\slshape\color{graytext} #1}}
 
 \newcommand*{\cvStylesSimpleFooter}[1]{{\fontsize{8pt}{1em}\fontseries{sbc}\selectfont\color{lighttext} #1}}
 
@@ -380,7 +380,7 @@ pdfkeywords={}
 \newcommand{\acvSectionContentTopSkip}{0.0mm}
 
 % Simple Nature geometrical measurements
-\newcommand{\cvNatureLeftSidebar}{3.80cm}
+\newcommand{\cvNatureLeftSidebar}{3.90cm}
 \newcommand{\cvNatureColumnInset}{0.80em}
 
 
@@ -450,7 +450,7 @@ pdfkeywords={}
 				{\raggedleft}%
 				{\centering}%
 			}%
-		\cvStylesHeaderFirstName{\@firstname}\cvStylesHeaderLastName{{}\acvHeaderNameDelim\@lastname}%
+		\cvStylesHeaderFirstName{\@firstname}\cvStylesHeaderLastName{{}\space\@lastname}%
 		\\[\acvHeaderAfterNameSkip]%
 		\ifthenelse{\isundefined{\@position}}%
 			{}%
@@ -626,7 +626,7 @@ pdfkeywords={}
 	\vspace{-4.0mm}
 		\begin{itemize}[leftmargin=3.33ex]
 			\setlength{\parskip}{0pt}
-			\setlength\itemsep{0.25em}
+			\setlength\itemsep{0.27em}
 }{%
 		\end{itemize}
 	\vspace{-4.0mm}
