@@ -173,7 +173,7 @@ pdfkeywords={}
 \definecolor{black}{HTML}{000000}
 \definecolor{darkgray}{HTML}{393939}
 \definecolor{gray}{HTML}{696969}
-\definecolor{lightgray}{HTML}{9e9e9e}
+\definecolor{lightgray}{HTML}{acacac}
 % Basic colors
 \definecolor{green}{HTML}{C2E15F}
 \definecolor{orange}{HTML}{FDA333}
@@ -209,16 +209,10 @@ pdfkeywords={}
 %-------------------------------------------------------------------------------
 % Configure styles for each CV elements
 % For fundamental structures
-\newcommand*{\headerfirstnamestyle}[1]{{\fontsize{32pt}{1em}\bfseries\color{text} #1}}
-\newcommand*{\headerlastnamestyle}[1]{{\fontsize{32pt}{1em}\normalfont\color{graytext} #1}}
 \newcommand*{\headerpositionstyle}[1]{{\fontsize{7.6pt}{1em}\scshape\color{awesome} #1}}
 \newcommand*{\headeraddressstyle}[1]{{\fontsize{8pt}{1em}\itshape\color{lighttext} #1}}
 \newcommand*{\headersocialstyle}[1]{{\fontsize{6.8pt}{1em}\color{text} #1}}
 \newcommand*{\headerquotestyle}[1]{{\fontsize{9pt}{1em}\itshape\color{darktext} #1}}
-\newcommand*{\footerstyle}[1]{{\fontsize{8pt}{1em}\scshape\color{lighttext} #1}}
-\newcommand*{\sectionstyle}[1]{{\fontsize{16pt}{1em}\bfseries\scshape\color{text}\@sectioncolor[#1]}}
-\newcommand*{\subsectionstyle}[1]{{\fontsize{12pt}{1em}\scshape\textcolor{text}{#1}}}
-\newcommand*{\paragraphstyle}{\fontsize{9pt}{1em}\upshape\color{text}}
 
 % For elements of entry
 \newcommand*{\entrytitlestyle}[1]{{\fontsize{10pt}{1em}\bfseries\color{darktext} #1}}
@@ -231,31 +225,6 @@ pdfkeywords={}
 \newcommand*{\entrysubtitlestyle}[1]{{\fontsize{9pt}{1em}\slshape\color{graytext} #1}}
 
 \newcommand*{\positionorgstyle}[1]{{\fontsize{9pt}{1em}\slshape\color{awesome} #1}}
-
-% For elements of subentry
-\newcommand*{\subentrytitlestyle}[1]{{\fontsize{8pt}{1em}\mdseries\color{graytext} #1}}
-\newcommand*{\subentrypositionstyle}[1]{{\fontsize{7pt}{1em}\scshape\color{graytext} #1}}
-\newcommand*{\subentrydatestyle}[1]{{\fontsize{7pt}{1em}\slshape\color{graytext} #1}}
-\newcommand*{\subentrylocationstyle}[1]{{\fontsize{7pt}{1em}\slshape\color{awesome} #1}}
-\newcommand*{\subdescriptionstyle}[1]{{\fontsize{8pt}{1em}\upshape\color{text} #1}}
-
-% For elements of honor
-\newcommand*{\honortitlestyle}[1]{{\fontsize{9pt}{1em}\color{graytext} #1}}
-\newcommand*{\honorpositionstyle}[1]{{\fontsize{9pt}{1em}\bfseries\color{darktext} #1}}
-\newcommand*{\honordatestyle}[1]{{\fontsize{9pt}{1em}\slshape\color{graytext} #1}}
-\newcommand*{\honorlocationstyle}[1]{{\fontsize{9pt}{1em}\slshape\color{awesome} #1}}
-
-% For elements of skill
-\newcommand*{\skilltypestyle}[1]{{\fontsize{10pt}{1em}\bfseries\color{darktext} #1}}
-\newcommand*{\skillsetstyle}[1]{{\fontsize{9pt}{1em}\color{text} #1}}
-
-% For elements of school
-\newcommand*{\schooldatestyle}[1]{{\fontsize{9pt}{1em}\slshape\color{graytext} #1}}
-\newcommand*{\schoolinstitutionstyle}[1]{{\fontsize{10pt}{1em}\bfseries\color{darktext} #1}}
-\newcommand*{\degreetitlestyle}[1]{{\fontsize{9pt}{1em}\slshape\color{awesome} #1}}
-\newcommand*{\schooldegreestyle}[1]{{\fontsize{9pt}{1em}\scshape\color{graytext} #1}}
-\newcommand*{\schoolscorestyle}[1]{{\fontsize{9pt}{1em}\color{text} #1}}
-\newcommand*{\schoollocationstyle}[1]{{\fontsize{9pt}{1em}\slshape\color{awesome} #1}}
 
 % For elements of the cover letter
 \newcommand*{\lettersectionstyle}[1]{{\fontsize{14pt}{1em}\bfseries\color{text}\@sectioncolor[#1]}}
@@ -270,19 +239,25 @@ pdfkeywords={}
 % New styles
 %-----------
 %% TODO @hatimak: Create new styles and discard old ones
-%% Elements of the content of the CV, the data, the crux
-\newcommand*{\cvStylesSimpleDate}[1]{{\fontsize{10.25pt}{1em}\slshape\color{darktext} #1}}
+\newcommand*{\cvStylesHeaderFirstName}[1]{{\fontsize{32pt}{1em}\bfseries\color{text} #1}}
+\newcommand*{\cvStylesHeaderLastName}[1]{{\fontsize{32pt}{1em}\normalfont\color{graytext} #1}}
+
+\newcommand*{\cvStylesSimpleDate}[1]{{\fontsize{10.125pt}{1em}\fontseries{sbc}\selectfont\slshape\color{darktext} #1}}
 \newcommand*{\cvStylesSimpleLocation}[1]{{\fontsize{9.5pt}{1em}\slshape\color{graytext} #1}}
 \newcommand*{\cvStylesSimpleTitle}[1]{{\fontsize{10.25pt}{1em}\bfseries\color{darktext} #1}}
-\newcommand*{\cvStylesSimpleOrganisation}[1]{{\fontsize{9.5pt}{1em}\slshape\color{graytext} #1}}
-\newcommand*{\cvStylesSimpleSubtitle}[1]{{\fontsize{9.25pt}{1em}\slshape\color{lighttext} #1}}
+\newcommand*{\cvStylesSimpleOrganisation}[1]{{\fontsize{9.5pt}{1em}\fontseries{sbc}\selectfont\slshape\color{graytext} #1}}
+\newcommand*{\cvStylesSimpleSubtitle}[1]{{\fontsize{9.25pt}{1em}\fontseries{sbc}\selectfont\slshape\color{lighttext} #1}}
 \newcommand*{\cvStylesSimpleDescriptions}[1]{{\fontsize{9.25pt}{1em}\upshape\color{text} #1}}
+
 
 \newcommand*{\cvStylesSimpleHeaderMainData}[1]{{\fontsize{8.25pt}{1em}\upshape\color{text} #1}}
 \newcommand*{\cvStylesSimpleHeaderSupplementData}[1]{{\fontsize{8.25pt}{1em}\upshape\color{graytext} #1}}
 \newcommand*{\cvStylesSimpleHeaderField}[1]{{\fontsize{8.25pt}{1em}\slshape\color{graytext} #1}}
 
-\newcommand*{\cvStylesSimpleSection}[1]{{\fontsize{16pt}{1em}\bfseries\color{text}#1}}
+\newcommand*{\cvStylesSimpleFooter}[1]{{\fontsize{8pt}{1em}\fontseries{sbc}\selectfont\color{lighttext} #1}}
+
+
+\newcommand*{\cvStylesSimpleSection}[1]{{\fontsize{17.0pt}{1em}\bfseries\color{text}#1}}
 
 %-------------------------------------------------------------------------------
 % Commands for personal information
@@ -405,8 +380,8 @@ pdfkeywords={}
 \newcommand{\acvSectionContentTopSkip}{0.0mm}
 
 % Simple Nature geometrical measurements
-\newcommand{\cvNatureLeftSidebar}{4.0cm}
-\newcommand{\cvNatureColumnInset}{0.75em}
+\newcommand{\cvNatureLeftSidebar}{3.80cm}
+\newcommand{\cvNatureColumnInset}{0.80em}
 
 
 %-------------------------------------------------------------------------------
@@ -475,7 +450,7 @@ pdfkeywords={}
 				{\raggedleft}%
 				{\centering}%
 			}%
-		\headerfirstnamestyle{\@firstname}\headerlastnamestyle{{}\acvHeaderNameDelim\@lastname}%
+		\cvStylesHeaderFirstName{\@firstname}\cvStylesHeaderLastName{{}\acvHeaderNameDelim\@lastname}%
 		\\[\acvHeaderAfterNameSkip]%
 		\ifthenelse{\isundefined{\@position}}%
 			{}%
@@ -558,7 +533,7 @@ pdfkeywords={}
 				\end{center}
 			}%
 		\vspace{\acvHeaderAfterSocialSkip}
-		\isFancy{}{\noindent\centering\color{lightgray}\rule{0.67\headertextwidth}{0.9pt}}
+		\isFancy{}{\noindent\centering\color{lightgray}\rule[0.5\baselineskip]{0.67\headertextwidth}{1.0pt}}
 		\ifthenelse{\isundefined{\@quote}}%
 			{}{%
 			\headerquotestyle{\@quote\\}\vspace{\acvHeaderAfterQuoteSkip}}%
@@ -577,27 +552,19 @@ pdfkeywords={}
 %% Usage: \makecvfooter{<left>}{<center>}{<right>}
 \newcommand*{\makecvfooter}[3]{%
 	\fancyfoot{}
-	\fancyfoot[L]{\footerstyle{#1}}
-	\fancyfoot[C]{\footerstyle{#2}}
-	\fancyfoot[R]{\footerstyle{#3}}
+	\fancyfoot[L]{\cvStylesSimpleFooter{#1}}
+	\fancyfoot[C]{\cvStylesSimpleFooter{#2}}
+	\fancyfoot[R]{\cvStylesSimpleFooter{#3}}
 }
 
 % Section, like Education, Experience
 %% Usage: \cvsection{<section-title>}
 \newcommand{\cvsection}[1]{%
 	\vspace{\acvSectionTopSkip}
+%	\cvStylesSimpleSection{ { \isFancy{}{\color{lightgray}\rule[0.5\baselineskip]{\cvNatureLeftSidebar - \cvNatureColumnInset - \cvNatureColumnInset - \cvNatureColumnInset}{2.67pt}} } \hspace{-1.67em} \isFancy{\@sectioncolor[#1]}{#1} }
 	\cvStylesSimpleSection{ \isFancy{\@sectioncolor[#1]}{#1} }
 	\phantomsection
 	\isFancy{\color{awesome}\vhrulefill{0.9pt}}{}
-}
-
-% Subsection
-%% Usage: \cvsubsection{<subsection-title>}
-\newcommand{\cvsubsection}[1]{%
-	\vspace{\acvSectionContentTopSkip}
-	\vspace{-3mm}
-	\subsectionstyle{#1}
-	\phantomsection
 }
 
 % Paragraph environment
@@ -648,7 +615,6 @@ pdfkeywords={}
 
 % Entry for skill
 %% Usage: \cvskill{<type>}{<skillset>}
-%% TODO @hatimak: Apply new styles to Skills
 \newcommand*{\cvskill}[3]{%
 	\ifthenelse{\equal{DE}{\cvLang}} {\cvStylesSimpleTitle{#2}} {\cvStylesSimpleTitle{#1}} & \cvStylesSimpleDescriptions{#3} \\
 	\\ [-1.0em]
@@ -661,7 +627,6 @@ pdfkeywords={}
 		\begin{itemize}[leftmargin=3.33ex]
 			\setlength{\parskip}{0pt}
 			\setlength\itemsep{0.25em}
-%			\renewcommand{\labelitemi}{\bullet}
 }{%
 		\end{itemize}
 	\vspace{-4.0mm}
