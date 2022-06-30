@@ -356,7 +356,7 @@ pdfkeywords={}
 
 % Date (cover letter)
 %% Usage: \letterdate{<date>}{<month>}{<year>}
-\newcommand*{\letterdate}[3]{\def\@letterdate{\switchDE{#1.\space\monthnamegerman[#2]}{#1\space -\space\monthnameenglish[#2]}\space #3}}
+\newcommand*{\letterdate}[3]{\def\@letterdate{\switchDE{#1.\space\monthnamegerman[#2]}{#1\space\monthnameenglish[#2]}\space #3}}
 
 % Enclosure for letter (cover letter, optional)
 
@@ -453,10 +453,10 @@ pdfkeywords={}
 				{\centering}%
 			}%
 		\cvStylesHeaderFirstName{\@firstname}\cvStylesHeaderLastName{{}\space\@lastname}%
-		\\[\acvHeaderAfterNameSkip]%
+		\\[0.6mm]%
 		\ifthenelse{\isundefined{\@position}}%
 			{}%
-			{\headerpositionstyle{\@position\\[\acvHeaderAfterPositionSkip]}}%
+			{\cvStylesSimpleOrganisation{\@position\\[-0.3mm]}}%
 		\isFancy{
 			\ifthenelse{\isundefined{\@address}}%
 				{}%
@@ -840,6 +840,21 @@ pdfkeywords={}
 	\multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}}
 \end{tabular*}
 \vspace{0.75mm}%
+}
+
+% Summary
+%--------
+\newenvironment{cvSummary}{%
+	\ifthenelse{\equal{DE}{\cvLang}}%
+		{\cvsection{\ifbool{showTitleEmojis} {\emoji{memo}\acvHeaderIconSep} {} Kurzprofil}}%
+		{\cvsection{\ifbool{showTitleEmojis} {\emoji{memo}\acvHeaderIconSep} {} Summary}}%
+	\vspace{\acvSectionContentTopSkip}%
+	\cvStylesSimpleLetter{
+		\par\nobreak
+}{%
+	}
+	\vspace{3.0mm}%
+	\vspace{-4.0mm}%
 }
 
 %-------------------------------------------------------------------------------

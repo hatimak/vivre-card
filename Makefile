@@ -3565,8 +3565,11 @@ vivre-card: cv.tex coverletter.tex awesome-cv.cls cv/education.tex cv/experience
 	lualatex cv.tex && lualatex cv.tex
 	mv cv.pdf cv\ en-de\ online.pdf
 
-	gsed -i 's/\\newcommand{\\cvLang}{EN}/\\newcommand{\\cvLang}{DE}/g' awesome-cv.cls
+	lualatex coverletter.tex && lualatex coverletter.tex
+	mv coverletter.pdf coverletter\ en-de\ online.pdf
 
-#	lualatex coverletter.tex && lualatex coverletter.tex
+	gsed -i 's/\\newcommand{\\cvLang}{EN}/\\newcommand{\\cvLang}{DE}/g' awesome-cv.cls
+	lualatex coverletter.tex && lualatex coverletter.tex
+	mv coverletter.pdf coverletter\ de-de\ online.pdf
 
 	$(MAKE) clean
