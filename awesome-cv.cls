@@ -10,6 +10,10 @@
 % TODO @hatimak:
 % 	license
 %	birth date and place must be defined, no infrastructure in place to check if any of it is undefined
+%	get rid of fancy and simple nature dichotomy
+%	position field in the header
+%	cover letter elements
+% 	"awesome" colour elements and "simple nature" colour elements should be merged
 %
 
 
@@ -92,6 +96,8 @@ pdfkeywords={}
 % Needed for last page in footer for ## / ##
 \RequirePackage{lastpage}
 
+\usepackage[german,english]{babel}
+\RequirePackage{datetime}
 % Emoji symbols
 %% Works only with LuaLaTeX
 \RequirePackage{emoji}
@@ -228,11 +234,6 @@ pdfkeywords={}
 
 % For elements of the cover letter
 \newcommand*{\lettersectionstyle}[1]{{\fontsize{14pt}{1em}\bfseries\color{text}\@sectioncolor[#1]}}
-\newcommand*{\recipientaddressstyle}[1]{{\fontsize{9pt}{1em}\scshape\color{graytext} #1}}
-\newcommand*{\recipienttitlestyle}[1]{{\fontsize{11pt}{1em}\bfseries\color{darktext} #1}}
-\newcommand*{\lettertitlestyle}[1]{{\fontsize{10pt}{1em}\bfseries\color{darktext} \underline{#1}}}
-\newcommand*{\letterdatestyle}[1]{{\fontsize{9pt}{1em}\slshape\color{graytext} #1}}
-\newcommand*{\lettertextstyle}{\fontsize{10pt}{1.4em}\upshape\color{graytext}}
 \newcommand*{\letternamestyle}[1]{{\fontsize{10pt}{1em}\bfseries\color{darktext} #1}}
 \newcommand*{\letterenclosurestyle}[1]{{\fontsize{10pt}{1em}\slshape\color{lighttext} #1}}
 
@@ -249,6 +250,8 @@ pdfkeywords={}
 \newcommand*{\cvStylesSimpleSubtitle}[1]{{\fontsize{9.25pt}{1em}\fontseries{sbc}\selectfont\slshape\color{lighttext} #1}}
 \newcommand*{\cvStylesSimpleDescriptions}[1]{{\fontsize{9.25pt}{1em}\upshape\color{text} #1}}
 
+\newcommand*{\cvStylesSimpleLetter} {\fontsize{10.0pt}{1.4em}\upshape\color{graytext} }
+
 
 \newcommand*{\cvStylesSimpleHeaderMainData}[1]{{\fontsize{8.25pt}{1em}\upshape\color{text} #1}}
 \newcommand*{\cvStylesSimpleHeaderSupplementData}[1]{{\fontsize{8.25pt}{1em}\upshape\color{graytext} #1}}
@@ -257,7 +260,8 @@ pdfkeywords={}
 \newcommand*{\cvStylesSimpleFooter}[1]{{\fontsize{8pt}{1em}\fontseries{sbc}\selectfont\color{lighttext} #1}}
 
 
-\newcommand*{\cvStylesSimpleSection}[1]{{\fontsize{17.0pt}{1em}\bfseries\color{text}#1}}
+\newcommand*{\cvStylesSimpleSection}[1]{{\fontsize{16.0pt}{1em}\bfseries\color{text}#1}}
+\newcommand*{\cvStylesSimpleSubsection}[1]{{\fontsize{14.0pt}{1em}\bfseries\color{text}#1}}
 
 %-------------------------------------------------------------------------------
 % Commands for personal information
@@ -288,8 +292,8 @@ pdfkeywords={}
 \def\@familyname{\@lastname}
 
 % Address
-%% Usage: \address{<address>}
-\newcommand*{\address}[1]{\def\@address{#1}}
+%% Usage: \address{EN | DE}{<address>}
+\newcommand*{\address}[2]{ \ifthenelse{\equal{DE}{#1}} {\def\@addressDE{#2}} {\def\@addressEN{#2}} }
 
 % Position
 \newcommand*{\position}[1]{\def\@position{#1}}
@@ -326,6 +330,10 @@ pdfkeywords={}
 %% Usage: \linkedin{<linkedin nickname>}
 \newcommand*{\linkedin}[1]{\def\@linkedin{#1}}
 
+% Custom Link (optional)
+%% Usage: \customlink{<name>}{<href url>}
+\newcommand*{\customlink}[2]{\def\@customlinkname{#1}\def\@customlinkhref{#2}}
+
 % Twitter
 %% Usage: \twitter{<twitter handle>}
 \newcommand*{\twitter}[1]{\def\@twitter{#1}}
@@ -347,18 +355,12 @@ pdfkeywords={}
 \newcommand*{\lettertitle}[1]{\def\@lettertitle{#1}}
 
 % Date (cover letter)
-%% Usage: \letterdate{<date>}
-\newcommand*{\letterdate}[1]{\def\@letterdate{#1}}
+%% Usage: \letterdate{<date>}{<month>}{<year>}
+\newcommand*{\letterdate}[3]{\def\@letterdate{\switchDE{#1.\space\monthnamegerman[#2]}{#1\space -\space\monthnameenglish[#2]}\space #3}}
 
 % Enclosure for letter (cover letter, optional)
-%% TODO @hatimak: Automatic Attacehd or Anhang based on EN / DE
-%% Usage: \letterenclosure[<enclosure name>]{<enclosure>}
-\newcommand*{\letterenclname}[1][Enclosure]{\def\@letterenclname{#1}}
-\newcommand*{\letterenclosure}[2][]{%
-% if an optional argument is provided, use it to redefine \enclname
-\ifthenelse{\equal{#1}{}}{}{\def\@letterenclname{#1}}
-\def\@letterenclosure{#2}
-}
+
+\newcommand*{\letterenclosure}[2]{ \ifthenelse{\equal{DE}{#1}} {\def\@letterenclosureDE{#2}} {\def\@letterenclosureEN{#2}} }
 
 
 %-------------------------------------------------------------------------------
@@ -455,83 +457,86 @@ pdfkeywords={}
 		\ifthenelse{\isundefined{\@position}}%
 			{}%
 			{\headerpositionstyle{\@position\\[\acvHeaderAfterPositionSkip]}}%
-			\isFancy{
-				\ifthenelse{\isundefined{\@address}}%
-					{}%
-					{\ifbool{showEmojis} {\emoji{house-with-garden}\acvHeaderIconSep} {} \headeraddressstyle{\@address\\[\acvHeaderAfterAddressSkip]}}%
-				\headersocialstyle{%%
-					\newbool{isstart}%
-					\setbool{isstart}{true}%
+		\isFancy{
+			\ifthenelse{\isundefined{\@address}}%
+				{}%
+				{\ifbool{showEmojis} {\emoji{house-with-garden}\acvHeaderIconSep} {} \headeraddressstyle{\@address\\[\acvHeaderAfterAddressSkip]}}%
+			\headersocialstyle{%%
+				\newbool{isstart}%
+				\setbool{isstart}{true}%
+				\ifthenelse{\isundefined{\@mobile}}%
+					{}{%
+					\emoji{mobile-phone}\acvHeaderIconSep\@mobile%
+					\setbool{isstart}{false}}%
+				\ifthenelse{\isundefined{\@email}}%
+					{}{%
+					\ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
+					\href{mailto:\@email}{\emoji{envelope}\acvHeaderIconSep\@email}}%
+				\ifthenelse{\isundefined{\@homepage}}%
+					{}{%
+					\ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
+					\href{https://\@homepage}{\emoji{globe-with-meridians}\acvHeaderIconSep\@homepage}}%
+				\ifthenelse{\isundefined{\@github}}%
+					{}{%
+					\ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
+					\href{https://github.com/\@github}{\faGithubSquare\acvHeaderIconSep\@github}}%
+				\ifthenelse{\isundefined{\@gitlab}}%
+					{}{%
+					\ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
+					\href{https://gitlab.com/\@gitlab}{\faGitlab\acvHeaderIconSep\@gitlab}}%
+				\ifthenelse{\isundefined{\@linkedin}}%
+					{}{%
+					\ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
+					\href{https://www.linkedin.com/in/\@linkedin}{\faLinkedinSquare\acvHeaderIconSep\@linkedin}}%
+				\ifthenelse{\isundefined{\@twitter}}%
+					{}{%
+					\ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
+					\href{https://twitter.com/\@twitter}{\faTwitter\acvHeaderIconSep\@twitter}}%
+				\ifthenelse{\isundefined{\@xing}}%
+					{}{%
+					\ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
+					\href{https://www.xing.com/profile/\@xing}{\faXingSquare\acvHeaderIconSep\@xing}}%
+		}}{%
+			\begin{center}
+				\vspace{1.5mm}{%
+				\setlength{\tabcolsep}{0pt}
+				\setlength\extrarowheight{-3pt}
+				\begin{tabular}{ r l }%
+					\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\emoji{birthday-cake}\space}{\switchDE{Geburtsdatum:}{Birth date:}{}}} & \cvStylesSimpleHeaderMainData{\@birthdate} \\%
+					\ifthenelse{\isundefined{\@addressDE} \or \isundefined{\@addressEN}}%
+						{}{%
+						\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\emoji{house-with-garden}\space}{\switchDE{Anschrift:}{Address:}{}}} & \cvStylesSimpleHeaderMainData{\switchDE{\@addressDE}{\@addressEN}} \\ }%
 					\ifthenelse{\isundefined{\@mobile}}%
 						{}{%
-						\emoji{mobile-phone}\acvHeaderIconSep\@mobile%
-						\setbool{isstart}{false}}%
+						\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\emoji{mobile-phone}\space}{\switchDE{Telefon:}{Phone:}{}}} & \cvStylesSimpleHeaderMainData{\@mobile} \\ }%
 					\ifthenelse{\isundefined{\@email}}%
 						{}{%
-						\ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-						\href{mailto:\@email}{\emoji{envelope}\acvHeaderIconSep\@email}}%
+						\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\emoji{envelope}\space}{\switchDE{Email:}{Email:}{}}} & \cvStylesSimpleHeaderMainData{\href{mailto:\@email}{\@email}} \\ }%
 					\ifthenelse{\isundefined{\@homepage}}%
 						{}{%
-						\ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-						\href{https://\@homepage}{\emoji{globe-with-meridians}\acvHeaderIconSep\@homepage}}%
+						\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\emoji{globe-with-meridians}\space}{\switchDE{Homepage:}{Home page:}{}}} & \cvStylesSimpleHeaderMainData{\href{https://\@homepage}{\cvStylesSimpleHeaderSupplementData{https://}\@homepage}} \\ }%
 					\ifthenelse{\isundefined{\@github}}%
 						{}{%
-						\ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-						\href{https://github.com/\@github}{\faGithubSquare\acvHeaderIconSep\@github}}%
+						\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\faGithubSquare\space}{\switchDE{GitHub:}{GitHub:}{}}} & \cvStylesSimpleHeaderMainData{\href{https://github.com/\@github}{\cvStylesSimpleHeaderSupplementData{https://github.com/}\@github}} \\ }%
 					\ifthenelse{\isundefined{\@gitlab}}%
 						{}{%
-						\ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-						\href{https://gitlab.com/\@gitlab}{\faGitlab\acvHeaderIconSep\@gitlab}}%
+						\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\faGitlab\space}{\switchDE{GitLab:}{GitLab:}{}}} & \cvStylesSimpleHeaderMainData{\href{https://gitlab.com/\@gitlab}{\cvStylesSimpleHeaderSupplementData{https://gitlab.com/}\@gitlab}} \\ }%
 					\ifthenelse{\isundefined{\@linkedin}}%
 						{}{%
-						\ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-						\href{https://www.linkedin.com/in/\@linkedin}{\faLinkedinSquare\acvHeaderIconSep\@linkedin}}%
+						\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\faLinkedinSquare\space}{\switchDE{LinkedIn:}{LinkedIn:}{}}} & \cvStylesSimpleHeaderMainData{\href{https://www.linkedin.com/in/\@linkedin}{\cvStylesSimpleHeaderSupplementData{https://www.linkedin.com/in/}\@linkedin}} \\ }%
+					% \ifthenelse{\isundefined{\customlink}}%
+					% 	{}{%
+					% 	\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\emoji{link}\space}{\switchDE{\@customlinkname}{\@customlinkname}{}}} & \cvStylesSimpleHeaderMainData{\href{\@customlinkhref}{\@customlinkhref}} \\ }%
 					\ifthenelse{\isundefined{\@twitter}}%
 						{}{%
-						\ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-						\href{https://twitter.com/\@twitter}{\faTwitter\acvHeaderIconSep\@twitter}}%
+						\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\faTwitter\space}{\switchDE{Twitter:}{Twitter:}{}}} & \cvStylesSimpleHeaderMainData{\href{https://twitter.com/\@twitter}{\cvStylesSimpleHeaderSupplementData{https://twitter.com/}\@twitter}} \\ }%
 					\ifthenelse{\isundefined{\@xing}}%
 						{}{%
-						\ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-						\href{https://www.xing.com/profile/\@xing}{\faXingSquare\acvHeaderIconSep\@xing}}%
-			}}{%
-				\begin{center}
-					\vspace{1.5mm}{%
-					\setlength{\tabcolsep}{0pt}
-					\setlength\extrarowheight{-3pt}
-					\begin{tabular}{ r l }%
-						\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\emoji{birthday-cake}\space}{\switchDE{Geburtsdatum:}{Birth date:}{}}} & \cvStylesSimpleHeaderMainData{\@birthdate} \\%
-						\ifthenelse{\isundefined{\@address}}%
-							{}{%
-							\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\emoji{house-with-garden}\space}{\switchDE{Anschrift:}{Address:}{}}} & \cvStylesSimpleHeaderMainData{\@address} \\ }%
-						\ifthenelse{\isundefined{\@mobile}}%
-							{}{%
-							\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\emoji{mobile-phone}\space}{\switchDE{Telefon:}{Phone:}{}}} & \cvStylesSimpleHeaderMainData{\@mobile} \\ }%
-						\ifthenelse{\isundefined{\@email}}%
-							{}{%
-							\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\emoji{envelope}\space}{\switchDE{Email:}{Email:}{}}} & \cvStylesSimpleHeaderMainData{\href{mailto:\@email}{\@email}} \\ }%
-						\ifthenelse{\isundefined{\@homepage}}%
-							{}{%
-							\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\emoji{globe-with-meridians}\space}{\switchDE{Homepage:}{Home page:}{}}} & \cvStylesSimpleHeaderMainData{\href{https://\@homepage}{\cvStylesSimpleHeaderSupplementData{https://}\@homepage}} \\ }%
-						\ifthenelse{\isundefined{\@github}}%
-							{}{%
-							\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\faGithubSquare\space}{\switchDE{GitHub:}{GitHub:}{}}} & \cvStylesSimpleHeaderMainData{\href{https://github.com/\@github}{\cvStylesSimpleHeaderSupplementData{https://github.com/}\@github}} \\ }%
-						\ifthenelse{\isundefined{\@gitlab}}%
-							{}{%
-							\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\faGitlab\space}{\switchDE{GitLab:}{GitLab:}{}}} & \cvStylesSimpleHeaderMainData{\href{https://gitlab.com/\@gitlab}{\cvStylesSimpleHeaderSupplementData{https://gitlab.com/}\@gitlab}} \\ }%
-						\ifthenelse{\isundefined{\@linkedin}}%
-							{}{%
-							\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\faLinkedinSquare\space}{\switchDE{LinkedIn:}{LinkedIn:}{}}} & \cvStylesSimpleHeaderMainData{\href{https://www.linkedin.com/in/\@linkedin}{\cvStylesSimpleHeaderSupplementData{https://www.linkedin.com/in/}\@linkedin}} \\ }%
-						\ifthenelse{\isundefined{\@twitter}}%
-							{}{%
-							\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\faTwitter\space}{\switchDE{Twitter:}{Twitter:}{}}} & \cvStylesSimpleHeaderMainData{\href{https://twitter.com/\@twitter}{\cvStylesSimpleHeaderSupplementData{https://twitter.com/}\@twitter}} \\ }%
-						\ifthenelse{\isundefined{\@xing}}%
-							{}{%
-							\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\faXingSquare\space}{\switchDE{Xing:}{Xing:}{}}} & \cvStylesSimpleHeaderMainData{\href{https://www.xing.com/profile/\@xing}{\cvStylesSimpleHeaderSupplementData{https://www/xing.com/profile/}\@xing}} \\ }%
-					\end{tabular}}%
-					\vspace{-9.0mm}
-				\end{center}
-			}%
+						\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\faXingSquare\space}{\switchDE{Xing:}{Xing:}{}}} & \cvStylesSimpleHeaderMainData{\href{https://www.xing.com/profile/\@xing}{\cvStylesSimpleHeaderSupplementData{https://www/xing.com/profile/}\@xing}} \\ }%
+				\end{tabular}}%
+				\vspace{-9.0mm}
+			\end{center}
+		}%
 		\vspace{\acvHeaderAfterSocialSkip}
 		\isFancy{}{\noindent\centering\color{lightgray}\rule[0.5\baselineskip]{0.67\headertextwidth}{1.0pt}}
 		\ifthenelse{\isundefined{\@quote}}%
@@ -647,19 +652,19 @@ pdfkeywords={}
 }
 
 \newcommand{\cvEducationDegree}[2]{%
-	\switchDE {\def\@cvEducationDegreeDE{#2}} {\def\@cvEducationDegreeEN{#2}} }%
+	\ifthenelse{\equal{DE}{#1}} {\def\@cvEducationDegreeDE{#2}} {\def\@cvEducationDegreeEN{#2}} }%
 \newcommand{\cvEducationDegreeName}[2]{%
-	\switchDE {\def\@cvEducationDegreeNameDE{#2}} {\def\@cvEducationDegreeNameEN{#2}} }%
+	\ifthenelse{\equal{DE}{#1}} {\def\@cvEducationDegreeNameDE{#2}} {\def\@cvEducationDegreeNameEN{#2}} }%
 \newcommand{\cvEducationInstitution}[2]{%
-	\switchDE {\def\@cvEducationInstitutionDE{#2}} {\def\@cvEducationInstitutionEN{#2}} }%
+	\ifthenelse{\equal{DE}{#1}} {\def\@cvEducationInstitutionDE{#2}} {\def\@cvEducationInstitutionEN{#2}} }%
 \newcommand{\cvEducationLocation}[2]{%
-	\switchDE {\def\@cvEducationLocationDE{#2}} {\def\@cvEducationLocationEN{#2}} }%
+	\ifthenelse{\equal{DE}{#1}} {\def\@cvEducationLocationDE{#2}} {\def\@cvEducationLocationEN{#2}} }%
 \newcommand{\cvEducationDescription}[2]{%
-	\switchDE {\def\@cvEducationDescriptionDE{#2}} {\def\@cvEducationDescriptionEN{#2}} }%
+	\ifthenelse{\equal{DE}{#1}} {\def\@cvEducationDescriptionDE{#2}} {\def\@cvEducationDescriptionEN{#2}} }%
 \newcommand{\cvEducationDates}[2]{%
-	\switchDE {\def\@cvEducationDatesDE{#2}} {\def\@cvEducationDatesEN{#2}} }%
+	\ifthenelse{\equal{DE}{#1}} {\def\@cvEducationDatesDE{#2}} {\def\@cvEducationDatesEN{#2}} }%
 \newcommand{\cvEducationGrade}[2]{%
-	\switchDE {\def\@cvEducationGradeDE{#2}} {\def\@cvEducationGradeEN{#2}} }%
+	\ifthenelse{\equal{DE}{#1}} {\def\@cvEducationGradeDE{#2}} {\def\@cvEducationGradeEN{#2}} }%
 
 % Entry for education section
 \newcommand*{\cvSchoolFlush}{%
@@ -842,7 +847,7 @@ pdfkeywords={}
 %-------------------------------------------------------------------------------
 % Define an environment for cvletter
 \newenvironment{cvletter}{%
-	\lettertextstyle
+	\cvStylesSimpleLetter
 }{%
 }
 
@@ -859,15 +864,15 @@ pdfkeywords={}
 }
 
 \newcommand{\lettersectionflush}{%
-	\par\addvspace{2.5ex}
+	\par\addvspace{0.9ex}
 	\phantomsection{}
 	\ifthenelse{\equal{DE}{\cvLang}}{%
-		\lettersectionstyle{\@letterSectionTitleDE}
-		\par\nobreak\addvspace{0.4ex}
+		\cvStylesSimpleSubsection{\@letterSectionTitleDE}%
+		\par\nobreak\addvspace{-0.90ex}%
 		\@letterSectionTextDE
 	}{%
-		\lettersectionstyle{\@letterSectionTitleEN}
-		\par\nobreak\addvspace{0.4ex}
+		\cvStylesSimpleSubsection{\@letterSectionTitleEN}%
+		\par\nobreak\addvspace{-0.90ex}%
 		\@letterSectionTextEN
 	}%
 }
@@ -904,41 +909,37 @@ pdfkeywords={}
 % Title
 %% Usage: \makelettertitle
 \newcommand*{\makelettertitle}{%
-	\vspace{8.4mm}
-	\begin{spacing}{1.0}
-		\recipienttitlestyle{\@recipientname}
-	\end{spacing}
-	\begin{spacing}{0.8}
-		\recipientaddressstyle{\@recipientaddress}
-	\end{spacing}
-	\begin{spacing}{0.9}
-		\recipientaddressstyle{\@letterdate} \\ \\
-		\ifthenelse{\isundefined{\@lettertitle}}
+	\vspace{\acvSectionTopSkip}%
+	\cvStylesSimpleTitle{\@recipientname} \\[0.25\baselineskip]
+	\cvStylesSimpleLocation{\@recipientaddress} \hfill \cvStylesSimpleDate{\@letterdate} \\[-1.0ex]
+
+	\ifthenelse{\isundefined{\@lettertitle}}
 		{}
-		{\lettertitlestyle{\@lettertitle} \\ \\}
-		\lettertextstyle{\@letteropening}
-	\end{spacing}
+		{\cvStylesSimpleTitle{\underline{\@lettertitle}}}
+	
+	\vspace{\acvSectionTopSkip}%
+	\cvStylesSimpleLetter{\@letteropening}
 }
 
 % Closing / signing off
 %% Usage: \makeletterclosing
 
-\newcommand*{\letterclosing}[1]{%
-	\ifthenelse{\equal{DE}{#1}}%
+\newcommand*{\letterclosing}{%
+	\ifthenelse{\equal{DE}{\cvLang}}%
 		{Mit freundlichen Gr{\"u}{\ss}en}%
 		{Sincerely,}%
 }%
 
 \newcommand*{\makeletterclosing}{%
-	\vspace{3.4mm}
-	\lettertextstyle{\letterclosing{\cvLang}}
+	\cvStylesSimpleLetter{\letterclosing}
+	\vspace{-1.0ex}
 	\begin{figure}[h!]
 		\includegraphics[width=0.18\linewidth]{sign}
-	\end{figure} \\
-	\letternamestyle{\@firstname\ \@lastname}
-	\ifthenelse{\isundefined{\@letterenclosure}}%
-		{\\}{%
-		\\\\\\
-		\letterenclosurestyle{\@letterenclname: \@letterenclosure} \\
+	\end{figure} \\[-2.0ex]
+	\cvStylesSimpleTitle{\@firstname\ \@lastname}
+	\ifthenelse{\isundefined{\letterenclosure}}%
+		{}{%
+		\par\nobreak\addvspace{0.8ex}
+		\cvStylesSimpleOrganisation{\switchDE{Im Anhang}{Attached}:} \cvStylesSimpleSubtitle{\switchDE{\@letterenclosureDE}{\@letterenclosureEN}}
 		}%
 }

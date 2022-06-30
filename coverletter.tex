@@ -57,14 +57,17 @@
 
 
 %-------------------------------------------------------------------------------
-%	PERSONAL INFORMATION
-%	Comment any of the lines below if they are not required
+% PERSONAL INFORMATION
 %-------------------------------------------------------------------------------
 % Available options: circle|rectangle,edge/noedge,left/right
 \photo[circle,edge,right]{./profile}
 \name{Hatim}{Kanchwala}
-\position{M.\,Sc. Electrical Engineering, Information Technology, Computer Engineering}
-\address{Engelbertstr. 12, 52078 Aachen, Germany}
+%\position{M.\,Sc.}
+\birthdate{07.02.1995}
+\birthplace{EN}{Indore, India}
+\birthplace{DE}{Indore, Indien}
+\address{DE}{Engelbertstra{\ss}e 12, 52078 Aachen, Deutschland}
+\address{EN}{Engelbertstr. 12, 52078 Aachen, Germany}
 
 \mobile{+49 176 45 9995 53}
 \email{hatim@hatimak.me}
@@ -72,23 +75,25 @@
 %\homepage{hatimak.me}
 %\github{hatimak}
 \linkedin{hatimak}
+%\customlink{Google Scholar}{https://scholar.google.com/}
 
 
 %-------------------------------------------------------------------------------
-%	LETTER INFORMATION
-%	All of the below lines must be filled out
+% LETTER INFORMATION
+% All of the below lines must be filled out
 %-------------------------------------------------------------------------------
 % The company being applied to
 \recipient
-  {Recruiting, DR\"AXLMAIER Group} % company name or dept
-  {Lisa Dr\"axlmaier GmbH\newline Landshuter Str. 100\newline 84137 Vilsbiburg} % recipient address
+	{Recruiting, DR\"AXLMAIER Group} % company name or dept
+	{Lisa Dr\"axlmaier GmbH\newline Landshuter Str. 100\newline 84137 Vilsbiburg} % recipient address
 
-\letterdate{\today}
+% date month year
+\letterdate{30}{6}{2022}
 
-\lettertitle{Job Application for Junior Software Entwickler Automotive, Garching}
+\lettertitle{Job Application }
 
 % Letter salutation / address
-\letteropening{female}{Julia Hausperger}
+\letteropening{unknown}{}
 
 % Closing signing of letter
 %% This is only a dummy field here, the signing off is automatically included 
@@ -96,8 +101,24 @@
 %% defaut signing, then please edit it in the class file
 
 % Enclosures with letter
-%\letterenclosure[Attached]{Curriculum Vitae}
-
+\letterenclosure{DE}{%
+	\begin{itemize}[leftmargin=4.0ex]
+		\setlength{\parskip}{0pt}
+		\setlength\itemsep{0.27em}
+		\item {Lebenslauf}
+		\item {Zeugnisse}
+		\item {Notenspiegel}
+	\end{itemize}%
+}
+\letterenclosure{EN}{%
+	\begin{itemize}[leftmargin=4.0ex]
+		\setlength{\parskip}{0pt}
+		\setlength\itemsep{0.27em}
+		\item {Curriculum Vitae}
+		\item {Certificates}
+		\item {Transcripts}
+	\end{itemize}%
+}
 
 %-------------------------------------------------------------------------------
 \begin{document}
@@ -106,13 +127,13 @@
 
 % Print the header with above personal informations
 % Give optional argument to change alignment(C: center, L: left, R: right)
-\makecvheader[R]
+\makecvheader[C]
 
 % Print the footer with 3 arguments(<left>, <center>, <right>)
 % Leave any of these blank if they are not needed
 \makecvfooter
   {}
-  {Hatim Kanchwala~~~·~~~Cover Letter}
+  {Hatim Kanchwala~~~\textbullet~~~Cover Letter}
   {\thepage~/~\pageref{LastPage}}
 
 % Print the title with above letter informations
