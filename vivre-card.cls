@@ -131,7 +131,10 @@
 %-------------------------------------------------------------------------------
 % Language of the CV
 %% Either EN or DE
-\newcommand{\cvLang}{DE}
+%\def\cvLang{DE}
+%% This remains commented because the Makefile passes the relevant define from 
+%% the command-line. Uncomment this and set to desired value if not using the 
+%% Makefile
 
 % Display school grades
 \newbool{eduShowGrade}

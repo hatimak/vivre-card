@@ -45,13 +45,13 @@ version		:= 2.2.1-alpha9
 #
 # This can be pdflatex or latex - you can change this by adding the following line to your Makefile.ini:
 # BUILD_STRATEGY := latex
-BUILD_STRATEGY		?= pdflatex
+BUILD_STRATEGY	?= pdflatex
 # This can be used to pass extra options to latex.
 LATEX_OPTS		?=
 #
 # Sets LC_ALL=C, by default, so that the locale-aware tools, like sort, be
 # # immune to changes to the locale in the user environment.
-export LC_ALL		?= C
+export LC_ALL	?= C
 #
 #
 # If you specify sources here, all other files with the same suffix
@@ -126,15 +126,15 @@ neverclean		?= *.pdf
 # EXTERNAL PROGRAMS:
 # = ESSENTIAL PROGRAMS =
 # == Basic Shell Utilities ==
-CAT		?= cat
-CP		?= cp -f
+CAT			?= cat
+CP			?= cp -f
 DIFF		?= diff
 ECHO		?= echo
 EGREP		?= egrep
-ENV		?= env
+ENV			?= env
 EXPR		?= expr
-MV		?= mv -f
-SED		?= sed
+MV			?= mv -f
+SED			?= sed
 SORT		?= sort
 TOUCH		?= touch
 UNIQ		?= uniq
@@ -152,7 +152,7 @@ EPSTOPDF	?= epstopdf
 MAKEINDEX	?= makeindex
 XINDY		?= xindy
 KPSEWHICH	?= kpsewhich
-GS		?= gs
+GS			?= gs
 # = OPTIONAL PROGRAMS =
 # == For MikTex under Cygwin, to get path names right
 CYGPATH		?= cygpath
@@ -165,7 +165,7 @@ RST2LATEX	?= rst2latex.py
 LHS2TEX		?= lhs2tex
 # == EPS Generation ==
 CONVERT		?= convert	# ImageMagick
-DOT		?= dot		# GraphViz
+DOT			?= dot		# GraphViz
 DOT2TEX		?= dot2tex	# dot2tex - add options (not -o) as needed
 MPOST		?= mpost	# MetaPost
 FIG2DEV		?= fig2dev	# XFig
@@ -177,10 +177,10 @@ PPMTOPGM	?= ppmtopgm	# From NetPBM - (gray) step 2 for png -> eps
 PNMTOPS		?= pnmtops	# From NetPBM - step 3 for png -> eps
 GUNZIP		?= gunzip	# GZipped EPS
 # == Beamer Enlarged Output ==
-PSNUP		?= psnup
+PSNUP			?= psnup
 # == Viewing Stuff ==
 VIEW_POSTSCRIPT	?= gv
-VIEW_PDF	?= xpdf
+VIEW_PDF		?= xpdf
 VIEW_GRAPHICS	?= display
 
 # Xindy glossaries
@@ -207,7 +207,7 @@ DEFAULT_GPI_EPS_FONTSIZE	?= 22
 DEFAULT_GPI_PDF_FONTSIZE	?= 12
 
 # Style file for ReST
-RST_STYLE_FILE			?= $(wildcard _rststyle_._include_.tex)
+RST_STYLE_FILE	?= $(wildcard _rststyle_._include_.tex)
 
 # This ensures that even when echo is a shell builtin, we still use the binary
 # (the builtin doesn't always understand -n)
@@ -255,7 +255,7 @@ $(if \
 #
 BINARY_TARGET_DIR	?= _out_
 
-RESTARTS		:= $(if $(MAKE_RESTARTS),$(MAKE_RESTARTS),0)
+RESTARTS	:= $(if $(MAKE_RESTARTS),$(MAKE_RESTARTS),0)
 # SH NOTES
 #
 # On some systems, /bin/sh, which is the default shell, is not linked to
@@ -483,7 +483,7 @@ REAL_TPUT 	:= $(if $(NO_COLOR),,$(shell $(WHICH) $(TPUT)))
 get-term-code = $(if $(REAL_TPUT),$(shell $(REAL_TPUT) $1),)
 
 black	:= $(call get-term-code,setaf 0)
-red	:= $(call get-term-code,setaf 1)
+red		:= $(call get-term-code,setaf 1)
 green	:= $(call get-term-code,setaf 2)
 yellow	:= $(call get-term-code,setaf 3)
 blue	:= $(call get-term-code,setaf 4)
@@ -497,17 +497,17 @@ reset	:= $(call get-term-code,sgr0)
 #
 # User-settable definitions
 #
-LATEX_COLOR_WARNING	?= magenta
-LATEX_COLOR_ERROR	?= red
-LATEX_COLOR_INFO	?= green
+LATEX_COLOR_WARNING		?= magenta
+LATEX_COLOR_ERROR		?= red
+LATEX_COLOR_INFO		?= green
 LATEX_COLOR_UNDERFULL	?= magenta
 LATEX_COLOR_OVERFULL	?= red bold
-LATEX_COLOR_PAGES	?= bold
-LATEX_COLOR_BUILD	?= cyan
-LATEX_COLOR_GRAPHIC	?= yellow
-LATEX_COLOR_DEP		?= green
-LATEX_COLOR_SUCCESS	?= green bold
-LATEX_COLOR_FAILURE	?= red bold
+LATEX_COLOR_PAGES		?= bold
+LATEX_COLOR_BUILD		?= cyan
+LATEX_COLOR_GRAPHIC		?= yellow
+LATEX_COLOR_DEP			?= green
+LATEX_COLOR_SUCCESS		?= green bold
+LATEX_COLOR_FAILURE		?= red bold
 
 # Gets the real color from a simple textual definition like those above
 # $(call get-color,ALL_CAPS_COLOR_NAME)
@@ -549,7 +549,7 @@ endif
 #
 
 # Names of sed scripts that morph gnuplot files -- only the first found is used
-GNUPLOT_SED	:= global-gpi.sed gnuplot.sed
+GNUPLOT_SED		:= global-gpi.sed gnuplot.sed
 GNUPLOT_GLOBAL	:= global._include_.gpi gnuplot.global
 
 ifeq "$(strip $(BUILD_STRATEGY))" "latex"
@@ -634,23 +634,23 @@ filter-default		= \
 		$(addsuffix .$1,$(nodefault_patterns)),$(all_files.$1))
 
 # Top level sources that can be built even when they are not by default
-files.tex	:= $(call filter-buildable,tex)
+files.tex		:= $(call filter-buildable,tex)
 files.tex.sh	:= $(call filter-buildable,tex.sh)
 files.tex.pl	:= $(call filter-buildable,tex.pl)
 files.tex.py	:= $(call filter-buildable,tex.py)
-files.rst	:= $(call filter-buildable,rst)
-files.lhs	:= $(call filter-buildable,lhs)
-files.gpi	:= $(call filter-buildable,gpi)
-files.dot	:= $(call filter-buildable,dot)
-files.mp	:= $(call filter-buildable,mp)
-files.fig	:= $(call filter-buildable,fig)
-files.xvg	:= $(call filter-buildable,xvg)
-files.svg	:= $(call filter-buildable,svg)
-files.png	:= $(call filter-buildable,png)
-files.jpg	:= $(call filter-buildable,jpg)
-files.jpeg	:= $(call filter-buildable,jpeg)
+files.rst		:= $(call filter-buildable,rst)
+files.lhs		:= $(call filter-buildable,lhs)
+files.gpi		:= $(call filter-buildable,gpi)
+files.dot		:= $(call filter-buildable,dot)
+files.mp		:= $(call filter-buildable,mp)
+files.fig		:= $(call filter-buildable,fig)
+files.xvg		:= $(call filter-buildable,xvg)
+files.svg		:= $(call filter-buildable,svg)
+files.png		:= $(call filter-buildable,png)
+files.jpg		:= $(call filter-buildable,jpg)
+files.jpeg		:= $(call filter-buildable,jpeg)
 files.eps.gz	:= $(call filter-buildable,eps.gz)
-files.eps	:= $(call filter-buildable,eps)
+files.eps		:= $(call filter-buildable,eps)
 
 # Make all pstex targets secondary.  The pstex_t target requires the pstex
 # target, and nothing else really depends on it, so it often gets deleted.
@@ -664,23 +664,23 @@ files.eps	:= $(call filter-buildable,eps)
 .SECONDARY:	$(patsubst %.lhs,%.tex,$(files.lhs))
 
 # Top level sources that are built by default targets
-default_files.tex	:= $(call filter-default,tex)
+default_files.tex		:= $(call filter-default,tex)
 default_files.tex.sh	:= $(call filter-default,tex.sh)
 default_files.tex.pl	:= $(call filter-default,tex.pl)
 default_files.tex.py	:= $(call filter-default,tex.py)
-default_files.rst	:= $(call filter-default,rst)
-default_files.lhs	:= $(call filter-default,lhs)
-default_files.gpi	:= $(call filter-default,gpi)
-default_files.dot	:= $(call filter-default,dot)
-default_files.mp	:= $(call filter-default,mp)
-default_files.fig	:= $(call filter-default,fig)
-default_files.xvg	:= $(call filter-default,xvg)
-default_files.svg	:= $(call filter-default,svg)
-default_files.png	:= $(call filter-default,png)
-default_files.jpg	:= $(call filter-default,jpg)
-default_files.jpeg	:= $(call filter-default,jpeg)
+default_files.rst		:= $(call filter-default,rst)
+default_files.lhs		:= $(call filter-default,lhs)
+default_files.gpi		:= $(call filter-default,gpi)
+default_files.dot		:= $(call filter-default,dot)
+default_files.mp		:= $(call filter-default,mp)
+default_files.fig		:= $(call filter-default,fig)
+default_files.xvg		:= $(call filter-default,xvg)
+default_files.svg		:= $(call filter-default,svg)
+default_files.png		:= $(call filter-default,png)
+default_files.jpg		:= $(call filter-default,jpg)
+default_files.jpeg		:= $(call filter-default,jpeg)
 default_files.eps.gz	:= $(call filter-default,eps.gz)
-default_files.eps	:= $(call filter-default,eps)
+default_files.eps		:= $(call filter-default,eps)
 
 # Utility function for creating larger lists of files
 # $(call concat-files,suffixes,[prefix])
@@ -726,9 +726,9 @@ all_stems.eps		:= $(call get-stems,eps,all)
 
 # List of all default stems (all default PDF targets):
 default_stems.tex		:= $(call get-stems,tex,default)
-default_stems.tex.sh		:= $(call get-stems,tex.sh,default)
-default_stems.tex.pl		:= $(call get-stems,tex.pl,default)
-default_stems.tex.py		:= $(call get-stems,tex.py,default)
+default_stems.tex.sh	:= $(call get-stems,tex.sh,default)
+default_stems.tex.pl	:= $(call get-stems,tex.pl,default)
+default_stems.tex.py	:= $(call get-stems,tex.py,default)
 default_stems.rst		:= $(call get-stems,rst,default)
 default_stems.lhs		:= $(call get-stems,lhs,default)
 default_stems.mp		:= $(call get-stems,mp,default)
@@ -740,14 +740,14 @@ default_stems.svg		:= $(call get-stems,svg,default)
 default_stems.png		:= $(call get-stems,png,default)
 default_stems.jpg		:= $(call get-stems,jpg,default)
 default_stems.jpeg		:= $(call get-stems,jpeg,default)
-default_stems.eps.gz		:= $(call get-stems,eps.gz,default)
+default_stems.eps.gz	:= $(call get-stems,eps.gz,default)
 default_stems.eps		:= $(call get-stems,eps,default)
 
 # List of all stems (all possible bare PDF targets created here):
 stems.tex		:= $(call get-stems,tex)
-stems.tex.sh		:= $(call get-stems,tex.sh)
-stems.tex.pl		:= $(call get-stems,tex.pl)
-stems.tex.py		:= $(call get-stems,tex.py)
+stems.tex.sh	:= $(call get-stems,tex.sh)
+stems.tex.pl	:= $(call get-stems,tex.pl)
+stems.tex.py	:= $(call get-stems,tex.py)
 stems.rst		:= $(call get-stems,rst)
 stems.lhs		:= $(call get-stems,lhs)
 stems.mp		:= $(call get-stems,mp)
@@ -759,7 +759,7 @@ stems.svg		:= $(call get-stems,svg)
 stems.png		:= $(call get-stems,png)
 stems.jpg		:= $(call get-stems,jpg)
 stems.jpeg		:= $(call get-stems,jpeg)
-stems.eps.gz		:= $(call get-stems,eps.gz)
+stems.eps.gz	:= $(call get-stems,eps.gz)
 stems.eps		:= $(call get-stems,eps)
 
 # Utility function for creating larger lists of stems
@@ -795,29 +795,29 @@ graphic_source_extensions	+= eps
 graphic_target_extensions	:= pdf png jpg jpeg mps tif
 endif
 
-all_stems_source	:= $(call concat-stems,tex,all)
+all_stems_source		:= $(call concat-stems,tex,all)
 all_stems_source_gen	:= $(call concat-stems,rst lhs,all)
-all_stems_script	:= $(call concat-stems,tex.sh tex.pl tex.py,all)
-all_stems_graphic	:= $(call concat-stems,$(graphic_source_extensions),all)
-all_stems_ss		:= $(sort $(all_stems_source) $(all_stems_source_gen) $(all_stems_script))
-all_stems_sg		:= $(sort $(all_stems_script) $(all_stems_source_gen))
-all_stems_ssg		:= $(sort $(all_stems_ss))
+all_stems_script		:= $(call concat-stems,tex.sh tex.pl tex.py,all)
+all_stems_graphic		:= $(call concat-stems,$(graphic_source_extensions),all)
+all_stems_ss			:= $(sort $(all_stems_source) $(all_stems_source_gen) $(all_stems_script))
+all_stems_sg			:= $(sort $(all_stems_script) $(all_stems_source_gen))
+all_stems_ssg			:= $(sort $(all_stems_ss))
 
 default_stems_source		:= $(call concat-stems,tex,default)
 default_stems_source_gen	:= $(call concat-stems,rst lhs,default)
 default_stems_script		:= $(call concat-stems,tex.sh tex.pl tex.py,default)
-default_stems_ss	:= $(sort $(default_stems_source) $(default_stems_source_gen) $(default_stems_script))
-default_stems_sg	:= $(sort $(default_stems_script) $(default_stems_source_gen))
-default_stems_ssg	:= $(sort $(default_stems_ss))
+default_stems_ss			:= $(sort $(default_stems_source) $(default_stems_source_gen) $(default_stems_script))
+default_stems_sg			:= $(sort $(default_stems_script) $(default_stems_source_gen))
+default_stems_ssg			:= $(sort $(default_stems_ss))
 
 stems_source		:= $(call concat-stems,tex)
 stems_source_gen	:= $(call concat-stems,rst lhs)
 stems_script		:= $(call concat-stems,tex.sh tex.pl tex.py)
 stems_graphic		:= $(call concat-stems,$(graphic_source_extensions))
-stems_gg		:= $(sort $(stems_graphic))
-stems_ss		:= $(sort $(stems_source) $(stems_source_gen) $(stems_script))
-stems_sg		:= $(sort $(stems_script) $(stems_source_gen))
-stems_ssg		:= $(sort $(stems_ss))
+stems_gg			:= $(sort $(stems_graphic))
+stems_ss			:= $(sort $(stems_source) $(stems_source_gen) $(stems_script))
+stems_sg			:= $(sort $(stems_script) $(stems_source_gen))
+stems_ssg			:= $(sort $(stems_ss))
 
 # Calculate names that can generate the need for an include file.  We can't
 # really do this with patterns because it's too easy to screw up, so we create
@@ -3578,28 +3578,53 @@ endef
 #
 # vim: noet sts=0 sw=8 ts=8
 
-# Additions by @hatimak, tested only on macOS with gsed installed
-vivre-card: cv.tex coverletter.tex vivre-card.cls cv/education.tex cv/experience.tex cv/skills.tex cv/positions.tex cv/references.tex
+# Additions by @hatimak, tested only on macOS
+vivre-card-online: cv.tex coverletter.tex vivre-card.cls cv/education.tex cv/experience.tex cv/skills.tex cv/positions.tex cv/references.tex
 	$(MAKE) cv
 	mv cv.pdf cv\ de-de\ online.pdf
 
+	gsed -i 's/\\def\\cvLang{DE}/\\def\\cvLang{EN}/g' cv.tex
+	$(MAKE) cv
+	mv cv.pdf cv\ en-de\ online.pdf
+
+	gsed -i 's/\\def\\cvLang{EN}/\\def\\cvLang{DE}/g' cv.tex
+
+	$(MAKE) coverletter
+	mv coverletter.pdf coverletter\ de-de\ online.pdf
+
+	gsed -i 's/\\def\\cvLang{DE}/\\def\\cvLang{EN}/g' coverletter.tex
+	$(MAKE) coverletter
+	mv coverletter.pdf coverletter\ en-de\ online.pdf
+
+	gsed -i 's/\\def\\cvLang{EN}/\\def\\cvLang{DE}/g' coverletter.tex
+
+	$(MAKE) clean
+
+vivre-card-handout: cv.tex coverletter.tex vivre-card.cls cv/education.tex cv/experience.tex cv/skills.tex cv/positions.tex cv/references.tex
 	gsed -i 's/\\setbool{showEmojis}{false}/\\setbool{showEmojis}{true}/g' cv.tex
 	$(MAKE) cv
 	mv cv.pdf cv\ de-de\ handout.pdf
 
-	gsed -i 's/\\newcommand{\\cvLang}{DE}/\\newcommand{\\cvLang}{EN}/g' vivre-card.cls
+	gsed -i 's/\\def\\cvLang{DE}/\\def\\cvLang{EN}/g' cv.tex
 	$(MAKE) cv
 	mv cv.pdf cv\ en-de\ handout.pdf
 
+	gsed -i 's/\\def\\cvLang{EN}/\\def\\cvLang{DE}/g' cv.tex
 	gsed -i 's/\\setbool{showEmojis}{true}/\\setbool{showEmojis}{false}/g' cv.tex
-	$(MAKE) cv
-	mv cv.pdf cv\ en-de\ online.pdf
 
+	gsed -i 's/\\setbool{showEmojis}{false}/\\setbool{showEmojis}{true}/g' coverletter.tex
 	$(MAKE) coverletter
-	mv coverletter.pdf coverletter\ en-de\ online.pdf
+	mv coverletter.pdf coverletter\ de-de\ handout.pdf
 
-	gsed -i 's/\\newcommand{\\cvLang}{EN}/\\newcommand{\\cvLang}{DE}/g' vivre-card.cls
+	gsed -i 's/\\def\\cvLang{DE}/\\def\\cvLang{EN}/g' coverletter.tex
 	$(MAKE) coverletter
-	mv coverletter.pdf coverletter\ de-de\ online.pdf
+	mv coverletter.pdf coverletter\ en-de\ handout.pdf
+
+	gsed -i 's/\\setbool{showEmojis}{true}/\\setbool{showEmojis}{false}/g' coverletter.tex
+	gsed -i 's/\\def\\cvLang{EN}/\\def\\cvLang{DE}/g' coverletter.tex
 
 	$(MAKE) clean
+
+vivre-card-all: cv.tex coverletter.tex vivre-card.cls cv/education.tex cv/experience.tex cv/skills.tex cv/positions.tex cv/references.tex
+	$(MAKE) vivre-card-online
+	$(MAKE) vivre-card-handout
