@@ -136,29 +136,10 @@
 %% the command-line. Uncomment this and set to desired value if not using the 
 %% Makefile
 
-% Display school grades
-\newbool{eduShowGrade}
-\setbool{eduShowGrade}{true}
-
 % Display basic emojis
 %% Use \ifthenelse construct in your file to personalise use
 \newbool{showEmojis}
 \setbool{showEmojis}{false}
-
-% Display emojis in Section Titles
-\newbool{showTitleEmojis}
-\setbool{showTitleEmojis}{false}
-
-% Display additional emojis in location and dates throughout CV
-\newbool{showCalEmojis}
-\setbool{showCalEmojis}{false}
-
-% Display emojis for each skill category
-%% For new custom categories, simply use the desired emoji at the corresponding
-%% place in your TeX file along with \ifthenelse construct, see usage in the file
-%% for an example
-\newbool{showSkillSubEmojis}
-\setbool{showSkillSubEmojis}{false}
 
 
 %-------------------------------------------------------------------------------
@@ -469,9 +450,7 @@
 % Skills
 %-------
 \newenvironment{cvskills}{%
-	\ifthenelse{\equal{DE}{\cvLang}}%
-		{\cvsection{\ifbool{showTitleEmojis} {\emoji{gem-stone}\space} {} Kenntnisse}}%
-		{\cvsection{\ifbool{showTitleEmojis} {\emoji{gem-stone}\space} {} Skills}}%
+	\switchDE{\cvsection{Kenntnisse}}{\cvsection{Skills}}%
 	\begin{center}
 		
 		\begin{tabular*}{\textwidth}{ R{\cvNatureLeftSidebar} @{\hspace{\cvNatureColumnInset}} L{\textwidth - \cvNatureLeftSidebar - \cvNatureColumnInset} }
@@ -493,9 +472,7 @@
 % Education
 %----------
 \newenvironment{cveducation}{%
-	\ifthenelse{\equal{DE}{\cvLang}}%
-		{\cvsection{\ifbool{showTitleEmojis} {\emoji{classical-building}\space} {} Ausbildung}}%
-		{\cvsection{\ifbool{showTitleEmojis} {\emoji{classical-building}\space} {} Education}}%
+	\switchDE{\cvsection{Ausbildung}}{\cvsection{Education}}%
 	\begin{center}%
 }{%
 	\end{center}%
@@ -521,9 +498,9 @@
 % Entry for education section
 \newcommand*{\cvSchoolFlush}{%
 	\begin{tabular*}{\textwidth}{ R{\cvNatureLeftSidebar} @{\hspace{\cvNatureColumnInset}} L{\textwidth - \cvNatureLeftSidebar - \cvNatureColumnInset} }%
-		\multirow{2}{=}{ \raggedleft \ifbool{showCalEmojis} {\emoji{spiral-calendar}\space} {} \cvStylesSimpleDate{ \switchDE{\@cvEducationDatesDE}{\@cvEducationDatesEN} }\newline \cvStylesSimpleLocation{ \switchDE{\@cvEducationLocationDE}{\@cvEducationLocationEN} }} & \cvStylesSimpleTitle{ \switchDE{\@cvEducationDegreeDE\space\@cvEducationDegreeNameDE}{\@cvEducationDegreeEN \@cvEducationDegreeNameEN} } \\
+		\multirow{2}{=}{ \raggedleft \cvStylesSimpleDate{ \switchDE{\@cvEducationDatesDE}{\@cvEducationDatesEN} }\newline \cvStylesSimpleLocation{ \switchDE{\@cvEducationLocationDE}{\@cvEducationLocationEN} }} & \cvStylesSimpleTitle{ \switchDE{\@cvEducationDegreeDE\space\@cvEducationDegreeNameDE}{\@cvEducationDegreeEN \@cvEducationDegreeNameEN} } \\
 		& \cvStylesSimpleOrganisation{ \switchDE{\@cvEducationInstitutionDE}{\@cvEducationInstitutionEN} } \ifempty{\@cvEducationGradeDE} {} {\\
-		& \cvStylesSimpleSubtitle{\ifbool{showCalEmojis} {\emoji{graduation-cap}\space} {} \switchDE{Abschlussnote}{Final Grade} \switchDE{\@cvEducationGradeDE}{\@cvEducationGradeEN}}} \ifempty{\@cvEducationDescriptionDE} {} {\\
+		& \cvStylesSimpleSubtitle{\switchDE{Abschlussnote}{Final Grade} \switchDE{\@cvEducationGradeDE}{\@cvEducationGradeEN}}} \ifempty{\@cvEducationDescriptionDE} {} {\\
 		& \cvStylesSimpleDescriptions{ \switchDE{\@cvEducationDescriptionDE}{\@cvEducationDescriptionEN} }}%
 	\end{tabular*}%
 	\vspace{-1.0mm}%
@@ -533,9 +510,7 @@
 % References
 %-----------
 \newenvironment{cvReferences}{%
-	\ifthenelse{\equal{DE}{\cvLang}}%
-		{\cvsection{\ifbool{showTitleEmojis} {\emoji{memo}\space} {} Referenzen}}%
-		{\cvsection{\ifbool{showTitleEmojis} {\emoji{memo}\space} {} References}}%
+	\switchDE{\cvsection{Referenzen}}{\cvsection{References}}%
 	\begin{center}%
 }{%
 	\end{center}%
@@ -571,9 +546,7 @@
 % Experience
 %-----------
 \newenvironment{cvexperience}{%
-	\ifthenelse{\equal{DE}{\cvLang}}%
-		{\cvsection{\ifbool{showTitleEmojis} {\emoji{briefcase}\space} {} Berufserfahrung}}%
-		{\cvsection{\ifbool{showTitleEmojis} {\emoji{briefcase}\space} {} Experience}}%
+	\switchDE{\cvsection{Berufserfahrung}}{\cvsection{Experience}}%
 	\begin{center}
 }{%
 	\end{center}
@@ -595,7 +568,7 @@
 
 \newcommand*{\cvExperienceFlush}{%
 	\begin{tabular*}{\textwidth}{ R{\cvNatureLeftSidebar} @{\hspace{\cvNatureColumnInset}} L{\textwidth - \cvNatureLeftSidebar - \cvNatureColumnInset} }%
-		\multirow{3}{=}{ \raggedleft \ifbool{showCalEmojis} {\emoji{spiral-calendar}\space} {} \cvStylesSimpleDate{ \switchDE{\@cvExperienceDatesDE}{\@cvExperienceDatesEN} }\newline \cvStylesSimpleLocation{ \switchDE{\@cvExperienceLocationDE}{\@cvExperienceLocationEN} }} & \cvStylesSimpleTitle{ \switchDE{\@cvExperienceTitleDE}{\@cvExperienceTitleEN} } \\
+		\multirow{3}{=}{ \raggedleft \cvStylesSimpleDate{ \switchDE{\@cvExperienceDatesDE}{\@cvExperienceDatesEN} }\newline \cvStylesSimpleLocation{ \switchDE{\@cvExperienceLocationDE}{\@cvExperienceLocationEN} }} & \cvStylesSimpleTitle{ \switchDE{\@cvExperienceTitleDE}{\@cvExperienceTitleEN} } \\
 		& \cvStylesSimpleOrganisation{ \switchDE{\@cvExperienceOrganisationDE}{\@cvExperienceOrganisationEN} } \\
 		& \cvStylesSimpleDescriptions{ \switchDE{\@cvExperienceDescriptionDE}{\@cvExperienceDescriptionEN} }
 	\end{tabular*}%
@@ -606,9 +579,7 @@
 % Positions / Extracurricular activities 
 %---------------------------------------
 \newenvironment{cvpositions}{%
-	\ifthenelse{\equal{DE}{\cvLang}}%
-		{\cvsection{\ifbool{showTitleEmojis} {\emoji{rocket}\space} {} Ehrenamtliches und sonstige T{\"a}tigkeiten}}%
-		{\cvsection{\ifbool{showTitleEmojis} {\emoji{rocket}\space} {} Volunteering}}%
+	\switchDE{\cvsection{Ehrenamtliches und sonstige T{\"a}tigkeiten}}{\cvsection{Volunteering}}%
 	\begin{center}
 }{%
 	\end{center}%
@@ -631,7 +602,7 @@
 
 \newcommand*{\cvPositionFlush}{%
 	\begin{tabular*}{\textwidth}{ R{\cvNatureLeftSidebar} @{\hspace{\cvNatureColumnInset}} L{\textwidth - \cvNatureLeftSidebar - \cvNatureColumnInset} }%
-		\multirow{3}{=}{ \raggedleft \ifbool{showCalEmojis} {\emoji{spiral-calendar}\space} {} \cvStylesSimpleDate{\ifthenelse{\equal{DE}{\cvLang}}{\@cvPositionDatesDE}{\@cvPositionDatesEN}}\newline \cvStylesSimpleLocation{\ifthenelse{\equal{DE}{\cvLang}}{\@cvPositionLocationDE}{\@cvPositionLocationEN}}} & \cvStylesSimpleTitle{\ifthenelse{\equal{DE}{\cvLang}}{\@cvPositionPostDE}{\@cvPositionPostEN}} \\
+		\multirow{3}{=}{ \raggedleft \cvStylesSimpleDate{\ifthenelse{\equal{DE}{\cvLang}}{\@cvPositionDatesDE}{\@cvPositionDatesEN}}\newline \cvStylesSimpleLocation{\ifthenelse{\equal{DE}{\cvLang}}{\@cvPositionLocationDE}{\@cvPositionLocationEN}}} & \cvStylesSimpleTitle{\ifthenelse{\equal{DE}{\cvLang}}{\@cvPositionPostDE}{\@cvPositionPostEN}} \\
 		& \cvStylesSimpleOrganisation{\ifthenelse{\equal{DE}{\cvLang}}{\@cvPositionOrganisationDE}{\@cvPositionOrganisationEN}} \\
 		& \cvStylesSimpleDescriptions{\ifthenelse{\equal{DE}{\cvLang}}{\@cvPositionDescriptionDE}{\@cvPositionDescriptionEN}}
 	\end{tabular*}%
@@ -641,9 +612,7 @@
 % Summary
 %--------
 \newenvironment{cvSummary}{%
-	\ifthenelse{\equal{DE}{\cvLang}}%
-		{\cvsection{\ifbool{showTitleEmojis} {\emoji{memo}\space} {} Kurzprofil}}%
-		{\cvsection{\ifbool{showTitleEmojis} {\emoji{memo}\space} {} Summary}}%
+	\switchDE{\cvsection{Kurzprofil}}{\cvsection{Summary}}%
 	\cvStylesSimpleLetter{
 		\par\nobreak
 }{%
