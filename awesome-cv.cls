@@ -300,7 +300,7 @@ pdfkeywords={}
 
 % Date of Birth
 %% Usage: \birthdate{<birth date>}{<birth month>}{<birth year>}
-\newcommand*{\birthdate}[1]{\def\@birthdate{#1}}
+\newcommand*{\birthdate}[3]{\def\@birthdate{ \switchDE{#1.\space\monthnamegerman[#2]}{#1\space\monthnameenglish[#2]}#3 }}
 
 % Birth Place
 %% Usage: \birthplace{cvLang}{<birth place>}
@@ -524,9 +524,9 @@ pdfkeywords={}
 					\ifthenelse{\isundefined{\@linkedin}}%
 						{}{%
 						\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\faLinkedinSquare\space}{\switchDE{LinkedIn:}{LinkedIn:}{}}} & \cvStylesSimpleHeaderMainData{\href{https://www.linkedin.com/in/\@linkedin}{\cvStylesSimpleHeaderSupplementData{https://www.linkedin.com/in/}\@linkedin}} \\ }%
-					% \ifthenelse{\isundefined{\customlink}}%
-					% 	{}{%
-					% 	\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\emoji{link}\space}{\switchDE{\@customlinkname}{\@customlinkname}{}}} & \cvStylesSimpleHeaderMainData{\href{\@customlinkhref}{\@customlinkhref}} \\ }%
+					\ifthenelse{\isundefined{\@customlinkname}}%
+						{}{%
+						\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\emoji{link}\space}{\switchDE{\@customlinkname:}{\@customlinkname:}{}}} & \cvStylesSimpleHeaderMainData{\href{\@customlinkhref}{\@customlinkhref}} \\ }%
 					\ifthenelse{\isundefined{\@twitter}}%
 						{}{%
 						\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\faTwitter\space}{\switchDE{Twitter:}{Twitter:}{}}} & \cvStylesSimpleHeaderMainData{\href{https://twitter.com/\@twitter}{\cvStylesSimpleHeaderSupplementData{https://twitter.com/}\@twitter}} \\ }%
