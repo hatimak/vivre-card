@@ -18,7 +18,7 @@
 % CONFIGURATIONS
 %-------------------------------------------------------------------------------
 % A4 paper size by default, use 'letterpaper' for US letter
-\documentclass[11pt, a4paper]{awesome-cv}
+\documentclass[11pt, a4paper]{vivre-card}
 
 % Configure page margins with geometry
 \geometry{left=1.2cm, top=0.7cm, right=1.2cm, bottom=1.2cm, footskip=0.1cm}
@@ -26,22 +26,12 @@
 % Specify the location of the included fonts
 \fontdir[fonts/]
 
-% Color for highlights
-% Awesome Colors: awesome-emerald, awesome-skyblue, awesome-red, awesome-pink, awesome-orange
-%                 awesome-nephritis, awesome-concrete, awesome-darknight
-\colorlet{awesome}{awesome-red}
-% Uncomment if you would like to specify your own color
-\definecolor{awesome}{HTML}{792427}
-
-% Colors for text
+% Colors for text TODO @hatimak
 % Uncomment if you would like to specify your own color
 % \definecolor{darktext}{HTML}{414141}
 % \definecolor{text}{HTML}{333333}
 % \definecolor{graytext}{HTML}{5D5D5D}
 % \definecolor{lighttext}{HTML}{999999}
-
-% Set false if you don't want to highlight section with awesome color
-\setbool{acvSectionColorHighlight}{true}
 
 % Set false if you don't want to include scores/grades for your education entries
 \setbool{eduShowGrade}{true}
@@ -51,9 +41,6 @@
 \setbool{showTitleEmojis}{false}
 \setbool{showCalEmojis}{false}
 \setbool{showSkillSubEmojis}{false}
-
-% If you would like to change the social information separator from a pipe (|) to something else
-\renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
 
 
 %-------------------------------------------------------------------------------
@@ -144,6 +131,17 @@
 %-------------------------------------------------------------------------------
 
 \begin{cvletter}
+
+\lettersection{EN}{}{%
+
+}
+
+\lettersection{DE}{}{%
+
+}
+
+\lettersectionflush
+%-------------------------------------------------------------------------------
 
 \lettersection{EN}{About Me}{%
 I am a Master's graduate from the RWTH Aachen University and a Bachelor's graduate from the Indian Institute of Technology Patna, India. My professional interests lie at the intersection of embedded computing, electrical engineering, control systems and communication engineering; the intra-disciplinary application of these concepts to solving real-world problems is a strong motivation for me. I pride myself on being a quick and independent learner who is often among those who ask a lot of curious questions. My academic and professional journey has been an enriching experience reflecting my ability to collaborate with colleagues from diverse cultural backgrounds.

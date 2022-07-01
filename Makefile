@@ -147,6 +147,7 @@ DVIPS		?= dvips
 LATEX		?= latex
 PDFLATEX	?= pdflatex
 XELATEX		?= xelatex
+LUALATEX	?= lualatex
 EPSTOPDF	?= epstopdf
 MAKEINDEX	?= makeindex
 XINDY		?= xindy
@@ -553,7 +554,7 @@ GNUPLOT_GLOBAL	:= global._include_.gpi gnuplot.global
 
 ifeq "$(strip $(BUILD_STRATEGY))" "latex"
 default_graphic_extension	?= eps
-latex_build_program		?= $(LATEX)
+latex_build_program			?= $(LATEX)
 build_target_extension		?= dvi
 hyperref_driver_pattern		?= hdvips
 hyperref_driver_error		?= Using dvips: specify ps2pdf in the hyperref options.
@@ -561,7 +562,7 @@ endif
 
 ifeq "$(strip $(BUILD_STRATEGY))" "pdflatex"
 default_graphic_extension	?= pdf
-latex_build_program		?= $(PDFLATEX)
+latex_build_program			?= $(PDFLATEX)
 build_target_extension		?= pdf
 hyperref_driver_pattern		?= hpdf.*
 hyperref_driver_error		?= Using pdflatex: specify pdftex in the hyperref options (or leave it blank).
@@ -569,7 +570,15 @@ endif
 
 ifeq "$(strip $(BUILD_STRATEGY))" "xelatex"
 default_graphic_extension	?= pdf
-latex_build_program		?= $(XELATEX)
+latex_build_program			?= $(XELATEX)
+build_target_extension		?= pdf
+hyperref_driver_pattern		?= hdvipdf.*
+hyperref_driver_error		?= Using pdflatex: specify pdftex in the hyperref options (or leave it blank).
+endif
+
+ifeq "$(strip $(BUILD_STRATEGY))" "lualatex"
+default_graphic_extension	?= pdf
+latex_build_program			?= $(LUALATEX)
 build_target_extension		?= pdf
 hyperref_driver_pattern		?= hdvipdf.*
 hyperref_driver_error		?= Using pdflatex: specify pdftex in the hyperref options (or leave it blank).
@@ -777,6 +786,11 @@ graphic_target_extensions	:= pdf png jpg jpeg mps tif
 endif
 
 ifeq "$(strip $(BUILD_STRATEGY))" "xelatex"
+graphic_source_extensions	+= eps
+graphic_target_extensions	:= pdf png jpg jpeg mps tif
+endif
+
+ifeq "$(strip $(BUILD_STRATEGY))" "lualatex"
 graphic_source_extensions	+= eps
 graphic_target_extensions	:= pdf png jpg jpeg mps tif
 endif
@@ -2501,6 +2515,22 @@ endif
 
 endif
 
+ifeq "$(strip $(BUILD_STRATEGY))" "lualatex"
+%.pdf: %.eps $(if $(GRAY),$(gray_eps_file))
+	$(QUIET)$(call echo-graphic,$^,$@)
+	$(QUIET)$(call convert-eps-to-pdf,$<,$@,$(GRAY))
+
+ifeq "$(strip $(GPI_OUTPUT_EXTENSION))" "pdf"
+%.pdf:	%.gpi %.gpi.d $(gpi_sed) $(gpi_global)
+	$(QUIET)$(call echo-graphic,$^,$@)
+	$(QUIET)$(call convert-gpi,$<,$@,$(GRAY))
+endif
+
+%.pdf:	%.fig
+	$(QUIET)$(call echo-graphic,$^,$@)
+	$(QUIET)$(call convert-fig,$<,$@,$(GRAY))
+
+endif
 
 # TODO: capture mpost output and display errors
 # TODO: figure out why pdf generation is erroring out (but working anyway)
@@ -3549,27 +3579,27 @@ endef
 # vim: noet sts=0 sw=8 ts=8
 
 # Additions by @hatimak, tested only on macOS with gsed installed
-vivre-card: cv.tex coverletter.tex awesome-cv.cls cv/education.tex cv/experience.tex cv/skills.tex cv/positions.tex cv/references.tex
-	lualatex cv.tex && lualatex cv.tex
+vivre-card: cv.tex coverletter.tex vivre-card.cls cv/education.tex cv/experience.tex cv/skills.tex cv/positions.tex cv/references.tex
+	$(MAKE) cv
 	mv cv.pdf cv\ de-de\ online.pdf
 
 	gsed -i 's/\\setbool{showEmojis}{false}/\\setbool{showEmojis}{true}/g' cv.tex
-	lualatex cv.tex && lualatex cv.tex
+	$(MAKE) cv
 	mv cv.pdf cv\ de-de\ handout.pdf
 
-	gsed -i 's/\\newcommand{\\cvLang}{DE}/\\newcommand{\\cvLang}{EN}/g' awesome-cv.cls
-	lualatex cv.tex && lualatex cv.tex
+	gsed -i 's/\\newcommand{\\cvLang}{DE}/\\newcommand{\\cvLang}{EN}/g' vivre-card.cls
+	$(MAKE) cv
 	mv cv.pdf cv\ en-de\ handout.pdf
 
 	gsed -i 's/\\setbool{showEmojis}{true}/\\setbool{showEmojis}{false}/g' cv.tex
-	lualatex cv.tex && lualatex cv.tex
+	$(MAKE) cv
 	mv cv.pdf cv\ en-de\ online.pdf
 
-	lualatex coverletter.tex && lualatex coverletter.tex
+	$(MAKE) coverletter
 	mv coverletter.pdf coverletter\ en-de\ online.pdf
 
-	gsed -i 's/\\newcommand{\\cvLang}{EN}/\\newcommand{\\cvLang}{DE}/g' awesome-cv.cls
-	lualatex coverletter.tex && lualatex coverletter.tex
+	gsed -i 's/\\newcommand{\\cvLang}{EN}/\\newcommand{\\cvLang}{DE}/g' vivre-card.cls
+	$(MAKE) coverletter
 	mv coverletter.pdf coverletter\ de-de\ online.pdf
 
 	$(MAKE) clean

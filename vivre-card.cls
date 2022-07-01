@@ -1,6 +1,5 @@
-%% Start of file `awesome-cv.cls'.
+%% Start of file `vivre-card.cls'.
 % Vivre Card CV Class file
-% TODO @hatimak: rename class file
 %
 %
 % Author:
@@ -10,10 +9,6 @@
 % TODO @hatimak:
 % 	license
 %	birth date and place must be defined, no infrastructure in place to check if any of it is undefined
-%	get rid of fancy and simple nature dichotomy
-%	position field in the header
-%	cover letter elements
-% 	"awesome" colour elements and "simple nature" colour elements should be merged
 %
 
 
@@ -36,7 +31,7 @@
 \DeclareOption{final}{\setlength\overfullrule{0pt}}
 % Inherit options of article
 \DeclareOption*{%
-\PassOptionsToClass{\CurrentOption}{article}
+	\PassOptionsToClass{\CurrentOption}{article}
 }
 \ProcessOptions\relax
 \LoadClass{article}
@@ -71,10 +66,11 @@
 \defaultfontfeatures{Ligatures=TeX}
 % Manage math fonts
 \RequirePackage{unicode-math}
+
 % Needed to use icons from font-awesome
 % (https://github.com/posquit0/latex-fontawesome)
 \RequirePackage{fontawesome}
-%\RequirePackage[default,opentype]{sourcesanspro}
+
 \RequirePackage{lmodern}
 \renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
 \RequirePackage[T1]{fontenc}
@@ -86,10 +82,10 @@
 
 \RequirePackage[hidelinks,unicode]{hyperref}
 \hypersetup{%
-pdftitle={},
-pdfauthor={},
-pdfsubject={},
-pdfkeywords={}
+	pdftitle={},
+	pdfauthor={},
+	pdfsubject={},
+	pdfkeywords={}
 }
 % Multirow entries in tables
 \RequirePackage{multirow}
@@ -101,7 +97,6 @@ pdfkeywords={}
 % Emoji symbols
 %% Works only with LuaLaTeX
 \RequirePackage{emoji}
-
 
 %-------------------------------------------------------------------------------
 % Directory locations
@@ -138,14 +133,6 @@ pdfkeywords={}
 %% Either EN or DE
 \newcommand{\cvLang}{DE}
 
-% Nature of the CV
-%% Either simple or fancy
-\newcommand{\cvNature}{simple}
-
-% Switch section color highlighting
-\newbool{acvSectionColorHighlight}
-\setbool{acvSectionColorHighlight}{true}
-
 % Display school grades
 \newbool{eduShowGrade}
 \setbool{eduShowGrade}{true}
@@ -180,66 +167,17 @@ pdfkeywords={}
 \definecolor{darkgray}{HTML}{393939}
 \definecolor{gray}{HTML}{696969}
 \definecolor{lightgray}{HTML}{909090}
-% Basic colors
-\definecolor{green}{HTML}{C2E15F}
-\definecolor{orange}{HTML}{FDA333}
-\definecolor{purple}{HTML}{D3A4F9}
-\definecolor{red}{HTML}{FB4485}
-\definecolor{blue}{HTML}{6CE0F1}
+
 % Text colors
 \definecolor{darktext}{HTML}{474747}
 \definecolor{text}{HTML}{424242}
 \colorlet{graytext}{gray}
 \colorlet{lighttext}{lightgray}
-% Awesome colors
-\definecolor{awesome-emerald}{HTML}{00A388}
-\definecolor{awesome-skyblue}{HTML}{0395DE}
-\definecolor{awesome-red}{HTML}{DC3522}
-\definecolor{awesome-pink}{HTML}{EF4089}
-\definecolor{awesome-orange}{HTML}{FF6138}
-\definecolor{awesome-nephritis}{HTML}{27AE60}
-\definecolor{awesome-concrete}{HTML}{95A5A6}
-\definecolor{awesome-darknight}{HTML}{131A28}
-\colorlet{awesome}{awesome-red}
-
-% Awesome section color
-\def\@sectioncolor[#1]{%
-	\ifbool{acvSectionColorHighlight}%
-		{{\color{awesome}#1}}%
-		{#1}%
-}
 
 
 %-------------------------------------------------------------------------------
-% Styles TODO @hatimak
+% Styles
 %-------------------------------------------------------------------------------
-% Configure styles for each CV elements
-% For fundamental structures
-\newcommand*{\headerpositionstyle}[1]{{\fontsize{7.6pt}{1em}\scshape\color{awesome} #1}}
-\newcommand*{\headeraddressstyle}[1]{{\fontsize{8pt}{1em}\itshape\color{lighttext} #1}}
-\newcommand*{\headersocialstyle}[1]{{\fontsize{6.8pt}{1em}\color{text} #1}}
-\newcommand*{\headerquotestyle}[1]{{\fontsize{9pt}{1em}\itshape\color{darktext} #1}}
-
-% For elements of entry
-\newcommand*{\entrytitlestyle}[1]{{\fontsize{10pt}{1em}\bfseries\color{darktext} #1}}
-\newcommand*{\entrypositionstyle}[1]{{\fontsize{9pt}{1em}\slshape\color{graytext} #1}}
-\newcommand*{\entrydatestyle}[1]{{\fontsize{9pt}{1em}\slshape\color{graytext} #1}}
-\newcommand*{\entrylocationstyle}[1]{{\fontsize{9pt}{1em}\slshape\color{awesome} #1}}
-\newcommand*{\descriptionstyle}[1]{{\fontsize{9pt}{1em}\upshape\color{text} #1}}
-
-\newcommand*{\experiencepositionstyle}[1]{{\fontsize{9pt}{1em}\scshape\color{awesome} #1}}
-\newcommand*{\entrysubtitlestyle}[1]{{\fontsize{9pt}{1em}\slshape\color{graytext} #1}}
-
-\newcommand*{\positionorgstyle}[1]{{\fontsize{9pt}{1em}\slshape\color{awesome} #1}}
-
-% For elements of the cover letter
-\newcommand*{\lettersectionstyle}[1]{{\fontsize{14pt}{1em}\bfseries\color{text}\@sectioncolor[#1]}}
-\newcommand*{\letternamestyle}[1]{{\fontsize{10pt}{1em}\bfseries\color{darktext} #1}}
-\newcommand*{\letterenclosurestyle}[1]{{\fontsize{10pt}{1em}\slshape\color{lighttext} #1}}
-
-% New styles
-%-----------
-%% TODO @hatimak: Create new styles and discard old ones
 \newcommand*{\cvStylesHeaderFirstName}[1]{{\fontsize{32pt}{1em}\normalfont\color{text} #1}}
 \newcommand*{\cvStylesHeaderLastName}[1]{{\fontsize{32pt}{1em}\bfseries\color{graytext} #1}}
 
@@ -342,10 +280,6 @@ pdfkeywords={}
 %% Usage: \xing{<xing name>}
 \newcommand*{\xing}[1]{\def\@xing{#1}}
 
-% Quote (optional)
-%% Usage: \quote{<quote>}
-\renewcommand*{\quote}[1]{\def\@quote{#1}}
-
 % Recipient's information (cover letter)
 %% Usage: \recipient{<company name or dept>}{<recipient address>}
 \newcommand*{\recipient}[2]{\def\@recipientname{#1}\def\@recipientaddress{#2}}
@@ -359,7 +293,6 @@ pdfkeywords={}
 \newcommand*{\letterdate}[3]{\def\@letterdate{\switchDE{#1.\space\monthnamegerman[#2]}{#1\space\monthnameenglish[#2]}\space #3}}
 
 % Enclosure for letter (cover letter, optional)
-
 \newcommand*{\letterenclosure}[2]{ \ifthenelse{\equal{DE}{#1}} {\def\@letterenclosureDE{#2}} {\def\@letterenclosureEN{#2}} }
 
 
@@ -368,22 +301,33 @@ pdfkeywords={}
 %-------------------------------------------------------------------------------
 %% Define helper macros a user can change easily
 % Header
-\newcommand{\acvHeaderNameDelim}{\space}
-\newcommand{\acvHeaderAfterNameSkip}{.4mm}
-\newcommand{\acvHeaderAfterPositionSkip}{.4mm}
-\newcommand{\acvHeaderAfterAddressSkip}{-.5mm}
-\newcommand{\acvHeaderIconSep}{\space}
-\newcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
 \newcommand{\acvHeaderAfterSocialSkip}{6mm}
-\newcommand{\acvHeaderAfterQuoteSkip}{5mm}
 
 % Others
 \newcommand{\acvSectionTopSkip}{3mm}
-\newcommand{\acvSectionContentTopSkip}{0.0mm}
 
 % Simple Nature geometrical measurements
 \newcommand{\cvNatureLeftSidebar}{3.90cm}
 \newcommand{\cvNatureColumnInset}{0.80em}
+
+% Section, like Education, Experience
+%% Usage: \cvsection{<section-title>}
+\newcommand{\cvsection}[1]{%
+	\vspace{\acvSectionTopSkip}
+	\cvStylesSimpleSection{ #1 }
+	\phantomsection
+}
+
+% Environment for CV items, bullet list for description, particularly in the Experiences section
+\newenvironment{cvitems}{%
+	\vspace{-4.0mm}
+		\begin{itemize}[leftmargin=4.0ex]
+			\setlength{\parskip}{0pt}
+			\setlength\itemsep{0.27em}
+}{%
+		\end{itemize}
+	\vspace{-4.0mm}
+}
 
 
 %-------------------------------------------------------------------------------
@@ -403,13 +347,11 @@ pdfkeywords={}
 % Macro to to encapsulate language switch
 \newcommand*{\switchDE}[2]{ \ifthenelse{\equal{DE}{\cvLang}} {#1} {#2} }
 
-% Macro to to encapsulate Nature check
-\newcommand*{\isFancy}[2]{ \ifthenelse{\equal{fancy}{\cvNature}} {#1} {#2} }
-
 %-------------------------------------------------------------------------------
 % CV Structure
 %-------------------------------------------------------------------------------
 % Header
+% ------
 %% Section based on Header from Awesome-CV
 %% template (https://github.com/posquit0/Awesome-CV) by
 %% Claud D. Park <posquit0.bj@gmail.com>
@@ -424,7 +366,7 @@ pdfkeywords={}
 					{\setlength{\photodim}{1.2cm}}%
 					{\setlength{\photodim}{1.2cm}}%
 				\ifthenelse{\equal{\@photoedge}{edge}}%
-					{\isFancy{\def\@photoborder{awesome}}{\def\@photoborder{darkgray}}}%
+					{\def\@photoborder{darkgray}}%
 					{\def\@photoborder{none}}%
 				\begin{tikzpicture}%
 					\node[\@photoshape, draw=\@photoborder, line width=0.9pt, inner sep=\photodim, fill overzoom image=\@photo] () {};
@@ -457,91 +399,47 @@ pdfkeywords={}
 		\ifthenelse{\isundefined{\@position}}%
 			{}%
 			{\cvStylesSimpleOrganisation{\@position\\[-0.3mm]}}%
-		\isFancy{
-			\ifthenelse{\isundefined{\@address}}%
-				{}%
-				{\ifbool{showEmojis} {\emoji{house-with-garden}\acvHeaderIconSep} {} \headeraddressstyle{\@address\\[\acvHeaderAfterAddressSkip]}}%
-			\headersocialstyle{%%
-				\newbool{isstart}%
-				\setbool{isstart}{true}%
+		\begin{center}
+			\vspace{1.5mm}{%
+			\setlength{\tabcolsep}{0pt}
+			\setlength\extrarowheight{-3pt}
+			\begin{tabular}{ r l }%
+				\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\emoji{birthday-cake}\space}{\switchDE{Geburtsdatum:}{Birth date:}{}}} & \cvStylesSimpleHeaderMainData{\@birthdate} \\%
+				\ifthenelse{\isundefined{\@addressDE} \or \isundefined{\@addressEN}}%
+					{}{%
+					\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\emoji{house-with-garden}\space}{\switchDE{Anschrift:}{Address:}{}}} & \cvStylesSimpleHeaderMainData{\switchDE{\@addressDE}{\@addressEN}} \\ }%
 				\ifthenelse{\isundefined{\@mobile}}%
 					{}{%
-					\emoji{mobile-phone}\acvHeaderIconSep\@mobile%
-					\setbool{isstart}{false}}%
+					\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\emoji{mobile-phone}\space}{\switchDE{Telefon:}{Phone:}{}}} & \cvStylesSimpleHeaderMainData{\@mobile} \\ }%
 				\ifthenelse{\isundefined{\@email}}%
 					{}{%
-					\ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-					\href{mailto:\@email}{\emoji{envelope}\acvHeaderIconSep\@email}}%
+					\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\emoji{envelope}\space}{\switchDE{Email:}{Email:}{}}} & \cvStylesSimpleHeaderMainData{\href{mailto:\@email}{\@email}} \\ }%
 				\ifthenelse{\isundefined{\@homepage}}%
 					{}{%
-					\ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-					\href{https://\@homepage}{\emoji{globe-with-meridians}\acvHeaderIconSep\@homepage}}%
+					\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\emoji{globe-with-meridians}\space}{\switchDE{Homepage:}{Home page:}{}}} & \cvStylesSimpleHeaderMainData{\href{https://\@homepage}{\cvStylesSimpleHeaderSupplementData{https://}\@homepage}} \\ }%
 				\ifthenelse{\isundefined{\@github}}%
 					{}{%
-					\ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-					\href{https://github.com/\@github}{\faGithubSquare\acvHeaderIconSep\@github}}%
+					\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\faGithubSquare\space}{\switchDE{GitHub:}{GitHub:}{}}} & \cvStylesSimpleHeaderMainData{\href{https://github.com/\@github}{\cvStylesSimpleHeaderSupplementData{https://github.com/}\@github}} \\ }%
 				\ifthenelse{\isundefined{\@gitlab}}%
 					{}{%
-					\ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-					\href{https://gitlab.com/\@gitlab}{\faGitlab\acvHeaderIconSep\@gitlab}}%
+					\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\faGitlab\space}{\switchDE{GitLab:}{GitLab:}{}}} & \cvStylesSimpleHeaderMainData{\href{https://gitlab.com/\@gitlab}{\cvStylesSimpleHeaderSupplementData{https://gitlab.com/}\@gitlab}} \\ }%
 				\ifthenelse{\isundefined{\@linkedin}}%
 					{}{%
-					\ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-					\href{https://www.linkedin.com/in/\@linkedin}{\faLinkedinSquare\acvHeaderIconSep\@linkedin}}%
+					\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\faLinkedinSquare\space}{\switchDE{LinkedIn:}{LinkedIn:}{}}} & \cvStylesSimpleHeaderMainData{\href{https://www.linkedin.com/in/\@linkedin}{\cvStylesSimpleHeaderSupplementData{https://www.linkedin.com/in/}\@linkedin}} \\ }%
+				\ifthenelse{\isundefined{\@customlinkname}}%
+					{}{%
+					\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\emoji{link}\space}{\switchDE{\@customlinkname:}{\@customlinkname:}{}}} & \cvStylesSimpleHeaderMainData{\href{\@customlinkhref}{\@customlinkhref}} \\ }%
 				\ifthenelse{\isundefined{\@twitter}}%
 					{}{%
-					\ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-					\href{https://twitter.com/\@twitter}{\faTwitter\acvHeaderIconSep\@twitter}}%
+					\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\faTwitter\space}{\switchDE{Twitter:}{Twitter:}{}}} & \cvStylesSimpleHeaderMainData{\href{https://twitter.com/\@twitter}{\cvStylesSimpleHeaderSupplementData{https://twitter.com/}\@twitter}} \\ }%
 				\ifthenelse{\isundefined{\@xing}}%
 					{}{%
-					\ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-					\href{https://www.xing.com/profile/\@xing}{\faXingSquare\acvHeaderIconSep\@xing}}%
-		}}{%
-			\begin{center}
-				\vspace{1.5mm}{%
-				\setlength{\tabcolsep}{0pt}
-				\setlength\extrarowheight{-3pt}
-				\begin{tabular}{ r l }%
-					\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\emoji{birthday-cake}\space}{\switchDE{Geburtsdatum:}{Birth date:}{}}} & \cvStylesSimpleHeaderMainData{\@birthdate} \\%
-					\ifthenelse{\isundefined{\@addressDE} \or \isundefined{\@addressEN}}%
-						{}{%
-						\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\emoji{house-with-garden}\space}{\switchDE{Anschrift:}{Address:}{}}} & \cvStylesSimpleHeaderMainData{\switchDE{\@addressDE}{\@addressEN}} \\ }%
-					\ifthenelse{\isundefined{\@mobile}}%
-						{}{%
-						\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\emoji{mobile-phone}\space}{\switchDE{Telefon:}{Phone:}{}}} & \cvStylesSimpleHeaderMainData{\@mobile} \\ }%
-					\ifthenelse{\isundefined{\@email}}%
-						{}{%
-						\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\emoji{envelope}\space}{\switchDE{Email:}{Email:}{}}} & \cvStylesSimpleHeaderMainData{\href{mailto:\@email}{\@email}} \\ }%
-					\ifthenelse{\isundefined{\@homepage}}%
-						{}{%
-						\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\emoji{globe-with-meridians}\space}{\switchDE{Homepage:}{Home page:}{}}} & \cvStylesSimpleHeaderMainData{\href{https://\@homepage}{\cvStylesSimpleHeaderSupplementData{https://}\@homepage}} \\ }%
-					\ifthenelse{\isundefined{\@github}}%
-						{}{%
-						\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\faGithubSquare\space}{\switchDE{GitHub:}{GitHub:}{}}} & \cvStylesSimpleHeaderMainData{\href{https://github.com/\@github}{\cvStylesSimpleHeaderSupplementData{https://github.com/}\@github}} \\ }%
-					\ifthenelse{\isundefined{\@gitlab}}%
-						{}{%
-						\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\faGitlab\space}{\switchDE{GitLab:}{GitLab:}{}}} & \cvStylesSimpleHeaderMainData{\href{https://gitlab.com/\@gitlab}{\cvStylesSimpleHeaderSupplementData{https://gitlab.com/}\@gitlab}} \\ }%
-					\ifthenelse{\isundefined{\@linkedin}}%
-						{}{%
-						\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\faLinkedinSquare\space}{\switchDE{LinkedIn:}{LinkedIn:}{}}} & \cvStylesSimpleHeaderMainData{\href{https://www.linkedin.com/in/\@linkedin}{\cvStylesSimpleHeaderSupplementData{https://www.linkedin.com/in/}\@linkedin}} \\ }%
-					\ifthenelse{\isundefined{\@customlinkname}}%
-						{}{%
-						\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\emoji{link}\space}{\switchDE{\@customlinkname:}{\@customlinkname:}{}}} & \cvStylesSimpleHeaderMainData{\href{\@customlinkhref}{\@customlinkhref}} \\ }%
-					\ifthenelse{\isundefined{\@twitter}}%
-						{}{%
-						\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\faTwitter\space}{\switchDE{Twitter:}{Twitter:}{}}} & \cvStylesSimpleHeaderMainData{\href{https://twitter.com/\@twitter}{\cvStylesSimpleHeaderSupplementData{https://twitter.com/}\@twitter}} \\ }%
-					\ifthenelse{\isundefined{\@xing}}%
-						{}{%
-						\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\faXingSquare\space}{\switchDE{Xing:}{Xing:}{}}} & \cvStylesSimpleHeaderMainData{\href{https://www.xing.com/profile/\@xing}{\cvStylesSimpleHeaderSupplementData{https://www/xing.com/profile/}\@xing}} \\ }%
-				\end{tabular}}%
-				\vspace{-9.0mm}
-			\end{center}
-		}%
+					\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\faXingSquare\space}{\switchDE{Xing:}{Xing:}{}}} & \cvStylesSimpleHeaderMainData{\href{https://www.xing.com/profile/\@xing}{\cvStylesSimpleHeaderSupplementData{https://www/xing.com/profile/}\@xing}} \\ }%
+			\end{tabular}}%
+			\vspace{-9.0mm}
+		\end{center}
 		\vspace{\acvHeaderAfterSocialSkip}
-		\isFancy{}{\noindent\centering\color{lightgray}\rule[0.5\baselineskip]{0.67\headertextwidth}{1.0pt}}
-		\ifthenelse{\isundefined{\@quote}}%
-			{}{%
-			\headerquotestyle{\@quote\\}\vspace{\acvHeaderAfterQuoteSkip}}%
+		\noindent\centering\color{lightgray}\rule[0.5\baselineskip]{0.67\headertextwidth}{1.0pt}
 	\end{minipage}%
 	\begin{minipage}{\headerphotowidth}%
 		\ifthenelse{\equal{\@photoalign}{right}}%
@@ -552,8 +450,10 @@ pdfkeywords={}
 	\ifthenelse{\isundefined{\@photo}}%
 		{\vspace{2.0mm}}%
 }
+%-------------------------------------------------------------------------------
 
 % Footer
+% ------
 %% Usage: \makecvfooter{<left>}{<center>}{<right>}
 \newcommand*{\makecvfooter}[3]{%
 	\fancyfoot{}
@@ -561,53 +461,14 @@ pdfkeywords={}
 	\fancyfoot[C]{\cvStylesSimpleFooter{#2}}
 	\fancyfoot[R]{\cvStylesSimpleFooter{#3}}
 }
-
-% Section, like Education, Experience
-%% Usage: \cvsection{<section-title>}
-\newcommand{\cvsection}[1]{%
-	\vspace{\acvSectionTopSkip}
-%	\cvStylesSimpleSection{ { \isFancy{}{\color{lightgray}\rule[0.5\baselineskip]{\cvNatureLeftSidebar - \cvNatureColumnInset - \cvNatureColumnInset - \cvNatureColumnInset}{2.67pt}} } \hspace{-1.67em} \isFancy{\@sectioncolor[#1]}{#1} }
-	\cvStylesSimpleSection{ \isFancy{\@sectioncolor[#1]}{#1} }
-	\phantomsection
-	\isFancy{\color{awesome}\vhrulefill{0.9pt}}{}
-}
-
-% Paragraph environment
-\newenvironment{cvparagraph}{%
-	\vspace{\acvSectionContentTopSkip}
-	\vspace{-3mm}
-	\paragraphstyle
-}{%
-	\par
-	\vspace{2mm}
-}
-
-% Environment for honors / achievements / awards
-\newenvironment{cvhonors}{%
-	\vspace{\acvSectionContentTopSkip}
-	\vspace{-2mm}
-	\begin{center}
-		\setlength\tabcolsep{0pt}
-		\setlength{\extrarowheight}{1pt}
-		\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} C{1.5cm} L{\textwidth - 4.0cm} R{2.5cm}}
-}{%
-		\end{tabular*}
-	\end{center}
-}
-
-% Entry for honor / achievement / award
-%% Usage: \cvhonor{<position>}{<title>}{<location>}{<date>}
-\newcommand*{\cvhonor}[4]{%
-	\honordatestyle{#4} & \honorpositionstyle{#1} \ifempty{#2}{}{, \honortitlestyle{#2}} & \honorlocationstyle{#3} \\
-}
+%-------------------------------------------------------------------------------
 
 % Skills
 %-------
 \newenvironment{cvskills}{%
 	\ifthenelse{\equal{DE}{\cvLang}}%
-		{\cvsection{\ifbool{showTitleEmojis} {\emoji{gem-stone}\acvHeaderIconSep} {} Kenntnisse}}%
-		{\cvsection{\ifbool{showTitleEmojis} {\emoji{gem-stone}\acvHeaderIconSep} {} Skills}}%
-	\vspace{\acvSectionContentTopSkip}
+		{\cvsection{\ifbool{showTitleEmojis} {\emoji{gem-stone}\space} {} Kenntnisse}}%
+		{\cvsection{\ifbool{showTitleEmojis} {\emoji{gem-stone}\space} {} Skills}}%
 	\begin{center}
 		
 		\begin{tabular*}{\textwidth}{ R{\cvNatureLeftSidebar} @{\hspace{\cvNatureColumnInset}} L{\textwidth - \cvNatureLeftSidebar - \cvNatureColumnInset} }
@@ -626,24 +487,12 @@ pdfkeywords={}
 }
 %-------------------------------------------------------------------------------
 
-% Environment for CV items, bullet list for description, particularly in the Experiences section
-\newenvironment{cvitems}{%
-	\vspace{-4.0mm}
-		\begin{itemize}[leftmargin=4.0ex]
-			\setlength{\parskip}{0pt}
-			\setlength\itemsep{0.27em}
-}{%
-		\end{itemize}
-	\vspace{-4.0mm}
-}
-
 % Education
 %----------
 \newenvironment{cveducation}{%
 	\ifthenelse{\equal{DE}{\cvLang}}%
-		{\cvsection{\ifbool{showTitleEmojis} {\emoji{classical-building}\acvHeaderIconSep} {} Ausbildung}}%
-		{\cvsection{\ifbool{showTitleEmojis} {\emoji{classical-building}\acvHeaderIconSep} {} Education}}%
-	\vspace{\acvSectionContentTopSkip}%
+		{\cvsection{\ifbool{showTitleEmojis} {\emoji{classical-building}\space} {} Ausbildung}}%
+		{\cvsection{\ifbool{showTitleEmojis} {\emoji{classical-building}\space} {} Education}}%
 	\begin{center}%
 }{%
 	\end{center}%
@@ -668,22 +517,13 @@ pdfkeywords={}
 
 % Entry for education section
 \newcommand*{\cvSchoolFlush}{%
-	\isFancy{%
-		\begin{tabular*}{\textwidth}{ L{\textwidth - 3.5cm} R{3.5cm} }%
-			\schoolinstitutionstyle{ \switchDE{\@cvEducationInstitutionDE}{\@cvEducationInstitutionEN} } & \schoollocationstyle{ \switchDE{\@cvEducationLocationDE}{\@cvEducationLocationEN} } \\
-			\experiencepositionstyle{ \switchDE{\@cvEducationDegreeDE \@cvEducationDegreeNameDE}{\@cvEducationDegreeEN\space\@cvEducationDegreeNameEN} } & \entrydatestyle{ \switchDE{\@cvEducationDatesDE}{\@cvEducationDatesEN} } \\
-			\ifempty{\@cvEducationGradeDE} {} {\entrydatestyle{ \switchDE{Abschlussnote}{Final Grade} \switchDE{\@cvEducationGradeDE}{\@cvEducationGradeEN} } & \\}
-			\multicolumn{2}{L{\textwidth}}{\descriptionstyle{ \switchDE{\@cvEducationDescriptionDE}{\@cvEducationDescriptionEN} }}
-		\end{tabular*}%
-	}{%
-		\begin{tabular*}{\textwidth}{ R{\cvNatureLeftSidebar} @{\hspace{\cvNatureColumnInset}} L{\textwidth - \cvNatureLeftSidebar - \cvNatureColumnInset} }%
-			\multirow{2}{=}{ \raggedleft \ifbool{showCalEmojis} {\emoji{spiral-calendar}\acvHeaderIconSep} {} \cvStylesSimpleDate{ \switchDE{\@cvEducationDatesDE}{\@cvEducationDatesEN} }\newline \cvStylesSimpleLocation{ \switchDE{\@cvEducationLocationDE}{\@cvEducationLocationEN} }} & \cvStylesSimpleTitle{ \switchDE{\@cvEducationDegreeDE\space\@cvEducationDegreeNameDE}{\@cvEducationDegreeEN \@cvEducationDegreeNameEN} } \\
-			& \cvStylesSimpleOrganisation{ \switchDE{\@cvEducationInstitutionDE}{\@cvEducationInstitutionEN} } \ifempty{\@cvEducationGradeDE} {} {\\
-			& \cvStylesSimpleSubtitle{\ifbool{showCalEmojis} {\emoji{graduation-cap}\acvHeaderIconSep} {} \switchDE{Abschlussnote}{Final Grade} \switchDE{\@cvEducationGradeDE}{\@cvEducationGradeEN}}} \ifempty{\@cvEducationDescriptionDE} {} {\\
-			& \cvStylesSimpleDescriptions{ \switchDE{\@cvEducationDescriptionDE}{\@cvEducationDescriptionEN} }}%
-		\end{tabular*}%
-		\vspace{-1.0mm}%
-	}%
+	\begin{tabular*}{\textwidth}{ R{\cvNatureLeftSidebar} @{\hspace{\cvNatureColumnInset}} L{\textwidth - \cvNatureLeftSidebar - \cvNatureColumnInset} }%
+		\multirow{2}{=}{ \raggedleft \ifbool{showCalEmojis} {\emoji{spiral-calendar}\space} {} \cvStylesSimpleDate{ \switchDE{\@cvEducationDatesDE}{\@cvEducationDatesEN} }\newline \cvStylesSimpleLocation{ \switchDE{\@cvEducationLocationDE}{\@cvEducationLocationEN} }} & \cvStylesSimpleTitle{ \switchDE{\@cvEducationDegreeDE\space\@cvEducationDegreeNameDE}{\@cvEducationDegreeEN \@cvEducationDegreeNameEN} } \\
+		& \cvStylesSimpleOrganisation{ \switchDE{\@cvEducationInstitutionDE}{\@cvEducationInstitutionEN} } \ifempty{\@cvEducationGradeDE} {} {\\
+		& \cvStylesSimpleSubtitle{\ifbool{showCalEmojis} {\emoji{graduation-cap}\space} {} \switchDE{Abschlussnote}{Final Grade} \switchDE{\@cvEducationGradeDE}{\@cvEducationGradeEN}}} \ifempty{\@cvEducationDescriptionDE} {} {\\
+		& \cvStylesSimpleDescriptions{ \switchDE{\@cvEducationDescriptionDE}{\@cvEducationDescriptionEN} }}%
+	\end{tabular*}%
+	\vspace{-1.0mm}%
 }
 %-------------------------------------------------------------------------------
 
@@ -691,9 +531,8 @@ pdfkeywords={}
 %-----------
 \newenvironment{cvReferences}{%
 	\ifthenelse{\equal{DE}{\cvLang}}%
-		{\cvsection{\ifbool{showTitleEmojis} {\emoji{memo}\acvHeaderIconSep} {} Referenzen}}%
-		{\cvsection{\ifbool{showTitleEmojis} {\emoji{memo}\acvHeaderIconSep} {} References}}%
-	\vspace{\acvSectionContentTopSkip}%
+		{\cvsection{\ifbool{showTitleEmojis} {\emoji{memo}\space} {} Referenzen}}%
+		{\cvsection{\ifbool{showTitleEmojis} {\emoji{memo}\space} {} References}}%
 	\begin{center}%
 }{%
 	\end{center}%
@@ -726,14 +565,12 @@ pdfkeywords={}
 }
 %-------------------------------------------------------------------------------
 
-
 % Experience
 %-----------
 \newenvironment{cvexperience}{%
 	\ifthenelse{\equal{DE}{\cvLang}}%
-		{\cvsection{\ifbool{showTitleEmojis} {\emoji{briefcase}\acvHeaderIconSep} {} Berufserfahrung}}%
-		{\cvsection{\ifbool{showTitleEmojis} {\emoji{briefcase}\acvHeaderIconSep} {} Experience}}%
-	\vspace{\acvSectionContentTopSkip}
+		{\cvsection{\ifbool{showTitleEmojis} {\emoji{briefcase}\space} {} Berufserfahrung}}%
+		{\cvsection{\ifbool{showTitleEmojis} {\emoji{briefcase}\space} {} Experience}}%
 	\begin{center}
 }{%
 	\end{center}
@@ -754,34 +591,21 @@ pdfkeywords={}
 	\ifthenelse{\equal{DE}{#1}} {\def\@cvExperienceOrganisationDE{#2}} {\def\@cvExperienceOrganisationEN{#2}} }
 
 \newcommand*{\cvExperienceFlush}{%
-	\isFancy{%
-		\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.0cm} p{4.0cm}}%
-			\experiencepositionstyle{ \switchDE{\@cvExperienceTitleDE}{\@cvExperienceTitleEN} } & \ifempty{\@cvExperienceSubtitleDE} {\multirow{1}{=}{\raggedleft \entrylocationstyle{ \switchDE{\@cvExperienceLocationDE}{\@cvExperienceLocationEN} }} \\
-			\entrytitlestyle{ \switchDE{\@cvExperienceOrganisationDE}{\@cvExperienceOrganisationEN} } & \multirow{1}{=}{\raggedleft \entrydatestyle{ \switchDE{\@cvExperienceDatesDE}{\@cvExperienceDatesEN} }} \\}
-			{\multirow[b]{2}{=}{\raggedleft \entrylocationstyle{ \switchDE{\@cvExperienceLocationDE}{\@cvExperienceLocationEN} }} \\
-			\entrytitlestyle{ \switchDE{\@cvExperienceOrganisationDE}{\@cvExperienceOrganisationEN} } & \\
-			\entrysubtitlestyle{ \switchDE{\@cvExperienceSubtitleDE}{\@cvExperienceSubtitleEN} } & \multirow{1}{=}{\raggedleft \entrydatestyle{ \switchDE{\@cvExperienceDatesDE}{\@cvExperienceDatesEN} }} \\}
-			\multicolumn{2}{L{\textwidth}}{\descriptionstyle{ \switchDE{\@cvExperienceDescriptionDE}{\@cvExperienceDescriptionEN} }}
-		\end{tabular*}%
-	}{%
-		\begin{tabular*}{\textwidth}{ R{\cvNatureLeftSidebar} @{\hspace{\cvNatureColumnInset}} L{\textwidth - \cvNatureLeftSidebar - \cvNatureColumnInset} }%
-			\multirow{3}{=}{ \raggedleft \ifbool{showCalEmojis} {\emoji{spiral-calendar}\acvHeaderIconSep} {} \cvStylesSimpleDate{ \switchDE{\@cvExperienceDatesDE}{\@cvExperienceDatesEN} }\newline \cvStylesSimpleLocation{ \switchDE{\@cvExperienceLocationDE}{\@cvExperienceLocationEN} }} & \cvStylesSimpleTitle{ \switchDE{\@cvExperienceTitleDE}{\@cvExperienceTitleEN} } \\
-			& \cvStylesSimpleOrganisation{ \switchDE{\@cvExperienceOrganisationDE}{\@cvExperienceOrganisationEN} } \\
-			& \cvStylesSimpleDescriptions{ \switchDE{\@cvExperienceDescriptionDE}{\@cvExperienceDescriptionEN} }
-		\end{tabular*}%
-	}%
+	\begin{tabular*}{\textwidth}{ R{\cvNatureLeftSidebar} @{\hspace{\cvNatureColumnInset}} L{\textwidth - \cvNatureLeftSidebar - \cvNatureColumnInset} }%
+		\multirow{3}{=}{ \raggedleft \ifbool{showCalEmojis} {\emoji{spiral-calendar}\space} {} \cvStylesSimpleDate{ \switchDE{\@cvExperienceDatesDE}{\@cvExperienceDatesEN} }\newline \cvStylesSimpleLocation{ \switchDE{\@cvExperienceLocationDE}{\@cvExperienceLocationEN} }} & \cvStylesSimpleTitle{ \switchDE{\@cvExperienceTitleDE}{\@cvExperienceTitleEN} } \\
+		& \cvStylesSimpleOrganisation{ \switchDE{\@cvExperienceOrganisationDE}{\@cvExperienceOrganisationEN} } \\
+		& \cvStylesSimpleDescriptions{ \switchDE{\@cvExperienceDescriptionDE}{\@cvExperienceDescriptionEN} }
+	\end{tabular*}%
 	\vspace{-1.0mm}%
 }
 %-------------------------------------------------------------------------------
-
 
 % Positions / Extracurricular activities 
 %---------------------------------------
 \newenvironment{cvpositions}{%
 	\ifthenelse{\equal{DE}{\cvLang}}%
-		{\cvsection{\ifbool{showTitleEmojis} {\emoji{rocket}\acvHeaderIconSep} {} Ehrenamtliches und sonstige T{\"a}tigkeiten}}%
-		{\cvsection{\ifbool{showTitleEmojis} {\emoji{rocket}\acvHeaderIconSep} {} Volunteering}}%
-	\vspace{\acvSectionContentTopSkip}%
+		{\cvsection{\ifbool{showTitleEmojis} {\emoji{rocket}\space} {} Ehrenamtliches und sonstige T{\"a}tigkeiten}}%
+		{\cvsection{\ifbool{showTitleEmojis} {\emoji{rocket}\space} {} Volunteering}}%
 	\begin{center}
 }{%
 	\end{center}%
@@ -803,52 +627,20 @@ pdfkeywords={}
 }
 
 \newcommand*{\cvPositionFlush}{%
-	\isFancy{%
-		\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.0cm} R{4.0cm}}%
-			\entrytitlestyle{\ifthenelse{\equal{DE}{\cvLang}}{\@cvPositionOrganisationDE}{\@cvPositionOrganisationEN}} & \entrylocationstyle{\ifthenelse{\equal{DE}{\cvLang}}{\@cvPositionLocationDE}{\@cvPositionLocationEN}} \\
-			\positionorgstyle{\ifthenelse{\equal{DE}{\cvLang}}{\@cvPositionPostDE}{\@cvPositionPostEN}} & \entrydatestyle{\ifthenelse{\equal{DE}{\cvLang}}{\@cvPositionDatesDE}{\@cvPositionDatesEN}}\\
-			\multicolumn{2}{L{\textwidth}}{\descriptionstyle{\ifthenelse{\equal{DE}{\cvLang}}{\@cvPositionDescriptionDE}{\@cvPositionDescriptionEN}}}
-		\end{tabular*}%
-	}{%
-		\begin{tabular*}{\textwidth}{ R{\cvNatureLeftSidebar} @{\hspace{\cvNatureColumnInset}} L{\textwidth - \cvNatureLeftSidebar - \cvNatureColumnInset} }%
-			\multirow{3}{=}{ \raggedleft \ifbool{showCalEmojis} {\emoji{spiral-calendar}\acvHeaderIconSep} {} \cvStylesSimpleDate{\ifthenelse{\equal{DE}{\cvLang}}{\@cvPositionDatesDE}{\@cvPositionDatesEN}}\newline \cvStylesSimpleLocation{\ifthenelse{\equal{DE}{\cvLang}}{\@cvPositionLocationDE}{\@cvPositionLocationEN}}} & \cvStylesSimpleTitle{\ifthenelse{\equal{DE}{\cvLang}}{\@cvPositionPostDE}{\@cvPositionPostEN}} \\
-			& \cvStylesSimpleOrganisation{\ifthenelse{\equal{DE}{\cvLang}}{\@cvPositionOrganisationDE}{\@cvPositionOrganisationEN}} \\
-			& \cvStylesSimpleDescriptions{\ifthenelse{\equal{DE}{\cvLang}}{\@cvPositionDescriptionDE}{\@cvPositionDescriptionEN}}
-		\end{tabular*}%
-	}%
+	\begin{tabular*}{\textwidth}{ R{\cvNatureLeftSidebar} @{\hspace{\cvNatureColumnInset}} L{\textwidth - \cvNatureLeftSidebar - \cvNatureColumnInset} }%
+		\multirow{3}{=}{ \raggedleft \ifbool{showCalEmojis} {\emoji{spiral-calendar}\space} {} \cvStylesSimpleDate{\ifthenelse{\equal{DE}{\cvLang}}{\@cvPositionDatesDE}{\@cvPositionDatesEN}}\newline \cvStylesSimpleLocation{\ifthenelse{\equal{DE}{\cvLang}}{\@cvPositionLocationDE}{\@cvPositionLocationEN}}} & \cvStylesSimpleTitle{\ifthenelse{\equal{DE}{\cvLang}}{\@cvPositionPostDE}{\@cvPositionPostEN}} \\
+		& \cvStylesSimpleOrganisation{\ifthenelse{\equal{DE}{\cvLang}}{\@cvPositionOrganisationDE}{\@cvPositionOrganisationEN}} \\
+		& \cvStylesSimpleDescriptions{\ifthenelse{\equal{DE}{\cvLang}}{\@cvPositionDescriptionDE}{\@cvPositionDescriptionEN}}
+	\end{tabular*}%
 }
 %-------------------------------------------------------------------------------
-
-% Define an environment for cvprojects
-\newenvironment{cvprojects}{%
-\vspace{\acvSectionContentTopSkip}
-\begin{center}
-	}{%
-	\vspace{-4.0mm}%
-\end{center}
-}
-% Define an entry of cv projects
-\newcommand*{\cvproject}[5]{%
-\vspace{-2.0mm}
-\setlength\tabcolsep{0pt}
-\setlength{\extrarowheight}{0pt}
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.0cm} R{4.0cm}}
-	\ifempty{#2} {\multirow{2}{=}{\raggedright \entrytitlestyle{#1}} & \entrylocationstyle{#3} \\
-	& \entrydatestyle{#4} \\}
-	{\entrytitlestyle{#1} & \entrylocationstyle{#3} \\
-	\entrysubtitlestyle{#2} & \entrydatestyle{#4} \\}
-	\multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}}
-\end{tabular*}
-\vspace{0.75mm}%
-}
 
 % Summary
 %--------
 \newenvironment{cvSummary}{%
 	\ifthenelse{\equal{DE}{\cvLang}}%
-		{\cvsection{\ifbool{showTitleEmojis} {\emoji{memo}\acvHeaderIconSep} {} Kurzprofil}}%
-		{\cvsection{\ifbool{showTitleEmojis} {\emoji{memo}\acvHeaderIconSep} {} Summary}}%
-	\vspace{\acvSectionContentTopSkip}%
+		{\cvsection{\ifbool{showTitleEmojis} {\emoji{memo}\space} {} Kurzprofil}}%
+		{\cvsection{\ifbool{showTitleEmojis} {\emoji{memo}\space} {} Summary}}%
 	\cvStylesSimpleLetter{
 		\par\nobreak
 }{%
@@ -922,6 +714,7 @@ pdfkeywords={}
 %-------------------------------------------------------------------------------
 
 % Title
+% -----
 %% Usage: \makelettertitle
 \newcommand*{\makelettertitle}{%
 	\vspace{\acvSectionTopSkip}%
@@ -935,8 +728,10 @@ pdfkeywords={}
 	\vspace{\acvSectionTopSkip}%
 	\cvStylesSimpleLetter{\@letteropening}
 }
+%-------------------------------------------------------------------------------
 
 % Closing / signing off
+% ---------------------
 %% Usage: \makeletterclosing
 
 \newcommand*{\letterclosing}{%
