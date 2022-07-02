@@ -1,0 +1,193 @@
+%-------------------------------------------------------------------------------
+% Directory locations
+%-------------------------------------------------------------------------------
+% Configure a directory location for fonts(default: 'fonts/')
+\newcommand*{\fontdir}[1][fonts/]{\def\@fontdir{#1}}
+
+%-------------------------------------------------------------------------------
+% Layout
+%-------------------------------------------------------------------------------
+% Styles
+%-------
+\newcommand*{\cvStylesHeaderFirstName}[1]{{\fontsize{32pt}{1em}\normalfont\color{text} #1}}
+\newcommand*{\cvStylesHeaderLastName}[1]{{\fontsize{32pt}{1em}\bfseries\color{graytext} #1}}
+
+\newcommand*{\cvStylesSimpleDate}[1]{{\fontsize{10.125pt}{1em}\fontseries{sbc}\selectfont\slshape\color{darktext} #1}}
+\newcommand*{\cvStylesSimpleLocation}[1]{{\fontsize{9.5pt}{1em}\slshape\color{graytext} #1}}
+\newcommand*{\cvStylesSimpleTitle}[1]{{\fontsize{10.25pt}{1em}\bfseries\color{darktext} #1}}
+\newcommand*{\cvStylesSimpleOrganisation}[1]{{\fontsize{9.5pt}{1em}\fontseries{sbc}\selectfont\slshape\color{graytext} #1}}
+\newcommand*{\cvStylesSimpleSubtitle}[1]{{\fontsize{9.25pt}{1em}\fontseries{sbc}\selectfont\slshape\color{lighttext} #1}}
+\newcommand*{\cvStylesSimpleDescriptions}[1]{{\fontsize{9.25pt}{1em}\upshape\color{text} #1}}
+
+\newcommand*{\cvStylesSimpleLetter} {\fontsize{10.0pt}{1.4em}\upshape\color{graytext} }
+
+
+\newcommand*{\cvStylesSimpleHeaderMainData}[1]{{\fontsize{8.25pt}{1em}\upshape\color{text} #1}}
+\newcommand*{\cvStylesSimpleHeaderSupplementData}[1]{{\fontsize{8.25pt}{1em}\upshape\color{graytext} #1}}
+\newcommand*{\cvStylesSimpleHeaderField}[1]{{\fontsize{8.25pt}{1em}\normalfont\slshape\color{graytext} #1}}
+
+\newcommand*{\cvStylesSimpleFooter}[1]{{\fontsize{8pt}{1em}\fontseries{sbc}\selectfont\color{lighttext} #1}}
+
+
+\newcommand*{\cvStylesSimpleSection}[1]{{\fontsize{16.0pt}{1em}\bfseries\color{text}#1}}
+\newcommand*{\cvStylesSimpleSubsection}[1]{{\fontsize{14.0pt}{1em}\bfseries\color{text}#1}}
+
+% CV Header and CV meta
+%----------------------
+% Name
+%% Usage: \name{<firstname>}{<lastname>}
+\newcommand*{\name}[2]{\def\@firstname{#1}\def\@lastname{#2}}
+\def\@familyname{\@lastname}
+
+% Address
+%% Usage: \address{EN | DE}{<address>}
+\newcommand*{\address}[2]{ \ifthenelse{\equal{DE}{#1}} {\def\@addressDE{#2}} {\def\@addressEN{#2}} }
+
+% Position
+\newcommand*{\position}[1]{\def\@position{#1}}
+
+% Date of Birth
+%% Usage: \birthdate{<birth date>}{<birth month>}{<birth year>}
+\newcommand*{\birthdate}[3]{\def\@birthdate{ \switchDE{#1.\space\monthnamegerman[#2]}{#1\space\monthnameenglish[#2]}#3 }}
+
+% Birth Place
+%% Usage: \birthplace{cvLang}{<birth place>}
+\newcommand*{\birthplace}[2]{\ifthenelse{\equal{DE}{#1}}{\def\@birthplaceDE{#2}}{\def\@birthplaceEN{#2}}}
+
+% Mobile (optional)
+%% Usage: \mobile{<mobile number>}
+\newcommand*{\mobile}[1]{\def\@mobile{#1}}
+
+% Email (optional)
+%% Usage: \email{<email adress>}
+\newcommand*{\email}[1]{\def\@email{#1}}
+
+% Homepage (optional)
+%% Usage: \homepage{<url>}
+\newcommand*{\homepage}[1]{\def\@homepage{#1}}
+
+% GitHub (optional)
+%% Usage: \github{<github-nick>}
+\newcommand*{\github}[1]{\def\@github{#1}}
+
+% Gitlab (optional)
+%% Usage: \gitlab{<gitlab-nick>}
+\newcommand*{\gitlab}[1]{\def\@gitlab{#1}}
+
+% LinkedIn (optional)
+%% Usage: \linkedin{<linkedin nickname>}
+\newcommand*{\linkedin}[1]{\def\@linkedin{#1}}
+
+% Custom Link (optional)
+%% Usage: \customlink{<name>}{<href url>}
+\newcommand*{\customlink}[2]{\def\@customlinkname{#1}\def\@customlinkhref{#2}}
+
+% Twitter
+%% Usage: \twitter{<twitter handle>}
+\newcommand*{\twitter}[1]{\def\@twitter{#1}}
+
+% Xing (optional)
+%% Usage: \xing{<xing name>}
+\newcommand*{\xing}[1]{\def\@xing{#1}}
+
+% Recipient's information (cover letter)
+%% Usage: \recipient{<company name or dept>}{<recipient address>}
+\newcommand*{\recipient}[2]{\def\@recipientname{#1}\def\@recipientaddress{#2}}
+
+% Title (cover letter, optional)
+%% Usage: \lettertitle{<title>}
+\newcommand*{\lettertitle}[1]{\def\@lettertitle{#1}}
+
+% Date (cover letter)
+%% Usage: \letterdate{<date>}{<month>}{<year>}
+\newcommand*{\letterdate}[3]{\def\@letterdate{\switchDE{#1.\space\monthnamegerman[#2]}{#1\space\monthnameenglish[#2]}\space #3}}
+
+% Enclosure for letter (cover letter, optional)
+\newcommand*{\letterenclosure}[2]{ \ifthenelse{\equal{DE}{#1}} {\def\@letterenclosureDE{#2}} {\def\@letterenclosureEN{#2}} }
+
+% Photo
+%------
+%% Usage: \photo[circle|rectangle,edge|noedge,left|right]{<path-to-image>}
+\newcommand{\photo}[2][circle,edge,left]{%
+	\def\@photo{#2}
+	\@for\tmp:=#1\do{%
+		\ifthenelse{\equal{\tmp}{circle} \or \equal{\tmp}{rectangle}}%
+			{\let\@photoshape\tmp}%
+			{}%
+		\ifthenelse{\equal{\tmp}{edge} \or \equal{\tmp}{noedge}}%
+			{\let\@photoedge\tmp}%
+			{}%
+		\ifthenelse{\equal{\tmp}{left} \or \equal{\tmp}{right}}%
+			{\let\@photoalign\tmp}%
+			{}%
+	}%
+}
+\def\@photoshape{circle}
+\def\@photoedge{edge}
+\def\@photoalign{left}
+
+
+%-------------------------------------------------------------------------------
+% Declarations, booleans, macros
+%-------------------------------------------------------------------------------
+% Control the behaviour of some display artefacts, colour display, conditional
+% display of some information
+%-------------------------------------------------------------------------------
+% Language of the CV
+%% Either EN or DE
+%\def\cvLang{DE}
+%% This remains commented because the Makefile passes the relevant define from 
+%% the command-line. Uncomment this and set to desired value if not using the 
+%% Makefile
+
+% Display basic emojis
+%% Use \ifthenelse construct in your file to personalise use
+\newbool{showEmojis}
+\setbool{showEmojis}{false}
+
+% Colors TODO @hatimak
+%-------------------------------------------------------------------------------
+% Gray-scale colors
+\definecolor{white}{HTML}{FFFFFF}
+\definecolor{black}{HTML}{000000}
+\definecolor{darkgray}{HTML}{393939}
+\definecolor{gray}{HTML}{696969}
+\definecolor{lightgray}{HTML}{909090}
+
+% Text colors
+\definecolor{darktext}{HTML}{474747}
+\definecolor{text}{HTML}{424242}
+\colorlet{graytext}{gray}
+\colorlet{lighttext}{lightgray}
+
+% Helpers
+%-------------------------------------------------------------------------------
+%% Define helper macros a user can change easily
+% Header
+\newcommand{\acvHeaderAfterSocialSkip}{6mm}
+
+% Others
+\newcommand{\acvSectionTopSkip}{3mm}
+
+% Simple Nature geometrical measurements
+\newcommand{\cvNatureLeftSidebar}{3.90cm}
+\newcommand{\cvNatureColumnInset}{0.80em}
+
+% Section, like Education, Experience
+%% Usage: \cvsection{<section-title>}
+\newcommand{\cvsection}[1]{%
+	\vspace{\acvSectionTopSkip}
+	\cvStylesSimpleSection{ #1 }
+	\phantomsection
+}
+
+% Environment for CV items, bullet list for description, particularly in the Experiences section
+\newenvironment{cvitems}{%
+	\vspace{-4.0mm}
+		\begin{itemize}[leftmargin=4.0ex]
+			\setlength{\parskip}{0pt}
+			\setlength\itemsep{0.27em}
+}{%
+		\end{itemize}
+	\vspace{-4.0mm}
+}
