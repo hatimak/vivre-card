@@ -148,9 +148,10 @@
 % Gray-scale colors
 \definecolor{white}{HTML}{FFFFFF}
 \definecolor{black}{HTML}{000000}
-\definecolor{darkgray}{HTML}{393939}
-\definecolor{gray}{HTML}{696969}
-\definecolor{lightgray}{HTML}{909090}
+\definecolor{darkgray}{HTML}{212121}
+\definecolor{mediumgray}{HTML}{454545}
+\definecolor{gray}{HTML}{454545}
+\definecolor{lightgray}{HTML}{696969}
 
 % Text colors
 \definecolor{darktext}{HTML}{474747}
@@ -162,20 +163,20 @@
 %-------------------------------------------------------------------------------
 % Styles
 %-------------------------------------------------------------------------------
-\newcommand*{\cvStylesHeaderFirstName}[1]{{\fontsize{32pt}{1em}\normalfont\color{text} #1}}
-\newcommand*{\cvStylesHeaderLastName}[1]{{\fontsize{32pt}{1em}\bfseries\color{graytext} #1}}
+\newcommand*{\cvStylesHeaderFirstName}[1]{{\fontsize{30.0pt}{1em}\normalfont\color{text} #1}}
+\newcommand*{\cvStylesHeaderLastName}[1]{{\fontsize{30.0pt}{1em}\bfseries\color{graytext} #1}}
 
-\newcommand*{\cvStylesSimpleDate}[1]{{\fontsize{10.125pt}{1em}\fontseries{sbc}\selectfont\slshape\color{darktext} #1}}
-\newcommand*{\cvStylesSimpleLocation}[1]{{\fontsize{9.5pt}{1em}\slshape\color{graytext} #1}}
-\newcommand*{\cvStylesSimpleTitle}[1]{{\fontsize{10.25pt}{1em}\bfseries\color{darktext} #1}}
-\newcommand*{\cvStylesSimpleOrganisation}[1]{{\fontsize{9.5pt}{1em}\fontseries{sbc}\selectfont\slshape\color{graytext} #1}}
-\newcommand*{\cvStylesSimpleSubtitle}[1]{{\fontsize{9.25pt}{1em}\fontseries{sbc}\selectfont\slshape\color{lighttext} #1}}
-\newcommand*{\cvStylesSimpleDescriptions}[1]{{\fontsize{9.25pt}{1em}\upshape\color{text} #1}}
+\newcommand*{\cvStylesSimpleDate}[1]{{\fontsize{10.25pt}{1em}\fontseries{sbc}\selectfont\slshape\color{darktext} #1}}
+\newcommand*{\cvStylesSimpleLocation}[1]{{\fontsize{9.625pt}{1em}\slshape\color{graytext} #1}}
+\newcommand*{\cvStylesSimpleTitle}[1]{{\fontsize{10.375pt}{1em}\bfseries\color{darktext} #1}}
+\newcommand*{\cvStylesSimpleOrganisation}[1]{{\fontsize{9.625pt}{1em}\fontseries{sbc}\selectfont\slshape\color{graytext} #1}}
+\newcommand*{\cvStylesSimpleSubtitle}[1]{{\fontsize{9.375pt}{1em}\fontseries{sbc}\selectfont\slshape\color{lighttext} #1}}
+\newcommand*{\cvStylesSimpleDescriptions}[1]{{\fontsize{9.375pt}{1em}\upshape\color{text} #1}}
 
 \newcommand*{\cvStylesSimpleLetter} {\fontsize{10.0pt}{1.4em}\upshape\color{graytext} }
 
 
-\newcommand*{\cvStylesSimpleHeaderMainData}[1]{{\fontsize{8.25pt}{1em}\upshape\color{text} #1}}
+\newcommand*{\cvStylesSimpleHeaderMainData}[1]{{\fontsize{8.375pt}{1em}\upshape\color{text} #1}}
 \newcommand*{\cvStylesSimpleHeaderSupplementData}[1]{{\fontsize{8.25pt}{1em}\upshape\color{graytext} #1}}
 \newcommand*{\cvStylesSimpleHeaderField}[1]{{\fontsize{8.25pt}{1em}\normalfont\slshape\color{graytext} #1}}
 
@@ -287,9 +288,6 @@
 % Header
 \newcommand{\acvHeaderAfterSocialSkip}{6mm}
 
-% Others
-\newcommand{\acvSectionTopSkip}{3mm}
-
 % Simple Nature geometrical measurements
 \newcommand{\cvNatureLeftSidebar}{3.90cm}
 \newcommand{\cvNatureColumnInset}{0.80em}
@@ -297,7 +295,7 @@
 % Section, like Education, Experience
 %% Usage: \cvsection{<section-title>}
 \newcommand{\cvsection}[1]{%
-	\vspace{\acvSectionTopSkip}
+	\vspace{2.67mm}
 	\cvStylesSimpleSection{ #1 }
 	\phantomsection
 }
@@ -310,6 +308,15 @@
 			\setlength\itemsep{0.27em}
 }{%
 		\end{itemize}
+	\vspace{-4.0mm}
+}
+
+\newenvironment{cvInnerItems}{%
+	\begin{itemize}[leftmargin=4.0ex]
+		\setlength{\parskip}{0pt}
+		\setlength\itemsep{0.18em}
+}{%
+	\end{itemize}
 	\vspace{-4.0mm}
 }
 
@@ -350,7 +357,7 @@
 					{\setlength{\photodim}{1.2cm}}%
 					{\setlength{\photodim}{1.2cm}}%
 				\ifthenelse{\equal{\@photoedge}{edge}}%
-					{\def\@photoborder{darkgray}}%
+					{\def\@photoborder{mediumgray}}%
 					{\def\@photoborder{none}}%
 				\begin{tikzpicture}%
 					\node[\@photoshape, draw=\@photoborder, line width=0.9pt, inner sep=\photodim, fill overzoom image=\@photo] () {};
@@ -384,7 +391,7 @@
 			{}%
 			{\cvStylesSimpleOrganisation{\@position\\[-0.3mm]}}%
 		\begin{center}
-			\vspace{1.5mm}{%
+			\vspace{1.67mm}{%
 			\setlength{\tabcolsep}{0pt}
 			\setlength\extrarowheight{-3pt}
 			\begin{tabular}{ r l }%
@@ -420,17 +427,17 @@
 					{}{%
 					\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\faXingSquare\space}{\switchDE{Xing:}{Xing:}{}}} & \cvStylesSimpleHeaderMainData{\href{https://www.xing.com/profile/\@xing}{\cvStylesSimpleHeaderSupplementData{https://www/xing.com/profile/}\@xing}} \\ }%
 			\end{tabular}}%
-			\vspace{-9.0mm}
+			\vspace{-9.33mm}
 		\end{center}
 		\vspace{\acvHeaderAfterSocialSkip}
-		\noindent\centering\color{lightgray}\rule[0.5\baselineskip]{0.67\headertextwidth}{1.0pt}
+		\noindent\centering\color{lightgray}\rule[0.5\baselineskip]{0.72\headertextwidth}{1.0pt}
 	\end{minipage}%
 	\begin{minipage}{\headerphotowidth}%
 		\ifthenelse{\equal{\@photoalign}{right}}%
 			{\raggedright\drawphoto}%
 			{}%
 	\end{minipage}%
-	\vspace{-\acvSectionTopSkip}
+	\vspace{-4.0mm}
 	\ifthenelse{\isundefined{\@photo}}%
 		{\vspace{2.0mm}}%
 }
@@ -457,8 +464,8 @@
 }{%
 		\end{tabular*}
 	\end{center}
-	\vspace{2.0mm}%
-	\vspace{-4.0mm}
+	\vspace{1.0mm}%
+	\vspace{-4.33mm}
 }
 
 % Entry for skill
@@ -476,8 +483,8 @@
 	\begin{center}%
 }{%
 	\end{center}%
-	\vspace{3.0mm}%
-	\vspace{-4.0mm}%
+	\vspace{2.0mm}%
+	\vspace{-4.33mm}%
 }
 
 \newcommand{\cvEducationDegree}[2]{%
@@ -497,13 +504,14 @@
 
 % Entry for education section
 \newcommand*{\cvSchoolFlush}{%
+	\vspace{-0.67mm}%
 	\begin{tabular*}{\textwidth}{ R{\cvNatureLeftSidebar} @{\hspace{\cvNatureColumnInset}} L{\textwidth - \cvNatureLeftSidebar - \cvNatureColumnInset} }%
-		\multirow{2}{=}{ \raggedleft \cvStylesSimpleDate{ \switchDE{\@cvEducationDatesDE}{\@cvEducationDatesEN} }\newline \cvStylesSimpleLocation{ \switchDE{\@cvEducationLocationDE}{\@cvEducationLocationEN} }} & \cvStylesSimpleTitle{ \switchDE{\@cvEducationDegreeDE\space\@cvEducationDegreeNameDE}{\@cvEducationDegreeEN \@cvEducationDegreeNameEN} } \\
+		\multirow{2}{=}{ \raggedleft \cvStylesSimpleDate{ \switchDE{\@cvEducationDatesDE}{\@cvEducationDatesEN} }\newline \cvStylesSimpleLocation{ \switchDE{\@cvEducationLocationDE}{\@cvEducationLocationEN} }} & \cvStylesSimpleTitle{ \switchDE{\@cvEducationDegreeDE\space\@cvEducationDegreeNameDE}{\@cvEducationDegreeEN\space\@cvEducationDegreeNameEN} } \\
 		& \cvStylesSimpleOrganisation{ \switchDE{\@cvEducationInstitutionDE}{\@cvEducationInstitutionEN} } \ifempty{\@cvEducationGradeDE} {} {\\
 		& \cvStylesSimpleSubtitle{\switchDE{Abschlussnote}{Final Grade} \switchDE{\@cvEducationGradeDE}{\@cvEducationGradeEN}}} \ifempty{\@cvEducationDescriptionDE} {} {\\
 		& \cvStylesSimpleDescriptions{ \switchDE{\@cvEducationDescriptionDE}{\@cvEducationDescriptionEN} }}%
 	\end{tabular*}%
-	\vspace{-1.0mm}%
+	\vspace{-1.67mm}%
 }
 %-------------------------------------------------------------------------------
 
@@ -514,7 +522,7 @@
 	\begin{center}%
 }{%
 	\end{center}%
-	\vspace{-4.0mm}%
+	\vspace{-4.33mm}%
 }
 
 \newcommand{\cvRefereeNameOne}[5]{%
@@ -550,7 +558,7 @@
 	\begin{center}
 }{%
 	\end{center}
-	\vspace{-3.0mm}
+	\vspace{-3.33mm}
 }
 
 \newcommand{\cvExperienceTitle}[2]{%
@@ -567,12 +575,46 @@
 	\ifthenelse{\equal{DE}{#1}} {\def\@cvExperienceOrganisationDE{#2}} {\def\@cvExperienceOrganisationEN{#2}} }
 
 \newcommand*{\cvExperienceFlush}{%
+	\vspace{-0.67mm}%
 	\begin{tabular*}{\textwidth}{ R{\cvNatureLeftSidebar} @{\hspace{\cvNatureColumnInset}} L{\textwidth - \cvNatureLeftSidebar - \cvNatureColumnInset} }%
 		\multirow{3}{=}{ \raggedleft \cvStylesSimpleDate{ \switchDE{\@cvExperienceDatesDE}{\@cvExperienceDatesEN} }\newline \cvStylesSimpleLocation{ \switchDE{\@cvExperienceLocationDE}{\@cvExperienceLocationEN} }} & \cvStylesSimpleTitle{ \switchDE{\@cvExperienceTitleDE}{\@cvExperienceTitleEN} } \\
 		& \cvStylesSimpleOrganisation{ \switchDE{\@cvExperienceOrganisationDE}{\@cvExperienceOrganisationEN} } \\
 		& \cvStylesSimpleDescriptions{ \switchDE{\@cvExperienceDescriptionDE}{\@cvExperienceDescriptionEN} }
 	\end{tabular*}%
-	\vspace{-1.0mm}%
+	\vspace{-1.67mm}%
+}
+%-------------------------------------------------------------------------------
+
+% Projects
+%-----------
+\newenvironment{cvProjects}{%
+	\switchDE{\cvsection{Projekte}}{\cvsection{Projects}}%
+	\begin{center}
+}{%
+	\end{center}
+	\vspace{-3.33mm}
+}
+
+\newcommand{\cvProjectTitle}[2]{%
+	\ifthenelse{\equal{DE}{#1}} {\def\@cvProjectTitleDE{#2}} {\def\@cvProjectTitleEN{#2}} }
+\newcommand{\cvProjectSubtitle}[2]{%
+	\ifthenelse{\equal{DE}{#1}} {\def\@cvProjectSubtitleDE{#2}} {\def\@cvProjectSubtitleEN{#2}} }
+\newcommand{\cvProjectLocation}[2]{%
+	\ifthenelse{\equal{DE}{#1}} {\def\@cvProjectLocationDE{#2}} {\def\@cvProjectLocationEN{#2}} }
+\newcommand{\cvProjectDates}[2]{%
+	\ifthenelse{\equal{DE}{#1}} {\def\@cvProjectDatesDE{#2}} {\def\@cvProjectDatesEN{#2}} }
+\newcommand{\cvProjectDescription}[2]{%
+	\ifthenelse{\equal{DE}{#1}} {\def\@cvProjectDescriptionDE{#2}} {\def\@cvProjectDescriptionEN{#2}} }
+\newcommand{\cvProjectOrganisation}[2]{%
+	\ifthenelse{\equal{DE}{#1}} {\def\@cvProjectOrganisationDE{#2}} {\def\@cvProjectOrganisationEN{#2}} }
+
+\newcommand*{\cvProjectFlush}{%
+	\begin{tabular*}{\textwidth}{ R{\cvNatureLeftSidebar} @{\hspace{\cvNatureColumnInset}} L{\textwidth - \cvNatureLeftSidebar - \cvNatureColumnInset} }%
+		\multirow{3}{=}{ \raggedleft \cvStylesSimpleDate{ \switchDE{\@cvProjectDatesDE}{\@cvProjectDatesEN} }\newline \cvStylesSimpleLocation{ \switchDE{\@cvProjectLocationDE}{\@cvProjectLocationEN} }} & \cvStylesSimpleTitle{ \switchDE{\@cvProjectTitleDE}{\@cvProjectTitleEN} } \\
+		& \cvStylesSimpleOrganisation{ \switchDE{\@cvProjectOrganisationDE}{\@cvProjectOrganisationEN} } \\
+		& \cvStylesSimpleDescriptions{ \switchDE{\@cvProjectDescriptionDE}{\@cvProjectDescriptionEN} }
+	\end{tabular*}%
+	\vspace{-1.5mm}%
 }
 %-------------------------------------------------------------------------------
 
@@ -583,8 +625,8 @@
 	\begin{center}
 }{%
 	\end{center}%
-	\vspace{2.0mm}%
-	\vspace{-4.0mm}%
+	\vspace{1.0mm}%
+	\vspace{-4.33mm}%
 }
 
 \newcommand{\cvPositionPost}[2]{%
@@ -601,11 +643,13 @@
 }
 
 \newcommand*{\cvPositionFlush}{%
+	\vspace{-0.67mm}%
 	\begin{tabular*}{\textwidth}{ R{\cvNatureLeftSidebar} @{\hspace{\cvNatureColumnInset}} L{\textwidth - \cvNatureLeftSidebar - \cvNatureColumnInset} }%
 		\multirow{3}{=}{ \raggedleft \cvStylesSimpleDate{\ifthenelse{\equal{DE}{\cvLang}}{\@cvPositionDatesDE}{\@cvPositionDatesEN}}\newline \cvStylesSimpleLocation{\ifthenelse{\equal{DE}{\cvLang}}{\@cvPositionLocationDE}{\@cvPositionLocationEN}}} & \cvStylesSimpleTitle{\ifthenelse{\equal{DE}{\cvLang}}{\@cvPositionPostDE}{\@cvPositionPostEN}} \\
 		& \cvStylesSimpleOrganisation{\ifthenelse{\equal{DE}{\cvLang}}{\@cvPositionOrganisationDE}{\@cvPositionOrganisationEN}} \\
 		& \cvStylesSimpleDescriptions{\ifthenelse{\equal{DE}{\cvLang}}{\@cvPositionDescriptionDE}{\@cvPositionDescriptionEN}}
 	\end{tabular*}%
+	\vspace{-1.67mm}%
 }
 %-------------------------------------------------------------------------------
 
@@ -689,7 +733,7 @@
 % -----
 %% Usage: \makelettertitle
 \newcommand*{\makelettertitle}{%
-	\vspace{\acvSectionTopSkip}%
+	\vspace{3.0mm}%
 	\cvStylesSimpleTitle{\@recipientname} \\[0.25\baselineskip]
 	\cvStylesSimpleLocation{\@recipientaddress} \hfill \cvStylesSimpleDate{\@letterdate} \\[-1.0ex]
 
@@ -697,7 +741,7 @@
 		{}
 		{\cvStylesSimpleTitle{\underline{\@lettertitle}}}
 	
-	\vspace{\acvSectionTopSkip}%
+	\vspace{3.0mm}%
 	\cvStylesSimpleLetter{\@letteropening}
 }
 %-------------------------------------------------------------------------------

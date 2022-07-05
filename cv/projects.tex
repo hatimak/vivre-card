@@ -1,6 +1,4 @@
-\cvsection{Projects}
-
-\begin{cvprojects}
+\begin{cvProjects}
 
 % \cvproject
 % 	{Implementation of Normalised LMS Adaptive Filtering Algorithm for Signal Enhancement on Raspberry Pi} % Title
@@ -23,16 +21,39 @@
 % 	\end{cvitems}}
 %---------------------------------------------------------
 
-\cvproject
-	{Biometric Attendance System Suitable for Economic and Low-power Limited-connectivity Remote Deployment} % Title
-	{} % Subtitle
-	{Innovation Centre, \href{https://www.iitp.ac.in}{IIT Patna}} % Location
-	{Jan. 2015 -- Oct. 2015} % Date(s)
-	{\begin{cvitems} % Description(s)
+% Title
+\cvProjectTitle{EN}{Biometric Attendance System for Economic and Low-power Limited-connectivity Remote Deployment}
+\cvProjectTitle{DE}{Biometric Attendance System for Economic and Low-power Limited-connectivity Remote Deployment}
+
+% Subtitle
+\cvProjectOrganisation{EN}{Innovation Centre}
+\cvProjectOrganisation{DE}{Innovation Centre}
+
+% Location
+\cvProjectLocation{EN}{\href{https://www.iitp.ac.in}{IIT Patna}, India \ifbool{showEmojis} {\space\emoji{flag-india}} {} }
+\cvProjectLocation{DE}{\href{https://www.iitp.ac.in}{IIT Patna}, Indien \ifbool{showEmojis} {\space\emoji{flag-india}} {} }
+
+% Date(s)
+\cvProjectDates{EN}{Jan. 2015 -- Oct. 2015}
+\cvProjectDates{DE}{Jan. 2015 -- Okt. 2015}
+
+% Description(s)
+\cvProjectDescription{EN}{%
+	\begin{cvitems}
 		\item {Interfaced Atmel AT89S51 8051 microcontroller with R305 fingerprint reader and SIM900A GSM/GPRS module over serial port via multiplexer.}
-		\item {Developed user interface using 16 $\times$ 2 LCD and keypad.}
+		\item {Developed user interface using $16 \times 2$ LCD and keypad.}
 		\item {Developed firmware in C and ASM. Microcontroller operations simulated in Proteus.}
-	\end{cvitems}}
+	\end{cvitems}%
+}
+\cvProjectDescription{DE}{%
+	\begin{cvitems}
+		\item {Interfaced Atmel AT89S51 8051 microcontroller with R305 fingerprint reader and SIM900A GSM/GPRS module over serial port via multiplexer.}
+		\item {Developed user interface using $16 \times 2$ LCD and keypad.}
+		\item {Developed firmware in C and ASM. Microcontroller operations simulated in Proteus.}
+	\end{cvitems}%
+}
+
+\cvProjectFlush
 %---------------------------------------------------------
 
-\end{cvprojects}
+\end{cvProjects}
