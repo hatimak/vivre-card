@@ -427,7 +427,7 @@
 					{}{%
 					\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\faXingSquare\space}{\switchDE{Xing:}{Xing:}{}}} & \cvStylesSimpleHeaderMainData{\href{https://www.xing.com/profile/\@xing}{\cvStylesSimpleHeaderSupplementData{https://www/xing.com/profile/}\@xing}} \\ }%
 			\end{tabular}}%
-			\vspace{-9.33mm}
+			\vspace{-6.0mm}
 		\end{center}
 		\vspace{\acvHeaderAfterSocialSkip}
 		\noindent\centering\color{lightgray}\rule[0.5\baselineskip]{0.72\headertextwidth}{1.0pt}
