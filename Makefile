@@ -3647,6 +3647,18 @@ vivre-card-handout-en: cv.tex coverletter.tex vivre-card.cls cv/education.tex cv
 	rm -rf *.bbb
 	$(MAKE) clean
 
+vivre-card-handout-in: cv.tex vivre-card.cls cv/education.tex cv/experience.tex cv/skills.tex cv/positions.tex cv/references.tex
+	sed -i.bbb 's/\\setbool{showEmojis}{false}/\\setbool{showEmojis}{true}/g' cv.tex
+	sed -i.bbb 's/\\def\\cvLang{DE}/\\def\\cvLang{EN}/g' cv.tex
+	$(MAKE) cv
+	mv cv.pdf cv\ kanchwala.pdf
+
+	sed -i.bbb 's/\\def\\cvLang{EN}/\\def\\cvLang{DE}/g' cv.tex
+	sed -i.bbb 's/\\setbool{showEmojis}{true}/\\setbool{showEmojis}{false}/g' cv.tex
+
+	rm -rf *.bbb
+	$(MAKE) clean
+
 vivre-card-all: cv.tex coverletter.tex vivre-card.cls cv/education.tex cv/experience.tex cv/skills.tex cv/positions.tex cv/references.tex
 	$(MAKE) vivre-card-online
 	$(MAKE) vivre-card-handout
