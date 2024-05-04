@@ -506,10 +506,31 @@
 \newcommand*{\cvSchoolFlush}{%
 	\vspace{-0.67mm}%
 	\begin{tabular*}{\textwidth}{ R{\cvNatureLeftSidebar} @{\hspace{\cvNatureColumnInset}} L{\textwidth - \cvNatureLeftSidebar - \cvNatureColumnInset} }%
-		\multirow{2}{=}{ \raggedleft \cvStylesSimpleDate{ \switchDE{\@cvEducationDatesDE}{\@cvEducationDatesEN} }\newline \cvStylesSimpleLocation{ \switchDE{\@cvEducationLocationDE}{\@cvEducationLocationEN} }} & \cvStylesSimpleTitle{ \switchDE{\@cvEducationDegreeDE\space\@cvEducationDegreeNameDE}{\@cvEducationDegreeEN\space\@cvEducationDegreeNameEN} } \\
+		\multirow{2}{=}{ \raggedleft \cvStylesSimpleDate{ \switchDE{\@cvEducationDatesDE}{\@cvEducationDatesEN} }\newline \cvStylesSimpleLocation{ \switchDE{\@cvEducationLocationDE}{\@cvEducationLocationEN} }} & \cvStylesSimpleTitle{ \switchDE{\ifempty{\@cvEducationDegreeDE}{\@cvEducationDegreeNameDE}{\@cvEducationDegreeDE\space\@cvEducationDegreeNameDE}}{\ifempty{\@cvEducationDegreeEN}{\@cvEducationDegreeNameEN}{\@cvEducationDegreeEN\space\@cvEducationDegreeNameEN}}} \\
 		& \cvStylesSimpleOrganisation{ \switchDE{\@cvEducationInstitutionDE}{\@cvEducationInstitutionEN} } \ifempty{\@cvEducationGradeDE} {} {\\
 		& \cvStylesSimpleSubtitle{\switchDE{Abschlussnote}{Final Grade} \switchDE{\@cvEducationGradeDE}{\@cvEducationGradeEN}}} \ifempty{\@cvEducationDescriptionDE} {} {\\
 		& \cvStylesSimpleDescriptions{ \switchDE{\@cvEducationDescriptionDE}{\@cvEducationDescriptionEN} }}%
+	\end{tabular*}%
+	\vspace{-1.67mm}%
+}
+%-------------------------------------------------------------------------------
+
+% Honours
+%----------
+\newenvironment{cvhonours}{%
+	\switchDE{\cvsection{Erfolge}}{\cvsection{Achievements}}%
+	\begin{center}%
+}{%
+	\end{center}%
+	\vspace{2.0mm}%
+	\vspace{-4.33mm}%
+}
+
+\newcommand*{\cvhonour}[4]{%
+	\vspace{-0.67mm}%
+	\begin{tabular*}{\textwidth}{ R{\cvNatureLeftSidebar} @{\hspace{\cvNatureColumnInset}} L{\textwidth - \cvNatureLeftSidebar - \cvNatureColumnInset} }%
+		\multirow{2}{=}{ \raggedleft \cvStylesSimpleDate{#4}\newline \cvStylesSimpleLocation{#3}} & \cvStylesSimpleTitle{#1} \\
+		& \cvStylesSimpleOrganisation{ #2 }%
 	\end{tabular*}%
 	\vspace{-1.67mm}%
 }
