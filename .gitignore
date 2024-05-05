@@ -1,8 +1,15 @@
 .DS_Store
 .vscode/
 *sign.png
-cv *.pdf
+cv*.pdf
 coverletter*.pdf
+
+*.aux.make
+*.auxbbl.make
+*.auxbbl.make.temp
+*.auxtarget.make
+*.d
+*.out.make
 
 ## Core latex/pdflatex auxiliary files:
 *.aux

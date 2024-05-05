@@ -3579,86 +3579,18 @@ endef
 # vim: noet sts=0 sw=8 ts=8
 
 # Additions by @hatimak, tested only on macOS
-vivre-card-online: cv.tex coverletter.tex vivre-card.cls cv/education.tex cv/experience.tex cv/skills.tex cv/positions.tex cv/references.tex
-	$(MAKE) cv
-	mv cv.pdf cv\ de-de\ online.pdf
-
-	sed -i.bbb 's/\\def\\cvLang{DE}/\\def\\cvLang{EN}/g' cv.tex
-	$(MAKE) cv
-	mv cv.pdf cv\ en-de\ online.pdf
-
-	sed -i.bbb 's/\\def\\cvLang{EN}/\\def\\cvLang{DE}/g' cv.tex
-
-	$(MAKE) coverletter
-	mv coverletter.pdf coverletter\ de-de\ online.pdf
-
-	sed -i.bbb 's/\\def\\cvLang{DE}/\\def\\cvLang{EN}/g' coverletter.tex
-	$(MAKE) coverletter
-	mv coverletter.pdf coverletter\ en-de\ online.pdf
-
-	sed -i.bbb 's/\\def\\cvLang{EN}/\\def\\cvLang{DE}/g' coverletter.tex
-
-	rm -rf *.bbb
-	$(MAKE) clean
-
-vivre-card-handout: cv.tex coverletter.tex vivre-card.cls cv/education.tex cv/experience.tex cv/skills.tex cv/positions.tex cv/references.tex
-	sed -i.bbb 's/\\setbool{showEmojis}{false}/\\setbool{showEmojis}{true}/g' cv.tex
-	$(MAKE) cv
-	mv cv.pdf cv\ de-de\ handout.pdf
-
-	sed -i.bbb 's/\\def\\cvLang{DE}/\\def\\cvLang{EN}/g' cv.tex
-	$(MAKE) cv
-	mv cv.pdf cv\ en-de\ handout.pdf
-
-	sed -i.bbb 's/\\def\\cvLang{EN}/\\def\\cvLang{DE}/g' cv.tex
+vivre-card-online: cv.tex vivre-card.cls cv/achievements.tex cv/education.tex cv/experience.tex cv/positions.tex cv/projects.tex cv/references.tex cv/skills.tex cv/summary.tex
 	sed -i.bbb 's/\\setbool{showEmojis}{true}/\\setbool{showEmojis}{false}/g' cv.tex
-
-	sed -i.bbb 's/\\setbool{showEmojis}{false}/\\setbool{showEmojis}{true}/g' coverletter.tex
-	$(MAKE) coverletter
-	mv coverletter.pdf coverletter\ de-de\ handout.pdf
-
-	sed -i.bbb 's/\\def\\cvLang{DE}/\\def\\cvLang{EN}/g' coverletter.tex
-	$(MAKE) coverletter
-	mv coverletter.pdf coverletter\ en-de\ handout.pdf
-
-	sed -i.bbb 's/\\setbool{showEmojis}{true}/\\setbool{showEmojis}{false}/g' coverletter.tex
-	sed -i.bbb 's/\\def\\cvLang{EN}/\\def\\cvLang{DE}/g' coverletter.tex
-
-	rm -rf *.bbb
-	$(MAKE) clean
-
-vivre-card-handout-en: cv.tex coverletter.tex vivre-card.cls cv/education.tex cv/experience.tex cv/skills.tex cv/positions.tex cv/references.tex
-	sed -i.bbb 's/\\setbool{showEmojis}{false}/\\setbool{showEmojis}{true}/g' cv.tex
-	sed -i.bbb 's/\\def\\cvLang{DE}/\\def\\cvLang{EN}/g' cv.tex
 	$(MAKE) cv
-	mv cv.pdf cv\ en-de\ handout.pdf
-
-	sed -i.bbb 's/\\def\\cvLang{EN}/\\def\\cvLang{DE}/g' cv.tex
-	sed -i.bbb 's/\\setbool{showEmojis}{true}/\\setbool{showEmojis}{false}/g' cv.tex
-
-	sed -i.bbb 's/\\setbool{showEmojis}{false}/\\setbool{showEmojis}{true}/g' coverletter.tex
-	sed -i.bbb 's/\\def\\cvLang{DE}/\\def\\cvLang{EN}/g' coverletter.tex
-	$(MAKE) coverletter
-	mv coverletter.pdf coverletter\ en-de\ handout.pdf
-
-	sed -i.bbb 's/\\setbool{showEmojis}{true}/\\setbool{showEmojis}{false}/g' coverletter.tex
-	sed -i.bbb 's/\\def\\cvLang{EN}/\\def\\cvLang{DE}/g' coverletter.tex
-
-	rm -rf *.bbb
-	$(MAKE) clean
-
-vivre-card-handout-in: cv.tex vivre-card.cls cv/education.tex cv/experience.tex cv/skills.tex cv/positions.tex cv/references.tex
+	mv cv.pdf cv-online.pdf
 	sed -i.bbb 's/\\setbool{showEmojis}{false}/\\setbool{showEmojis}{true}/g' cv.tex
-	sed -i.bbb 's/\\def\\cvLang{DE}/\\def\\cvLang{EN}/g' cv.tex
-	$(MAKE) cv
-	mv cv.pdf cv\ kanchwala.pdf
-
-	sed -i.bbb 's/\\def\\cvLang{EN}/\\def\\cvLang{DE}/g' cv.tex
-	sed -i.bbb 's/\\setbool{showEmojis}{true}/\\setbool{showEmojis}{false}/g' cv.tex
-
 	rm -rf *.bbb
-	$(MAKE) clean
 
-vivre-card-all: cv.tex coverletter.tex vivre-card.cls cv/education.tex cv/experience.tex cv/skills.tex cv/positions.tex cv/references.tex
+vivre-card-handout: cv.tex vivre-card.cls cv/achievements.tex cv/education.tex cv/experience.tex cv/positions.tex cv/projects.tex cv/references.tex cv/skills.tex cv/summary.tex
+	$(MAKE) cv
+	mv cv.pdf cv-handout.pdf
+	rm -rf *.bbb
+
+vivre-card: cv.tex vivre-card.cls cv/achievements.tex cv/education.tex cv/experience.tex cv/positions.tex cv/projects.tex cv/references.tex cv/skills.tex cv/summary.tex
 	$(MAKE) vivre-card-online
 	$(MAKE) vivre-card-handout
