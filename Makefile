@@ -3580,10 +3580,12 @@ endef
 
 # Additions by @hatimak, tested only on macOS
 vivre-card-online: cv.tex vivre-card.cls cv/achievements.tex cv/education.tex cv/experience.tex cv/positions.tex cv/projects.tex cv/references.tex cv/skills.tex cv/summary.tex
+	cp cv.tex cv.tex.bak
 	sed -i.bbb 's/\\setbool{showEmojis}{true}/\\setbool{showEmojis}{false}/g' cv.tex
+	sed -i.bbb 's/\\photo\[/\%\\photo\[/g' cv.tex
 	$(MAKE) cv
 	mv cv.pdf cv-online.pdf
-	sed -i.bbb 's/\\setbool{showEmojis}{false}/\\setbool{showEmojis}{true}/g' cv.tex
+	mv cv.tex.bak cv.tex
 	rm -rf *.bbb
 
 vivre-card-handout: cv.tex vivre-card.cls cv/achievements.tex cv/education.tex cv/experience.tex cv/positions.tex cv/projects.tex cv/references.tex cv/skills.tex cv/summary.tex
