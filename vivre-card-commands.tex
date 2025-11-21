@@ -1,0 +1,256 @@
+%% Start of file `vivre-card-commands.tex'.
+% Vivre Card CV Class - Personal Information Commands
+%
+% This file contains commands for setting personal information, photo, contact details,
+% and other metadata used in CV headers and footers
+%
+% Author: Hatim Kanchwala <hatim@hatimak.me>
+
+%-------------------------------------------------------------------------------
+% Commands for personal information
+%-------------------------------------------------------------------------------
+% Photo ID
+%% Usage: \photo[circle|rectangle,edge|noedge,left|right]{<path-to-image>}
+\newcommand{\photo}[2][circle,edge,left]{%
+	\def\@photo{#2}
+	\@for\tmp:=#1\do{%
+		\ifthenelse{\equal{\tmp}{circle} \or \equal{\tmp}{rectangle}}%
+			{\let\@photoshape\tmp}%
+			{}%
+		\ifthenelse{\equal{\tmp}{edge} \or \equal{\tmp}{noedge}}%
+			{\let\@photoedge\tmp}%
+			{}%
+		\ifthenelse{\equal{\tmp}{left} \or \equal{\tmp}{right}}%
+			{\let\@photoalign\tmp}%
+			{}%
+	}%
+}
+\def\@photoshape{circle}
+\def\@photoedge{edge}
+\def\@photoalign{left}
+
+% Name
+%% Usage: \name{<firstname>}{<lastname>}
+\newcommand*{\name}[2]{\def\@firstname{#1}\def\@lastname{#2}}
+\def\@familyname{\@lastname}
+
+% Address
+%% Usage: \address{EN | DE}{<address>}
+\newcommand*{\address}[2]{ \ifthenelse{\equal{DE}{#1}} {\def\@addressDE{#2}} {\def\@addressEN{#2}} }
+
+% Position
+\newcommand*{\position}[1]{\def\@position{#1}}
+
+% Date of Birth
+%% Usage: \birthdate{<birth date>}{<birth month>}{<birth year>}
+\newcommand*{\birthdate}[3]{\def\@birthdate{ \switchDE{#1.\space\monthnamegerman[#2]}{#1\space\monthnameenglish[#2]}#3 }}
+
+% Birth Place
+%% Usage: \birthplace{cvLang}{<birth place>}
+\newcommand*{\birthplace}[2]{\ifthenelse{\equal{DE}{#1}}{\def\@birthplaceDE{#2}}{\def\@birthplaceEN{#2}}}
+
+% Mobile (optional)
+%% Usage: \mobile{<mobile number>}
+\newcommand*{\mobile}[1]{\def\@mobile{#1}}
+
+% Email (optional)
+%% Usage: \email{<email adress>}
+\newcommand*{\email}[1]{\def\@email{#1}}
+
+% Homepage (optional)
+%% Usage: \homepage{<url>}
+\newcommand*{\homepage}[1]{\def\@homepage{#1}}
+
+% GitHub (optional)
+%% Usage: \github{<github-nick>}
+\newcommand*{\github}[1]{\def\@github{#1}}
+
+% Gitlab (optional)
+%% Usage: \gitlab{<gitlab-nick>}
+\newcommand*{\gitlab}[1]{\def\@gitlab{#1}}
+
+% LinkedIn (optional)
+%% Usage: \linkedin{<linkedin nickname>}
+\newcommand*{\linkedin}[1]{\def\@linkedin{#1}}
+
+% Custom Link (optional)
+%% Usage: \customlink{<name>}{<href url>}
+\newcommand*{\customlink}[2]{\def\@customlinkname{#1}\def\@customlinkhref{#2}}
+
+% Twitter
+%% Usage: \twitter{<twitter handle>}
+\newcommand*{\twitter}[1]{\def\@twitter{#1}}
+
+% Xing (optional)
+%% Usage: \xing{<xing name>}
+\newcommand*{\xing}[1]{\def\@xing{#1}}
+
+% Recipient's information (cover letter)
+%% Usage: \recipient{<company name or dept>}{<recipient address>}
+\newcommand*{\recipient}[2]{\def\@recipientname{#1}\def\@recipientaddress{#2}}
+
+% Title (cover letter, optional)
+%% Usage: \lettertitle{<title>}
+\newcommand*{\lettertitle}[1]{\def\@lettertitle{#1}}
+
+% Date (cover letter)
+%% Usage: \letterdate{<date>}{<month>}{<year>}
+\newcommand*{\letterdate}[3]{\def\@letterdate{\switchDE{#1.\space\monthnamegerman[#2]}{#1\space\monthnameenglish[#2]}\space #3}}
+
+% Enclosure for letter (cover letter, optional)
+\newcommand*{\letterenclosure}[2]{ \ifthenelse{\equal{DE}{#1}} {\def\@letterenclosureDE{#2}} {\def\@letterenclosureEN{#2}} }
+
+
+%-------------------------------------------------------------------------------
+% Helpers TODO: @hatimak
+%-------------------------------------------------------------------------------
+%% Define helper macros a user can change easily
+% Header
+\newcommand{\acvHeaderAfterSocialSkip}{6mm}
+
+% Simple Nature geometrical measurements
+\newcommand{\cvNatureLeftSidebar}{3.90cm}
+\newcommand{\cvNatureColumnInset}{0.80em}
+
+% Section, like Education, Experience
+%% Usage: \cvsection{<section-title>}
+\newcommand{\cvsection}[1]{%
+	\vspace{2.67mm}
+	\cvStylesSimpleSection{ #1 }
+	\phantomsection
+}
+
+% Environment for CV items, bullet list for description, particularly in the Experiences section
+\newenvironment{cvitems}{%
+	\vspace{-4.0mm}
+		\begin{itemize}[leftmargin=4.0ex]
+			\setlength{\parskip}{0pt}
+			\setlength\itemsep{0.27em}
+}{%
+		\end{itemize}
+	\vspace{-4.0mm}
+}
+
+\newenvironment{cvInnerItems}{%
+	\begin{itemize}[leftmargin=4.0ex]
+		\setlength{\parskip}{0pt}
+		\setlength\itemsep{0.18em}
+}{%
+	\end{itemize}
+	\vspace{-4.0mm}
+}
+
+
+%-------------------------------------------------------------------------------
+% Header
+%-------------------------------------------------------------------------------
+%% Section based on Header from Awesome-CV
+%% template (https://github.com/posquit0/Awesome-CV) by
+%% Claud D. Park <posquit0.bj@gmail.com>
+%% Usage: \makecvheader
+\newcommand*{\makecvheader}[1][C]{%
+	\newcommand*{\drawphoto}{%
+		\ifthenelse{\isundefined{\@photo}}%
+			{}%
+			{%
+				\newlength{\photodim}%
+				\ifthenelse{\equal{\@photoshape}{circle}}%
+					{\setlength{\photodim}{1.2cm}}%
+					{\setlength{\photodim}{1.2cm}}%
+				\ifthenelse{\equal{\@photoedge}{edge}}%
+					{\def\@photoborder{mediumgray}}%
+					{\def\@photoborder{none}}%
+				\begin{tikzpicture}%
+					\node[\@photoshape, draw=\@photoborder, line width=0.9pt, inner sep=\photodim, fill overzoom image=\@photo] () {};
+				\end{tikzpicture}%
+			}%
+	}
+	\newlength{\headertextwidth}%
+	\newlength{\headerphotowidth}%
+	\ifthenelse{\isundefined{\@photo}}{%
+		\setlength{\headertextwidth}{\textwidth}%
+		\setlength{\headerphotowidth}{0cm}%
+	}{%
+		\setlength{\headertextwidth}{\textwidth - \cvNatureLeftSidebar - \cvNatureColumnInset}%
+		\setlength{\headerphotowidth}{\cvNatureLeftSidebar + \cvNatureColumnInset}%
+	}%
+	\begin{minipage}{\headerphotowidth}%
+		\ifthenelse{\equal{\@photoalign}{left}}
+			{\raggedleft\drawphoto}%
+			{}%
+	\end{minipage}%
+	\begin{minipage}{\headertextwidth}%
+		\ifthenelse{\equal{#1}{L}}%
+			{\raggedright}%
+			{\ifthenelse{\equal{#1}{R}}%
+				{\raggedleft}%
+				{\centering}%
+			}%
+		\cvStylesHeaderFirstName{\@firstname}\cvStylesHeaderLastName{{}\space\@lastname}%
+		\\[0.6mm]%
+		\ifthenelse{\isundefined{\@position}}%
+			{}%
+			{\cvStylesSimpleOrganisation{\@position\\[-0.3mm]}}%
+		\begin{center}
+			\vspace{1.67mm}{%
+			\setlength{\tabcolsep}{0pt}
+			\setlength\extrarowheight{-3pt}
+			\begin{tabular}{ r l }%
+				\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\emoji{birthday-cake}\space}{\switchDE{Geburtsdatum:}{Birth date:}{}}} & \cvStylesSimpleHeaderMainData{\@birthdate} \\%
+				\ifthenelse{\isundefined{\@addressDE} \or \isundefined{\@addressEN}}%
+					{}{%
+					\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\emoji{house-with-garden}\space}{\switchDE{Anschrift:}{Address:}{}}} & \cvStylesSimpleHeaderMainData{\switchDE{\@addressDE}{\@addressEN}} \\ }%
+				\ifthenelse{\isundefined{\@mobile}}%
+					{}{%
+					\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\emoji{mobile-phone}\space}{\switchDE{Telefon:}{Phone:}{}}} & \cvStylesSimpleHeaderMainData{\@mobile} \\ }%
+				\ifthenelse{\isundefined{\@email}}%
+					{}{%
+					\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\emoji{envelope}\space}{\switchDE{Email:}{Email:}{}}} & \cvStylesSimpleHeaderMainData{\href{mailto:\@email}{\@email}} \\ }%
+				\ifthenelse{\isundefined{\@homepage}}%
+					{}{%
+					\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\emoji{globe-with-meridians}\space}{\switchDE{Homepage:}{Home page:}{}}} & \cvStylesSimpleHeaderMainData{\href{https://\@homepage}{\cvStylesSimpleHeaderSupplementData{https://}\@homepage}} \\ }%
+				\ifthenelse{\isundefined{\@github}}%
+					{}{%
+					\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\faGithubSquare\space}{\switchDE{GitHub:}{GitHub:}{}}} & \cvStylesSimpleHeaderMainData{\href{https://github.com/\@github}{\cvStylesSimpleHeaderSupplementData{https://github.com/}\@github}} \\ }%
+				\ifthenelse{\isundefined{\@gitlab}}%
+					{}{%
+					\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\faGitlab\space}{\switchDE{GitLab:}{GitLab:}{}}} & \cvStylesSimpleHeaderMainData{\href{https://gitlab.com/\@gitlab}{\cvStylesSimpleHeaderSupplementData{https://gitlab.com/}\@gitlab}} \\ }%
+				\ifthenelse{\isundefined{\@linkedin}}%
+					{}{%
+					\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\faLinkedinSquare\space}{\switchDE{LinkedIn:}{LinkedIn:}{}}} & \cvStylesSimpleHeaderMainData{\href{https://www.linkedin.com/in/\@linkedin}{\cvStylesSimpleHeaderSupplementData{https://www.linkedin.com/in/}\@linkedin}} \\ }%
+				\ifthenelse{\isundefined{\@customlinkname}}%
+					{}{%
+					\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\emoji{link}\space}{\switchDE{\@customlinkname:}{\@customlinkname:}{}}} & \cvStylesSimpleHeaderMainData{\href{\@customlinkhref}{\@customlinkhref}} \\ }%
+				\ifthenelse{\isundefined{\@twitter}}%
+					{}{%
+					\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\faTwitter\space}{\switchDE{Twitter:}{Twitter:}{}}} & \cvStylesSimpleHeaderMainData{\href{https://twitter.com/\@twitter}{\cvStylesSimpleHeaderSupplementData{https://twitter.com/}\@twitter}} \\ }%
+				\ifthenelse{\isundefined{\@xing}}%
+					{}{%
+					\cvStylesSimpleHeaderField{\ifbool{showEmojis}{\faXingSquare\space}{\switchDE{Xing:}{Xing:}{}}} & \cvStylesSimpleHeaderMainData{\href{https://www.xing.com/profile/\@xing}{\cvStylesSimpleHeaderSupplementData{https://www/xing.com/profile/}\@xing}} \\ }%
+			\end{tabular}}%
+			\vspace{-6.0mm}
+		\end{center}
+		\vspace{\acvHeaderAfterSocialSkip}
+		\noindent\centering\color{lightgray}\rule[0.5\baselineskip]{0.72\headertextwidth}{1.0pt}
+	\end{minipage}%
+	\begin{minipage}{\headerphotowidth}%
+		\ifthenelse{\equal{\@photoalign}{right}}%
+			{\raggedright\drawphoto}%
+			{}%
+	\end{minipage}%
+	\vspace{-4.0mm}
+	\ifthenelse{\isundefined{\@photo}}%
+		{\vspace{2.0mm}}%
+}
+
+
+%-------------------------------------------------------------------------------
+% Footer
+%-------------------------------------------------------------------------------
+%% Usage: \makecvfooter{<left>}{<center>}{<right>}
+\newcommand*{\makecvfooter}[3]{%
+	\fancyfoot{}
+	\fancyfoot[L]{\cvStylesSimpleFooter{#1}}
+	\fancyfoot[C]{\cvStylesSimpleFooter{#2}}
+	\fancyfoot[R]{\cvStylesSimpleFooter{#3}}
+}

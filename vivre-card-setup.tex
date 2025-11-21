@@ -1,0 +1,147 @@
+%% Start of file `vivre-card-setup.tex'.
+% Vivre Card CV Class - Package Loading and Setup
+%
+% This file contains all package requirements, geometry setup, and page layout configuration
+%
+% Author: Hatim Kanchwala <hatim@hatimak.me>
+
+%-------------------------------------------------------------------------------
+% Packages
+%-------------------------------------------------------------------------------
+% Make fixed length table
+\RequirePackage{array}
+% Handle list environment
+\RequirePackage{enumitem}
+% Handle text alignment
+\RequirePackage{ragged2e}
+% Page layout
+\RequirePackage{geometry}
+% Make efficient header & footer
+\RequirePackage{fancyhdr}
+% Manage colors
+\RequirePackage{xcolor}
+% Needed to use \ifxetex-\else-\fi statement
+\RequirePackage{ifxetex}
+% Needed to use \if-\then-\else statement
+\RequirePackage{xifthen}
+% Toolbox of programming tools
+\RequirePackage{etoolbox}
+% Change line spacing in specific environment
+\RequirePackage{setspace}
+% Manage fonts
+\RequirePackage[quiet]{fontspec}
+% Support LaTeX quoting style
+\defaultfontfeatures{Ligatures=TeX}
+% Manage math fonts
+\RequirePackage{unicode-math}
+
+% Needed to use icons from font-awesome
+% (https://github.com/posquit0/latex-fontawesome)
+\RequirePackage{fontawesome}
+
+\RequirePackage{lmodern}
+\renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
+\RequirePackage[T1]{fontenc}
+
+% Needed for the photo ID
+\RequirePackage[skins]{tcolorbox}
+
+\RequirePackage{parskip}
+
+\RequirePackage[hidelinks,unicode]{hyperref}
+\hypersetup{%
+	pdftitle={},
+	pdfauthor={},
+	pdfsubject={},
+	pdfkeywords={}
+}
+% Multirow entries in tables
+\RequirePackage{multirow}
+% Needed for last page in footer for ## / ##
+\RequirePackage{lastpage}
+
+\usepackage[german,english]{babel}
+\RequirePackage{datetime}
+% Emoji symbols
+%% Works only with LuaLaTeX
+\RequirePackage{emoji}
+
+
+%-------------------------------------------------------------------------------
+% Directory locations
+%-------------------------------------------------------------------------------
+% Configure a directory location for fonts(default: 'fonts/')
+\newcommand*{\fontdir}[1][fonts/]{\def\@fontdir{#1}}
+\fontdir
+
+
+%-------------------------------------------------------------------------------
+% Layout
+%-------------------------------------------------------------------------------
+%% Page Layout
+\geometry{left=1.2cm, top=0.7cm, right=1.2cm, bottom=1.2cm, footskip=0.1cm}
+
+%% Header & Footer
+% Set offset to each header and footer
+\fancyhfoffset{0em}
+% Remove head rule
+\renewcommand{\headrulewidth}{0pt}
+% Clear all header & footer fields
+\fancyhf{}
+% Enable if you want to make header or footer using fancyhdr
+\pagestyle{fancy}
+
+
+%-------------------------------------------------------------------------------
+% Declarations, booleans, macros
+%-------------------------------------------------------------------------------
+% Control the behaviour of some display artefacts, colour display, conditional
+% display of some information
+%-------------------------------------------------------------------------------
+% Language of the CV
+%% Either EN or DE
+%\def\cvLang{DE}
+%% This remains commented because the Makefile passes the relevant define from 
+%% the command-line. Uncomment this and set to desired value if not using the 
+%% Makefile
+
+% Display basic emojis
+%% Use \ifthenelse construct in your file to personalise use
+\newbool{showEmojis}
+\setbool{showEmojis}{false}
+
+
+%-------------------------------------------------------------------------------
+% Colors TODO @hatimak
+%-------------------------------------------------------------------------------
+% Gray-scale colors
+\definecolor{white}{HTML}{FFFFFF}
+\definecolor{black}{HTML}{000000}
+\definecolor{darkgray}{HTML}{212121}
+\definecolor{mediumgray}{HTML}{454545}
+\definecolor{gray}{HTML}{454545}
+\definecolor{lightgray}{HTML}{696969}
+
+% Text colors
+\definecolor{darktext}{HTML}{474747}
+\definecolor{text}{HTML}{424242}
+\colorlet{graytext}{gray}
+\colorlet{lighttext}{lightgray}
+
+
+%-------------------------------------------------------------------------------
+% Utility Commands
+%-------------------------------------------------------------------------------
+% Align an element of tabular table
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+% Draw horizontal line with specific thickness
+\def\vhrulefill#1{\leavevmode\leaders\hrule\@height#1\hfill \kern\z@}
+
+% Conditional statements to check empty string
+\newcommand*{\ifempty}[3]{\ifthenelse{\isempty{#1}}{#2}{#3}}
+
+% Macro to to encapsulate language switch
+\newcommand*{\switchDE}[2]{ \ifthenelse{\equal{DE}{\cvLang}} {#1} {#2} }

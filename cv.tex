@@ -1,0 +1,97 @@
+%!TEX TS-program = lualatex
+%!TEX encoding = UTF-8 Unicode
+%
+%-------------------------------------------------------------------------------
+% DEFINES
+%-------------------------------------------------------------------------------
+\def\cvLang{EN}
+
+%-------------------------------------------------------------------------------
+% CONFIGURATIONS
+%-------------------------------------------------------------------------------
+% A4 paper size by default, use 'letterpaper' for US letter
+\documentclass[11pt, a4paper]{vivre-card}
+
+% Configure page margins with geometry
+\geometry{left=1.2cm, top=0.7cm, right=1.2cm, bottom=1.2cm, footskip=0.1cm}
+
+% Specify the location of the included fonts
+\fontdir[fonts/]
+
+% Colors for text TODO @hatimak
+% Uncomment if you would like to specify your own color
+% \definecolor{darktext}{HTML}{414141}
+% \definecolor{text}{HTML}{333333}
+% \definecolor{graytext}{HTML}{5D5D5D}
+% \definecolor{lighttext}{HTML}{999999}
+
+% Set false if you don't want to have emojis
+\setbool{showEmojis}{true}
+
+
+%-------------------------------------------------------------------------------
+% PERSONAL INFORMATION
+%-------------------------------------------------------------------------------
+% Available options: circle|rectangle,edge/noedge,left/right
+\photo[circle,edge,right]{./private/profile-alt}
+\name{Hatim}{Kanchwala}
+%\position{\switchDE{} {}}
+\birthdate{7}{2}{1995}
+\birthplace{EN}{Indore, India}
+\birthplace{DE}{Indore, Indien}
+%\address{DE}{Engelbertstra{\ss}e 12, 52078 Aachen, Deutschland}
+%\address{EN}{Engelbertstr. 12, 52078 Aachen, Germany}
+
+\address{DE}{}
+\address{EN}{NIBM Road, Pune 411060 Maharashtra}
+
+%\mobile{+49 176 45 9995 53}
+\mobile{+91 897 577 6853}
+
+%\email{hatim@hatimak.me, hatim.kanchwala@rwth-aachen.de}
+\email{hatim@hatimak.me}
+
+%\email{hatim.kanchwala@rwth-aachen.de}
+%\homepage{hatimak.me}
+%\github{hatimak}
+% \linkedin{hatimak}
+%\xing{Hatim\_Kanchwala2}
+%\switchDE{%
+%	\customlink{Staatsangeh{\"o}rigkeit}{indisch}%
+%}{%
+%	\customlink{Nationality}{Indian}%
+%}%
+
+%-------------------------------------------------------------------------------
+
+\begin{document}
+
+\setemojifont{TwemojiMozilla}
+
+% Print the header with above personal informations
+% Give optional argument to change alignment(C: center, L: left, R: right)
+\makecvheader[C]
+
+% Print the footer with 3 arguments(<left>, <center>, <right>)
+% Leave any of these blank if they are not needed
+\makecvfooter
+	{\textit{v5.0-d76de04}}
+	{Hatim Kanchwala~~~\textbullet~~~\switchDE{Lebenslauf}{Curriculum Vitae}}
+	{\thepage~/~\pageref{LastPage}}
+
+%-------------------------------------------------------------------------------
+% CV CONTENT
+% Each section is imported separately
+%-------------------------------------------------------------------------------
+
+\input{cv/summary.tex}
+\input{cv/experience.tex}
+\input{cv/projects.tex}
+\input{cv/education.tex}
+\input{cv/skills.tex}
+% \input{cv/achievements.tex}
+% \input{cv/positions.tex}
+% \input{cv/references.tex}
+%-------------------------------------------------------------------------------
+
+\end{document}

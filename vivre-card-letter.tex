@@ -1,0 +1,114 @@
+%% Start of file `vivre-card-letter.tex'.
+% Vivre Card CV Class - Cover Letter Elements
+%
+% This file contains all commands and environments for creating cover letters
+%
+% Author: Hatim Kanchwala <hatim@hatimak.me>
+
+%-------------------------------------------------------------------------------
+% Cover Letter elements
+%-------------------------------------------------------------------------------
+% Define an environment for cvletter
+\newenvironment{cvletter}{%
+	\cvStylesSimpleLetter
+}{%
+}
+
+% Section
+%--------
+\newcommand{\lettersection}[3]{%
+	\ifthenelse{\equal{DE}{#1}}{%
+		\def\@letterSectionTitleDE{#2}%
+		\def\@letterSectionTextDE{#3}%
+	}{%
+		\def\@letterSectionTitleEN{#2}%
+		\def\@letterSectionTextEN{#3}%
+	}%
+}
+
+\newcommand{\lettersectionflush}{%
+	\par\addvspace{0.9ex}
+	\phantomsection{}
+	\ifthenelse{\equal{DE}{\cvLang}}{%
+		\cvStylesSimpleSubsection{\@letterSectionTitleDE}%
+		\par\nobreak\addvspace{-0.90ex}%
+		\@letterSectionTextDE
+	}{%
+		\cvStylesSimpleSubsection{\@letterSectionTitleEN}%
+		\par\nobreak\addvspace{-0.90ex}%
+		\@letterSectionTextEN
+	}%
+}
+
+
+%-------------------------------------------------------------------------------
+% Opening (cover letter)
+%-------------------------------------------------------------------------------
+\newcommand*{\letterOpeningMale}[1]{%
+	\ifthenelse{\equal{DE}{#1}}%
+		{Sehr geehrter Herr}%
+		{Dear Mr}%
+}%
+\newcommand*{\letterOpeningFemale}[1]{%
+	\ifthenelse{\equal{DE}{#1}}%
+		{Sehr geehrte Frau}%
+		{Dear Mrs}%
+}%
+\newcommand*{\letterOpeningUnknown}[1]{%
+	\ifthenelse{\equal{DE}{#1}}%
+		{Sehr geehrte Damen und Herren}%
+		{Dear Sir / Madam}%
+}%
+
+\newcommand*{\letteropening}[2]{%
+	\ifthenelse{\equal{male}{#1}}%
+		{\def\@letteropening{\letterOpeningMale{\cvLang} #2,}}%
+	{\ifthenelse{\equal{female}{#1}}%
+		{\def\@letteropening{\letterOpeningFemale{\cvLang} #2,}}%
+		{\def\@letteropening{\letterOpeningUnknown{\cvLang},}}%
+	}%
+}
+
+
+%-------------------------------------------------------------------------------
+% Title
+%-------------------------------------------------------------------------------
+%% Usage: \makelettertitle
+\newcommand*{\makelettertitle}{%
+	\vspace{3.0mm}%
+	\cvStylesSimpleTitle{\@recipientname} \\[0.25\baselineskip]
+	\cvStylesSimpleLocation{\@recipientaddress} \hfill \cvStylesSimpleDate{\@letterdate} \\[-1.0ex]
+
+	\ifthenelse{\isundefined{\@lettertitle}}
+		{}
+		{\cvStylesSimpleTitle{\underline{\@lettertitle}}}
+	
+	\vspace{3.0mm}%
+	\cvStylesSimpleLetter{\@letteropening}
+}
+
+
+%-------------------------------------------------------------------------------
+% Closing / signing off
+%-------------------------------------------------------------------------------
+%% Usage: \makeletterclosing
+
+\newcommand*{\letterclosing}{%
+	\ifthenelse{\equal{DE}{\cvLang}}%
+		{Mit freundlichen Gr{\"u}{\ss}en}%
+		{Sincerely,}%
+}%
+
+\newcommand*{\makeletterclosing}{%
+	\cvStylesSimpleLetter{\letterclosing}
+	\vspace{-1.0ex}
+	\begin{figure}[h!]
+		\includegraphics[width=0.18\linewidth]{./private/sign}
+	\end{figure} \\[-2.0ex]
+	\cvStylesSimpleTitle{\@firstname\ \@lastname}
+	\ifthenelse{\isundefined{\letterenclosure}}%
+		{}{%
+		\par\nobreak\addvspace{0.8ex}
+		\cvStylesSimpleOrganisation{\switchDE{Im Anhang}{Attached}:} \cvStylesSimpleSubtitle{\switchDE{\@letterenclosureDE}{\@letterenclosureEN}}
+		}%
+}
