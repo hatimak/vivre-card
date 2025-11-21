@@ -39,17 +39,16 @@
 % Load modular components
 %-------------------------------------------------------------------------------
 % Package loading, geometry setup, colors, and utility commands
-\input{vivre-card-setup.tex}
+\input{class/vivre-card-setup.tex}
 
 % Style definitions for all text formatting
-\input{vivre-card-styles.tex}
+\input{class/vivre-card-styles.tex}
 
 % Personal information commands and header/footer construction
-\input{vivre-card-commands.tex}
-\typeout{DEBUG: Finished commands}
+\input{class/vivre-card-commands.tex}
 
 % CV section environments (Skills, Education, Experience, etc.)
-\input{vivre-card-sections.tex}
+\input{class/vivre-card-sections.tex}
 
 % Cover letter elements
-\input{vivre-card-letter.tex}
+\input{class/vivre-card-letter.tex}
