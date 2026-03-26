@@ -2643,6 +2643,10 @@ endif
 	$(QUIET)\
 	$(call set-run-reason,need to build .d and .$(build_target_extension).1st.make); \
 	$(call run-latex,$*,-recorder) || $(sh_true); \
+	if [ ! -f "$*.log" ]; then \
+		echo "Error: $*.log was not created. LaTeX compilation failed. Check your .tex file and engine."; \
+		exit 1; \
+	fi; \
 	$(CP) '$*.log' '$*.$(RESTARTS)-1.log'; \
 	$(call die-on-import-sty,$*.log); \
 	$(call die-on-dot2tex,$*.log); \
